@@ -15,8 +15,8 @@
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>      
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
    <link rel="stylesheet" href="header.css">
-   <link rel="stylesheet" href="detailView.css">
-   <script src="detailView.js"></script>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
+   <script src="detailVie.js"></script>
 </head>
 <body>
    <%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -30,19 +30,19 @@
                <div class="prod-image-container">
                   <ul class="thum-list">
                      <li class="prod-image__item">
-                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/post_thum.PNG" alt="홀로그램 엽서">
+                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/post_thum.PNG" alt="홀로그램 엽서">
                      </li>
 
                      <li class="prod-image__item">
-                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/post_list1.PNG" alt="엽서리스트1">
+                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/post_list1.PNG" alt="엽서리스트1">
                      </li>
                      <li class="prod-image__item">
-                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/post_list3.PNG" alt="엽서리스트1">
+                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/post_list3.PNG" alt="엽서리스트1">
                      </li>
                   </ul>
                   <div class="thumbnail-container">
                      <div class="thumbnail-wrapper">
-                        <img class="thumbnail_img" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/post_thum.PNG" alt="홀로그램 엽서">
+                        <img class="thumbnail_img" src="${pageContext.request.contextPath}/resources/img/detailView/post_thum.PNG" alt="홀로그램 엽서">
                         <span class="inner-frame"></span>
                      </div>
                   </div>
@@ -57,7 +57,7 @@
                      <h2 class="prod-title">바보사랑 쥬시앤폴 홀로그램 엽서 (09~16) 세컨드맨션</h2>
                      <div class="prod-header-star-rev">
                         <span class="rating-star"> <img alt="별점5"
-                           src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png">
+                           src="${pageContext.request.contextPath}/resources/img/detailView/star5.png">
                         </span> <a class="rev-cnt" href="#">2개 상품평</a>
                      </div>
                   </div>
@@ -72,13 +72,13 @@
                         <div class="prod-share-layer" id="prod-share-layer">
                             <ul>
                                 <li class="prod-share__item">
-                                   <img class="share_mini_img" alt="트위터" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/twitter.png">
+                                   <img class="share_mini_img" alt="트위터" src="${pageContext.request.contextPath}/resources/img/detailView/twitter.png">
                                 </li>
                                 <li class="prod-share__item">
-                                   <img class="share_mini_img" alt="메일" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/mail.png">
+                                   <img class="share_mini_img" alt="메일" src="${pageContext.request.contextPath}/resources/img/detailView/mail.png">
                                 </li>
                                 <li class="prod-share__item">
-                                   <img class="share_mini_fb" alt="페북" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/good.png">
+                                   <img class="share_mini_fb" alt="페북" src="${pageContext.request.contextPath}/resources/img/detailView/good.png">
                                 </li>
                             </ul>
                             <a class="prod-share-close" id="share-exit" onclick="shareWindow();">X</a>
@@ -95,7 +95,7 @@
                      <a class="origin-price" href="#"> 
                         <span id="basic-price">18900</span>
                         <span>원</span>
-                        <img alt="워닝" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/warning.png" style="width: 14px; height: 14px;"/>
+                        <img alt="워닝" src="${pageContext.request.contextPath}/resources/img/detailView/warning.png" style="width: 14px; height: 14px;"/>
                      </a>
                   </div>
 
@@ -114,7 +114,7 @@
 
                   <div class="reward-badge" style="padding-left: 5px;">
                      <!-- 미소 - img 태그의 margin-bottom 속성이 수정됐어요! -->
-                     <img class="reward-cash-ico" alt="코인" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/coin.png"
+                     <img class="reward-cash-ico" alt="코인" src="${pageContext.request.contextPath}/resources/img/detailView/coin.png"
                         style="width: 14px; margin-bottom: 5px;"><span class="reward-cash-txt"
                         style="padding-left: 5px;">최대 334원 적립</span>
                   </div>
@@ -147,12 +147,12 @@
                   <div class="vendor-info">
                      <div class="vendor-rating " style="padding-bottom: 10px;">
                         <span class="vendor-rating-text">판매자 평가</span> <img
-                           class="vendor-rating-icon" alt="따봉" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/ddabong.png"
+                           class="vendor-rating-icon" alt="따봉" src="${pageContext.request.contextPath}/resources/img/detailView/ddabong.png"
                            style="width: 14px; height: 14px;"> <span
                            class="vendor-rating-score">96%</span> <span
                            class="vendor-rating-cnt">(842)</span> <a
                            class="vendor-info-warn" href="#"> <img alt="워닝"
-                           src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/warning.png" style="width: 14px; height: 14px;">
+                           src="${pageContext.request.contextPath}/resources/img/detailView/warning.png" style="width: 14px; height: 14px;">
                         </a>
                      </div>
                      <div id="shpping-company">
@@ -175,8 +175,8 @@
                         </div>
                         <div class="op_btn_imgset">
                            <span class="op_img"> 
-                                 <img class="thumbnail" id="op-thumbnai" alt="상품사진" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/post_list2.PNG" style="width: 38px; height: 38px; padding-right: 2px"/>
-                                 <img class="dropdown-icon" alt="아래화살표" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/header/arrow_down.png"/>
+                                 <img class="thumbnail" id="op-thumbnai" alt="상품사진" src="${pageContext.request.contextPath}/resources/img/detailView/post_list2.PNG" style="width: 38px; height: 38px; padding-right: 2px"/>
+                                 <img class="dropdown-icon" alt="아래화살표" src="${pageContext.request.contextPath}/resources/img/detailView/header/arrow_down.png"/>
                            </span>
                         </div>
                      </div>
@@ -184,7 +184,7 @@
                   <div class="op-btn-list" id="op-btn-list">
                      <a class="op-list-content" id="op1">
                         <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p2.jpg" width="38px" height="38px">
+                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" width="38px" height="38px">
                                  </div>
                                <div class="prod-option-dropdown-item-right">
                                   <div class="prod-option__dropdown-item-title"><strong>네온블루 × 1세트</strong></div>
@@ -198,7 +198,7 @@
                      </a>
                      <a class="op-list-content" id="op2">
                         <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p6.jpg" width="38px" height="38px">
+                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" width="38px" height="38px">
                                  </div>
                                <div class="prod-option-dropdown-item-right">
                                   <div class="prod-option__dropdown-item-title"><strong>파스텔 × 1세트</strong></div>
@@ -212,7 +212,7 @@
                      </a>
                      <a class="op-list-content" id="op3">
                         <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p1.jpg" width="38px" height="38px">
+                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" width="38px" height="38px">
                                  </div>
                                <div class="prod-option-dropdown-item-right">
                                   <div class="prod-option__dropdown-item-title"><strong>그레이 × 1세트</strong></div>
@@ -226,7 +226,7 @@
                      </a>
                      <a class="op-list-content" id="op4">
                         <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p5.jpg" width="38px" height="38px">
+                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" width="38px" height="38px">
                                  </div>
                                <div class="prod-option-dropdown-item-right">
                                   <div class="prod-option__dropdown-item-title"><strong>오렌지 × 1세트</strong></div>
@@ -243,9 +243,9 @@
 
                <div class="prod-reward-cash-container">
                   <div class="reward-cash-summary">
-                     <img alt="coin" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/coin.png" style="width: 20px;"> <strong
+                     <img alt="coin" src="${pageContext.request.contextPath}/resources/img/detailView/coin.png" style="width: 20px;"> <strong
                         class="reward-text">캐시적립 혜택</strong> <img class="reward-warn"
-                        alt="워닝" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/warning.png" style="width: 14px"> <span
+                        alt="워닝" src="${pageContext.request.contextPath}/resources/img/detailView/warning.png" style="width: 14px"> <span
                         class="reward-info"> <em class="separator"
                         style="font-style: normal;">|</em> <em class="reward-info-txt"
                         style="font-style: normal;"> 최대 <strong
@@ -272,10 +272,10 @@
                         style="width: 60px;">
                      <div class="updown-btn">
                         <button class="prod-cnt-btn" id="cnt-plus" type="button">
-                           <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/up.png">
+                           <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/up.png">
                         </button>
                         <button class="prod-cnt-btn" id="cnt-minus" type="button">
-                           <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/down.png">
+                           <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/down.png">
                         </button>
                      </div>
                   </div>
@@ -306,7 +306,7 @@
             <div class="recommendation-header">
                <div class="recommendation-header-title">함께 비교하면 좋을 상품</div>
                <span class="recommendation-header-ad"> 광고 <img
-                  class="recommendation-header-warn" alt="주의" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/warning.png"
+                  class="recommendation-header-warn" alt="주의" src="${pageContext.request.contextPath}/resources/img/detailView/warning.png"
                   style="width: 14px"></img>
                </span>
             </div>
@@ -318,7 +318,7 @@
                      <li><a href="img/p1.jpg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p1.jpg" alt="엽서1">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">LAVERTON 인테리어 엽서 자석고리
@@ -328,7 +328,7 @@
                                  <span><em style="font-style: normal;">2,670</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                  <span class="star-rating">(21)</span>
                               </div>
                            </div>
@@ -336,7 +336,7 @@
                      <li><a href="img/p2.jpg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p2.jpg" alt="엽서2">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">컬러링 엽서책 2000</strong>
@@ -345,7 +345,7 @@
                                  <span><em style="font-style: normal;">1,600</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                  <span class="star-rating">(15)</span>
                               </div>
                            </div>
@@ -353,7 +353,7 @@
                      <li><a href="img/p3.jpg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p3.jpg" alt="엽서3">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
@@ -363,7 +363,7 @@
                                  <span><em style="font-style: normal;">9,900</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                  <span class="star-rating">(12)</span>
                               </div>
                            </div>
@@ -371,7 +371,7 @@
                      <li><a href="img/p4.jpeg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p4.jpeg" alt="엽서4">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
@@ -381,7 +381,7 @@
                                  <span><em style="font-style: normal;">6,670</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                  <span class="star-rating">(21)</span>
                               </div>
                            </div>
@@ -389,7 +389,7 @@
                      <li><a href="img/p5.jpg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p5.jpg" alt="엽서5">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
@@ -399,7 +399,7 @@
                                  <span><em style="font-style: normal;">4,900</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                  <span class="star-rating">(11)</span>
                               </div>
                            </div>
@@ -407,7 +407,7 @@
                      <li><a href="img/p6.jpg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p6.jpg" alt="엽서6">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
@@ -416,7 +416,7 @@
                                  <span><em style="font-style: normal;">2,500</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                  <span class="star-rating">(18)</span>
                               </div>
                            </div>
@@ -424,7 +424,7 @@
                      <li><a href="img/p6.jpg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/post_list1.PNG" alt="엽서7">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/post_list1.PNG" alt="엽서7">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
@@ -433,7 +433,7 @@
                                  <span><em style="font-style: normal;">2,500</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                  <span class="star-rating">(18)</span>
                               </div>
                            </div>
@@ -441,7 +441,7 @@
                      <li><a href="img/p6.jpg">
                            <div class="product">
                               <div class="img">
-                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/post_list3.PNG" alt="엽서8">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/post_list3.PNG" alt="엽서8">
                               </div>
                               <div class="rec-item-text">
                                  <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
@@ -450,7 +450,7 @@
                                  <span><em style="font-style: normal;">2,500</em>원</span>
                               </div>
                               <div class="rec-item-review">
-                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                  <span class="star-rating">(18)</span>
                               </div>
                            </div>
@@ -503,13 +503,13 @@
                </div>
                <div class="warning-banner">
                   <span class="warning-banner-icon"><img alt="워닝"
-                     src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/red_warning.png" style="height: 16px;"></span> <span
+                     src="${pageContext.request.contextPath}/resources/img/detailView/red_warning.png" style="height: 16px;"></span> <span
                      class="warning-banner-txt"> 판매자가 현금거래를 요구하면 거부하시고 즉시 사기 거래
                      신고센터 (02-2621-4699)에 신고하시기 바랍니다. </span>
                </div>
                <div class="prod-detail-aco show-preview" id="prod-detail-aco">
                   <div class="prod-detail-img">
-                     <img alt="상세정보" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/prod_detail.jpg">
+                     <img alt="상세정보" src="${pageContext.request.contextPath}/resources/img/detailView/prod_detail.jpg">
                   </div>
                   
                </div>
@@ -528,7 +528,7 @@
                         <li><a href="img/p1.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p1.jpg" alt="엽서1">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">LAVERTON 인테리어 엽서
@@ -538,7 +538,7 @@
                                     <span><em style="font-style: normal;">2,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -546,7 +546,7 @@
                         <li><a href="img/p2.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p2.jpg" alt="엽서2">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">컬러링 엽서책 2000</strong>
@@ -555,7 +555,7 @@
                                     <span><em style="font-style: normal;">1,600</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(15)</span>
                                  </div>
                               </div>
@@ -563,7 +563,7 @@
                         <li><a href="img/p3.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p3.jpg" alt="엽서3">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
@@ -573,7 +573,7 @@
                                     <span><em style="font-style: normal;">9,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(12)</span>
                                  </div>
                               </div>
@@ -581,7 +581,7 @@
                         <li><a href="img/p4.jpeg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p4.jpeg" alt="엽서4">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
@@ -591,7 +591,7 @@
                                     <span><em style="font-style: normal;">6,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -599,7 +599,7 @@
                         <li><a href="img/p5.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p5.jpg" alt="엽서5">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
@@ -609,7 +609,7 @@
                                     <span><em style="font-style: normal;">4,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(11)</span>
                                  </div>
                               </div>
@@ -617,7 +617,7 @@
                         <li><a href="img/p6.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p6.jpg" alt="엽서6">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
@@ -626,7 +626,7 @@
                                     <span><em style="font-style: normal;">2,500</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(18)</span>
                                  </div>
                               </div>
@@ -643,7 +643,7 @@
                         <li><a href="img/p1.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p1.jpg" alt="엽서1">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">LAVERTON 인테리어 엽서
@@ -653,7 +653,7 @@
                                     <span><em style="font-style: normal;">2,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -661,7 +661,7 @@
                         <li><a href="img/p2.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p2.jpg" alt="엽서2">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">컬러링 엽서책 2000</strong>
@@ -670,7 +670,7 @@
                                     <span><em style="font-style: normal;">1,600</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(15)</span>
                                  </div>
                               </div>
@@ -678,7 +678,7 @@
                         <li><a href="img/p3.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p3.jpg" alt="엽서3">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
@@ -688,7 +688,7 @@
                                     <span><em style="font-style: normal;">9,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(12)</span>
                                  </div>
                               </div>
@@ -696,7 +696,7 @@
                         <li><a href="img/p4.jpeg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p4.jpeg" alt="엽서4">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
@@ -706,7 +706,7 @@
                                     <span><em style="font-style: normal;">6,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -714,7 +714,7 @@
                         <li><a href="img/p5.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p5.jpg" alt="엽서5">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
@@ -724,7 +724,7 @@
                                     <span><em style="font-style: normal;">4,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(11)</span>
                                  </div>
                               </div>
@@ -732,7 +732,7 @@
                         <li><a href="img/p6.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p6.jpg" alt="엽서6">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
@@ -741,7 +741,7 @@
                                     <span><em style="font-style: normal;">2,500</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(18)</span>
                                  </div>
                               </div>
@@ -758,7 +758,7 @@
                         있습니다.</div>
                      <div class="review-info-starset">
                         <div class="review-info-starimg">
-                           <img alt="별점" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" style="width: 245px;">
+                           <img alt="별점" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" style="width: 245px;">
                         </div>
                         <div class="review-info-star-cnt">21</div>
                         <div class="review-info-detail-look">
@@ -786,7 +786,7 @@
                            <div class="review-article-info-top">
                               <span class="review-writer-profile"> <img
                                  class="review-writer-profile-img" alt=""
-                                 src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/profile.png">
+                                 src="${pageContext.request.contextPath}/resources/img/detailView/profile.png">
                               </span>
                               <div class="review-name-star-date">
                                  <div class="review-writer-name">
@@ -794,7 +794,7 @@
                                  </div>
                                  <div class="review-writer-content">
                                     <span class="review-content-star"> <img alt=""
-                                       src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star1.png" class="review-content-starimg">
+                                       src="${pageContext.request.contextPath}/resources/img/detailView/star1.png" class="review-content-starimg">
                                     </span> <span class="review-content-date">2023.06.21</span>
                                  </div>
                               </div>
@@ -814,7 +814,7 @@
                            <div class="review-article-info-top">
                               <span class="review-writer-profile"> <img
                                  class="review-writer-profile-img" alt=""
-                                 src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/profile.png">
+                                 src="${pageContext.request.contextPath}/resources/img/detailView/profile.png">
                               </span>
                               <div class="review-name-star-date">
                                  <div class="review-writer-name">
@@ -822,7 +822,7 @@
                                  </div>
                                  <div class="review-writer-content">
                                     <span class="review-content-star"> <img alt=""
-                                       src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" class="review-content-starimg">
+                                       src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" class="review-content-starimg">
                                     </span> <span class="review-content-date">2023.06.22</span>
                                  </div>
                               </div>
@@ -850,7 +850,7 @@
                         <li><a href="img/p1.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p1.jpg" alt="엽서1">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">LAVERTON 인테리어 엽서
@@ -860,7 +860,7 @@
                                     <span><em style="font-style: normal;">2,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -868,7 +868,7 @@
                         <li><a href="img/p2.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p2.jpg" alt="엽서2">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">컬러링 엽서책 2000</strong>
@@ -877,7 +877,7 @@
                                     <span><em style="font-style: normal;">1,600</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(15)</span>
                                  </div>
                               </div>
@@ -885,7 +885,7 @@
                         <li><a href="img/p3.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p3.jpg" alt="엽서3">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
@@ -895,7 +895,7 @@
                                     <span><em style="font-style: normal;">9,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(12)</span>
                                  </div>
                               </div>
@@ -903,7 +903,7 @@
                         <li><a href="img/p4.jpeg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p4.jpeg" alt="엽서4">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
@@ -913,7 +913,7 @@
                                     <span><em style="font-style: normal;">6,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -921,7 +921,7 @@
                         <li><a href="img/p5.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p5.jpg" alt="엽서5">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
@@ -931,7 +931,7 @@
                                     <span><em style="font-style: normal;">4,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(11)</span>
                                  </div>
                               </div>
@@ -939,7 +939,7 @@
                         <li><a href="img/p6.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p6.jpg" alt="엽서6">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
@@ -948,7 +948,7 @@
                                     <span><em style="font-style: normal;">2,500</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(18)</span>
                                  </div>
                               </div>
@@ -990,7 +990,7 @@
                            <div class="prod-inquiry-item-date">2023/06/16 00:52:18</div>
                            <hr class="sep-line" />
                            <div class="prod-inquiry-qpname-set">
-                              <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/pointer.png"
+                              <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/pointer.png"
                                  style="width: 20px; height: 20px;"> <em
                                  class="prod-inquiry-item-a">답변</em>
                               <div class="prod-inquiry-item-option">아기 고양이</div>
@@ -1224,7 +1224,7 @@
                         <li><a href="img/p1.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p1.jpg" alt="엽서1">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">LAVERTON 인테리어 엽서
@@ -1234,7 +1234,7 @@
                                     <span><em style="font-style: normal;">2,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -1242,7 +1242,7 @@
                         <li><a href="img/p2.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p2.jpg" alt="엽서2">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">컬러링 엽서책 2000</strong>
@@ -1251,7 +1251,7 @@
                                     <span><em style="font-style: normal;">1,600</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(15)</span>
                                  </div>
                               </div>
@@ -1259,7 +1259,7 @@
                         <li><a href="img/p3.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p3.jpg" alt="엽서3">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
@@ -1269,7 +1269,7 @@
                                     <span><em style="font-style: normal;">9,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(12)</span>
                                  </div>
                               </div>
@@ -1277,7 +1277,7 @@
                         <li><a href="img/p4.jpeg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p4.jpeg" alt="엽서4">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
@@ -1287,7 +1287,7 @@
                                     <span><em style="font-style: normal;">6,670</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(21)</span>
                                  </div>
                               </div>
@@ -1295,7 +1295,7 @@
                         <li><a href="img/p5.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p5.jpg" alt="엽서5">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
@@ -1305,7 +1305,7 @@
                                     <span><em style="font-style: normal;">4,900</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star5.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
                                     <span class="star-rating">(11)</span>
                                  </div>
                               </div>
@@ -1313,7 +1313,7 @@
                         <li><a href="img/p6.jpg">
                               <div class="product">
                                  <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/p6.jpg" alt="엽서6">
+                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
                                  </div>
                                  <div class="rec-item-text">
                                     <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
@@ -1322,7 +1322,7 @@
                                     <span><em style="font-style: normal;">2,500</em>원</span>
                                  </div>
                                  <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/detailView_img/star4.png" width="70px">
+                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
                                     <span class="star-rating">(18)</span>
                                  </div>
                               </div>
