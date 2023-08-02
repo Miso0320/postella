@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-/*@RequestMapping("/detailView")*/
+//@RequestMapping("/detailView")
 public class DetailViewController {
 	
 	@RequestMapping("/detailView")

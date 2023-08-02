@@ -16,7 +16,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
    <link rel="stylesheet" href="header.css">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
-   <script src="detailVie.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/detailView.js"></script>
 </head>
 <body>
    <%@ include file="/WEB-INF/views/common/header.jsp" %>
