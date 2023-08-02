@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>postella</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -38,7 +38,7 @@
   	<load-on-startup>1</load-on-startup>
   	
   	<!-- 멀티파트 파싱을 위한 설정 -->
-  	<!-- <multipart-config>
+  	<multipart-config>
   		임시 파일이 저장될 디렉토리
   		<location>C:/Temp</location>
   		요청 바디에 포함된 파일 하나 당의 크기를 제한 : 20MB(1024*1024*20)
@@ -47,7 +47,7 @@
   		<max-request-size>104857600</max-request-size>
   		임시 파일로 저장하는 크기의 기준 : 1MB(1024*1024*1)
   		<file-size-threshold>1048576</file-size-threshold>
-  	</multipart-config> -->
+  	</multipart-config>
   </servlet>
   
   <!-- 모든 요청을 DispatcherServlet이 처리 -->
