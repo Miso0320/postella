@@ -1,0 +1,156 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="/html_css_javascript/favicon.ico" type="image/x-icon">
+		<title>장바구니!!!</title>
+		
+				<!-- Bootstrap을 사용하기 위한 외부 라이브러리 가져오기 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>		
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		
+		<link rel="stylesheet" href="cartSubscribe.css"/>
+		<script src="cartNormal.js"></script>
+		
+		<script>
+			function init() {
+				$(".btn_delete").click(a);
+				
+				//가격 포맷
+				target = $("#hello").html();
+				originPrice = parseInt(target, 10);
+				$(formPrice);
+				function formPrice() {
+				    document.getElementById("hello").innerHTML = target.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+				// 상품 수량 버튼
+				prodCnt = $(".prod-quantity-input").attr("value");
+				finCnt = parseInt(prodCnt, 10); // string을 10진수로 변환
+				finPrice = originPrice;
+				$("#cnt-plus").click(function() {
+					finCnt++;
+					finPrice = originPrice * finCnt;
+					console.log(finPrice);
+					$(".prod-quantity-input").attr("value", finCnt.toString());
+					document.getElementById("hello").innerHTML = finPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				});
+				$("#cnt-minus").click(function() {
+					if (finCnt > 1) {
+						finCnt--;
+						finPrice -= originPrice;
+						$(".prod-quantity-input").attr("value", finCnt.toString());
+						document.getElementById("hello").innerHTML = finPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					}
+				});
+			}
+		
+			function a() {
+				
+				var tbody = document.querySelector('#myTable tbody');
+				console.log(parent);
+				console.log("----------------------------------------------------------");
+				var deleteElement = (event.target).parentElement.parentElement;
+				console.log(deleteElement);
+				tbody.removeChild(deleteElement);
+				
+	
+			}
+		
+		</script>
+	</head>
+	<body onload="init()">
+		<header class="cartHeader">
+			<div>
+				<a href="product_final2.jsp"><img src="img/coupang.png" class="cart-coupang-logo"></a>
+			</div>
+		</header>
+		<main class="main-cart">
+			<div class="cart-title">
+				<h1><img src="img/cart/cart-title.png" class="cart-img"></h1>
+			</div>
+			<div class="cart-contents">
+				<div class="cart-part d-flex">
+					<a href="cartNormal.jsp" class="normal-cart" style="display: flex; justify-content: center;">일반구매</a>
+					<span class="subscribe-cart" style="display: flex; justify-content: center;">정기배송</span>
+				</div>
+				<div class="cart-part table" id="cart-chart">
+					<table id="myTable">
+						<thead>
+						  <tr>
+						    <th class="th1">
+						    	<label class="mb-auto">
+						    		<input title="모든 상품을 결제상품으로 설정" type="checkbox" name="checkBoxSelectAll" class="checkBoxSelectAll">전체선택
+						    	</label>
+						    </th>
+						    <th class="th2" colspan="2">상품정보</th> 
+						    <th class="th4">상품금액</th> 
+						    <th class="th5">배송비</th>
+						  </tr>
+						</thead>
+					  	<tbody>
+					  	<div  id="tbody">
+					  		<p class="noItemWarning">장바구니에 담은 상품이 없습니다.</p>
+					  		<img src="img/cart/cart-empty.jpg" id="cartEmpty">
+					  	</div>
+					  	</tbody>
+					  	<tfoot>
+						  <tr class="cart-price-total">
+						    <td colspan="5">
+						    	<span style="display:flex; justify-content: end;">
+						    		" 상품가격 "
+						    		<span>0</span>
+						    		"원 "
+						    	</span>
+						    </td>
+						  </tr>
+					  </tfoot>
+					</table>
+				</div>
+				
+				<div class="cart-part">
+					<div class="cart-total-price" data-total-price="0" data-discount-price="0">
+                <div class="cart-total-price__inner">
+                    <div class="price-area">
+                        	총 상품가격
+                        <em id="finalPrice" class="final-product-price">0</em>원
+                        <img src="img/cart/cart-plus.gif" class="math-icon">
+                       	 총 배송비
+                        <em id="finalPrice" class="final-delivery-charge">0</em>원
+                        <img src="img/cart/cart-equal.gif" class="math-icon">
+                        	총 주문금액
+                        <em class="final-order-price">
+                          0
+                        </em>
+                        <em>
+                        	원
+                        </em>
+                    </div>
+                </div>
+
+            </div>
+				</div>
+				
+				<div class="cart-part" id="order-buttons">
+					<div class="order-buttons">
+		                <a id="continueShoopingBtn" class="goShopping logging" href="//www.coupang.com" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
+		                <a href="#" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false" style="margin:0px 10px">구매하기</a>
+		                <div class="item-disabled" style="display: none;"></div>
+		            </div>
+				</div>
+			</div>
+		</main>
+		<div>
+		</div>
+		
+
+		
+		
+		<div>		
+			<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+		</div>
+	</body>
+</html>

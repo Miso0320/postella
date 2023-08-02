@@ -1,0 +1,289 @@
+@charset "UTF-8";
+
+/* 공통코드 */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html {
+	font-family: sans-serif;
+}
+
+header section {
+	margin: 0px 300px;
+}
+
+/* 공통코드 - 글자스타일 */
+.every_a_font {
+	font-size: 12px;
+}
+
+/* 공통코드 - 메뉴리스트 */
+#leftmenu, #rightmenu {
+	margin-top: 7px;
+}
+
+.header_outer_ul {
+	list-style-type: none;
+	display: flex;
+	margin-left: 70px;
+	font-size: 11px;
+}
+
+.header_outer_ul a {
+	margin: 5px;
+	padding-top: 10px;
+	color: black;
+	text-decoration: none;
+}
+
+
+/* 공통코드 - 드롭다운 메뉴 */
+.enter {
+	display: none;
+	position: absolute;
+	background-color: white;
+	font-size: 8pt;
+	min-width: 130px;
+	
+	padding: 15px 20px;
+	border: 1px solid #ddd;
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+	
+	list-style-type: none;
+	z-index: 1;
+}
+
+.header_dropdown_list:hover .enter {
+	display: block;
+}
+
+.enter_bubble {
+	display: none;
+	position: absolute;
+	background-color: white;
+	font-size: 8pt;
+	min-width: 160px;
+	
+	padding: 15px 20px;
+	border: 1px solid #ddd;
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+	
+	list-style-type: none;
+}
+
+.header_dropdown_list:hover .enter_bubble {
+	display: block;
+}
+
+
+/* 최상단 메뉴 */
+#top-bar {
+	width: 100%;
+	height: 30px;
+	background-color: #F2F2F2;
+	display: flex;
+	justify-content: space-around;
+	padding: 2px;
+	white-space: nowrap;
+}
+
+#top-bar section {
+	width: 1500px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#leftmenu {
+	margin-left: -150px;
+}
+
+.header_dropdown_list {
+	/* position: relative; */
+	display: inline-block;
+}
+
+.header_entry_img {
+	margin-top: 2px;
+	width: 10px;
+	height: 10px;
+}
+
+
+/* 중간 메뉴 */
+.top_section {
+	height: 110px;
+	display: flex;
+	justify-content: flex-start;
+	margin: 10px;
+	position: relative;
+}
+
+@media (min-width: 1300px) {
+	.top_section {
+		justify-content: center;
+	}
+}
+
+
+/* 중간 메뉴 - 왼쪽 헤더(카테고리) */
+#left_header {
+	width: 110px;
+	height: 110px;
+}
+
+#left_header .enter {
+	/* min-width: 160px; */
+	padding: 15px 10px;
+}
+
+#left_header .enter li {
+	margin: 10px 0px;
+}
+
+#left_header .enter a {
+	margin: 10px;
+	color: black;
+	text-decoration: none;
+}
+
+#left_header a:hover {
+	color:#0073e9;
+	text-decoration: underline;
+}
+
+
+.left_category_icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+.header_category_img {
+	width: 110px;
+	height: 110px;
+}
+
+
+/* 중간 메뉴 - 오른쪽 헤더 */
+.top_title_search {
+	display: flex;
+	padding-top: 10px;
+}
+
+
+/* 쿠팡 로고 */
+.logo {
+	width: 174px;
+	height: 41px;
+	margin: 15px;
+}
+
+
+/* 검색창 */
+.search_product {
+	display: flex;
+	align-items: center;
+	border: 2px solid #4285f4;
+	background-color: white;
+	width: 480px;
+	height: 40px;
+}
+
+.text_search {
+	height: 20px;
+	width: 270px;
+	border: 0px;
+	outline: none;
+}
+
+.search_img {
+	border: 0px;
+	height: 26px;
+	width: 26px;
+	margin: 4px;
+}
+
+.select_menu {
+	width: 150px;
+	border: 0px;
+	outline: none;
+}
+
+
+/* 오른쪽 메뉴(마이쿠팡, 장바구니) */
+.right_my_menu {
+	display: flex;
+}
+
+.right_my_menu_inner a {
+	display: flex;
+	flex-direction: column;
+	margin: 0 15px;
+	color: black;
+	text-decoration: none;
+}
+
+.right_menu_icon {
+	width: 40px;
+}
+
+
+/* 내비게이션 바 */
+#gnb_menu {
+	display: flex;
+	width: 1160px;;
+	margin: 0px 15px;
+}
+
+.menu_img {
+	width: 20px;
+	height: 20px;
+}
+
+#gnb_menu_list {
+	list-style-type: none;
+	/* font-size: 12px; */
+	display: flex;
+}
+
+#gnb_menu_list>li {
+	width: 100px;
+	color: #333;
+}
+
+#gnb_menu_list a {
+	color: black;
+	text-decoration: none;
+}
+
+#gnb_menu_list a:hover {
+	color:#0073e9;
+	text-decoration: underline;
+}
+
+
+/* 카테고리 표시바  */
+#low-bar {
+	width: 100%;
+	height: 30px;
+	background-color: #fafafa;
+	display: flex;
+	justify-content: flex-start;
+	padding: 2px;
+}
+
+#low_bar_list {
+	margin-left: 200px;
+}
+
+#low_bar_list a {
+	color: black;
+	text-decoration: none;
+}
+
+#low_bar_list a:hover {
+	color:#0073e9;
+	text-decoration: underline;
+}

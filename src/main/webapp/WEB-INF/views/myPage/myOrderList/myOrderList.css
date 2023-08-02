@@ -1,0 +1,1020 @@
+@charset "UTF-8";
+
+/* 공통코드 */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.order_list_wrap ul {
+	list-style-type: none;
+	box-sizing: border-box;
+}
+
+.order_list_container {
+	display: flex;
+	margin: 0px 300px;
+}
+
+/* 전체내용 */
+.order_list_wrap {
+	display: flex;
+}
+
+
+/* 왼쪽 마이쿠팡 메뉴 */
+/* 마이쿠팡 로고 */
+.my_menu_logo {
+	background-color: rgb(40, 109, 180);
+	height: 122px;
+	padding: 1px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.my_menu_logo span {
+	color: rgb(255, 255, 255);
+	font-size: 32px;
+	font-weight: 400;
+	letter-spacing: -2px;
+}
+
+/* 마이쿠팡 좌측 메뉴 */
+.my_menu {
+	background-color: rgb(249, 249, 249);
+	border-width: 0px 1px 1px;
+	border-style: solid;
+	border-color: rgb(225, 228, 230);
+	color: rgb(17, 17, 17);
+	padding: 10px 0px;
+}
+
+.my_inner_menu {
+	padding: 15px 10px 16px 17px;
+	border-bottom: 1px solid rgb(225, 228, 230);
+}
+
+.my_inner_title {
+	font-weight: bold;
+	font-size: 14px
+}
+
+.my_inner_small_menu {
+	font-size: 12px;
+	line-height: 16px;
+	margin-top: 11px;
+	cursor: pointer;
+}
+.my_inner_small_menu li {
+	padding: 3px 0px;
+}
+
+.my_inner_small_menu li:hover {
+	color: rgb(61, 130, 247);
+}
+
+#my_info {
+	padding: 15px 10px 16px 17px;
+	border-bottom: 0px solid;
+}
+
+/* 좌측 하단 고객메뉴 */
+.custom_left_menu {
+	margin-top: 10px;
+}
+
+.custom_left_menu ul {
+	margin-top: 1px;
+}
+
+.custom_left_menu a {
+	cursor: pointer;
+}
+
+.customer_menu_a {
+	display: block;
+	border: 1px solid rgb(225, 228, 230);
+}
+
+.customer_menu_a:hover {
+	border: 1px solid rgb(40, 109, 180);
+}
+
+.customer_menu_icon {
+	display: flex;
+	justify-content: flex-end;
+	width: 148px;
+	height: 60px;
+}
+
+#coupang_inquiry {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-lnb_161021_1.png") 0px -220px no-repeat;
+}
+
+#customer_vos {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-lnb_161021_1.png") 0px -281px no-repeat;
+}
+
+#order_cancel_info {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-lnb_161021_1.png") 0px -403px no-repeat;
+}
+
+/* 상단 마이쿠팡 메뉴 및 내용 */
+.upper_my_coupang_content {
+	width: 830px;
+	float: left;
+}
+
+/* 상단 마이쿠팡 메뉴 */
+.upper_my_coupang_wrap {
+	height: auto;
+	margin-bottom: 40px;
+}
+
+.upper_my_coupang {
+	background-color: rgb(130, 188, 226);
+	color: rgb(255, 255, 255);
+	height: 122px;
+	border-width: 1px 1px 1px 0px;
+	font-family: robotoThinNumber, roboto, "Courier New", Tahoma, NanumGothic, MalgunGothic, 돋움, dotum, sans-serif;
+	font-weight: 100;
+	
+}
+
+.mycoupang_menu_select {
+	float: left;
+	min-width: 156px;
+	padding: 19px 0px 0px 30px;
+	border-right: 1px solid rgb(155, 201, 232);
+	border-left: 1px solid rgb(120, 173, 208);
+	height: 120px;
+}
+
+.mycoupang_menu_select strong {
+	font-family: AppleSDGothicNeo;
+	text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
+	font-size: 15px;
+	margin-bottom: 13px;
+	display: block;
+}
+
+.mycoupang_font_grp {
+	display: block;
+	text-shadow: rgba(0, 0, 50, 0.15) 0px 1px 1px;
+}
+
+.mycoupang_font_grp a {
+	cursor: pointer;
+}
+
+.mycoupang_cnt {
+	font-size: 50px;
+	line-height: 60px;
+}
+
+.mycoupang_unit {
+	margin-left: 5px;
+	vertical-align: 2px;
+	font-size: 12px;
+}
+
+.coupang_money {
+	display: flex;
+	flex-direction: column;
+	border-right: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	border-bottom: 1px solid rgb(120, 173, 208);
+	height: 120px;
+}
+
+.coupang_money strong {
+	margin: 0px 0px 0px 30px;
+	height: 20px;
+	font-size: 15px;
+	font-weight: bold;
+	text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
+	font-family: AppleSDGothicNeo;
+}
+
+.mycoupang_money_font_grp {
+	/* width: 360px; */
+	height: 62px;
+	border-bottom: 1px solid rgb(155, 201, 232);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mycoupang_money_cnt {
+	margin: 0px 2px 0px 0px;
+	font-size: 28px;
+}
+
+.mycoupang_money_unit {
+	margin: 12px 30px 0px 2px;
+	vertical-align: 2px;
+	font-size: 12px;
+}
+
+/* 주문목록 내용 */
+.order_content {
+	margin: 0px 0px 0px 30px;
+}
+
+/* 주문목록 타이틀 */
+.order_title {
+	margin: 0px 0px 16px;
+}
+
+.order_title span {
+	font-weight: bold;
+	color: rgb(15, 15, 15); 
+}
+
+/* 검색창, 날짜 */
+.order_search_total {
+	margin-bottom: 24px;
+}
+
+/* 검색창 */
+.order_search {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 480px;
+	height: 36px;
+	padding: 0px 5px 0px 8px;
+	border: 1px solid rgb(204, 204, 204);
+	border-radius: 4px;
+}
+
+.order_search_input {
+	flex: 1 1 0%;
+	display: flex;
+}
+
+.order_search_input input {
+	width: 100%;
+	border: none;
+	font-size: 0.875rem;
+	margin-right: 10px;
+	outline: none;
+}
+
+.order_search_img {
+	width: 20px;
+	margin-right: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.order_search_img img {
+	width: 20px;
+	height: 20px;
+}
+
+/* 날짜별 보기 */
+.classification_date_wrap {
+	display: flex;
+	flex-direction: row;
+}
+
+.classification_date {
+	display: flex;
+	align-items: center;
+	margin-top: 12px;
+}
+
+.order_date_range {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 54px;
+	height: 26px;
+	border-radius: 13px;
+	border: 1px solid rgb(196, 205, 213);
+	background-color: rgb(255, 255, 255);
+	color: rgb(69, 79, 91);
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+	margin-right: 5px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.order_date_range_select {
+	background-color: rgb(52, 106, 255);
+	color: rgb(255, 255, 255);
+}
+
+/* 선택된 메뉴일 때 -> 자바스크립트로 변경 필요 */
+#recent_six_month {
+	width: 72px; /* 이건 고유 옵션 */
+}
+
+/* 상품별 분류 메뉴 */
+.product_classification_wrap {
+	margin: 0px 0px 24px;
+}
+
+.product_classification {
+	position: relative;
+	height: 45px;
+	display: flex;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.product_classification_menu {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	position: relative;
+	height: 45px;
+	width: 25%;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 1px 1px 2px;
+	border-color: rgb(215, 215, 215) rgb(215, 215, 215) rgb(61, 130, 247);
+	background-color: rgb(249, 249, 249);
+	padding-top: 10px;
+}
+
+/* 메뉴 선택됐을 때 스타일 */
+.product_classification_menu_select {
+	border-width: 2px;
+	border-style: solid;
+	border-color: rgb(61, 130, 247) rgb(61, 130, 247) transparent;
+	background-color: rgb(255, 255, 255);
+	color: rgb(61, 130, 247);
+}
+
+/* 주문내역(날짜별) */
+.order_content_date {
+	width: 800px;
+	border-radius: 12px;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 4px 0px, rgba(0, 0, 0, 0.16) 0px 0px 1px 0px;
+	background-color: rgb(255, 255, 255);
+	margin-bottom: 20px;
+	padding: 24px 24px 16px;
+}
+
+/* 날짜 분류 */
+.order_date_grp {
+	height: 28px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.order_date {
+	display: inline-block;
+	width: 50%;
+	height: 28px;
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(17, 17, 17);
+}
+
+.order_date_detail {
+	font-size: 16px;
+	color: rgb(52, 106, 255);
+	display: inline-flex;
+	text-align: right;
+	vertical-align: middle;
+	position: relative;
+	width: auto;
+	justify-content: flex-end;
+}
+
+/* 주문내역 */
+.order_list {
+	border-radius: 8px;
+	border: 1px solid rgb(238, 238, 238);
+	background-color: rgb(255, 255, 255);
+	margin-top: 16px;
+	display: flex;
+	flex-direction: row;
+}
+
+.order_list_content {
+	height: 100%;
+	padding: 20px;
+	vertical-align: top;
+}
+
+.order_list_content_title {
+	display: flex;
+	align-items: center;
+	margin-bottom: 4px;
+}
+
+.order_list_content_inner_title {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+}
+
+.order_status_title {
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(17, 17, 17);
+	margin-right: 4px;
+}
+
+.order_status_date {
+	font-size: 20px;
+	color: rgb(0, 140, 0);
+}
+
+.more_menu_btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	border: 0px solid rgb(255, 255, 255);
+	background-color: transparent;
+	transform: rotate(90deg);
+	width: 28px;
+	height: 28px;
+	cursor:pointer;
+	text-decoration: none;
+	outline: none;
+	appearance: none;
+}
+
+.order_list_button {
+	display: flex;
+	flex-direction: column;
+}
+
+.more_menu_btn_el {
+	background-color: rgba(17, 17, 17, 0.4);
+	margin-right: 3px;
+	border-radius: 50%;
+	width: 3px;
+	height: 3px;
+}
+
+.order_list_content_item {
+	margin-top: 20px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+}
+
+.content_item_img {
+	display: flex;
+	width: 64px;
+	position: relative;
+	margin-right: 16px;
+}
+
+.content_item_img a {
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+}
+
+.content_item_img img {
+	width: 64px;
+	height: 64px;
+}
+
+.content_item_title {
+	overflow: none;
+	display: flex;
+	flex: 1 1 0%;
+	min-width: 0px;
+	flex-direction: column;
+}
+
+.content_item_title a {
+	margin-bottom: 4px;
+}
+
+.content_item_title img {
+	margin-right: 4px;
+	height: 16px;
+}
+
+.content_item_title span {
+	font-size: 16px;
+	color: rgb(17, 17, 17);
+}
+
+.content_item_info {
+	margin-bottom: 4px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.content_item_price_qty {
+	width: 100%;
+	color: rgb(85, 85, 85);
+}
+
+.cart_btn {
+	padding: 0px 12px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+	height: 2.25rem;
+	border-radius: 4px;
+	color: rgb(17, 17, 17);
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(221, 221, 221);
+	font-size: 14px;
+	width: 114px;
+}
+
+.order_item_button_wrap {
+	width: 200px;
+	height: 100%;
+	text-align: center;
+	border-left: 1px solid rgb(238, 238, 238);
+	font-size: 14px;
+}
+
+.order_item_button {
+	display: flex;
+	flex-flow: column wrap;
+	height: 100%;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.order_item_button button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 12px;
+	padding-right: 12px;
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+	height: 2.25rem;
+	border-radius: 4px;
+	background-color: rgb(255, 255, 255);
+	width: 160px;
+}
+
+.normal_button {
+	color: rgb(17, 17, 17);
+	border: 1px solid rgb(221, 221, 221);
+}
+
+.blue_button {
+	color: rgb(52, 106, 255);
+	border: 1px solid rgb(52, 106, 255);
+}
+
+/* 목록 버튼 */
+.list_btn_wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.list_btn_wrap button {
+	color: rgb(204, 204, 204);
+	background-color: rgb(238, 238, 238);
+	border: 1px solid rgb(221, 221, 221);
+	cursor: default;
+	padding: 0px 8px;
+	width: 80px;
+	min-height: 2.375rem;
+	margin: 20px 5px 0px;
+	box-shadow: none;
+	outline:none;
+	font-size: 14px;
+}
+
+/* 배송상품 주문상태 안내  */
+.product_guide_wrap {
+	margin-top: 35px;
+	border: 1px solid rgb(221, 221, 221);
+	background-color: rgb(255, 255, 255);
+}
+
+.product_delivery_guide {
+	padding: 0px 0px 25px 15px;
+	overflow: hidden;
+}
+
+
+.product_delivery_guide_title {
+	padding: 20px 0px 10px;
+	display: table;
+	position: relative;
+	width: 100%;
+	table-layout: fixed;
+	font-size: 0.75rem;
+}
+
+.product_delivery_guide_title_text {
+	display: table-cell;
+	padding-left: 200x;
+	text-align: left;
+}
+
+.product_delivery_guide_title_text h4 {
+	font-weight: bold;
+	color: rgb(136, 136, 136);
+	font-size: 12px;
+}
+
+.product_delivery_guide_title_detail {
+	display: table-cell;
+	padding-right: 20px;
+	text-align: right;
+	color: rgb(61, 130, 247);
+}
+
+.product_delivery_guide_title_detail a {
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+}
+
+.product_delivery_guide_contents {
+	position: relative;
+	float: left;
+	width: 153px;
+	padding: 0px;
+}
+
+.product_delivery_guide_content {
+	width: 100px;
+	height: 100px;
+	display: block;
+	margin: 0px 0px 8px 5px;
+	line-height: 1;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.next_arrow::after {
+	content: " ";
+	position: absolute;
+	top: 38px;
+	right: 20px;
+	width: 13px;
+	height: 25px;
+	margin-top: 5px;
+	background: url("//img1a.coupangcdn.com/image/my/desktop/order-status.png") -273px -37px no-repeat;
+}
+
+#product_delivery_guide_content_1 {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/order-status.png") -153px 0px no-repeat;
+}
+
+#product_delivery_guide_content_2 {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/order-status.png") -153px 0px no-repeat;
+}
+
+#product_delivery_guide_content_3 {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/order-status.png") -306px 0px no-repeat;
+}
+
+#product_delivery_guide_content_4 {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/order-status.png") -459px 0px no-repeat;
+}
+
+#product_delivery_guide_content_5 {
+	background: url("//img1a.coupangcdn.com/image/my/desktop/order-status.png") -612px 0px no-repeat;
+}
+
+
+.product_delivery_guide_content_txt {
+	width: 115px;
+	font-size: 0.6875rem;
+	text-align: center;
+	color: rgb(136, 136, 136);
+}
+
+/* 취소/반품/교환 신청 안내 */
+.cancel_guide_wrap {
+	padding: 20px 26px 16px;
+	overflow: hidden;
+	background-color: rgb(243, 243, 243);
+}
+
+
+.cancel_guide_title {
+	color: rgb(136, 136, 136);
+	margin-bottom: 20px;
+	font-size: 14px;
+}
+
+
+.cancel_guide_title img {
+	width: 16px;
+	height: 16px;
+	margin: -2px 5px 0px 0px;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.guide_cancel_title {
+	display: block;
+	margin-top: 20px;
+	font-size: 12px;
+}
+
+.guide_cancel_content {
+	font-size: 11px;
+	color: rgb(136, 136, 136);
+}
+
+
+.guide_cancel_content a {
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+	min-width: 30px;
+	padding: 0px 10px;
+	line-height: 22px;
+	box-shadow: none;
+}
+
+/* 하단광고영역 */
+.bottom_ad_wrap {
+	margin-top: 40px;
+	position: relative;
+}
+
+.bottom_ad {
+	min-width: calc(100% - 0px);
+	max-width: calc(100% - 0px);
+	width: 100%;
+	min-height: 100%;
+}
+
+.bottom_ad_wrap img {
+	width: 800px;
+	height: 114px;
+	margin-bottom: 50px;
+}
+
+/* 우측 사이드 기능 */
+/* 강고 */
+.order_list_right {
+	display: flex;
+	flex-direction: column;
+	margin-left: 15px;
+}
+
+.right_side_ad {
+	padding-bottom: 10px;
+	padding: 10px 0 0;
+}
+
+.right_side_ad a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.right_side_ad img {
+	width: 102px;
+	height: 150px;
+	border: 0 none;
+	vertical-align: top;
+}
+
+/* 최근 본 상품 */
+.my_view {
+	width: 102px;
+	margin-top: 10px;
+}
+
+.my_view_cart {
+	height: 33px;
+	background: url("//img1a.coupangcdn.com/image/coupang/common/bg_side_sprite.png") no-repeat -31px 0;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.my_view_product {
+	height: 33px;
+	background: url("//img1a.coupangcdn.com/image/coupang/common/bg_side_sprite.png") no-repeat -31px -66px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.cart_count {
+	height: 33px;
+	padding: 0 14px 0 0;
+	font: bold 12px 'Arial';
+	color: #3abbff;
+	line-height: 33px;
+	display: flex;
+	justify-content: end;
+}
+
+.recent_viewed_list {
+	position: relative;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid silver;
+	border-top: 0;
+}
+
+.recent_viewed_page {
+	display: block;
+	height: 328px;
+	list-style: none;
+}
+
+.recent_viewed_page li {
+	position: relative;
+	width: 76px;
+	height: 76px;
+	margin-bottom: 8px;
+}
+
+/* 마우스 오버하는 경우  */
+.over {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 217px;
+	height: 72px;
+	border: 2px solid #343c53;
+	background: #f1f1f1;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.over_el {
+	display: block;
+	float: left;
+}
+
+.over_img {
+	float: right;
+	margin: -2px -2px 0 0;
+}
+
+.recent_viewed_page a {
+	text-decoration: none;
+}
+
+.recent_viewed_page img {
+	display: block;
+	width: 74px;
+	height: 74px;
+	border: 1px solid #eee;
+}
+
+.p_name {
+	display: none;
+	float: left;
+	width: 120px;
+	padding: 19px 0 0 10px;
+	font-size: 11px;
+	color: #55575f;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.p_price {
+	display: none;
+	float: left;
+	width: 120px;
+	padding: 6px 0 0 10px;
+	font-weight: blod;
+	font-size: 12px;
+	color: #0096e4;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.sale_price {
+	font: bold 15px Arial;
+}
+
+.delete_recent {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 13px;
+	height: 13px;
+	background: url("//img1a.coupangcdn.com/image/coupang/common/bg_side_sprite.png") no-repeat 0 -32px;
+	cursor: pointer;
+}
+
+.recent_viewed_paging {
+	display: flex;
+	height: 16px;
+	margin: 0;
+	font-size: 11px;
+	color: #7b7b7b;
+	justify-content: space-between;
+}
+
+.recent_viewed_paging strong {
+	color: #0085da;
+}
+
+.paging_btn_grp {
+	float: right;
+}
+
+.paging_btn {
+	float: left;
+	width: 15px;
+	height: 16px;
+	background: url("//img1a.coupangcdn.com/image/coupang/common/bg_side_sprite.png") no-repeat;
+}
+
+.prev_btn {
+	background-position: 0 0;
+}
+
+.next_btn {
+	background-position: -16px 0;
+}
+
+/* 사이드바(스크롤 내려간 경우에만 나타남) */
+.side_bar_grp {
+	display: none;
+	padding: 5px 0 0 0;
+	position: fixed;
+	left: 50%;
+	top: 454px;
+	margin-left: 505px;
+	
+	z-index: 9999;
+}
+
+.sideBtn {
+	width: 50px;
+	background-image: url('//img1a.coupangcdn.com/image/coupang/common/bg_side_sprite.png');
+	background-repeat: no-repeat;
+	display: block;
+	color: transparent;
+	height: 32px;
+	text-decoration: none;
+}
+
+#side_top {
+	background-position: -150px 0px;
+}
+
+#side_up {
+	background-position: -150px -33px;
+}
+
+#side_down {
+	background-position: -150px -65px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

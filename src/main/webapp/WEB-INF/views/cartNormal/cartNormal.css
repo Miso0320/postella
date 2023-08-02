@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.cart-coupang-logo {
+	width: 150px;
+	height : 37px;
+}
+
+.main-cart {
+	margin: 0 auto;
+	max-width: 900px;
+}
+
+.cart-img {
+	width:880px;
+}
+
+.cart-contents {
+	width:900px;
+	border-bottom: 1px solid black;
+	margin-bottom: 30px;
+}
+
+.cart-title {
+	border-top: 1px solid black;
+}
+
+.cart-price-total {
+	background-color: #F2F2F2;
+}
+
+.cart-rocket {
+	width:56px;
+	height:14px;
+}
+
+.price-area {
+	display: flex;
+    justify-content: center;
+    border: 4px solid #c8c8c8;
+    padding: 22px;
+    margin: 26px 10px;
+}
+#cart-chart {
+	display: inline-grid;
+}
+
+.normal-cart {
+	float: left;
+    width: 50%;
+    border-top: 2px solid #0073e9;
+    border-right: 2px solid #0073e9;
+    border-bottom: 0;
+    border-left: 2px solid #0073e9;
+    padding-top: 17px;
+    padding-bottom: 16px;
+    background: #fff;
+    font-weight: 700;
+    color: #0073e9;
+}
+
+.subscribe-cart {
+	float: left;
+    width: 50%;
+    border: 1px solid #e2dfdf;
+    border-bottom: 2px solid #0073e9;
+    border-left: 0;
+    padding-top: 17px;
+    padding-bottom: 15px;
+    background: #f5f5f5;
+    font-weight: 700;
+}
+
+.cart-product-option-info {
+	color : green;
+}
+
+
+.cart-product-option-info1-2 {
+	font-size:14px;
+	font-weight: 100;
+	color : black;
+}
+
+.cart-product-option-price {
+	display:flex;
+	justify-content: end;
+}
+
+.reward-point {
+	
+	padding: 15px;
+	margin: 10px;
+	border: 1.5px solid #F2F2F2; 
+}
+
+.goPayment, .goShopping {
+    font-size: 22px;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    width: 216px;
+    line-height: 18px;
+    border: 2px solid #0073e9;
+    border-radius: 4px;
+    padding: 22px 0 19px;
+    text-align: center;
+}
+
+#order-buttons {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+.payment-reward-cash-area__icon {
+	width:24px;
+	height:24px;
+}
+
+.table-delete {
+	display: flex;
+    width: 25px;
+    justify-content: center;
+    height: 25px;
+    font-size: medium;
+    color: gray;
+}
+.btn_delete {
+	background-color: white;
+    border: 2px solid dodgerblue;
+    border-radius: 7px;
+    font-family: Dotum,\\B3CB\C6C0,sans-serif;
+    font-weight: bolder;
+    font-size: 12px;
+    padding: 3px;
+    color: dimgray;
+}
+
+.prod-quantity-form {
+	display: flex;
+}
+
+.orderPrice {
+	display:flex; 
+	justify-content: end; 
+	font: 700 18px/20px tahoma;
+}
+
+.noItemWarning {
+	display:flex;
+	justify-content: center;
+	padding: 70px;
+	font-weight: bold;
+}
+
+.math-icon {
+	padding: 3px 11px 0 11px;
+	height:22px;
+}
+
+#finalPrice {
+	padding : 0 5px 0 5px;
+	font:700 17px/24px tahoma;
+}
+
+.final-order-price {
+	color : #ea0000;
+	padding : 0 5px 0 5px;
+	font:700 22px/24px tahoma;
+}
+
+.badge-list{
+	display: flex;
+	justify-content: end;
+}
+
+.option-benefit .promo-cash-benefit {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 2px 6px;
+    margin-left: 5px;
+    color: #333;
+
+.cash-icon {
+	height: 14px;
+}
+
+.promo-cash-benefit__text {
+	font-size: 12px;
+	font-style: normal;
+}
+
+#selectBtn {
+	width:52px;
+	height:24px;	
+}

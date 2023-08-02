@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+/* 공통코드 */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html {
+	font-family: dotum,sans-serif;
+	box-sizing: border-box;
+}
+
+.member_main label {
+	display: inline;
+}
+
+.member_insert label {
+	margin-bottom: 0px;
+	width: 80%;
+}
+
+.every_array {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* 공통코드 - 유효성 검사 관련 */
+.errorMsg {
+	display: none;
+	/* display: block; */
+	color: #e52528;
+	font-size: 11px;
+}
+
+.gray {
+	color: #888;
+}
+
+.cancel_img {
+	width: 12px;
+	margin-right: 2px;
+}
+
+.blue_check {
+	display: none;
+}
+
+/* header */
+header {
+	text-align: center;
+	margin-top: 50px;
+}
+
+
+/* 가입정보 입력란  */
+.member_title {
+	padding: 20px 0 20px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #111;
+    text-align: left;
+}
+
+.member_insert {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.member_info {
+    font-family: dotum,sans-serif;
+    color: #111;
+    font-weight: 700;
+    display: flex;
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    width: 380px;
+}
+
+.member_info img {
+	width: 30px;
+	height: 30px;
+	margin-top: 4px;
+}
+
+.member_icon {
+	background-color: #fafafa;
+	width: 40px;
+	border-right: 1px solid #ccc;
+}
+
+.member_icon>img {
+	margin: 10px 10px;
+	width: 20px;
+	height: 20px;
+}
+
+.member_info input {
+	color: gray;
+	width: 80%;
+	height: 30px;
+	padding: 16px;
+	font-size: 10px;
+	border: none;
+	margin-top: 5px;
+	outline: none;
+}
+
+
+/* 약관 동의 */
+.member_agree_group {
+	text-align: center;
+}
+
+.agree_all {
+	padding-top: 20px;
+	margin-bottom: 30px;
+	margin-top: 8px;
+	text-align: left;
+}
+
+.agree_info {
+	font-size: 12px;
+	margin-top: 6px;
+	margin-left: 26px;
+	width: 400px;
+}
+
+.agreement {
+	border: 1px solid gray;
+	text-align: left;
+	padding: 10px;
+}
+
+.agree_chk {
+	display: flex;
+	flex-direction: column;
+}
+
+.agree_chk * {
+	margin: 5px;
+}
+
+.check_element {
+	font-size: 14px;
+	display: flex;
+}
+
+.adv_accept {
+	margin-left: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.agree_img {
+	justify-content: space-between;
+}
+
+.agree_btn {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.agree_btn input {
+	background-color: #0074e9;
+    color: white;
+    padding: 16px 17px;
+    font-size: 17px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    border: none;
+}
+
+
+/* 비즈회원 안내 */
+.member_biz {
+	text-align: center;
+}
+
+.member_biz div {
+    font-size: 13px;
+    color: #637381;
+}
+
+.member_biz a {
+    font-size: 14px;
+    font-weight: bold;
+    color: #454f5b;
+    margin-top: 6px;
+}
+
+/* footer */
+footer {
+	padding: 20px 0 40px;
+	text-align: center;
+	font-family: dotum, sans-serif;
+	font-size: 12px;
+	color: #555;
+}
+
