@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.ProductDao">
+
+	<!-- xml에서는 태그<> 내부에 <(시작꺽쇠)를 못 넣음  >(끝)은 가능  그래서 쓰고싶으면 &lt;를 쓰던가 CDATA란 형식을 쓰면 됨 -->
+	<select id="selectByPage" parameterType="Pager" resultType="Product">
+		<![CDATA[
+		select pg_no, pg_name
+		from (
+			select rownum as pg_no, pg_name 
+			from (
+				select pg_no, pg_name
+				from product_group
+				order by pg_no desc
+			)
+			where rownum <= ${endRowNo}
+		)
+		where rownum >= ${startRowNo}
+		]]>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) 
+		from product_group
+	</select>
+
+
+</mapper>
