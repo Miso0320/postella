@@ -15,7 +15,7 @@
 		
 
 		
-		<link rel="stylesheet" href="product.css"/>
+		<link rel="stylesheet" href="/WEB-INF/views/product/product.css"/>
 		<!-- <script type="text/javascript">
 		function movepage(page) {
 		window.document.location.href=page;
