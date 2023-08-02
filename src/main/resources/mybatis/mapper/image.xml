@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.ImageDao">
+	
+	<!-- parameterType 객체를 DB에 제공하고 싶을때!-->
+	<!-- null이 들어갈 컬럼값은 반드시 jdbcType을 명시해야함 -->
+	<insert id="insert" parameterType="Img">
+		insert into image(img_no, us_no, prd_no, can_no, rev_no, img_file, img_use, img_oname, img_type)
+		values(img_no_seq.nextval, #{us_no, jdbcType=INTEGER}, #{prd_no, jdbcType=INTEGER}, #{can_no, jdbcType=INTEGER}, #{rev_no, jdbcType=INTEGER}, #{img_file}, #{img_use},
+		#{img_oname}, #{img_type})
+	</insert>
+	
+	
+</mapper>
