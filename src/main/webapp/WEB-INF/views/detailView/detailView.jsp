@@ -176,7 +176,7 @@
                         <div class="op_btn_imgset">
                            <span class="op_img"> 
                                  <img class="thumbnail" id="op-thumbnai" alt="상품사진" src="${pageContext.request.contextPath}/resources/img/detailView/post_list2.PNG" style="width: 38px; height: 38px; padding-right: 2px"/>
-                                 <img class="dropdown-icon" alt="아래화살표" src="${pageContext.request.contextPath}/resources/img/detailView/header/arrow_down.png"/>
+                                 <img class="dropdown-icon" alt="아래화살표" src="${pageContext.request.contextPath}/resources/img/detailView/arrow_down.png"/>
                            </span>
                         </div>
                      </div>
