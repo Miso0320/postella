@@ -58,7 +58,7 @@ header section {
 	display: block;
 }
 
-.enter_bubble {
+.header_enter_bubble {
 	display: none;
 	position: absolute;
 	background-color: white;
@@ -107,7 +107,7 @@ header section {
 
 
 /* 중간 메뉴 */
-.top_section {
+.header_top_section {
 	height: 110px;
 	display: flex;
 	justify-content: flex-start;
@@ -116,40 +116,40 @@ header section {
 }
 
 @media (min-width: 1300px) {
-	.top_section {
+	.header_top_section {
 		justify-content: center;
 	}
 }
 
 
 /* 중간 메뉴 - 왼쪽 헤더(카테고리) */
-#left_header {
+#header_left {
 	width: 110px;
 	height: 110px;
 }
 
-#left_header .header_enter {
+#header_left .header_enter {
 	/* min-width: 160px; */
 	padding: 15px 10px;
 }
 
-#left_header .header_enter li {
+#header_left .header_enter li {
 	margin: 10px 0px;
 }
 
-#left_header .header_enter a {
+#header_left .header_enter a {
 	margin: 10px;
 	color: black;
 	text-decoration: none;
 }
 
-#left_header a:hover {
+#header_left a:hover {
 	color:#0073e9;
 	text-decoration: underline;
 }
 
 
-.left_category_icon {
+.header_left_category_icon {
 	width: 20px;
 	height: 20px;
 	margin-right: 5px;
@@ -168,7 +168,7 @@ header section {
 }
 
 
-/* 쿠팡 로고 */
+/* 로고 */
 .header_logo {
 	width: 174px;
 	height: 41px;
@@ -200,7 +200,7 @@ header section {
 	margin: 4px;
 }
 
-.select_menu {
+.header_select_menu {
 	width: 150px;
 	border: 0px;
 	outline: none;
