@@ -6,7 +6,7 @@
 	padding: 0px;
 }
 
-html {
+header {
 	font-family: sans-serif;
 }
 
@@ -15,12 +15,11 @@ header section {
 }
 
 /* 공통코드 - 글자스타일 */
-.every_a_font {
+.header_every_a_font {
 	font-size: 12px;
 }
 
-/* 공통코드 - 메뉴리스트 */
-#leftmenu, #rightmenu {
+#header_right_menu {
 	margin-top: 7px;
 }
 
@@ -40,7 +39,7 @@ header section {
 
 
 /* 공통코드 - 드롭다운 메뉴 */
-.enter {
+.header_enter {
 	display: none;
 	position: absolute;
 	background-color: white;
@@ -55,7 +54,7 @@ header section {
 	z-index: 1;
 }
 
-.header_dropdown_list:hover .enter {
+.header_dropdown_list:hover .header_enter {
 	display: block;
 }
 
@@ -79,7 +78,7 @@ header section {
 
 
 /* 최상단 메뉴 */
-#top-bar {
+#header_top_bar {
 	width: 100%;
 	height: 30px;
 	background-color: #F2F2F2;
@@ -89,14 +88,10 @@ header section {
 	white-space: nowrap;
 }
 
-#top-bar section {
+#header_top_bar section {
 	width: 1500px;
 	display: flex;
 	justify-content: space-between;
-}
-
-#leftmenu {
-	margin-left: -150px;
 }
 
 .header_dropdown_list {
@@ -133,16 +128,16 @@ header section {
 	height: 110px;
 }
 
-#left_header .enter {
+#left_header .header_enter {
 	/* min-width: 160px; */
 	padding: 15px 10px;
 }
 
-#left_header .enter li {
+#left_header .header_enter li {
 	margin: 10px 0px;
 }
 
-#left_header .enter a {
+#left_header .header_enter a {
 	margin: 10px;
 	color: black;
 	text-decoration: none;
@@ -167,14 +162,14 @@ header section {
 
 
 /* 중간 메뉴 - 오른쪽 헤더 */
-.top_title_search {
+.header_top_title_search {
 	display: flex;
 	padding-top: 10px;
 }
 
 
 /* 쿠팡 로고 */
-.logo {
+.header_logo {
 	width: 174px;
 	height: 41px;
 	margin: 15px;
@@ -182,7 +177,7 @@ header section {
 
 
 /* 검색창 */
-.search_product {
+.header_search_product {
 	display: flex;
 	align-items: center;
 	border: 2px solid #4285f4;
@@ -191,14 +186,14 @@ header section {
 	height: 40px;
 }
 
-.text_search {
+.header_text_search {
 	height: 20px;
 	width: 270px;
 	border: 0px;
 	outline: none;
 }
 
-.search_img {
+.header_search_img {
 	border: 0px;
 	height: 26px;
 	width: 26px;
@@ -213,11 +208,11 @@ header section {
 
 
 /* 오른쪽 메뉴(마이쿠팡, 장바구니) */
-.right_my_menu {
+.header_my_menu {
 	display: flex;
 }
 
-.right_my_menu_inner a {
+.header_my_menu_inner a {
 	display: flex;
 	flex-direction: column;
 	margin: 0 15px;
@@ -225,65 +220,8 @@ header section {
 	text-decoration: none;
 }
 
-.right_menu_icon {
+.header_right_menu_icon {
 	width: 40px;
 }
 
 
-/* 내비게이션 바 */
-#gnb_menu {
-	display: flex;
-	width: 1160px;;
-	margin: 0px 15px;
-}
-
-.menu_img {
-	width: 20px;
-	height: 20px;
-}
-
-#gnb_menu_list {
-	list-style-type: none;
-	/* font-size: 12px; */
-	display: flex;
-}
-
-#gnb_menu_list>li {
-	width: 100px;
-	color: #333;
-}
-
-#gnb_menu_list a {
-	color: black;
-	text-decoration: none;
-}
-
-#gnb_menu_list a:hover {
-	color:#0073e9;
-	text-decoration: underline;
-}
-
-
-/* 카테고리 표시바  */
-#low-bar {
-	width: 100%;
-	height: 30px;
-	background-color: #fafafa;
-	display: flex;
-	justify-content: flex-start;
-	padding: 2px;
-}
-
-#low_bar_list {
-	margin-left: 200px;
-}
-
-#low_bar_list a {
-	color: black;
-	text-decoration: none;
-}
-
-#low_bar_list a:hover {
-	color:#0073e9;
-	text-decoration: underline;
-}
