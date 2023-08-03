@@ -3,7 +3,7 @@
 <mapper namespace="com.mycompany.postella.dao.ProductGroupDao">
 
 	<!-- xml에서는 태그<> 내부에 <(시작꺽쇠)를 못 넣음  >(끝)은 가능  그래서 쓰고싶으면 &lt;를 쓰던가 CDATA란 형식을 쓰면 됨 -->
-	<select id="selectByPage" parameterType="Pager" resultType="Product">
+	<select id="selectByPage" parameterType="Pager" resultType="ProductGroup">
 		<![CDATA[
 		select pg_no, pg_name
 		from (
