@@ -7,24 +7,23 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.postella.dto.Product;
-import com.mycompany.postella.dto.ProductPager;
-import com.mycompany.postella.service.ProductService;
+import com.mycompany.postella.dto.ProductGroup;
+import com.mycompany.postella.dto.ProductGroupPager;
+import com.mycompany.postella.service.ProductGroupService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class ProductController {
+public class ProductGroupController {
 	
 	@Autowired
-	private ProductService productService;
+	private ProductGroupService productGroupService;
 	
-	@RequestMapping("/product")
-	public String getProductList(String pageNo, Model model, HttpSession session) {
+	@RequestMapping("/productGroup")
+	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
 		//브라우저에서 pageNo가 넘어오지 않았을 경우
 		if(pageNo == null) {
 			//세션에 저장되어 있는지 확인
@@ -37,15 +36,15 @@ public class ProductController {
 		int intpageNo = Integer.parseInt(pageNo);
 		session.setAttribute("pageNo", String.valueOf(pageNo));
 		
-		int totalProductNum = productService.getTotalProductNum();
+		int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
 		
-		ProductPager pager = new ProductPager(10, 10, totalProductNum, intpageNo);
-		List<Product> list = productService.getList(pager);
+		ProductGroupPager pager = new ProductGroupPager(10, 10, totalProductGroupNum, intpageNo);
+		List<ProductGroup> list = productGroupService.getList(pager);
 		
 		model.addAttribute("pager", pager);
-		model.addAttribute("products", list);
-		log.info("페이지"+model);
-		return "product/product";
+		model.addAttribute("productGroups", list);
+		
+		return "productGroup/productGroup";
 	}
 	
 }

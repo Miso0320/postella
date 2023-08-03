@@ -2,19 +2,17 @@ package com.mycompany.postella.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.postella.dao.ProductDao;
-import com.mycompany.postella.dto.Product;
-import com.mycompany.postella.dto.ProductPager;
+import com.mycompany.postella.dao.ProductGroupDao;
+import com.mycompany.postella.dto.ProductGroup;
+import com.mycompany.postella.dto.ProductGroupPager;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductGroupServiceImpl implements ProductGroupService{
 	@Autowired
-	private ProductDao productDao;
+	private ProductGroupDao productGroupDao;
 	
 /*	@Override
 	public void write(Product product) {
@@ -23,9 +21,9 @@ public class ProductServiceImpl implements ProductService{
 	}*/
 
 	@Override
-	public List<Product> getList(ProductPager pager) {
-		List<Product> productList = productDao.selectByPage(pager);;
-		return productList;
+	public List<ProductGroup> getList(ProductGroupPager pager) {
+		List<ProductGroup> productGroupList = productGroupDao.selectByPage(pager);;
+		return productGroupList;
 	}
 
 /*	@Override
@@ -40,9 +38,9 @@ public class ProductServiceImpl implements ProductService{
 		return product;
 	}*/
 	@Override
-	public int getTotalProductNum() {
-		int totalProductNum = productDao.count();
-		return totalProductNum;
+	public int getTotalProductGroupNum() {
+		int totalProductGroupNum = productGroupDao.count();
+		return totalProductGroupNum;
 	}
 
 

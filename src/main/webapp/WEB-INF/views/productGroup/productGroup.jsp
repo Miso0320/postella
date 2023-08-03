@@ -17,7 +17,7 @@
 		
 
 		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/product.css"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productGroup.css"/>
 		<!-- <script type="text/javascript">
 		function movepage(page) {
 		window.document.location.href=page;
@@ -54,7 +54,7 @@
 							<h1 style="font-size:15px; font-weight:bold;">카테고리</h1>
 							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 								<button class="accordion" style= "cursor : pointer;">엽서
-									<input id="arrow1" type="image" src="${pageContext.request.contextPath}/resources/img/product/arrow-down.png" width="12px" height="12px"/>
+									<input id="arrow1" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png" width="12px" height="12px"/>
 								</button>
 								<div class="panel">
 					          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">포토엽서</label></div>
@@ -209,10 +209,10 @@
 						<h1 style="font-size:15px; font-weight:bold;">별점</h1>
 						<a href="detailView.jsp" class="pproduct">
 							<a href="#">별점 전체</a> <br>
-							<input type="image" src="${pageContext.request.contextPath}/resources/img/product/4star.png" width="100"/><br>
-							<input type="image" src="${pageContext.request.contextPath}/resources/img/product/3star.png" width="100"/><br>
-							<input type="image" src="${pageContext.request.contextPath}/resources/img/product/2star.png" width="100"/><br>
-							<input type="image" src="${pageContext.request.contextPath}/resources/img/product/1star.png" width="100"/>
+							<input type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/4star.png" width="100"/><br>
+							<input type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/3star.png" width="100"/><br>
+							<input type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/2star.png" width="100"/><br>
+							<input type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/1star.png" width="100"/>
 						</a>
 					</div>
 					<div>
@@ -245,7 +245,7 @@
 							<ul id="list" class="list" style="white-space: nowrap;">
 								<li><a href="" title="쿠팡랭킹순은 판매실적, 사용자선호도,&#10; 상품정보 충실도 및 검색 정확도 등을&#10; 종합적으로 고려한 순위입니다">쿠팡랭킹순
 										<strong>
-											<img class="warning" src="${pageContext.request.contextPath}/resources/img/product/!.png" alt="" style="width:12px; height:12px;">
+											<img class="warning" src="${pageContext.request.contextPath}/resources/img/productGroup/!.png" alt="" style="width:12px; height:12px;">
 										</strong> | 
 									</a></li>
 								<li><a href="">낮은가격순 | </a></li>
@@ -268,11 +268,11 @@
 					</div>
 					
 					<div class="item-list">
-						<c:forEach var="product" items="${products}">
+						<c:forEach var="productGroup" items="${productGroups}">
 									<a href="detailView" class="pproduct">
 											<tr>
-												<td>${product.pg_no}</td>
-												<td>${product.pg_name}</td>
+												<td>${productGroup.pg_no}</td>
+												<td>${productGroup.pg_name}</td>
 											</tr>
 									</a>
 						</c:forEach>
@@ -281,24 +281,24 @@
 					<td colspan="4" class="text-center">
 						<div>
 							<div class="pager">
-								<a class="btn btn-outline-primary btn-sm" href="product?pageNo=1">처음</a>
+								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1">처음</a>
 								<c:if test="${pager.groupNo>1}">
-									<a class="btn btn-outline-info btn-sm" href="product?pageNo=${pager.startPageNo-1}">이전</a>
+									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}">이전</a>
 								</c:if>
 								
 								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 									<c:if test="${pager.pageNo != i}">
-										<a class="btn btn-outline-success btn-sm" href="product?pageNo=${i}">${i}</a>
+										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}">${i}</a>
 									</c:if>
 									<c:if test="${pager.pageNo == i}">
-										<a class="btn btn-primary btn-sm" href="product?pageNo=${i}">${i}</a>
+										<a class="btn btn-primary btn-sm" href="productGroup?pageNo=${i}">${i}</a>
 									</c:if>
 								</c:forEach>
 								
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<a class="btn btn-outline-info btn-sm" href="product?pageNo=${pager.endPageNo+1}">다음</a>
+									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.endPageNo+1}">다음</a>
 								</c:if>
-								<a class="btn btn-outline-primary btn-sm" href="product?pageNo=${pager.totalPageNo}">맨끝</a>
+								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=${pager.totalPageNo}">맨끝</a>
 							</div>
 						</div>
 					</td>

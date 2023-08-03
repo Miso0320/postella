@@ -3,7 +3,7 @@ package com.mycompany.postella.dto;
 import lombok.Data;
 
 @Data
-public class ProductPager {
+public class ProductGroupPager {
 	private int totalRows;		//전체 행수
 	private int totalPageNo;	//전체 페이지 수
 	private int totalGroupNo;	//전체 그룹 수
@@ -18,7 +18,7 @@ public class ProductPager {
 	private int endRowNo;		//페이지의 마지막 행 번호
 	private int endRowIndex;	//페이지의 마지막 행 인덱스
 
-	public ProductPager(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {
+	public ProductGroupPager(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {
 		this.rowsPerPage = rowsPerPage;
 		this.pagesPerGroup = pagesPerGroup;
 		this.totalRows = totalRows;
