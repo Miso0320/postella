@@ -24,12 +24,6 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping("/product")
-	public String index() {
-		log.info("실행");
-		return "product/product";
-	}
-	
-	@GetMapping("/getProductList")
 	public String getProductList(String pageNo, Model model, HttpSession session) {
 		//브라우저에서 pageNo가 넘어오지 않았을 경우
 		if(pageNo == null) {
@@ -50,12 +44,6 @@ public class ProductController {
 		
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", list);
-		
-		/*for(int i=1; i < list.siz i++) {
-			
-			
-		}*/
-		
 		
 		return "product/product";
 	}

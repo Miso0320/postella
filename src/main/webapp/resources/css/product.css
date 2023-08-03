@@ -77,7 +77,7 @@
 			.item-list{
 				flex-wrap: wrap;
 				display: flex;
-				flex-direction: column; 
+				flex-direction: row; 
 				padding: 10px;
 			}
 			
@@ -247,6 +247,10 @@
            }
            .head:hover {
            		text-decoration: underline;
+           }
+           .pager {
+           	display: flex;
+           	justify-content: center;
            }
            .page-wrapper{
            		cursor: pointer;

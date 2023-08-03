@@ -11,7 +11,7 @@
 			from (
 				select pg_no, pg_name
 				from product_group
-				order by pg_no desc
+				order by pg_no
 			)
 			where rownum <= ${endRowNo}
 		)

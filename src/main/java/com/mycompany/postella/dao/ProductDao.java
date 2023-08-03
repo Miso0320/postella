@@ -9,10 +9,9 @@ import com.mycompany.postella.dto.ProductPager;
 
 @Mapper
 public interface ProductDao {
-/*	public int insert(Product product);
-	public Product selectBypg_no(int pg_no);*/
 	public List<Product> selectByPage(ProductPager pager);
 	public int count();
-	//public Product selectByPg_no(int pg_no);
+/*	public int insert(Product product);
+	public Product selectBypg_no(int pg_no);*/
 	
 }

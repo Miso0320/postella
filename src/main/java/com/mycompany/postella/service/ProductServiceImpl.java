@@ -24,8 +24,8 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<Product> getList(ProductPager pager) {
-		List<Product> boardList = productDao.selectByPage(pager);;
-		return boardList;
+		List<Product> productList = productDao.selectByPage(pager);;
+		return productList;
 	}
 
 /*	@Override
@@ -44,5 +44,6 @@ public class ProductServiceImpl implements ProductService{
 		int totalProductNum = productDao.count();
 		return totalProductNum;
 	}
+
 
 }

@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/img/hi.png" type="image/x-icon">
 		<title>큐팡!</title>
 		
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -267,97 +267,56 @@
 						</div>
 					</div>
 					
-					
-					
 					<div class="item-list">
-						<div class="item-list-4">
-							<a href="detailView.jsp" class="pproduct">
-								<c:forEach var="product" items="${products}">
-									<div class="product">
-										<div class="img">
-											<img class="image" src="${pageContext.request.contextPath}/resources/img/product/img1.png" alt="">
-										</div>
-										<div class="text">
-											<h1 class="head" style="font-size:15px; font-weight:bold;">${product.pg_name}</h1>
-										</div>
-										<div class="product-price">
-											<div class="product-sale">
-												<span id="sale" style="color: #cb1400;">즉시 할인가</span>
-												<span>64%</span>
-												<span class="span">18900</span>
-											</div>
-											<strong class="real-price">6,670원</strong>
-											<div class="product-date">
-												<span>
-													<em>모레(금)</em>
-													<em>도착 예정</em>
-												</span>	
-											</div>
-										</div>
-										<div class="star">
-											<input type="image"src="${pageContext.request.contextPath}/resources/img/product/5star.png" width="100"/>
-											<span class="star-rating">(21)</span>
-										</div>
-										<div class="point" style="padding-left: 5px;">
-				                           	<div class="ppoint">
-				                              <img class="coin-img" alt="코인" src="${pageContext.request.contextPath}/resources/img/product/point.png" style="width: 14px;">
-				                              <span class="coin-txt" style="padding-left: 5px; color: black; font-size: 11px;">최대 334원 적립</span>
-				                           	</div>
-			                        	</div>
-									</div>
-								</c:forEach>
-							</a>
-							
-							
-						
-						
-						<%-- <a href="detailView.jsp" class="pproduct">
-						<div class="product">
-							<div class="img">
-								<img class="image" src="${pageContext.request.contextPath}/resources/img/product/img8.png" alt="">
-							</div>
-							<div class="text">
-								<h1 class="head" style="font-size:15px; font-weight:bold;"> 레트로 스타일 음식 포스터 세트 (단면 14장) 벽꾸미기 엽서세트</h1>
-							</div>
-							<div class="product-price">
-								<div class="product-sale">
-									<span id="sale" style="color: #cb1400;">즉시 할인가</span>
-									<span>40%</span>
-									<span class="span">6000</span>
-								</div>
-								<strong class="real-price">3,600원</strong>
-								<div class="product-date">
-									<span>
-										<em>모레(금)</em>
-										<em>도착 예정</em>
-									</span>	
-								</div>
-							</div>
-							<div class="star">
-								<input type="image"src="${pageContext.request.contextPath}/resources/img/product/5star.png" width="100"/>
-								<span class="star-rating">(5)</span>
-							</div>
-							<div class="point" style="padding-left: 5px;">
-	                           	<div class="ppoint">
-	                              <img class="coin-img" alt="코인" src="${pageContext.request.contextPath}/resources/img/product/point.png" style="width: 14px;"><span
-	                                 class="coin-txt" style="padding-left: 5px; color: black; font-size: 11px;">최대 180원 적립</span>
-	                           	</div>
-                        	</div>
-						</div>
-						</a> --%>
-					</div> 
+						<c:forEach var="product" items="${products}">
+									<a href="detailView" class="pproduct">
+											<tr>
+												<td>${product.pg_no}</td>
+												<td>${product.pg_name}</td>
+											</tr>
+									</a>
+						</c:forEach>
+					</div>
 					
-					<div class="page">
+					<td colspan="4" class="text-center">
+						<div>
+							<div class="pager">
+								<a class="btn btn-outline-primary btn-sm" href="product?pageNo=1">처음</a>
+								<c:if test="${pager.groupNo>1}">
+									<a class="btn btn-outline-info btn-sm" href="product?pageNo=${pager.startPageNo-1}">이전</a>
+								</c:if>
+								
+								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+									<c:if test="${pager.pageNo != i}">
+										<a class="btn btn-outline-success btn-sm" href="product?pageNo=${i}">${i}</a>
+									</c:if>
+									<c:if test="${pager.pageNo == i}">
+										<a class="btn btn-primary btn-sm" href="product?pageNo=${i}">${i}</a>
+									</c:if>
+								</c:forEach>
+								
+								<c:if test="${pager.groupNo<pager.totalGroupNo}">
+									<a class="btn btn-outline-info btn-sm" href="product?pageNo=${pager.endPageNo+1}">다음</a>
+								</c:if>
+								<a class="btn btn-outline-primary btn-sm" href="product?pageNo=${pager.totalPageNo}">맨끝</a>
+							</div>
+						</div>
+					</td>
+					
+				</div> 
+				
+					
+					<!-- <div class="page">
 						<ul class="pagination">
-						    <!-- li태그의 클래스에 disabled를 넣으면 마우스를 위에 올렸을 때 클릭 금지 마크가 나오고 클릭도 되지 않는다.
-						    disabled의 의미는 앞의 페이지가 존재하지 않다는 뜻이다. -->
+						    li태그의 클래스에 disabled를 넣으면 마우스를 위에 올렸을 때 클릭 금지 마크가 나오고 클릭도 되지 않는다.
+						    disabled의 의미는 앞의 페이지가 존재하지 않다는 뜻이다.
 						    <li class="disabled">
 						      <a href="#">
 						        <span>«</span>
 						      </a>
 						    </li>
-						    <!-- li태그의 클래스에 active를 넣으면 색이 반전되고 클릭도 되지 않는다.
-						    active의 의미는 현재 페이지의 의미이다. -->
+						    li태그의 클래스에 active를 넣으면 색이 반전되고 클릭도 되지 않는다.
+						    active의 의미는 현재 페이지의 의미이다.
 						    <li class="plist"><a href="#">1</a></li>
 						    <li class="plist"><a href="#">2</a></li>
 						    <li class="plist"><a href="#">3</a></li>
@@ -375,7 +334,7 @@
 						      </a>
 						    </li>
 					 	 </ul>
-				 	 </div>
+				 	 </div> -->
 					<hr>
 					
 					
