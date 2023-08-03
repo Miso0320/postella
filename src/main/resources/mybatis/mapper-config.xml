@@ -6,6 +6,6 @@
 	<typeAliases>
 		<typeAlias alias="Img" type="com.mycompany.postella.dto.Image" />
 		<typeAlias alias="Product" type="com.mycompany.postella.dto.Product"/>
-        <typeAlias alias="Pager" type="com.mycompany.postella.dto.ProductPager"/>
+        <typeAlias alias="Users" type="com.mycompany.postella.dto.Users"/>
 	</typeAliases>
 </configuration>
