@@ -29,15 +29,18 @@ public class DetailViewController {
 		pg_no = 3;
 		String base64Img;
 		
-		model.addAttribute("pg_no", pg_no);
-		
 		List<Image> imgList = imageService.getImagesBypgNo(pg_no);
+		
 		for(int i=0; i < imgList.size(); i++) {
 			if(imgList.get(i).getImg_file() != null) {
 				imgList.get(i).setEncodedFile(Base64.getEncoder().encodeToString(imgList.get(i).getImg_file()));
 			}
 		}
 		model.addAttribute("thmImgs", imgList);
+		
+		Image tumnail = imgList.get(0);
+		
+		model.addAttribute("thumnail", tumnail);
 		return "detailView/detailView";
 	}
 

@@ -39,7 +39,6 @@ public class HomeController {
 	
 	@PostMapping("/insertImg")
 	public String insertImg(Image img, HttpSession session) throws Exception{
-		log.info("!!!!!!:"+img);
 		MultipartFile mf = img.getImg_attach();
 		
 		if(!mf.isEmpty()) {

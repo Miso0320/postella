@@ -31,13 +31,13 @@
                   <ul class="thum-list">
                   	<c:forEach var="thmImg" items="${thmImgs}">
 		                     <li class="prod-image__item">
-		                        <img class="thum-list-img" src="data:${thmImg.img_type};base64, ${thmImg.encodedFile}" alt="홀로그램 엽서">
+		                        <img class="thum-list-img" src="data:${thmImg.img_type};base64, ${thmImg.encodedFile}" alt="썸네일 리스트">
 		                     </li>
 					</c:forEach>
                   </ul>
                   <div class="thumbnail-container">
                      <div class="thumbnail-wrapper">
-                        <img class="thumbnail_img" src="${pageContext.request.contextPath}/resources/img/detailView/post_thum.PNG" alt="홀로그램 엽서">
+                        <img class="thumbnail_img" src="data:${thumnail.img_type};base64, ${thumnail.encodedFile}" alt="썸네일">
                         <span class="inner-frame"></span>
                      </div>
                   </div>

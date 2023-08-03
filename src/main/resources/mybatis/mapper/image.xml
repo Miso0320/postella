@@ -10,15 +10,11 @@
 		#{img_oname}, #{img_type}, #{pg_no})
 	</insert>
 	
-	<select id="count" resultType="int">
-		select count(*) 
-		from image
-	</select>
-	
 	<select id="selectByPgNo" parameterType="int" resultType="Img">
 		select *
 		from image
 		where pg_no=#{pg_no}
 	</select>
+	
 	
 </mapper>

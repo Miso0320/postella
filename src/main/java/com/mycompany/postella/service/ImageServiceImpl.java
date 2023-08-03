@@ -26,10 +26,4 @@ public class ImageServiceImpl implements ImageService{
 	      return imgs;
 	}
 	
-	@Override
-	public int getTotalImgNum() {
-		int totalImageNum = imageDao.count();
-	      return totalImageNum;
-	}
-	
 }
