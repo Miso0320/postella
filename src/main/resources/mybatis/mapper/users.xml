@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.UsersDao">
+	
+	<insert id="insert" parameterType="Users">
+		insert into users (us_no, us_email, us_password, us_name, us_tel, us_nickname, us_insertdate, us_sleep, us_withdrawal, us_point ) values
+	    (
+		    us_no_seq.nextval, #{us_email}, #{us_password}, #{us_name},
+		    #{us_tel}, #{us_nickname, jdbcType=VARCHAR}, sysdate, #{us_sleep, jdbcType=VARCHAR},
+		    #{us_withdrawal, jdbcType=VARCHAR}, #{us_point}
+		)
+	</insert>
+	
+	<select id="selectByNo" parameterType="int" resultType="Users">
+		select us_no, us_email, us_password, us_name, us_tel, us_nickname, us_insertdate, us_sleep, us_withdrawal, us_point
+		from users
+		where us_no = #{us_no}
+	</select>
+	
+</mapper>

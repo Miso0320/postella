@@ -4,8 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Users;
 
-
 @Mapper
 public interface UsersDao {
 	public int insert(Users users);
+	public Users selectByNo(int us_no);
 }

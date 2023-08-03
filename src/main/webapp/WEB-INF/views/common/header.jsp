@@ -47,10 +47,10 @@
 			      			<li class="header_dropdown_list">
 			      				<a href="#"><img class="header_category_img" src="${pageContext.request.contextPath}/resources/img/header/category2.png" alt="카테고리"></a>
 			      				<ul class="header_enter">
-			      					<li><a href="product"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard1.png" alt="포토엽서">포토엽서</a></li>
-			                        <li><a href="product"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard2.png" alt="디자인패턴엽서">디자인패턴엽서</a></li>
-			                        <li><a href="product"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard3.png" alt="그림/일러스트엽서">그림/일러스트엽서</a></li>
-			                        <li><a href="product"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard4.png" alt="캘리그라피엽서">캘리그라피엽서</a></li>
+			      					<li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard1.png" alt="포토엽서">포토엽서</a></li>
+			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard2.png" alt="디자인패턴엽서">디자인패턴엽서</a></li>
+			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard3.png" alt="그림/일러스트엽서">그림/일러스트엽서</a></li>
+			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard4.png" alt="캘리그라피엽서">캘리그라피엽서</a></li>
 			      				</ul>
 		      				</li>
 		      			</ul>
@@ -59,14 +59,14 @@
       				<!-- 로고 -->
       				<div class="header_title">
       					<h1>
-	      					<a href="product"><img class="header_logo" src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고"></a>
+	      					<a href="productGroup"><img class="header_logo" src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고"></a>
 	      				</h1>
       				</div>
       				
       				<!-- 검색창 -->
       				<div class="header_search_product header_every_a_font">
       					<input type="text" class="header_text_search" placeholder="찾고 싶은 상품을 검색해보세요!"/>
-      					<a href="product"><img class="header_search_img" src="${pageContext.request.contextPath}/resources/img/header/search_icon.png" alt="찾기"></a>
+      					<a href="productGroup"><img class="header_search_img" src="${pageContext.request.contextPath}/resources/img/header/search_icon.png" alt="찾기"></a>
       				</div>
    				
    					<!-- 마이메뉴 -->

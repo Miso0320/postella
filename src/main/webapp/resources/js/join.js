@@ -13,7 +13,7 @@ function init() {
 	$(".marketing_all_check").click(marketingCheckAll);
 	
 	// submit 이벤트
-	var joinForm = $("#joinForm");
+	var joinForm = $("#join");
 	joinForm.submit(checkValidation);
 	
 }
@@ -254,26 +254,26 @@ function checkValidation() {
 		isValidation = false;
 		pwdErr1.css("display","block");
 		pwdErr1.removeClass("gray");
-		$("#pwdErr1 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+		$("#pwdErr1 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 		pwdErr2.css("display","block");
 		pwdErr2.removeClass("gray");
-		$("#pwdErr2 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+		$("#pwdErr2 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 		pwdErr3.css("display","block");
 		pwdErr3.removeClass("gray");
-		$("#pwdErr3 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+		$("#pwdErr3 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 		redLinePwd.css("border-bottom","2px solid red");
 	} else if(!result2) {
 		isValidation = false;
 		pwdErr1.css("display","block");
 		pwdErr1.removeClass("gray");
-		$("#pwdErr1 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+		$("#pwdErr1 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 		redLinePwd.css("border-bottom","2px solid red");
 		// 3개 이상 연속되거나 동일한 문자/숫자 제외
 	} else if(pwContinueThree() || pwSameThree()) {
 			isValidation = false;
 			pwdErr2.css("display","block");
 			pwdErr2.removeClass("gray");
-			$("#pwdErr2 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+			$("#pwdErr2 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 			redLinePwd.css("border-bottom","2px solid red");
 			
 		// 아이디(이메일) 제외
@@ -281,7 +281,7 @@ function checkValidation() {
 			isValidation = false;
 			pwdErr3.css("display","block");
 			pwdErr3.removeClass("gray");
-			$("#pwdErr3 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+			$("#pwdErr3 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 			redLinePwd.css("border-bottom","2px solid red");
 	} else {
 		var bluePwd = $("#blue_check_pwd");
@@ -299,14 +299,14 @@ function checkValidation() {
 	if(pwd2 === "") {
 		pwdErr4.css("display","block");
 		pwdErr4.removeClass("gray");
-		$("#pwdErr4 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+		$("#pwdErr4 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 		redLinePwdChk.css("border-bottom","2px solid red");
 	// 비밀번호와 비밀번호 확인 동일 여부
 	} else if(pwd1 != pwd2) {
 		isValidation = false;
 		pwdErr4.css("display","block");
 		pwdErr4.removeClass("gray");
-		$("#pwdErr4 .cancel_img").attr("src","img/joinForm/cancel_red.png");
+		$("#pwdErr4 .cancel_img").attr("src","resources/img/join/cancel_red.png");
 		redLinePwdChk.css("border-bottom","2px solid red");
 	} else {
 		var bluePwdChk = $("#blue_check_pwd_chk");
@@ -342,9 +342,9 @@ function checkValidation() {
 	}
 	
 	// 유효성 검사가 실패되었을 때 폼의 제출 기능을 중지
-	if(!isValidation) {
+	/*if(!isValidation) {
 		event.preventDefault();
-	}
+	}*/
 }
 
 

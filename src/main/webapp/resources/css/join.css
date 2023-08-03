@@ -6,11 +6,6 @@
 	padding: 0px;
 }
 
-html {
-	font-family: dotum,sans-serif;
-	box-sizing: border-box;
-}
-
 .member_main label {
 	display: inline;
 }
@@ -24,6 +19,8 @@ html {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-family: dotum,sans-serif;
+	box-sizing: border-box;
 }
 
 /* 공통코드 - 유효성 검사 관련 */
@@ -158,6 +155,10 @@ header {
 	justify-content: space-between;
 }
 
+.join_right_arrow {
+	width: 20px;
+}
+
 .agree_btn {
 	padding-top: 30px;
 	padding-bottom: 30px;
@@ -176,16 +177,16 @@ header {
 
 
 /* 비즈회원 안내 */
-.member_biz {
+.join_seller {
 	text-align: center;
 }
 
-.member_biz div {
+.join_seller div {
     font-size: 13px;
     color: #637381;
 }
 
-.member_biz a {
+.join_seller a {
     font-size: 14px;
     font-weight: bold;
     color: #454f5b;
@@ -193,7 +194,7 @@ header {
 }
 
 /* footer */
-footer {
+.join_footer {
 	padding: 20px 0 40px;
 	text-align: center;
 	font-family: dotum, sans-serif;
