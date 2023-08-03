@@ -16,4 +16,10 @@ public class Order_detailServiceImpl implements Order_detailService{
 		int starAvg = oder_detailDao.selectStarAvg(pg_no);
 	    return starAvg;
 	}
+	
+	@Override
+	public int countReview(int pg_no) {
+		int cnt = oder_detailDao.selectReviewCnt(pg_no);
+		return 0;
+	}
 }

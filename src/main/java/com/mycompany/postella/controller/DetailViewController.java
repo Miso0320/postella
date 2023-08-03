@@ -1,22 +1,19 @@
 package com.mycompany.postella.controller;
 
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Image;
-import com.mycompany.postella.dto.Order_detail;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.Order_detailService;
+import com.mycompany.postella.service.ProductGroupService;
+import com.mycompany.postella.service.productService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,6 +25,12 @@ public class DetailViewController {
 	
 	@Autowired
 	private Order_detailService odetailService;
+	
+	@Autowired
+	private ProductGroupService productGroupService;
+	
+	@Autowired
+	private productService productService;
 	
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
@@ -51,6 +54,15 @@ public class DetailViewController {
 		//별점 평균 불러오기
 		int starAgv = odetailService.getStarAvg(pg_no);
 		model.addAttribute("stars", starAgv);
+		
+		//리뷰 개수 불러오기
+		int revCnt = odetailService.countReview(pg_no);
+		log.info("리뷰수: "+revCnt);
+		model.addAttribute("revCnt", revCnt);
+		
+		//상품명 불러오기
+		String title = productGroupService.getTitle(pg_no);
+		model.addAttribute("title", title);
 		
 		
 		return "detailView/detailView";
