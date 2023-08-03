@@ -1,5 +1,7 @@
 package com.mycompany.postella.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,17 @@ public class ImageServiceImpl implements ImageService{
 	public void write(Image image) {
 		imageDao.insert(image);
 	}
+	
+	@Override
+	public List<Image> getImagesBypgNo(int pg_no) {
+		List<Image> imgs = imageDao.selectByPgNo(pg_no);
+	      return imgs;
+	}
+	
+	@Override
+	public int getTotalImgNum() {
+		int totalImageNum = imageDao.count();
+	      return totalImageNum;
+	}
+	
 }

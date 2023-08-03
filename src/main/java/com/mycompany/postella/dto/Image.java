@@ -17,5 +17,6 @@ public class Image {
 	private String img_oname; //이미지 원본 파일명  NOT NULL
 	private String img_type; //이미지 MIME 타입  NOT NULL
 	private MultipartFile img_attach;
-
+	private int pg_no; //상품 대분류
+	private String encodedFile; //인코딩한 파일 저장
 }

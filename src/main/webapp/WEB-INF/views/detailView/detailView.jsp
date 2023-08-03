@@ -1,6 +1,6 @@
-<!-- **백업*************** 백업용 진짜 파일 ***************백업** -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,16 +29,11 @@
                <!-- 왼쪽 썸네일들 -->
                <div class="prod-image-container">
                   <ul class="thum-list">
-                     <li class="prod-image__item">
-                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/post_thum.PNG" alt="홀로그램 엽서">
-                     </li>
-
-                     <li class="prod-image__item">
-                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/post_list1.PNG" alt="엽서리스트1">
-                     </li>
-                     <li class="prod-image__item">
-                        <img class="thum-list-img" src="${pageContext.request.contextPath}/resources/img/detailView/post_list3.PNG" alt="엽서리스트1">
-                     </li>
+                  	<c:forEach var="thmImg" items="${thmImgs}">
+		                     <li class="prod-image__item">
+		                        <img class="thum-list-img" src="data:${thmImg.img_type};base64, ${thmImg.encodedFile}" alt="홀로그램 엽서">
+		                     </li>
+					</c:forEach>
                   </ul>
                   <div class="thumbnail-container">
                      <div class="thumbnail-wrapper">

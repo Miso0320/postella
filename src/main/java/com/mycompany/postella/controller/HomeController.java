@@ -51,6 +51,8 @@ public class HomeController {
 			img.setImg_use("THM");
 			//첨부 파일을 DB에 직접 저장
 			img.setImg_file(mf.getBytes());
+			//그룹넘버 주기
+			img.setPg_no(1);
 		}
 		
 		imageService.write(img);
