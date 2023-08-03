@@ -1,34 +1,34 @@
 package com.mycompany.postella.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.mycompany.postella.dto.Image;
-import com.mycompany.postella.service.ImageService;
-
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
 public class JoinController {
-	@Autowired
-	private ImageService imageService;
-	
-	public JoinController() {
-		log.info("실행");
+
+	/* 회원관련 */
+	@GetMapping("/join")
+	public String joinForm() {
+		return "join/join";
 	}
-	
-	@RequestMapping("/")
-	public String index() {
-		log.info("실행");
-		return "index";
-	}
+
+	/*@PostMapping("/join")
+	public String join(Ch13Member member, Model model) {
+		JoinResult result = memberService.join(member);
+		Ch13Member dbMember = memberService.getMember(member.getMid());
+		if(result == JoinResult.FAIL_DUPLICATED_MID) {
+			String error = "중복된 ID가 존재합니다.";
+			model.addAttribute("error", error);
+			return "ch13/joinForm";
+		} else {
+			memberService.join(member);
+			return "redirect:/ch13/content";						
+		}
+	}*/
+
 }
