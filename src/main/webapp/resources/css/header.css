@@ -10,31 +10,9 @@ header {
 	font-family: sans-serif;
 }
 
-header section {
-	margin: 0px 300px;
-}
-
 /* 공통코드 - 글자스타일 */
 .header_every_a_font {
 	font-size: 12px;
-}
-
-#header_right_menu {
-	margin-top: 7px;
-}
-
-.header_outer_ul {
-	list-style-type: none;
-	display: flex;
-	margin-left: 70px;
-	font-size: 11px;
-}
-
-.header_outer_ul a {
-	margin: 5px;
-	padding-top: 10px;
-	color: black;
-	text-decoration: none;
 }
 
 
@@ -58,96 +36,98 @@ header section {
 	display: block;
 }
 
-.header_enter_bubble {
-	display: none;
-	position: absolute;
-	background-color: white;
-	font-size: 8pt;
-	min-width: 160px;
-	
-	padding: 15px 20px;
-	border: 1px solid #ddd;
-	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
-	
-	list-style-type: none;
-}
-
-.header_dropdown_list:hover .enter_bubble {
-	display: block;
+.header_dropdown_list {
+	display: inline-block;
 }
 
 
 /* 최상단 메뉴 */
-#header_top_bar {
+.header_top_bar {
 	width: 100%;
 	height: 30px;
-	background-color: #F2F2F2;
 	display: flex;
 	justify-content: space-around;
 	padding: 2px;
 	white-space: nowrap;
+	background-color: #f1f8fe;
 }
 
-#header_top_bar section {
-	width: 1500px;
+.header_top_section {
+	width: 60%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: end;
 }
 
-.header_dropdown_list {
-	/* position: relative; */
-	display: inline-block;
+.header_menu {
+	margin: 3px 0px;
 }
 
-.header_entry_img {
-	margin-top: 2px;
-	width: 10px;
-	height: 10px;
+.header_outer_ul {
+	list-style-type: none;
+	display: flex;
+	margin-left: 70px;
+	font-size: 11px;
+}
+
+.header_outer_ul a {
+	margin: 5px;
+	padding-top: 10px;
+	color: black;
+	text-decoration: none;
 }
 
 
 /* 중간 메뉴 */
-.header_top_section {
-	height: 110px;
+.header_middle_section {
 	display: flex;
-	justify-content: flex-start;
-	margin: 10px;
-	position: relative;
+	justify-content: center;
+	align-items: center;
 }
 
-@media (min-width: 1300px) {
+/* @media (min-width: 1300px) {
 	.header_top_section {
 		justify-content: center;
 	}
+} */
+
+.header_content {
+	width: 60%;
+	display: flex;
+	align-items: center;
 }
 
 
-/* 중간 메뉴 - 왼쪽 헤더(카테고리) */
-#header_left {
+/* 카테고리 */
+.header_category {
 	width: 110px;
-	height: 110px;
+	height: 100%;
+	margin: 0px 10px;
 }
 
-#header_left .header_enter {
+.header_category .header_enter {
 	/* min-width: 160px; */
 	padding: 15px 10px;
 }
 
-#header_left .header_enter li {
+.header_category .header_enter li {
 	margin: 10px 0px;
 }
 
-#header_left .header_enter a {
+.header_category .header_enter a {
 	margin: 10px;
 	color: black;
 	text-decoration: none;
 }
 
-#header_left a:hover {
+.header_category a:hover {
 	color:#0073e9;
 	text-decoration: underline;
 }
 
+.header_category_img {
+	width: 110px;
+	height: 100%;
+}
 
 .header_left_category_icon {
 	width: 20px;
@@ -155,20 +135,12 @@ header section {
 	margin-right: 5px;
 }
 
-.header_category_img {
-	width: 110px;
-	height: 110px;
-}
-
-
-/* 중간 메뉴 - 오른쪽 헤더 */
-.header_top_title_search {
-	display: flex;
-	padding-top: 10px;
-}
-
 
 /* 로고 */
+.header_title {
+	margin: 0px 10px;
+}
+
 .header_logo {
 	width: 174px;
 	height: 41px;
@@ -180,10 +152,12 @@ header section {
 .header_search_product {
 	display: flex;
 	align-items: center;
-	border: 2px solid #4285f4;
+	justify-content: space-between;
+	border: 2px solid #60b0ea;
 	background-color: white;
-	width: 480px;
+	width: 430px;
 	height: 40px;
+	margin-right: 40px;
 }
 
 .header_text_search {
@@ -191,6 +165,7 @@ header section {
 	width: 270px;
 	border: 0px;
 	outline: none;
+	margin: 10px;
 }
 
 .header_search_img {
@@ -200,19 +175,19 @@ header section {
 	margin: 4px;
 }
 
-.header_select_menu {
-	width: 150px;
-	border: 0px;
-	outline: none;
-}
 
-
-/* 오른쪽 메뉴(마이쿠팡, 장바구니) */
+/* 마이메뉴 */
 .header_my_menu {
 	display: flex;
+	margin-right: 10px;
 }
 
-.header_my_menu_inner a {
+.header_my_cart {
+	display: flex;
+	margin-left: 10px;
+}
+
+.header_my_a {
 	display: flex;
 	flex-direction: column;
 	margin: 0 15px;
@@ -220,7 +195,7 @@ header section {
 	text-decoration: none;
 }
 
-.header_right_menu_icon {
+.header_my_icon {
 	width: 40px;
 }
 
