@@ -51,9 +51,9 @@
                   <div class="title-star-rev">
                      <h2 class="prod-title">TITLE</h2>
                      <div class="prod-header-star-rev">
-                        <%-- <c:forEach var="star" items="${stars}">
+                        <c:forEach var="star" begin="1" end="${stars}">
                         	<span class="rating-star">★</span> 
-                        </c:forEach> --%>
+                        </c:forEach>
                         <a class="rev-cnt" href="#">2개 상품평</a>
                      </div>
                   </div>
