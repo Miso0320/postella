@@ -44,7 +44,7 @@ public class ProductController {
 		
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", list);
-		
+		log.info("페이지"+model);
 		return "product/product";
 	}
 	

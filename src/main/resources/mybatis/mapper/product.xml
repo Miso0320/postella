@@ -7,7 +7,7 @@
 		<![CDATA[
 		select pg_no, pg_name
 		from (
-			select rownum as pg_no, pg_name 
+			select rownum as rnum, pg_no, pg_name 
 			from (
 				select pg_no, pg_name
 				from product_group
@@ -15,7 +15,7 @@
 			)
 			where rownum <= ${endRowNo}
 		)
-		where rownum >= ${startRowNo}
+		where rnum >= ${startRowNo}
 		]]>
 	</select>
 
