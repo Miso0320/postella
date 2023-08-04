@@ -1,6 +1,8 @@
 package com.mycompany.postella.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.postella.dao.UsersDao;
@@ -25,10 +27,13 @@ public class JoinServiceImpl implements JoinService {
 			return JoinResult.FAIL;
 		}
 		
-		// 비밀번호 인코딩 추가 필요
+		// 비밀번호 인코딩
+		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		users.setUs_password(passwordEncoder.encode(users.getUs_password()));
 		
-		users.setUs_sleep("Y");
-		users.setUs_withdrawal("Y");
+		// NULL 방지용 기본값 설정
+		users.setUs_sleep("N");
+		users.setUs_withdrawal("N");
 		
 		usersDao.insert(users);
 		return JoinResult.SUCCESS;
