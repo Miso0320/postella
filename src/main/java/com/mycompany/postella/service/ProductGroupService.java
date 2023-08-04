@@ -10,4 +10,6 @@ public interface ProductGroupService {
 	public int getTotalProductGroupNum();
 /*	public void write(Product product);*/
 	//public Product getProduct(int pg_no);
+	
+	public String getTitle(int pg_no);
 }

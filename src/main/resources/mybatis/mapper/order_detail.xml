@@ -10,8 +10,15 @@
 		AVG(product.prd_star_avg)
 		FROM order_detail, product
 		WHERE order_detail.PRD_NO = PRODUCT.PRD_NO AND
-		PRODUCT.PG_NO =3
+		PRODUCT.PG_NO = ${pg_no}
 	</select>
-
+	
+	<select id="selectReviewCnt" parameterType="int" resultType="int">
+		SELECT
+		count(*)
+		FROM order_detail, product
+		WHERE order_detail.PRD_NO = PRODUCT.PRD_NO AND
+		PRODUCT.PG_NO = ${pg_no}
+	</select>
 
 </mapper>

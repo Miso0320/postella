@@ -42,6 +42,12 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 		int totalProductGroupNum = productGroupDao.count();
 		return totalProductGroupNum;
 	}
+	
+	@Override
+	public String getTitle(int pg_no) {
+		String title = productGroupDao.selectTitleByPgNo(pg_no);
+	    return title;
+	}
 
 
 }

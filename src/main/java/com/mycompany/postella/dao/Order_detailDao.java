@@ -5,4 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface Order_detailDao {
 	public int selectStarAvg(int pg_no);
+	public int selectReviewCnt(int pg_no);
 }
