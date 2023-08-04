@@ -23,6 +23,13 @@
 		select count(*) 
 		from product_group
 	</select>
+	
+	<select id="selectByPgNo" parameterType="int" resultType="Img">
+		select *
+		from image
+		where pg_no=#{pg_no}
+	</select>
+
 
 
 </mapper>

@@ -1,6 +1,11 @@
 package com.mycompany.postella.controller;
 
+import java.util.Base64;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,9 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.ProductGroupPager;
+import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.ProductGroupService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +29,10 @@ public class ProductGroupController {
 	
 	@Autowired
 	private ProductGroupService productGroupService;
+	
+	@Autowired
+	private ImageService imageService;
+
 	
 	@RequestMapping("/productGroup")
 	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
@@ -44,7 +56,19 @@ public class ProductGroupController {
 		model.addAttribute("pager", pager);
 		model.addAttribute("productGroups", list);
 		
+		for(int i = 0; i < list.size(); i++) {
+	         log.info("리스트 : " + list.get(i).getPg_no());
+			
+	      }
+		
+		
+		
+		//List<Image> imgList = productGroupService.getImagesBypgNo();
+		
+		
+		
 		return "productGroup/productGroup";
 	}
 	
+
 }

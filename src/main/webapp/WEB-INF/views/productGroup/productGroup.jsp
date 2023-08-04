@@ -271,6 +271,7 @@
 						<c:forEach var="productGroup" items="${productGroups}">
 									<a href="detailView" class="pproduct">
 											<tr>
+												
 												<td>${productGroup.pg_no}</td>
 												<td>${productGroup.pg_name}</td>
 											</tr>
@@ -304,37 +305,6 @@
 					</td>
 					
 				</div> 
-				
-					
-					<!-- <div class="page">
-						<ul class="pagination">
-						    li태그의 클래스에 disabled를 넣으면 마우스를 위에 올렸을 때 클릭 금지 마크가 나오고 클릭도 되지 않는다.
-						    disabled의 의미는 앞의 페이지가 존재하지 않다는 뜻이다.
-						    <li class="disabled">
-						      <a href="#">
-						        <span>«</span>
-						      </a>
-						    </li>
-						    li태그의 클래스에 active를 넣으면 색이 반전되고 클릭도 되지 않는다.
-						    active의 의미는 현재 페이지의 의미이다.
-						    <li class="plist"><a href="#">1</a></li>
-						    <li class="plist"><a href="#">2</a></li>
-						    <li class="plist"><a href="#">3</a></li>
-						    <li class="plist"><a href="#">4</a></li>
-						    <li class="plist"><a href="#">5</a></li>
-						    <li class="plist"><a href="#">6</a></li>
-						    <li class="plist"><a href="#">7</a></li>
-						    <li class="plist"><a href="#">8</a></li>
-						    <li class="plist"><a href="#">9</a></li>
-						    <li class="plist"><a href="#">10</a></li>
-						    
-						    <li>
-						      <a href="#">
-						        <span>»</span>
-						      </a>
-						    </li>
-					 	 </ul>
-				 	 </div> -->
 					<hr>
 					
 					

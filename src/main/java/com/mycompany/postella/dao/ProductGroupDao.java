@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.ProductGroupPager;
 
@@ -14,4 +15,5 @@ public interface ProductGroupDao {
 	/*	public int insert(Product product);
 	public Product selectBypg_no(int pg_no);*/
 	
+	public List<Image> selectByPgNo(int pg_no);
 }

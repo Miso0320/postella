@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.postella.dao.ImageDao;
 import com.mycompany.postella.dao.ProductGroupDao;
+import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.ProductGroupPager;
 
@@ -13,6 +15,9 @@ import com.mycompany.postella.dto.ProductGroupPager;
 public class ProductGroupServiceImpl implements ProductGroupService{
 	@Autowired
 	private ProductGroupDao productGroupDao;
+	
+	@Autowired
+	private ImageDao imageDao;
 	
 /*	@Override
 	public void write(Product product) {
@@ -41,6 +46,12 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	public int getTotalProductGroupNum() {
 		int totalProductGroupNum = productGroupDao.count();
 		return totalProductGroupNum;
+	}
+
+	@Override
+	public List<Image> getImagesBypgNo(int pg_no) {
+		List<Image> imgs = imageDao.selectByPgNo(pg_no);
+	    return imgs;
 	}
 
 

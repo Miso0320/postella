@@ -11,4 +11,5 @@ import com.mycompany.postella.dto.Image;
 public interface ImageDao {
 	public int insert(Image image);
 	public List<Image> selectByPgNo(int pg_no);
+	public Image selectByPgNo2(int pg_no);
 }

@@ -16,5 +16,11 @@
 		where pg_no=#{pg_no}
 	</select>
 	
+	<!-- <select id="selectByPgNo2" parameterType="int" resultType="Img">
+		select *
+		from image
+		where pg_no=#{pg_no}
+	</select> -->
+	
 	
 </mapper>
