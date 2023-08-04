@@ -35,12 +35,10 @@ public class JoinController {
 		
 		if(result == JoinResult.FAIL_EMAIL) {
 			String errorEmail = "이미 가입된 이메일입니다.";
-			log.info(errorEmail);
 			model.addAttribute("errorEmail", errorEmail);
 			return "join/join";
 		} else if(result == JoinResult.FAIL_TEL) {
 			String errorTel = "이미 가입된 전화번호입니다.";
-			log.info(errorTel);
 			model.addAttribute("errorTel", errorTel);
 			return "join/join";
 		} else {
