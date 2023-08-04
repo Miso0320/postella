@@ -172,6 +172,10 @@ public class DetailViewController {
 		String title = productGroupService.getTitle(pg_no);
 		model.addAttribute("title", title);
 		
+		//별점 평균 불러오기
+		int starAgv = odetailService.getStarAvg(pg_no);
+		model.addAttribute("stars", starAgv);
+		
 		
 		
 		return "detailView/detailView";
