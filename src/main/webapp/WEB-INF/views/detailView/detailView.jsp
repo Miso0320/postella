@@ -108,7 +108,7 @@
                   <div class="reward-badge" style="padding-left: 5px;">
                      <img class="reward-cash-ico" alt="코인" src="${pageContext.request.contextPath}/resources/img/detailView/coin.png"
                         style="width: 14px; margin-bottom: 5px;"><span class="reward-cash-txt"
-                        style="padding-left: 5px;">최대 334원 적립</span>
+                        style="padding-left: 5px;">최대 ${point}원 적립</span>
                   </div>
                </div>
 

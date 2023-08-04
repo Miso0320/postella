@@ -11,7 +11,7 @@ function init() {
    shareLayer = document.getElementById("prod-share-layer");
    shareBtn.addEventListener('click', shareWindow);
    
-   // 썸네일 확대
+   /*// 썸네일 확대
      var innerFrameVisible = false;
      
      $(".thumbnail_img").mouseover(function(event) {
@@ -62,7 +62,7 @@ function init() {
      $(".thumbnail_img").mousemove(function(event) {
        var thumbnailRight = $(this).offset().left + $(this).width();
        var thumbnailTop = $(this).offset().top;
-     });
+     });*/
 
 
    // 썸네일 변경

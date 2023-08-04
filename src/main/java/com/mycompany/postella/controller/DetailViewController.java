@@ -74,13 +74,18 @@ public class DetailViewController {
 		Product topPrd = productService.getInfo(TopPrdNo);
 		
 		//원가, 세일가, 할인율 가져오기
-		int TopPrdPrice = topPrd.getPrd_org_price();
-		int TopPrdSaleprice = topPrd.getPrd_price();
-		model.addAttribute("TopPrdPrice", TopPrdPrice);
-		model.addAttribute("TopPrdSaleprice", TopPrdSaleprice);
-		double salePercent = (double)(TopPrdPrice - TopPrdSaleprice) / TopPrdPrice * 100 ;
+		int topPrdPrice = topPrd.getPrd_org_price();
+		int topPrdSaleprice = topPrd.getPrd_price();
+		model.addAttribute("TopPrdPrice", topPrdPrice);
+		model.addAttribute("TopPrdSaleprice", topPrdSaleprice);
+		double salePercent = (double)(topPrdPrice - topPrdSaleprice) / topPrdPrice * 100 ;
 		int intSalePercent = (int)salePercent;
 		model.addAttribute("intSalePercent", intSalePercent);
+		
+		//적립금 가져오기
+		double dpoint = topPrdSaleprice * 0.01;
+		int point = (int) dpoint;
+		model.addAttribute("point", point);
 		
 		//배송 예정일 가져오기
 		LocalDate today = LocalDate.now();
