@@ -27,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class DetailViewController {
+	//테스트
 	@Autowired
 	private ImageService imageService;
 	
