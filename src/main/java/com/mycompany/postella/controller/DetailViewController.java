@@ -95,7 +95,21 @@ public class DetailViewController {
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
 		//상품 옵션 목록 가져오기
-		//List<product> optionList = productService.getOptions(pg_no);
+		List<Product> optionList = productService.getOptions(pg_no);
+		Image optionImg; 
+		int OptionPrd_no;
+		
+		for(int i=0; i < optionList.size(); i++) {
+			OptionPrd_no = optionList.get(i).getPrd_no();
+			optionImg = imageService.getImageByPrdNo(OptionPrd_no);
+			if(optionImg.getImg_file() != null) {
+				optionList.get(i).setEncodedFile(Base64.getEncoder().encodeToString(optionImg.getImg_file()));
+			}
+		}
+		Product selectedOption = optionList.get(0);
+	
+		model.addAttribute("options", optionList);
+		model.addAttribute("selectedOption", selectedOption);
 		
 		return "detailView/detailView";
 	}

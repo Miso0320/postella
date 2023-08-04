@@ -143,77 +143,37 @@
                   <button class="prod-option-btn" id="prod-option-btn">
                      <div class="op_btn_left_right">
                         <div class="op_btn_text">
-                           <div class="title" style="text-align: left;">색상 × 수량</div>
+                           <div class="title" style="text-align: left;">색상</div>
                            <div class="op_btn_set">
                               <span class="value " style="width: auto; padding: 2px;">
-                                 01.Like It Carrot 라이크잇 캐롯 묶음 × 2세트 </span>
+                                 ${selectedOption.prd_name}</span>
                            </div>
                         </div>
                         <div class="op_btn_imgset">
                            <span class="op_img"> 
-                                 <img class="thumbnail" id="op-thumbnai" alt="상품사진" src="${pageContext.request.contextPath}/resources/img/detailView/post_list2.PNG" style="width: 38px; height: 38px; padding-right: 2px"/>
+                                 <img class="thumbnail" id="op-thumbnai" alt="상품사진" src="data:${selectedOption.img_type};base64, ${selectedOption.encodedFile}" style="width: 38px; height: 38px; padding-right: 2px"/>
                                  <img class="dropdown-icon" alt="아래화살표" src="${pageContext.request.contextPath}/resources/img/detailView/arrow_down.png"/>
                            </span>
                         </div>
                      </div>
                   </button>
                   <div class="op-btn-list" id="op-btn-list">
-                     <a class="op-list-content" id="op1">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>네온블루 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">16,900</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
-                     <a class="op-list-content" id="op2">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>파스텔 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">12,000</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
-                     <a class="op-list-content" id="op3">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>그레이 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">10,900</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
-                     <a class="op-list-content" id="op4">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>오렌지 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">11,500</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
+                  <c:forEach var="option" items="${options}">
+	                    <a class="op-list-content">
+	                       <div class="prod-option-dropdown-item-left">
+	                           <img src="data:${option.img_type};base64, ${option.encodedFile}" width="38px" height="38px">
+	                       </div>
+	                       <div class="prod-option-dropdown-item-right">
+	                          <div class="prod-option__dropdown-item-title"><strong>${option.prd_name}</strong></div>
+	                          <div class="prod-option__dropdown-item-price">
+	                               <strong><span class="price-label">${option.prd_price}</span> 원</strong>
+	                          </div>
+	                          <div class="prod-option-dropdown-item-delivery">
+	                             <em class="dropdown-item-delivery-text">${deliverDay}</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
+	                          </div>
+	                       </div>
+	                    </a>
+                    </c:forEach>
                   </div>
                </div>
 

@@ -23,5 +23,11 @@
         order by img_no
 	</select>
 	
+	<select id="selectByPrdNo" parameterType="int" resultType="Img">
+		select *
+		from image
+		where prd_no=#{prd_no} and ROWNUM=1 and img_use='THM'
+        order by img_no
+	</select>
 	
 </mapper>

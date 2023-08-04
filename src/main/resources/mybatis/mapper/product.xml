@@ -7,6 +7,12 @@
 		from product
 		where prd_no = ${prd_no}
 	</select>
+	
+	<select id="selectAllByPgNo" parameterType="int" resultType="Product">
+		SELECT *
+		from product
+		where pg_no = ${pg_no}
+	</select>
 
 
 </mapper>
