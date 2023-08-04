@@ -64,10 +64,16 @@ public class DetailViewController {
 		String title = productGroupService.getTitle(pg_no);
 		model.addAttribute("title", title);
 		
-		//리뷰수, 상품명, 가격 가져오기
-		int prd_no = imgList.get(0).getPrd_no();
-		Product prd = productService.getInfo(pg_no);
-		
+		//원가, 세일가, 할인율 가져오기
+		int TopPrdNo = imgList.get(0).getPrd_no();
+		Product topPrd = productService.getInfo(TopPrdNo);
+		int TopPrdPrice = topPrd.getPrd_org_price();
+		int TopPrdSaleprice = topPrd.getPrd_price();
+		model.addAttribute("TopPrdPrice", TopPrdPrice);
+		model.addAttribute("TopPrdSaleprice", TopPrdSaleprice);
+		double salePercent = (double)(TopPrdPrice - TopPrdSaleprice) / TopPrdPrice * 100 ;
+		int intSalePercent = (int)salePercent;
+		model.addAttribute("intSalePercent", intSalePercent);
 		
 		return "detailView/detailView";
 	}

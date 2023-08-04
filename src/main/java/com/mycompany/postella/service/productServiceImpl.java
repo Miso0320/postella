@@ -13,14 +13,8 @@ public class productServiceImpl implements productService {
 	private ProductDao productDao;
 	
 	@Override
-	public String getTitle(int pg_no) {
-		String title = productDao.selectByPgNo(pg_no);
-	    return title;
-	}
-	
-	@Override
-	public Product getInfo(int pg_no) {
-		// TODO Auto-generated method stub
-		return null;
+	public Product getInfo(int prd_no) {
+		Product prd = productDao.selectByPrdNo(prd_no);
+		return prd;
 	}
 }

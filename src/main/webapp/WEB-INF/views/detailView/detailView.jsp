@@ -87,9 +87,9 @@
 
                <div class="prod-price-container">
                   <div class="prod-origin-price">
-                     <span class="disrev-cnt-rate" style="font-size: 14px;">64%</span>
+                     <span class="disrev-cnt-rate" style="font-size: 14px; color: #cb1400;">${intSalePercent}%</span>
                      <a class="origin-price" href="#"> 
-                        <span id="basic-price">18900</span>
+                        <span id="basic-price">${TopPrdPrice}</span>
                         <span>원</span>
                         <img alt="워닝" src="${pageContext.request.contextPath}/resources/img/detailView/warning.png" style="width: 14px; height: 14px;"/>
                      </a>
@@ -99,9 +99,10 @@
                     
                   <div class="prod-coupon-price price-align major-price-coupon">
                      <span class="total-price" style="color: #cb1400;"> 
-                     <strong id="final-price">6670</strong>
+                     <strong id="final-price">${TopPrdSaleprice}</strong>
                      <strong>원</strong>
-                     </span> <span class="price-krtext" style="color: #cb1400;">포스텔라 할인가</span>
+                     </span> 
+                     <span class="price-krtext" style="color: #cb1400;">포스텔라 할인가</span>
                   </div>
 
                   <div class="reward-badge" style="padding-left: 5px;">
