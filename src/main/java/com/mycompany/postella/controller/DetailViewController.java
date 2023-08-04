@@ -58,7 +58,6 @@ public class DetailViewController {
 		
 		//리뷰 개수 불러오기
 		int revCnt = odetailService.countReview(pg_no);
-		log.info("리뷰수: "+revCnt);
 		model.addAttribute("revCnt", revCnt);
 		
 		//상품명 불러오기

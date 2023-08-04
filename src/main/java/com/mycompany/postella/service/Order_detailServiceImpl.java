@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.postella.dao.Order_detailDao;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class Order_detailServiceImpl implements Order_detailService{
 	
@@ -20,6 +23,6 @@ public class Order_detailServiceImpl implements Order_detailService{
 	@Override
 	public int countReview(int pg_no) {
 		int cnt = oder_detailDao.selectReviewCnt(pg_no);
-		return 0;
+		return cnt;
 	}
 }
