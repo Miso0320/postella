@@ -15,7 +15,6 @@ public interface ProductGroupDao {
 	/*	public int insert(Product product);
 	public Product selectBypg_no(int pg_no);*/
 	
-
 	public List<Image> selectByPgNo(int pg_no);
 
 	public String selectTitleByPgNo(int pg_no);

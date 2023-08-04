@@ -94,6 +94,8 @@ public class DetailViewController {
 		String StrDeliverDay = fomatter.format(deliverDay);
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
+		//상품 옵션 목록 가져오기
+		//List<product> optionList = productService.getOptions(pg_no);
 		
 		return "detailView/detailView";
 	}

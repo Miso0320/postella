@@ -21,4 +21,6 @@ public class Product {
 	private String prd_yn; //판매여부
 	private int prd_star_avg; //상품 당 평균 별점, 범위  0~5
 	private int pg_no; //상품 대분류 식별번호
+	private String img_type;
+	private String encodedFile;
 }
