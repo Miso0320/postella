@@ -13,6 +13,8 @@ import com.mycompany.postella.service.JoinService.JoinResult;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+// 깃허브 충돌확인
 @Slf4j
 @Controller
 public class JoinController {
