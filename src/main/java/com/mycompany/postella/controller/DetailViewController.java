@@ -1,7 +1,12 @@
 package com.mycompany.postella.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,9 +69,11 @@ public class DetailViewController {
 		String title = productGroupService.getTitle(pg_no);
 		model.addAttribute("title", title);
 		
-		//원가, 세일가, 할인율 가져오기
+		//대표 Product 객체의 정보 가져오기
 		int TopPrdNo = imgList.get(0).getPrd_no();
 		Product topPrd = productService.getInfo(TopPrdNo);
+		
+		//원가, 세일가, 할인율 가져오기
 		int TopPrdPrice = topPrd.getPrd_org_price();
 		int TopPrdSaleprice = topPrd.getPrd_price();
 		model.addAttribute("TopPrdPrice", TopPrdPrice);
@@ -74,6 +81,14 @@ public class DetailViewController {
 		double salePercent = (double)(TopPrdPrice - TopPrdSaleprice) / TopPrdPrice * 100 ;
 		int intSalePercent = (int)salePercent;
 		model.addAttribute("intSalePercent", intSalePercent);
+		
+		//배송 예정일 가져오기
+		LocalDate today = LocalDate.now();
+		LocalDate deliverDay = today.plusDays(2);
+		DateTimeFormatter fomatter = DateTimeFormatter.ofPattern("MM/dd");
+		String StrDeliverDay = fomatter.format(deliverDay);
+		model.addAttribute("deliverDay", StrDeliverDay);
+		
 		
 		return "detailView/detailView";
 	}

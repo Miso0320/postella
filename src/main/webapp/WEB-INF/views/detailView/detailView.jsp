@@ -118,12 +118,11 @@
                      <span> <em class="shipping-text"
                         style="font-weight: bold; font-style: normal;">무료배송</em> <em
                         class="shipping-condition" style="font-style: normal;">(같은
-                           판매자 상품 9,800원 이상 구매 시)</em></span>
+                           판매자 상품 50,000원 이상 구매 시)</em></span>
                   </div>
 
                   <div class="prod-arrival-container">
-                     <em class="arrival-day" style="font-style: normal;">모레(금)
-                        6/23</em> <em class="arrival-text" style="font-style: normal;">
+                     <em class="arrival-day" style="font-style: normal;">${deliverDay}</em> <em class="arrival-text" style="font-style: normal;">
                         도착 예정</em>
                   </div>
                </div>
