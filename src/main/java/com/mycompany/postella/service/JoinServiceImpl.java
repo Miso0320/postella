@@ -20,11 +20,16 @@ public class JoinServiceImpl implements JoinService {
 
 	@Override
 	public JoinResult joinUsers(Users users) {
-		Users dbUsers = usersDao.selectByNo(users.getUs_no());
-		log.info("dbUsers : " + dbUsers);
+		// 이메일 중복 여부 확인
+		if(usersDao.selectEmail(users.getUs_email()) != null) {
+			log.info("아이디 중복 : " + usersDao.selectEmail(users.getUs_email()));
+			return JoinResult.FAIL_EMAIL;
+		}
 		
-		if (dbUsers != null) {
-			return JoinResult.FAIL;
+		// 전화번호 중복 여부 확인
+		if(usersDao.selectTel(users.getUs_tel()) != null) {
+			log.info("전화번호 중복 : " + usersDao.selectTel(users.getUs_tel()));
+			return JoinResult.FAIL_TEL;
 		}
 		
 		// 비밀번호 인코딩

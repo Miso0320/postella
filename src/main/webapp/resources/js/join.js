@@ -233,7 +233,7 @@ function marketingCheckAll() {
 
 // 유효성 검사
 function checkValidation() {
-	let isValidation = false;
+	let isValidation = true;
 	
 	//이메일(아이디) 검사
 	checkEmail();
@@ -342,9 +342,9 @@ function checkValidation() {
 	}
 	
 	// 유효성 검사가 실패되었을 때 폼의 제출 기능을 중지
-	/*if(!isValidation) {
+	if(!isValidation) {
 		event.preventDefault();
-	}*/
+	}
 }
 
 
