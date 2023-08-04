@@ -86,9 +86,9 @@
 
                <div class="prod-price-container">
                   <div class="prod-origin-price">
-                     <span class="disrev-cnt-rate" style="font-size: 14px;">64%</span>
+                     <span class="disrev-cnt-rate" style="font-size: 14px; color: #cb1400;">${intSalePercent}%</span>
                      <a class="origin-price" href="#"> 
-                        <span id="basic-price">18900</span>
+                        <span id="basic-price">${TopPrdPrice}</span>
                         <span>원</span>
                         <img alt="워닝" src="${pageContext.request.contextPath}/resources/img/detailView/warning.png" style="width: 14px; height: 14px;"/>
                      </a>
@@ -102,16 +102,21 @@
 
                   <div class="prod-coupon-price price-align major-price-coupon">
                      <span class="total-price" style="color: #cb1400;"> 
-                     <strong id="final-price">6670</strong>
+                     <strong id="final-price">${TopPrdSaleprice}</strong>
                      <strong>원</strong>
+<<<<<<< HEAD
                      </span> <span class="price-krtext" style="color: #cb1400;">즉시할인가</span>
+=======
+                     </span> 
+                     <span class="price-krtext" style="color: #cb1400;">포스텔라 할인가</span>
+>>>>>>> refs/heads/song
                   </div>
 
                   <div class="reward-badge" style="padding-left: 5px;">
                      <!-- 미소 - img 태그의 margin-bottom 속성이 수정됐어요! -->
                      <img class="reward-cash-ico" alt="코인" src="${pageContext.request.contextPath}/resources/img/detailView/coin.png"
                         style="width: 14px; margin-bottom: 5px;"><span class="reward-cash-txt"
-                        style="padding-left: 5px;">최대 334원 적립</span>
+                        style="padding-left: 5px;">최대 ${point}원 적립</span>
                   </div>
                </div>
 
@@ -121,12 +126,11 @@
                      <span> <em class="shipping-text"
                         style="font-weight: bold; font-style: normal;">무료배송</em> <em
                         class="shipping-condition" style="font-style: normal;">(같은
-                           판매자 상품 9,800원 이상 구매 시)</em></span>
+                           판매자 상품 50,000원 이상 구매 시)</em></span>
                   </div>
 
                   <div class="prod-arrival-container">
-                     <em class="arrival-day" style="font-style: normal;">모레(금)
-                        6/23</em> <em class="arrival-text" style="font-style: normal;">
+                     <em class="arrival-day" style="font-style: normal;">${deliverDay}</em> <em class="arrival-text" style="font-style: normal;">
                         도착 예정</em>
                   </div>
                </div>
@@ -177,62 +181,23 @@
                      </div>
                   </button>
                   <div class="op-btn-list" id="op-btn-list">
-                     <a class="op-list-content" id="op1">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>네온블루 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">16,900</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
-                     <a class="op-list-content" id="op2">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>파스텔 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">12,000</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
-                     <a class="op-list-content" id="op3">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>그레이 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">10,900</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
-                     <a class="op-list-content" id="op4">
-                        <div class="prod-option-dropdown-item-left">
-                                     <img src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" width="38px" height="38px">
-                                 </div>
-                               <div class="prod-option-dropdown-item-right">
-                                  <div class="prod-option__dropdown-item-title"><strong>오렌지 × 1세트</strong></div>
-                                  <div class="prod-option__dropdown-item-price">
-                                       <strong><span class="price-label">11,500</span> 원</strong>
-                                  </div>
-                                  <div class="prod-option-dropdown-item-delivery">
-                                     <em class="dropdown-item-delivery-text">내일(목) 7/6</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
-                                  </div>
-                               </div>
-                     </a>
+                     <%-- <c:forEach var="option" items="${options}"> 
+	                     <a class="op-list-content">
+	                        <div class="prod-option-dropdown-item-left">
+	                            <img src="data:${thmImg.img_type};base64, ${option.encodedFile}" width="38px " height="38px">
+	                        </div>
+	                      <div class="prod-option-dropdown-item-right">
+	                         <div class="prod-option__dropdown-item-title"><strong>${option}</strong></div>
+	                         <div class="prod-option__dropdown-item-price">
+	                              <strong><span class="price-label">${option}</span> 원</strong>
+	                         </div>
+	                         <div class="prod-option-dropdown-item-delivery">
+	                            <em class="dropdown-item-delivery-text"> ${deliverDay}</em><em class="dropdown-item-delivery-text"> 도착 보장</em>
+	                         </div>
+	                      </div>
+	                     </a>
+                     </c:forEach>
+                     --%>
                   </div>
                </div>
 

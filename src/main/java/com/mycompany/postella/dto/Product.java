@@ -12,7 +12,6 @@ public class Product {
 	private String prd_name; //상품이름
 	private int prd_org_price; //정상가
 	private int prd_price; //판매가
-	private Date prd_expected_date; //도착 예정일
 	private String prd_content; //상품 상세 페이지 내용(텍스트)
 	private int prd_stock; //재고
 	private int prd_ship_fee; //배송비

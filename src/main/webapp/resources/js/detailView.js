@@ -1,4 +1,3 @@
-/* **백업*************** 백업용 진짜 파일 ***************백업** */
 $(init);
 
 function init() {
@@ -12,7 +11,7 @@ function init() {
    shareLayer = document.getElementById("prod-share-layer");
    shareBtn.addEventListener('click', shareWindow);
    
-   // 썸네일 확대
+   /*// 썸네일 확대
      var innerFrameVisible = false;
      
      $(".thumbnail_img").mouseover(function(event) {
@@ -63,7 +62,7 @@ function init() {
      $(".thumbnail_img").mousemove(function(event) {
        var thumbnailRight = $(this).offset().left + $(this).width();
        var thumbnailTop = $(this).offset().top;
-     });
+     });*/
 
 
    // 썸네일 변경
@@ -79,15 +78,12 @@ function init() {
    
    //가격 포맷
    pPrice = $("#basic-price").html();
-   cPrice = $("#cou-price").html();
    fPrice = $("#final-price").html();
    orgPprice = parseInt(pPrice, 10);
-   orgCprice = parseInt(cPrice, 10);
    orgFprice = parseInt(fPrice, 10);
    $(formPrice);
    function formPrice() {
        document.getElementById("basic-price").innerHTML = pPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-       document.getElementById("cou-price").innerHTML = cPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
        document.getElementById("final-price").innerHTML = fPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
    }
     
@@ -97,7 +93,6 @@ function init() {
    $("#cnt-plus").click(function() {
       finCnt++;
       pPrice = orgPprice * finCnt;
-      cPrice = orgCprice * finCnt;
       fPrice = orgFprice * finCnt;
       $(".prod-quantity-input").attr("value", finCnt.toString());
       $(formPrice);
@@ -106,7 +101,6 @@ function init() {
       if (finCnt > 1) {
          finCnt--;
          pPrice -= orgPprice;
-         cPrice -= orgCprice;
          fPrice -= orgFprice;
          $(".prod-quantity-input").attr("value", finCnt.toString());
          $(formPrice);
