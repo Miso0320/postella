@@ -1,6 +1,8 @@
 package com.mycompany.postella.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.postella.dao.UsersDao;
@@ -18,17 +20,25 @@ public class JoinServiceImpl implements JoinService {
 
 	@Override
 	public JoinResult joinUsers(Users users) {
-		Users dbUsers = usersDao.selectByNo(users.getUs_no());
-		log.info("dbUsers : " + dbUsers);
-		
-		if (dbUsers != null) {
-			return JoinResult.FAIL;
+		// 이메일 중복 여부 확인
+		if(usersDao.selectEmail(users.getUs_email()) != null) {
+			log.info("아이디 중복 : " + usersDao.selectEmail(users.getUs_email()));
+			return JoinResult.FAIL_EMAIL;
 		}
 		
-		// 비밀번호 인코딩 추가 필요
+		// 전화번호 중복 여부 확인
+		if(usersDao.selectTel(users.getUs_tel()) != null) {
+			log.info("전화번호 중복 : " + usersDao.selectTel(users.getUs_tel()));
+			return JoinResult.FAIL_TEL;
+		}
 		
-		users.setUs_sleep("Y");
-		users.setUs_withdrawal("Y");
+		// 비밀번호 인코딩
+		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		users.setUs_password(passwordEncoder.encode(users.getUs_password()));
+		
+		// NULL 방지용 기본값 설정
+		users.setUs_sleep("N");
+		users.setUs_withdrawal("N");
 		
 		usersDao.insert(users);
 		return JoinResult.SUCCESS;

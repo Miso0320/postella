@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.UsersDao">
 	
+	<!-- 회원가입 -->
 	<insert id="insert" parameterType="Users">
 		insert into users (us_no, us_email, us_password, us_name, us_tel, us_nickname, us_insertdate, us_sleep, us_withdrawal, us_point ) values
 	    (
@@ -11,10 +12,16 @@
 		)
 	</insert>
 	
-	<select id="selectByNo" parameterType="int" resultType="Users">
-		select us_no, us_email, us_password, us_name, us_tel, us_nickname, us_insertdate, us_sleep, us_withdrawal, us_point
-		from users
-		where us_no = #{us_no}
+	<!-- 이메일 중복 여부 확인 -->
+	<select id="selectEmail" parameterType="String" resultType="Users">
+		select * from users 
+		where us_email = #{us_email}
+	</select>
+	
+	<!-- 전화번호 중복 여부 확인 -->
+	<select id="selectTel" parameterType="String" resultType="Users">
+		select * from users 
+		where us_tel = #{us_tel}
 	</select>
 	
 </mapper>

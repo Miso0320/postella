@@ -26,7 +26,11 @@
 /* 공통코드 - 유효성 검사 관련 */
 .errorMsg {
 	display: none;
-	/* display: block; */
+	color: #e52528;
+	font-size: 11px;
+}
+
+.errorMsgDb {
 	color: #e52528;
 	font-size: 11px;
 }
@@ -165,7 +169,7 @@ header {
 }
 
 .agree_btn input {
-	background-color: #0074e9;
+	background-color: #60b0ea;
     color: white;
     padding: 16px 17px;
     font-size: 17px;
@@ -173,6 +177,7 @@ header {
     padding-right: 0;
     width: 100%;
     border: none;
+    font-weight: bold;
 }
 
 

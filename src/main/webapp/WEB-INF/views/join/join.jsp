@@ -37,12 +37,15 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_email.JPG" >
 								</div>
 								<label for="us_email">
-									<input type="text" placeholder="아이디(이메일)" id="email" name="us_email">
+									<input type="text" placeholder="아이디(이메일)" id="email" name="us_email" value="${users.us_email}">
 								</label>
 								<img class="blue_check" id="blue_check_email" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>
 							<span id="emailErr1" class="errorMsg">이메일을 입력하세요.</span>
 							<span id="emailErr2" class="errorMsg">이메일을 올바르게 입력해주세요.</span>
+							<c:if test="${errorEmail != null}">
+								<span class="errorMsgDb"> ${errorEmail}</span>
+							</c:if>
 						</div>
 						
 						<!-- 비밀번호 입력 -->
@@ -52,7 +55,7 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_pw.JPG">
 								</span>
 								<label for="us_password">
-									<input type="text" placeholder="비밀번호" id="pwd1" name="us_password">
+									<input type="text" placeholder="비밀번호" id="pwd1" name="us_password" value="${users.us_password}">
 								</label>
 								<img class="blue_check" id="blue_check_pwd" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>
@@ -68,7 +71,7 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_pw_chk.JPG">
 								</span>
 								<label>
-									<input type="text" placeholder="비밀번호 확인" id="pwd2">
+									<input type="text" placeholder="비밀번호 확인" id="pwd2" value="${users.us_password}">
 								</label>
 								<img class="blue_check" id="blue_check_pwd_chk" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>
@@ -82,7 +85,7 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_name.JPG">
 								</span>
 								<label for="us_name">
-									<input type="text" placeholder="이름" id="uname" name="us_name">
+									<input type="text" placeholder="이름" id="uname" name="us_name" value="${users.us_name}">
 								</label>
 								<img class="blue_check" id="blue_check_name" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>
@@ -96,11 +99,14 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_phone.JPG">
 								</span>
 								<label for="us_tel">
-									<input type="text" placeholder="휴대폰 번호" id="phone" name="us_tel">
+									<input type="text" placeholder="휴대폰 번호" id="phone" name="us_tel" value="${users.us_tel}">
 								</label>
 								<img class="blue_check" id="blue_check_phone" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>
 							<span id="numErr" class="errorMsg">휴대폰 번호를 정확하게 입력하세요.</span>
+							<c:if test="${errorTel != null}">
+								<span class="errorMsgDb"> ${errorTel}</span>
+							</c:if>
 						</div>
 					</div>
 						
@@ -125,7 +131,7 @@
 								</div>
 								<div class="check_element agree_img">
 									<div>
-										<input type="checkbox" class="requiredAgree" id="requiredAgree2" name="checkBox"><label for="checkbox"> [필수] 쿠팡 이용약관 동의</label>
+										<input type="checkbox" class="requiredAgree" id="requiredAgree2" name="checkBox"><label for="checkbox"> [필수] 포스텔라 이용약관 동의</label>
 									</div>
 									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
 								</div>
@@ -161,13 +167,10 @@
 								</div>
 								<div class="check_element adv_accept">
 									<div>
-										<input type="checkbox" class="marketing_check" name="checkBox"><label for="checkAll"> [선택] 광고성 정보 수신 동의</label>
+										<input type="checkbox" class="marketing_check" name="checkBox"><label for="checkAll"> [선택] 이메일 수신 동의</label>
 									</div>
 									<div>
-										<input type="checkbox" class="marketing_check" name="checkBox"><label for="checkAll"> [선택] 광고성 정보 수신 동의</label>
-									</div>
-									<div>
-										<input type="checkbox" class="marketing_check" name="checkBox"><label for="checkAll"> [선택] 광고성 정보 수신 동의</label>
+										<input type="checkbox" class="marketing_check" name="checkBox"><label for="checkAll"> [선택] SMS, SNS 수신동의</label>
 									</div>
 								</div>
 							</div>
@@ -188,7 +191,7 @@
 			</div>
 			<!-- footer -->
 			<footer class="join_footer">
-				<div>©Coupang Corp. All rights reserved.</div>
+				<div>©POSTELLA Corp. All rights reserved.</div>
 			</footer>
 		</div>
 	</body>

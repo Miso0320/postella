@@ -30,21 +30,20 @@ public class JoinController {
 
 	@PostMapping("/join")
 	public String join(Users users, Model model) {
+		JoinResult result = joinService.joinUsers(users);
+		log.info("result : " + result);
 		
-		/*JoinResult result = joinService.joinUsers(users);
-		
-		if(result == JoinResult.FAIL) {
-			String error = "중복된 ID가 존재합니다.";
-			model.addAttribute("error", error);
+		if(result == JoinResult.FAIL_EMAIL) {
+			String errorEmail = "이미 가입된 이메일입니다.";
+			model.addAttribute("errorEmail", errorEmail);
+			return "join/join";
+		} else if(result == JoinResult.FAIL_TEL) {
+			String errorTel = "이미 가입된 전화번호입니다.";
+			model.addAttribute("errorTel", errorTel);
 			return "join/join";
 		} else {
 			joinService.joinUsers(users);
-			return "redirect:/productGroup/productGroup";						
-		}*/
-		
-		joinService.joinUsers(users);
-		
-		return "redirect:/productGroup";	
+			return "redirect:/productGroup";	
+		}
 	}
-
 }
