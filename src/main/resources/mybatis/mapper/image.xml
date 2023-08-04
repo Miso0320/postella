@@ -16,11 +16,12 @@
 		where pg_no=#{pg_no}
 	</select>
 	
-	<!-- <select id="selectByPgNo2" parameterType="int" resultType="Img">
+	<select id="selectByPgNo2" parameterType="int" resultType="Img">
 		select *
 		from image
-		where pg_no=#{pg_no}
-	</select> -->
+		where pg_no=#{pg_no} and ROWNUM=1 and img_use='THM'
+        order by img_no
+	</select>
 	
 	
 </mapper>

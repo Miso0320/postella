@@ -26,4 +26,9 @@ public class ImageServiceImpl implements ImageService{
 	      return imgs;
 	}
 	
+	@Override
+	public Image getImageByPgNo(int pg_no) {
+		Image img = imageDao.selectByPgNo2(pg_no);
+		return img;
+	}
 }

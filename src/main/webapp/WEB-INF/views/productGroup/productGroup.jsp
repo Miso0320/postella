@@ -271,7 +271,7 @@
 						<c:forEach var="productGroup" items="${productGroups}">
 									<a href="detailView" class="pproduct">
 											<tr>
-												
+												<img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}">
 												<td>${productGroup.pg_no}</td>
 												<td>${productGroup.pg_name}</td>
 											</tr>

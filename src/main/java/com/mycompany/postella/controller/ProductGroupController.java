@@ -53,13 +53,27 @@ public class ProductGroupController {
 		ProductGroupPager pager = new ProductGroupPager(10, 10, totalProductGroupNum, intpageNo);
 		List<ProductGroup> list = productGroupService.getList(pager);
 		
+		for(int i = 0; i < list.size(); i++) {
+			int pgNo = list.get(i).getPg_no();
+			Image img = imageService.getImageByPgNo(pgNo);
+			if(img != null) {
+				
+				//log.info("리스트 : " + list.get(i).getPg_no());
+				
+				String type = img.getImg_type();
+				String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
+				//log.info("가져온거 :" + img.getImg_type());		
+				
+				list.get(i).setEncodedFile(imgFile);
+				list.get(i).setImg_type(type);
+			}
+			
+
+	      }
+		
 		model.addAttribute("pager", pager);
 		model.addAttribute("productGroups", list);
 		
-		for(int i = 0; i < list.size(); i++) {
-	         log.info("리스트 : " + list.get(i).getPg_no());
-			
-	      }
 		
 		
 		
