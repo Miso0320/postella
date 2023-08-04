@@ -30,4 +30,10 @@
         order by img_no
 	</select>
 	
+	<select id="selectAllByPrdNo" parameterType="int" resultType="Img">
+		select *
+		from image
+		where prd_no=#{prd_no}
+	</select>
+	
 </mapper>

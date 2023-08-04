@@ -948,6 +948,7 @@ td {
 
 .prod-inquiry-list {
    border: 1px solid #ddd;
+       margin-top: 80px;
    background: #fff;
 }
 .prod-inquiry-header {

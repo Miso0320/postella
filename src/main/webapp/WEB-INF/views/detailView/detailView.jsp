@@ -14,7 +14,7 @@
    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>      
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>      
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-   <link rel="stylesheet" href="header.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
    <script src="${pageContext.request.contextPath}/resources/js/detailView.js"></script>
 </head>
@@ -159,7 +159,7 @@
                   </button>
                   <div class="op-btn-list" id="op-btn-list">
                   <c:forEach var="option" items="${options}">
-	                    <a class="op-list-content">
+	                    <a class="op-list-content" href="setDetailPage?prdNo=${option.prd_no}">
 	                       <div class="prod-option-dropdown-item-left">
 	                           <img src="data:${option.img_type};base64, ${option.encodedFile}" width="38px" height="38px">
 	                       </div>
@@ -260,236 +260,165 @@
                            <span id="seemore-arrow"></span>
                         </button>
                     </div>
-               <div id="recommendation-howabout" class="recommendation">
-                  <div class="recommendation-header">
-                     <div class="recommendation-header-title">이런 상품은 어때요?</div>
-                  </div>
-                  <div class="recommendation-inner">
-                     <ul class="recommendation-list">
-                        <li><a href="img/p1.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">LAVERTON 인테리어 엽서
-                                       자석고리 골드(후크)+ 30장1세트+양면테이프(50개)+라운드스티커1개(랜덤) 포함</strong>>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">2,670</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(21)</span>
-                                 </div>
+               
+               <div id="recommendation-compare" class="recommendation">
+            <div class="recommendation-header">
+               <div class="recommendation-header-title">함께 비교하면 좋을 상품</div>
+               <span class="recommendation-header-ad"> 광고 <img
+                  class="recommendation-header-warn" alt="주의" src="${pageContext.request.contextPath}/resources/img/detailView/warning.png"
+                  style="width: 14px"></img>
+               </span>
+            </div>
+            <div class="recommendation-inner">
+               <div class="recommendation-listNbtn">
+               <div class="reco-btn" id="prev"></div>  
+               <div class="reco-btn" id="next"></div>
+                  <ul class="recommendation-list">
+                     <li><a href="img/p1.jpg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
                               </div>
-                        </a></li>
-                        <li><a href="img/p2.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">컬러링 엽서책 2000</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">1,600</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(15)</span>
-                                 </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">LAVERTON 인테리어 엽서 자석고리
+                                    골드(후크)+ 30장1세트+양면테이프(50개)+라운드스티커1개(랜덤) 포함</strong>>
                               </div>
-                        </a></li>
-                        <li><a href="img/p3.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
-                                       20종+원형스티커 세트 - 스카이블루 / 촬영소품 카페 감성 엽서 일러스트 벽장식</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">9,900</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(12)</span>
-                                 </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">2,670</em>원</span>
                               </div>
-                        </a></li>
-                        <li><a href="img/p4.jpeg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
-                                       윈슬로호머 존싱어사전트 30장 엽서셋트 명화 엽서</strong>>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">6,670</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(21)</span>
-                                 </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
+                                 <span class="star-rating">(21)</span>
                               </div>
-                        </a></li>
-                        <li><a href="img/p5.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
-                                       세트</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">4,900</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(11)</span>
-                                 </div>
+                           </div>
+                     </a></li>
+                     <li><a href="img/p2.jpg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
                               </div>
-                        </a></li>
-                        <li><a href="img/p6.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">2,500</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(18)</span>
-                                 </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">컬러링 엽서책 2000</strong>
                               </div>
-                        </a></li>
-                     </ul>
-                  </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">1,600</em>원</span>
+                              </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
+                                 <span class="star-rating">(15)</span>
+                              </div>
+                           </div>
+                     </a></li>
+                     <li><a href="img/p3.jpg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
+                              </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
+                                    20종+원형스티커 세트 - 스카이블루 / 촬영소품 카페 감성 엽서 일러스트 벽장식</strong>
+                              </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">9,900</em>원</span>
+                              </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
+                                 <span class="star-rating">(12)</span>
+                              </div>
+                           </div>
+                     </a></li>
+                     <li><a href="img/p4.jpeg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
+                              </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
+                                    윈슬로호머 존싱어사전트 30장 엽서셋트 명화 엽서</strong>>
+                              </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">6,670</em>원</span>
+                              </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
+                                 <span class="star-rating">(21)</span>
+                              </div>
+                           </div>
+                     </a></li>
+                     <li><a href="img/p5.jpg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
+                              </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
+                                    세트</strong>
+                              </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">4,900</em>원</span>
+                              </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
+                                 <span class="star-rating">(11)</span>
+                              </div>
+                           </div>
+                     </a></li>
+                     <li><a href="img/p6.jpg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
+                              </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
+                              </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">2,500</em>원</span>
+                              </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
+                                 <span class="star-rating">(18)</span>
+                              </div>
+                           </div>
+                     </a></li>
+                     <li><a href="img/p6.jpg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/post_list1.PNG" alt="엽서7">
+                              </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
+                              </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">2,500</em>원</span>
+                              </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
+                                 <span class="star-rating">(18)</span>
+                              </div>
+                           </div>
+                     </a></li>
+                     <li><a href="img/p6.jpg">
+                           <div class="product">
+                              <div class="img">
+                                 <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/post_list3.PNG" alt="엽서8">
+                              </div>
+                              <div class="rec-item-text">
+                                 <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
+                              </div>
+                              <div class="rec-item-price">
+                                 <span><em style="font-style: normal;">2,500</em>원</span>
+                              </div>
+                              <div class="rec-item-review">
+                                 <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
+                                 <span class="star-rating">(18)</span>
+                              </div>
+                           </div>
+                     </a></li>
+                  </ul>
+                  
                </div>
-               <div id="recommendation-together" class="recommendation">
-                  <div class="recommendation-header">
-                     <div class="recommendation-header-title">다른 고객이 함께 본 상품</div>
-                  </div>
-                  <div class="recommendation-inner">
-                     <ul class="recommendation-list">
-                        <li><a href="img/p1.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">LAVERTON 인테리어 엽서
-                                       자석고리 골드(후크)+ 30장1세트+양면테이프(50개)+라운드스티커1개(랜덤) 포함</strong>>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">2,670</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(21)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p2.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">컬러링 엽서책 2000</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">1,600</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(15)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p3.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
-                                       20종+원형스티커 세트 - 스카이블루 / 촬영소품 카페 감성 엽서 일러스트 벽장식</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">9,900</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(12)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p4.jpeg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
-                                       윈슬로호머 존싱어사전트 30장 엽서셋트 명화 엽서</strong>>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">6,670</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(21)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p5.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
-                                       세트</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">4,900</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(11)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p6.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">2,500</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(18)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                     </ul>
-                  </div>
-               </div>
+            </div>
+         </div>
 
                <div class="review-list-container">
                   <div class="review-tab-container" id="review-tab-container">
@@ -579,124 +508,7 @@
                      </article>
                   </section>
                </div>
-               <div id="recommendation-good" class="recommendation">
-                  <div class="recommendation-header">
-                     <div class="recommendation-header-title">
-                        <span class="recommendation-4points">4점 이상</span> <span
-                           class="recommendation-4points-text">리뷰가 좋은 상품</span>
-                     </div>
-                  </div>
-                  <div class="recommendation-inner">
-                     <ul class="recommendation-list">
-                        <li><a href="img/p1.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p1.jpg" alt="엽서1">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">LAVERTON 인테리어 엽서
-                                       자석고리 골드(후크)+ 30장1세트+양면테이프(50개)+라운드스티커1개(랜덤) 포함</strong>>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">2,670</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(21)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p2.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p2.jpg" alt="엽서2">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">컬러링 엽서책 2000</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">1,600</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(15)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p3.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p3.jpg" alt="엽서3">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">[비츨] 인테리어 빈티지 페이퍼
-                                       20종+원형스티커 세트 - 스카이블루 / 촬영소품 카페 감성 엽서 일러스트 벽장식</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">9,900</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(12)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p4.jpeg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p4.jpeg" alt="엽서4">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">알폰스무하 베르메르 뭉크 폴세잔
-                                       윈슬로호머 존싱어사전트 30장 엽서셋트 명화 엽서</strong>>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">6,670</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(21)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p5.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p5.jpg" alt="엽서5">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">모노라이크 버스데이 파티 엽서 24종
-                                       세트</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">4,900</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" width="70px">
-                                    <span class="star-rating">(11)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                        <li><a href="img/p6.jpg">
-                              <div class="product">
-                                 <div class="img">
-                                    <img class="rec-item-image" src="${pageContext.request.contextPath}/resources/img/detailView/p6.jpg" alt="엽서6">
-                                 </div>
-                                 <div class="rec-item-text">
-                                    <strong class="rec-item-title">열두진주문 칭찬카드 100매</strong>
-                                 </div>
-                                 <div class="rec-item-price">
-                                    <span><em style="font-style: normal;">2,500</em>원</span>
-                                 </div>
-                                 <div class="rec-item-review">
-                                    <input type="image" src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" width="70px">
-                                    <span class="star-rating">(18)</span>
-                                 </div>
-                              </div>
-                        </a></li>
-                     </ul>
-                  </div>
-               </div>
+               
                <div class="prod-inquiry-list">
                   <div class="prod-inquiry-header">
                      <h4 class="prod-inquiry-list-title">상품문의</h4>

@@ -261,7 +261,7 @@
 				</div>
 			</div>
 			<div class="flayer2">
-				<h1><img class="flogo" src="img/coupang.png" alt="" style="width: 90px;"></h1>
+				<h1><img class="flogo" src="${pageContext.request.contextPath}/resources/img/logo.png" alt="" style="width: 90px;"></h1>
 				<div class="fseller-info">
 					<p align="left">상호명 및 호스팅 서비스 제공 : 쿠팡(주)</p>
 					<p align="left">대표이사 : 강한승,박대준</p>
@@ -301,9 +301,9 @@
 		                <br> Copyright © Coupang Corp. 2010-2022 All Rights Reserved.
 		            </p>
 		            <div class="footer-sns">
-	                	<a href="https://www.facebook.com/Coupang.korea"><img class="sns-img" src="img/facebook.png" alt="" style="width:34px; height:34px;"></a>
-	                	<a href="https://news.coupang.com/"><img class="sns-img" src="img/naverblog.png" alt="" style="width:34px; height:34px;"></a>
-	                	<a href="https://www.instagram.com/coupang/"><img class="sns-img" src="img/instagram.png" alt="" style="width:34px; height:34px;"></a>
+	                	<a href="https://www.facebook.com/Coupang.korea"><img class="sns-img" src="${pageContext.request.contextPath}/resources/img/detailView/facebook.png" alt="" style="width:34px; height:34px;"></a>
+	                	<a href="https://news.coupang.com/"><img class="sns-img" src="${pageContext.request.contextPath}/resources/img/detailView/naverblog.png" alt="" style="width:34px; height:34px;"></a>
+	                	<a href="https://www.instagram.com/coupang/"><img class="sns-img" src="${pageContext.request.contextPath}/resources/img/detailView/instagram.png" alt="" style="width:34px; height:34px;"></a>
 		            </div>
 		           
 		        </div>

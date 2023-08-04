@@ -23,7 +23,13 @@ public class ImageServiceImpl implements ImageService{
 	@Override
 	public List<Image> getImagesBypgNo(int pg_no) {
 		List<Image> imgs = imageDao.selectByPgNo(pg_no);
-	      return imgs;
+	    return imgs;
+	}
+	
+	@Override
+	public List<Image> getImagesByprdNo(int prd_no) {
+		List<Image> imgs = imageDao.selectAllByPrdNo(prd_no);
+	    return imgs;
 	}
 	
 	@Override
