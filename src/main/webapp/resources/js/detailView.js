@@ -76,6 +76,11 @@ function init() {
    dpList = document.getElementById("op-btn-list");
    dpBtn.addEventListener('click', dp_menu);
    
+   // 별점 옵션 드롭다운
+   starBtn = document.getElementById("review-star-List-btn");
+   starList = document.getElementById("star-list");
+   starBtn.addEventListener('click', star_menu);
+   
    //가격 포맷
    pPrice = $("#basic-price").html();
    fPrice = $("#final-price").html();
@@ -189,6 +194,16 @@ function dp_menu() {
 
    } else {
       dpList.style.display = "none";
+   }
+}
+
+//별점 드롭다운
+function star_menu() {
+   if (starList.style.display === "none") {
+	   starList.style.display = "block";
+
+   } else {
+	   starList.style.display = "none";
    }
 }
 

@@ -855,20 +855,79 @@ td {
    padding: 8px 0 7px 13px;
    border: 0;
    outline: 0;
-   vertical-align: middle;
+   vertical-align: super;
    box-sizing: border-box;
-   margin-right: 5px;
 }
+.review-search-star {
+	position: relative;
+} 
 
+.star-content {
+	padding: 7px 11px 6px 11px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    border-bottom: 1px solid #eee;
+    font-size: 0;
+}
 .review-search-star>button {
    position: relative;
    width: 228px;
-   height: 30px; vertical-align : middle;
+   height: 30px; 
+   background-color: #fff;
    cursor: pointer;
    outline: 0;
-   vertical-align: middle;
+   text-align: left;
+   padding-left: 10px;
 }
 
+.star-list {
+	display: none;
+	position: absolute;
+    display: none;
+    top: 30px;
+    width: 228px;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 100;
+}
+.star-list-text {
+	display: inline-block;
+    width: 25px;
+    padding-top: 2px;
+    padding-left: 1px;
+    text-align: left;
+    font-size: 12px;
+    color: #111;
+    margin-right: 8px;
+}
+
+.star-list-active-stars {
+	font-size: 19px;
+	text-align: left;
+	color: #febd00;
+}
+
+.star-list-disactive-stars {
+	font-size: 19px;
+	text-align: left;
+	color: #cccccc;
+}
+
+.star-list-amount {
+	display: inline-block;
+    width: 68px;
+    padding-top: 1px;
+    margin-right: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 0;
+    color: #757575;
+    font-size: 12px;
+    text-align: right;
+}
 .review-writer-profile-img {
    width: 40px;
    height: 40px;
@@ -1097,3 +1156,14 @@ td {
    border-bottom: 1px solid #ccc;
    margin-bottom: 30px;
 }
+
+
+.review-search-Btn {
+	width: 30px;
+    height: 30px;
+    background-image: url(//img1a.coupangcdn.com/image/productreview/web/pdp/article/search-btn_v1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+

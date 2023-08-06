@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.postella.dao.ImageDao">
+<mapper namespace="com.mycompany.postella.dao.ReviewDao">
 
-	<select id="selectByPgno" parameterType="int" resultType="Review">
+	<select id="selectAllByPgNo" parameterType="int" resultType="Review">
 		select *
 		from review, product
-		where review.prd_no = product.prd_no
-		and product.pg_no = #{pg_no};
+		where review.prd_no =
+		product.prd_no
+		and product.pg_no = #{pg_no}
 	</select>
 
+	<select id="selectPrdName" parameterType="int" resultType="String">
+		select prd_name
+		from review, product
+		where review.prd_no = product.prd_no
+		and review.prd_no = #{prd_no}
+	</select>
+	
+	<select id="selectByKeyword" parameterType="String" resultType="Review">
+		select *
+		from review
+		where rev_content like '#{keyword}'
+	</select>
+	
+	<select id="orderByRate" parameterType="String" resultType="Review">
+		select *
+		from review, product
+		where review.prd_no =
+		product.prd_no
+		and product.pg_no = #{pg_no}
+        order by review.rev_star_rate DESC
+	</select>
+	
+	<select id="groupByRate" parameterType="String" resultType="Review">
+		select *
+		from (select review.*
+				from review, product
+				where review.prd_no = product.prd_no
+				and product.pg_no = #{pg_no})
+		where rev_star_rate = #{rate}
+	</select>
 
 </mapper>

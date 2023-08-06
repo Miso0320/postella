@@ -439,74 +439,78 @@
                   </div>
                   <section class="review-list-section1">
                      <div class="review-sort">
-                        <button class="sort-best">베스트순</button>
+                        <button class="sort-best">별점순</button>
                         <div class="sort-text-bar">|</div>
                         <button class="sort-date">최신순</button>
                      </div>
                      <div class="review-search">
-                        <input class="review-search-Input" type="text"
-                           placeholder="상품평을 검색해보세요." maxlength="30">
-                        <div class="review-search-star">
-                           <button>모든 별점 보기</button>
+                        <input class="review-search-Input" type="text" name="reviewSearch" placeholder="상품평을 검색해보세요." maxlength="30">
+           				<button class="review-search-Btn"></button>
+        			</div>
+                    <div class="review-search-star">
+                       <button id="review-star-List-btn">모든 별점 보기</button>
+                       <div class="star-list" id="star-list">
+                        <div class="star-content">
+                        	<span class="star-list-text">최고</span>
+                        	<span class="star-list-active-stars">★★★★★</span>
+                        	<span class="star-list-amount">2</span>
                         </div>
-                     </div>
+                         <div class="star-content">
+                        	<span class="star-list-text">좋음</span>
+                        	<span class="star-list-active-stars">★★★★</span>
+                        	<span class="star-list-disactive-stars">★</span>
+                        	<span class="star-list-amount">2</span>
+                        </div>
+                         <div class="star-content">
+                        	<span class="star-list-text">보통</span>
+                        	<span class="star-list-active-stars">★★★</span>
+                        	<span class="star-list-disactive-stars">★★</span>
+                        	<span class="star-list-amount">2</span>
+                        </div>
+                         <div class="star-content">
+                        	<span class="star-list-text">별로</span>
+                        	<span class="star-list-active-stars">★★</span>
+                        	<span class="star-list-disactive-stars">★★★</span>
+                        	<span class="star-list-amount">2</span>
+                        </div>
+                         <div class="star-content">
+                        	<span class="star-list-text">나쁨</span>
+                        	<span class="star-list-active-stars">★</span>
+                        	<span class="star-list-disactive-stars">★★★★</span>
+                        	<span class="star-list-amount">2</span>
+                        </div>
+                       </div>
+                    </div>
                   </section>
                   <section class="review-list-section2">
-                     <article class="review-article">
-                        <div class="review-article-info">
-                           <div class="review-article-info-top">
-                              <span class="review-writer-profile"> <img
-                                 class="review-writer-profile-img" alt=""
-                                 src="${pageContext.request.contextPath}/resources/img/detailView/profile.png">
-                              </span>
-                              <div class="review-name-star-date">
-                                 <div class="review-writer-name">
-                                    <span>김*소</span>
-                                 </div>
-                                 <div class="review-writer-content">
-                                    <span class="review-content-star"> <img alt=""
-                                       src="${pageContext.request.contextPath}/resources/img/detailView/star1.png" class="review-content-starimg">
-                                    </span> <span class="review-content-date">2023.06.21</span>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="review-content-seller">판매자: 아기 고양이</div>
-                           <div class="review-content-product-info">키티 엽서 1매</div>
-                        </div>
-                        <div class="review-content-text">
-                           판매자님 정말 진심으로 <br> 판매하시는게 느껴집니다!!!<br>
-                        </div>
-                        <div class="do-report">
-                           <button class="do-report-btn">신고하기</button>
-                        </div>
-                     </article>
-                     <article class="review-article">
-                        <div class="review-article-info">
-                           <div class="review-article-info-top">
-                              <span class="review-writer-profile"> <img
-                                 class="review-writer-profile-img" alt=""
-                                 src="${pageContext.request.contextPath}/resources/img/detailView/profile.png">
-                              </span>
-                              <div class="review-name-star-date">
-                                 <div class="review-writer-name">
-                                    <span>박*홍</span>
-                                 </div>
-                                 <div class="review-writer-content">
-                                    <span class="review-content-star"> <img alt=""
-                                       src="${pageContext.request.contextPath}/resources/img/detailView/star4.png" class="review-content-starimg">
-                                    </span> <span class="review-content-date">2023.06.22</span>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="review-content-seller">판매자: 아기 고양이</div>
-                           <div class="review-content-product-info">귀염뽀짝 고양이 엽서 100매</div>
-                        </div>
-                        <div class="review-content-text">엽서에 저를 닮은 고양이가 있어서 너무 마음에
-                           들어요!!</div>
-                        <div class="do-report">
-                           <button class="do-report-btn">신고하기</button>
-                        </div>
-                     </article>
+                     <c:forEach var="review" items="${reviews}">
+	                     <article class="review-article">
+	                        <div class="review-article-info">
+	                           <div class="review-article-info-top">
+	                              <span class="review-writer-profile"> 
+	                              	<img class="review-writer-profile-img" alt="" src="${pageContext.request.contextPath}/resources/img/detailView/profile.png">
+	                              </span>
+	                              <div class="review-name-star-date">
+	                                 <div class="review-writer-name">
+	                                    <span>${review.us_name}</span>
+	                                 </div>
+	                                 <div class="review-writer-content">
+	                                    <span class="review-content-star">
+	                                    	<c:forEach var="star" begin="1" end="${review.rev_star_rate}">
+                        						<span class="rating-star">★</span> 
+                        					</c:forEach>
+	                                    </span> 
+	                                    <span class="review-content-date">${review.str_date}</span>
+	                                 </div>
+	                              </div>
+	                           </div>
+	                           <div class="review-content-product-info">${review.prd_name}</div>
+	                        </div>
+	                        <div class="review-content-text">
+	                           	${review.rev_content}
+	                        </div>
+	                     </article>
+                     </c:forEach>
                   </section>
                </div>
                

@@ -12,5 +12,7 @@
         <typeAlias alias="Product" type="com.mycompany.postella.dto.Product"/>
        <typeAlias alias="Agreement" type="com.mycompany.postella.dto.Agreement"/>
         <typeAlias alias="Review" type="com.mycompany.postella.dto.Review"/>
+        <typeAlias alias="Wish" type="com.mycompany.postella.dto.Wish"/>
+        <typeAlias alias="Qna" type="com.mycompany.postella.dto.Qna"/>
 	</typeAliases>
 </configuration>

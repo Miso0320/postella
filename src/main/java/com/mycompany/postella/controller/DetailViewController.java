@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
+import com.mycompany.postella.dto.Review;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.Order_detailService;
+import com.mycompany.postella.service.OrdersService;
 import com.mycompany.postella.service.ProductGroupService;
+import com.mycompany.postella.service.ReviewService;
 import com.mycompany.postella.service.productService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +41,13 @@ public class DetailViewController {
 	
 	@Autowired
 	private productService productService;
+	
+	@Autowired
+	private ReviewService reviewService;
+	
+	@Autowired
+	private OrdersService odersService;
+	
 	
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
@@ -111,6 +121,15 @@ public class DetailViewController {
 		model.addAttribute("options", optionList);
 		model.addAttribute("selectedOption", selectedOption);
 		
+		//리뷰 목록 가져오기
+		List<Review> reviews = reviewService.getAllReviews(pg_no);
+		SimpleDateFormat rformat = new SimpleDateFormat("yyyy.MM.dd");
+		for(int i=0; i < reviews.size(); i++) {
+			reviews.get(i).setUs_name(odersService.getUserName(reviews.get(i).getOd_detail_no()));
+			reviews.get(i).setPrd_name(reviewService.getPrdName(reviews.get(i).getPrd_no()));
+			reviews.get(i).setStr_date(rformat.format(reviews.get(i).getRev_date()));
+		}
+		model.addAttribute("reviews", reviews);
 		return "detailView/detailView";
 	}
 	
