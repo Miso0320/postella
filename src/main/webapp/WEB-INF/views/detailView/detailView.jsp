@@ -59,8 +59,7 @@
                   </div>
                   <div class="like-share-btn">
                      <div class="prod-favorite">
-                        <button class="prod-favorite-btn" id="prod-favorite-btn">
-                        </button>
+                        <button class="prod-favorite-btn" id="prod-favorite-btn"></button>
                      </div>
 
                      <div class="prod-share">
@@ -205,7 +204,7 @@
             <div>
                <ul class="tab-titles">
                   <li><a href="#bprod_detail_all">상품상세</a></li>
-                  <li><a href="#review-tab-container">상품평<span>(21)</span></a></li>
+                  <li><a href="#review-tab-container">상품평<span>(${revCnt})</span></a></li>
                   <li><a href="#recommendation-good">상품문의</a></li>
                   <li><a href="#etc-info-set">배송/교환/반품 안내</a></li>
                </ul>
@@ -428,9 +427,11 @@
                         있습니다.</div>
                      <div class="review-info-starset">
                         <div class="review-info-starimg">
-                           <img alt="별점" src="${pageContext.request.contextPath}/resources/img/detailView/star5.png" style="width: 245px;">
+                           <c:forEach var="star" begin="1" end="${stars}">
+                        		<span class="review-star">★</span> 
+                        	</c:forEach>
                         </div>
-                        <div class="review-info-star-cnt">21</div>
+                        <div class="review-info-star-cnt">${revCnt}</div>
                         <div class="review-info-detail-look">
                            <span class="review-info-detail-link"> 자세히보기 ></span>
                         </div>
