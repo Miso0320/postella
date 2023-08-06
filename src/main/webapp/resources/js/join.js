@@ -193,14 +193,14 @@ function pwCompareId() {
 // 약관동의 전체 체크
 function checkAll() {
 	if($(event.target).is(':checked')) {
-		$("input[name=checkBox]").prop("checked", true);
+		$(".chBox").prop("checked", true);
 		$(".all_check").prop("checked", true);
 	} else {
-		$("input[name=checkBox]").prop("checked", false);
+		$(".chBox").prop("checked", false);
 		$(".all_check").prop("checked", false);
 	}
-	$(document).on("click", "input:checkbox[name=checkBox]", function(e) {
-		var chks = document.getElementsByName("checkBox");
+	$(document).on("click", ".chBox", function(e) {
+		var chks = document.getElementsByClassName("chBox");
 		var chksChecked = 0;
 			      
 		for(var i=0; i < chks.length; i++) {
@@ -228,6 +228,22 @@ function marketingCheckAll() {
 		$(".marketing_check").prop("checked", false);
 		$(".marketing_all_check").prop("checked", false);
 	}
+}
+
+// 체크되지 않은 값 넘기기
+function unchekcedValue() {
+	var checkBoxes = document.querySelectorAll(".chBox");
+	checkBoxes.forEach(function(chkBox) {
+		if(!chkBox.checked) {
+			var hiddenInput = document.createElement("input");
+			hiddenInput.type = "hidden";
+			hiddenInput.name = chkBox.name;
+			hiddenInput.value = "N";
+			document.querySelector("form").appendChild(hiddenInput);
+		} else {
+			chkBox.value = "Y";
+		}
+	});
 }
 
 
@@ -344,17 +360,8 @@ function checkValidation() {
 	// 유효성 검사가 실패되었을 때 폼의 제출 기능을 중지
 	if(!isValidation) {
 		event.preventDefault();
+	} else {
+		unchekcedValue();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
 

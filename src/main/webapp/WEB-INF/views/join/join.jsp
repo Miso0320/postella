@@ -55,7 +55,7 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_pw.JPG">
 								</span>
 								<label for="us_password">
-									<input type="text" placeholder="비밀번호" id="pwd1" name="us_password" value="${users.us_password}">
+									<input type="password" placeholder="비밀번호" id="pwd1" name="us_password" value="${users.us_password}">
 								</label>
 								<img class="blue_check" id="blue_check_pwd" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>
@@ -71,7 +71,7 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_pw_chk.JPG">
 								</span>
 								<label>
-									<input type="text" placeholder="비밀번호 확인" id="pwd2" value="${users.us_password}">
+									<input type="password" placeholder="비밀번호 확인" id="pwd2" value="${users.us_password}">
 								</label>
 								<img class="blue_check" id="blue_check_pwd_chk" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>
@@ -126,51 +126,51 @@
 							<div class="agree_chk">
 								<div class="check_element">
 									<div>
-										<input type="checkbox" class="requiredAgree" id="requiredAgree1" name="checkBox"><label for="checkbox"> [필수] 만 14세 이상입니다</label>
+										<input type="checkbox" class="chBox requiredAgree" id="requiredAgree1" name="ag_age" ><label for="ag_age"> [필수] 만 14세 이상입니다</label>
 									</div>
 								</div>
 								<div class="check_element agree_img">
 									<div>
-										<input type="checkbox" class="requiredAgree" id="requiredAgree2" name="checkBox"><label for="checkbox"> [필수] 포스텔라 이용약관 동의</label>
-									</div>
-									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
-								</div>
-								<div class="check_element agree_img">
-									<div>
-										<input type="checkbox" class="requiredAgree" id="requiredAgree3" name="checkBox"><label for="checkbox"> [필수] 전자금융거래 이용약관 동의</label>
+										<input type="checkbox" class="chBox requiredAgree" id="requiredAgree2" name="ag_use"><label for="ag_use"> [필수] 포스텔라 이용약관 동의</label>
 									</div>
 									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
 								</div>
 								<div class="check_element agree_img">
 									<div>
-										<input type="checkbox" class="requiredAgree" id="requiredAgree4" name="checkBox"><label for="checkbox"> [필수] 개인정보 수집 및 이용 동의</label>
+										<input type="checkbox" class="chBox requiredAgree" id="requiredAgree3" name="ag_elec"><label for="ag_elec"> [필수] 전자금융거래 이용약관 동의</label>
 									</div>
 									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
 								</div>
 								<div class="check_element agree_img">
 									<div>
-										<input type="checkbox" class="requiredAgree" id="requiredAgree5" name="checkBox"><label for="checkbox"> [필수] 개인정보 제3자 제공 동의</label>
+										<input type="checkbox" class="chBox requiredAgree" id="requiredAgree4" name="ag_info"><label for="ag_info"> [필수] 개인정보 수집 및 이용 동의</label>
 									</div>
 									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
 								</div>
 								<div class="check_element agree_img">
 									<div>
-										<input type="checkbox" class="marketing_all_check" name="checkBox"><label for="checkbox"> [선택] 마케팅 목적의 개인정보 수집 및 이용 동의</label>
+										<input type="checkbox" class="chBox requiredAgree" id="requiredAgree5" name="ag_three"><label for="ag_three"> [필수] 개인정보 제3자 제공 동의</label>
 									</div>
 									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
 								</div>
 								<div class="check_element agree_img">
 									<div>
-										<input type="checkbox" class="marketing_all_check" name="checkBox"><label for="checkbox"> [선택] 광고성 정보 수신 동의</label>
+										<input type="checkbox" class="chBox marketing_ck" name="ag_ma"><label for="ag_ma"> [선택] 마케팅 목적의 개인정보 수집 및 이용 동의</label>
+									</div>
+									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
+								</div>
+								<div class="check_element agree_img">
+									<div>
+										<input type="checkbox" class="chBox marketing_all_check" name="ag_adv"><label for="ag_adv"> [선택] 광고성 정보 수신 동의</label>
 									</div>
 									<img class="join_right_arrow" src="${pageContext.request.contextPath}/resources/img/join/right_arrow.png">
 								</div>
 								<div class="check_element adv_accept">
 									<div>
-										<input type="checkbox" class="marketing_check" name="checkBox"><label for="checkAll"> [선택] 이메일 수신 동의</label>
+										<input type="checkbox" class="chBox marketing_check" name="ag_sms"><label for="ag_sms"> [선택] 이메일 수신 동의</label>
 									</div>
 									<div>
-										<input type="checkbox" class="marketing_check" name="checkBox"><label for="checkAll"> [선택] SMS, SNS 수신동의</label>
+										<input type="checkbox" class="chBox marketing_check" name="ag_email"><label for="ag_email"> [선택] SMS, SNS 수신동의</label>
 									</div>
 								</div>
 							</div>
@@ -183,11 +183,11 @@
 					</div>
 				</form>
 				
-				<!-- 비즈회원 안내 -->
-				<div class="join_seller">
+				<!-- 판매자회원 안내 -->
+				<!-- <div class="join_seller">
 					<div>판매자이신가요?</div>
 					<a href="#">판매자 회원 가입하기 ></a>
-				</div>
+				</div> -->
 			</div>
 			<!-- footer -->
 			<footer class="join_footer">

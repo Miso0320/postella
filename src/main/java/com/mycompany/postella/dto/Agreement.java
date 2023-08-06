@@ -1,13 +1,10 @@
 package com.mycompany.postella.dto;
 
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.Data;
 
 @Data
 public class Agreement {
+	// 약관동의 테이블 관련
 	private int us_no;	//회원고유번호
 	private String ag_age;	//만 14세 이상 여부
 	private String ag_use;	//이용약관 동의여부
@@ -18,5 +15,4 @@ public class Agreement {
 	private String ag_adv;	//광고성 정보 수신 동의여부
 	private String ag_sms;	//이메일 수신 동의 여부
 	private String ag_email;	//SMS, SNS 수신동의 여부
-	private String ag_push;	//앱 푸시 동의여부
 }

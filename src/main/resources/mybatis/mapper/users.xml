@@ -3,10 +3,14 @@
 <mapper namespace="com.mycompany.postella.dao.UsersDao">
 	
 	<!-- 회원가입 -->
-	<insert id="insert" parameterType="Users">
+	<insert id="insertUsers" parameterType="Users">
+		<selectKey keyProperty="us_no" resultType="int" order="BEFORE">
+			select us_no_seq.nextval from dual
+		</selectKey>
+	
 		insert into users (us_no, us_email, us_password, us_name, us_tel, us_nickname, us_insertdate, us_sleep, us_withdrawal, us_point ) values
 	    (
-		    us_no_seq.nextval, #{us_email}, #{us_password}, #{us_name},
+		    ${us_no}, #{us_email}, #{us_password}, #{us_name},
 		    #{us_tel}, #{us_nickname, jdbcType=VARCHAR}, sysdate, #{us_sleep, jdbcType=VARCHAR},
 		    #{us_withdrawal, jdbcType=VARCHAR}, #{us_point}
 		)
@@ -23,5 +27,15 @@
 		select * from users 
 		where us_tel = #{us_tel}
 	</select>
+	
+	<!-- 약관동의 -->
+	<insert id="insertAgree" parameterType="Agreement">
+		<!-- <selectKey resultType="int" keyProperty="us_no" order="AFTER" keyColumn="us_no" /> -->
+		
+		insert into agreement (us_no, ag_age, ag_use, ag_elec, ag_info, ag_three, ag_ma, ag_adv, ag_sms, ag_email) values
+	    (
+		    #{us_no}, #{ag_age}, #{ag_use}, #{ag_elec}, #{ag_info}, #{ag_three}, #{ag_ma}, #{ag_adv}, #{ag_sms}, #{ag_email}
+		)
+	</insert>
 	
 </mapper>

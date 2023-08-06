@@ -6,29 +6,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.postella.dao.UsersDao;
+import com.mycompany.postella.dto.Agreement;
 import com.mycompany.postella.dto.Users;
-import com.mycompany.postella.service.JoinService.JoinResult;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 public class JoinServiceImpl implements JoinService {
-
 	@Autowired
 	private UsersDao usersDao;
-
+	
 	@Override
 	public JoinResult joinUsers(Users users) {
 		// 이메일 중복 여부 확인
 		if(usersDao.selectEmail(users.getUs_email()) != null) {
-			log.info("아이디 중복 : " + usersDao.selectEmail(users.getUs_email()));
 			return JoinResult.FAIL_EMAIL;
 		}
 		
 		// 전화번호 중복 여부 확인
 		if(usersDao.selectTel(users.getUs_tel()) != null) {
-			log.info("전화번호 중복 : " + usersDao.selectTel(users.getUs_tel()));
 			return JoinResult.FAIL_TEL;
 		}
 		
@@ -40,8 +37,13 @@ public class JoinServiceImpl implements JoinService {
 		users.setUs_sleep("N");
 		users.setUs_withdrawal("N");
 		
-		usersDao.insert(users);
+		usersDao.insertUsers(users);
 		return JoinResult.SUCCESS;
+	}
+
+	@Override
+	public void joinAgreement(Agreement agreement) {
+		usersDao.insertAgree(agreement);
 	}
 
 }

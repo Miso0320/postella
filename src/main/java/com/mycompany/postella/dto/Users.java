@@ -8,6 +8,7 @@ import lombok.Data;
 
 @Data
 public class Users {
+	// 회원 테이블 관련
 	private int us_no;	//회원고유번호
 	private String us_email;	//이메일
 	private String us_password;	//비밀번호
