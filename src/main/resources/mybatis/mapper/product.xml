@@ -12,6 +12,7 @@
 		SELECT *
 		from product
 		where pg_no = ${pg_no}
+		order by prd_no ASC
 	</select>
 
 

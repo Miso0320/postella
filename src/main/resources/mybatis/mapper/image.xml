@@ -21,36 +21,40 @@
 		from image
 		where pg_no=#{pg_no} and img_use='THM'
 	</select>
-	
-	<select id="selectByPgNo" parameterType="int" resultType="Img">
+
+	<select id="selectAllByPgNo" parameterType="int" resultType="Img">
 		select *
 		from image
-		where pg_no=#{pg_no} and ROWNUM=1 and img_use='THM'
-		order by img_no
+		where pg_no=#{pg_no} and img_use='THM'
+		order by prd_no, img_no ASC
 	</select>
 
 	<select id="selectByPgNo2" parameterType="int" resultType="Img">
 		select *
 		from image
 		where pg_no=#{pg_no} and ROWNUM=1 and img_use='THM'
-		order by img_no
+		order by prd_no
 	</select>
 
 	<select id="selectByPrdNo" parameterType="int" resultType="Img">
 		select *
-		from image
-		where prd_no=#{prd_no} and ROWNUM=1 and
-		img_use='THM'
-		order by img_no
+		from (select *
+				from image
+				where prd_no=#{prd_no} and img_use='THM'
+				order by img_no ASC)
+		where ROWNUM = 1
 	</select>
 
-	<select id="selectAllByPrdNo" parameterType="int" resultType="Img">
+	<select id="selectAllByPrdNo" parameterType="int"
+		resultType="Img">
 		select *
 		from image
-		where prd_no=#{prd_no}
+		where prd_no=#{prd_no} and img_use='THM'
+		order by img_no ASC
 	</select>
 
-	<select id="selectdetailImg" parameterType="int" resultType="Img">
+	<select id="selectdetailImg" parameterType="int"
+		resultType="Img">
 		select *
 		from image
 		where pg_no=#{pg_no} and img_use='DET'

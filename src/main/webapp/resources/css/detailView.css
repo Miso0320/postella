@@ -846,18 +846,28 @@ td {
 
 .review-search {
    display: flex;
-   flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
 }
 
 .review-search-Input {
    width: 350px;
-   height: 30px;
+   height: -webkit-fill-available;
    padding: 8px 0 7px 13px;
    border: 0;
    outline: 0;
    vertical-align: super;
    box-sizing: border-box;
 }
+
+.review-search-Btn {
+	width: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .review-search-star {
 	position: relative;
 } 
@@ -1158,12 +1168,5 @@ td {
 }
 
 
-.review-search-Btn {
-	width: 30px;
-    height: 30px;
-    background-image: url(//img1a.coupangcdn.com/image/productreview/web/pdp/article/search-btn_v1.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
+
 

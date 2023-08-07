@@ -56,7 +56,7 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 
 	@Override
 	public List<Image> getImagesBypgNo(int pg_no) {
-		List<Image> imgs = imageDao.selectByPgNo(pg_no);
+		List<Image> imgs = imageDao.selectAllByPgNo(pg_no);
 	    return imgs;
 	}
 
