@@ -45,7 +45,7 @@
 		      		<div class="header_category">
 		      			<ul>
 			      			<li class="header_dropdown_list">
-			      				<a href="#"><img class="header_category_img" src="${pageContext.request.contextPath}/resources/img/header/category2.png" alt="카테고리"></a>
+			      				<img class="header_category_img" src="${pageContext.request.contextPath}/resources/img/header/category2.png" alt="카테고리">
 			      				<ul class="header_enter">
 			      					<li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard1.png" alt="포토엽서">포토엽서</a></li>
 			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard2.png" alt="디자인패턴엽서">디자인패턴엽서</a></li>

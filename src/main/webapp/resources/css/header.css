@@ -119,7 +119,7 @@ header {
 	text-decoration: none;
 }
 
-.header_category a:hover {
+.header_category_img:hover {
 	color:#0073e9;
 	text-decoration: underline;
 }
