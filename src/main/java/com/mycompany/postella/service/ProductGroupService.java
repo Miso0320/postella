@@ -14,4 +14,5 @@ public interface ProductGroupService {
 	//public Product getProduct(int pg_no);
 	
 	public String getTitle(int pg_no);
+	public List<ProductGroup> getPhotoList(ProductGroupPager pager);
 }

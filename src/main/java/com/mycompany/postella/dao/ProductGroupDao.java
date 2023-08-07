@@ -16,7 +16,7 @@ public interface ProductGroupDao {
 	public Product selectBypg_no(int pg_no);*/
 	
 	public List<Image> selectByPgNo(int pg_no);
-
 	public String selectTitleByPgNo(int pg_no);
+	public List<ProductGroup> selectPhoto(ProductGroupPager pager);
 
 }

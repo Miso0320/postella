@@ -50,8 +50,9 @@ public class ProductGroupController {
 		
 		int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
 		
-		ProductGroupPager pager = new ProductGroupPager(10, 10, totalProductGroupNum, intpageNo);
+		ProductGroupPager pager = new ProductGroupPager(12, 10, totalProductGroupNum, intpageNo);
 		List<ProductGroup> list = productGroupService.getList(pager);
+		/*List<ProductGroup> list2 = productGroupService.getPhotoList(pager);*/
 		
 		for(int i = 0; i < list.size(); i++) {
 			int pgNo = list.get(i).getPg_no();
@@ -70,6 +71,14 @@ public class ProductGroupController {
 			
 
 	      }
+		
+		/*if(PHO = checked) {
+			model.addAttribute("productGroups", list2);
+		} else {
+			model.addAttribute("productGroups", list);
+		}*/
+		
+		
 		
 		model.addAttribute("pager", pager);
 		model.addAttribute("productGroups", list);

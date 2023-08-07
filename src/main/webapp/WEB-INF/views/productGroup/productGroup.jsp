@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -57,10 +58,10 @@
 									<input id="arrow1" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png" width="12px" height="12px"/>
 								</button>
 								<div class="panel">
-					          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">포토엽서</label></div>
-					          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">디자인패턴엽서</label></div>
-					          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">그림/일러스트엽서</label></div>
-					          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">캘리그라피엽서</label></div>
+					          		<div class="panel-body"><input type="checkbox" id="category_list1" name="category_list" value="PHO"><label for="category_list">포토엽서</label></div>
+					          		<div class="panel-body"><input type="checkbox" id="category_list2" name="category_list" value="DES"><label for="category_list">디자인패턴엽서</label></div>
+					          		<div class="panel-body"><input type="checkbox" id="category_list3" name="category_list" value="ILU"><label for="category_list">그림/일러스트엽서</label></div>
+					          		<div class="panel-body"><input type="checkbox" id="category_list4" name="category_list" value="CAL"><label for="category_list">캘리그라피엽서</label></div>
 								</div>
 							</div>
 						</div> 
@@ -241,28 +242,23 @@
 					</div>
 					<div>
 						<div>
-							
 							<ul id="list" class="list" style="white-space: nowrap;">
-								<li><a href="" title="쿠팡랭킹순은 판매실적, 사용자선호도,&#10; 상품정보 충실도 및 검색 정확도 등을&#10; 종합적으로 고려한 순위입니다">쿠팡랭킹순
-										<strong>
-											<img class="warning" src="${pageContext.request.contextPath}/resources/img/productGroup/!.png" alt="" style="width:12px; height:12px;">
-										</strong> | 
-									</a></li>
-								<li><a href="">낮은가격순 | </a></li>
-								<li><a href="">높은가격순 | </a></li>
-								<li><a href="">판매량순 | </a></li>
-								<li><a href="">최신순</a></li>
+								<div class="list2">
+									<li><a href="">낮은가격순 | </a></li>
+									<li><a href="">높은가격순 | </a></li>
+									<li><a href="">최신순</a></li>
+								</div>
 								
-								<ul class="amount-menu">
-				                  <li>
-				                     <a href="#" style="color:black;"><b>60개씩 보기</b></a>
-				                     <ul class="amount-menu2" >
-				                        <li><a href="#" style="justify-content: flex-start;"><b>120개씩 보기</b></a>
-				                        
-				                     </ul>
-				                  </li>
-				               </ul>
-								     
+								<div class="list2">
+									<ul class="amount-menu">
+					                  <li>
+					                     <a href="#" style="color:black;"><b>60개씩 보기</b></a>
+					                     <ul class="amount-menu2" >
+					                        <li><a href="#" style="justify-content: flex-start;"><b>120개씩 보기</b></a>  
+					                     </ul>
+					                  </li>
+					               </ul>
+								</div>  
 							</ul>
 						</div>
 					</div>

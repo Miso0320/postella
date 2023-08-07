@@ -60,5 +60,11 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	    return imgs;
 	}
 
+	@Override
+	public List<ProductGroup> getPhotoList(ProductGroupPager pager) {
+		List<ProductGroup> photoList = productGroupDao.selectPhoto(pager);;
+		return photoList;
+	}
+
 
 }

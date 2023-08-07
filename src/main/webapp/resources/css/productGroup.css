@@ -92,7 +92,7 @@
 			}
 			.item-list a{
 				
-				width: 256px;
+				width: 300px;
 				height: 496px;
 				
 			}
@@ -211,9 +211,9 @@
 			}
 			.amount-menu {
                  display: inline;
-                 font-size: 8pt;
+                 font-size: 11pt;
                  float: right;
-                 margin-left: 700px;
+                 margin-left: 800px;
            }
            .amount-menu li {
                  display: inline-block;
@@ -224,7 +224,7 @@
            .amount-menu2 {
                  position: absolute;
                  display: none;
-                 font-size: 6pt;
+                 font-size: 11pt;
            }
            .amount-menu2 li{
                  display: block;
@@ -329,3 +329,11 @@
 				padding: 0 10px;
 			}
 			
+			.productGroup {
+				height: 280px;
+				width: 280px;
+			}
+			
+			.list2 {
+				display: flex;
+			}
