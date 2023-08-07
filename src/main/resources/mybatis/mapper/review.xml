@@ -11,7 +11,7 @@
 	</select>
 
 	<select id="selectPrdName" parameterType="int" resultType="String">
-		select prd_name
+		select UNIQUE prd_name
 		from review, product
 		where review.prd_no = product.prd_no
 		and review.prd_no = #{prd_no}
@@ -39,6 +39,13 @@
 				where review.prd_no = product.prd_no
 				and product.pg_no = #{pg_no})
 		where rev_star_rate = #{rate}
+	</select>
+	
+	<select id="selectReviewCnt" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM review, product
+		WHERE review.prd_no = product.prd_no
+        and product.pg_no = ${pg_no}
 	</select>
 
 </mapper>

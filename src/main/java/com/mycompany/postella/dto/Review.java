@@ -15,4 +15,5 @@ public class Review {
 	private String us_name; //주문자 이름
 	private String prd_name; //상품 옵션 이름
 	private String str_date; //리뷰 등록일 변환
+	private int od_no; //주문 식별자
 }

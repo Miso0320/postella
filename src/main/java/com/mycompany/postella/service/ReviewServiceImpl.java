@@ -43,4 +43,10 @@ public class ReviewServiceImpl implements ReviewService{
 		List<Review> reviews = reviewDao.groupByRate(pg_no, rate);
 		return reviews;
 	}
+	
+	@Override
+	public int countReview(int pg_no) {
+		int cnt = reviewDao.selectReviewCnt(pg_no);
+		return cnt;
+	}
 }

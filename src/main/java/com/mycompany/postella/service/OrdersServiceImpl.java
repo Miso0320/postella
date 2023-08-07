@@ -13,8 +13,9 @@ public class OrdersServiceImpl implements OrdersService{
 	private OrdersDao ordersDao;
 	
 	@Override
-	public String getUserName(int od_detail_no) {
-		String uname = ordersDao.selectUsName(od_detail_no);
+	public String getUserName(int od_no) {
+		String uname = ordersDao.selectUsName(od_no);
 		return uname;
 	}
+	
 }

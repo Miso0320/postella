@@ -13,4 +13,5 @@ public interface ReviewDao {
 	public List<Review> selectByKeyword(String keyword);
 	public List<Review> orderByRate(int pg_no, int rate);
 	public List<Review> groupByRate(int pg_no, int rate);
+	public int selectReviewCnt(int pg_no);
 }

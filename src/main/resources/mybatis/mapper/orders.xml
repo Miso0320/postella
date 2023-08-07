@@ -6,7 +6,7 @@
 		select users.us_name
 		from orders, users
 		where orders.us_no = users.us_no
-		and od_detail_no = #{od_detail_no}
+		and od_no = #{od_no}
 	</select>
 
 </mapper>

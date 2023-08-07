@@ -14,6 +14,12 @@
 		where pg_no = ${pg_no}
 		order by prd_no ASC
 	</select>
-
+	
+	<select id="selectStarAvg" parameterType="int" resultType="int">
+		SELECT
+		AVG(prd_star_avg)
+		FROM product
+		WHERE PG_NO = ${pg_no}
+	</select>
 
 </mapper>

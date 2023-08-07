@@ -25,4 +25,10 @@ public class productServiceImpl implements productService {
 		List<Product> options = productDao.selectAllByPgNo(pg_no);
 		return options;
 	}
+	
+	@Override
+	public int getStarAvg(int pg_no) {
+		int starAvg = productDao.selectStarAvg(pg_no);
+	    return starAvg;
+	}
 }

@@ -7,7 +7,6 @@ public class Orders {
 	private int od_no;	//주문번호
 	private int us_no;	//회원고유번호
 	private int cp_no;	//쿠폰고유번호
-	private int od_detail_no;	//주문상세 식별자
 	private int od_date;	//주문날짜
 	private int od_status;	//주문상태
 	private int od_req_type;	//배송 요청사항 타입

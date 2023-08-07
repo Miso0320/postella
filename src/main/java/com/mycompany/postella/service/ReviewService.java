@@ -10,4 +10,5 @@ public interface ReviewService {
 	public List<Review> searchReviews(String keyword);
 	public List<Review> orderByRate(int pg_no, int rate);
 	public List<Review> groupByRate(int pg_no, int rate);
+	public int countReview(int pg_no);
 }

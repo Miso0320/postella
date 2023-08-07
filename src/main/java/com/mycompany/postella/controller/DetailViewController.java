@@ -22,7 +22,6 @@ import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.Review;
 import com.mycompany.postella.service.ImageService;
-import com.mycompany.postella.service.Order_detailService;
 import com.mycompany.postella.service.OrdersService;
 import com.mycompany.postella.service.ProductGroupService;
 import com.mycompany.postella.service.ReviewService;
@@ -37,9 +36,6 @@ public class DetailViewController {
 	private ImageService imageService;
 	
 	@Autowired
-	private Order_detailService odetailService;
-	
-	@Autowired
 	private ProductGroupService productGroupService;
 	
 	@Autowired
@@ -49,7 +45,7 @@ public class DetailViewController {
 	private ReviewService reviewService;
 	
 	@Autowired
-	private OrdersService odersService;
+	private OrdersService ordersService;
 	
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
@@ -87,11 +83,11 @@ public class DetailViewController {
 		model.addAttribute("thumnail", tumnail);
 		
 		//별점 평균 불러오기
-		int starAgv = odetailService.getStarAvg(pg_no);
+		int starAgv = productService.getStarAvg(pg_no);
 		model.addAttribute("stars", starAgv);
 		
 		//리뷰 개수 불러오기
-		int revCnt = odetailService.countReview(pg_no);
+		int revCnt = reviewService.countReview(pg_no);
 		model.addAttribute("revCnt", revCnt);
 		
 		//상품명 불러오기
@@ -179,18 +175,17 @@ public class DetailViewController {
 		clikedOption.setEncodedFile(Base64.getEncoder().encodeToString(imgList.get(0).getImg_file()));
 		model.addAttribute("selectedOption", clikedOption);
 		
-		
-		//리뷰 개수 불러오기
-		int revCnt = odetailService.countReview(pg_no);
-		model.addAttribute("revCnt", revCnt);
-		
 		//상품명 불러오기
 		String title = productGroupService.getTitle(pg_no);
 		model.addAttribute("title", title);
 		
 		//별점 평균 불러오기
-		int starAgv = odetailService.getStarAvg(pg_no);
+		int starAgv = productService.getStarAvg(pg_no);
 		model.addAttribute("stars", starAgv);
+		
+		//리뷰 개수 불러오기
+		int revCnt = reviewService.countReview(pg_no);
+		model.addAttribute("revCnt", revCnt);
 		
 		//배송 예정일 가져오기
 		LocalDate today = LocalDate.now();
@@ -213,7 +208,7 @@ public class DetailViewController {
 		List<Review> reviews = reviewService.getAllReviews(pg_no);
 		SimpleDateFormat rformat = new SimpleDateFormat("yyyy.MM.dd");
 		for(int i=0; i < reviews.size(); i++) {
-			reviews.get(i).setUs_name(odersService.getUserName(reviews.get(i).getOd_detail_no()));
+			reviews.get(i).setUs_name(ordersService.getUserName(reviews.get(i).getOd_no()));
 			reviews.get(i).setPrd_name(reviewService.getPrdName(reviews.get(i).getPrd_no()));
 			reviews.get(i).setStr_date(rformat.format(reviews.get(i).getRev_date()));
 		}
