@@ -482,36 +482,7 @@
                        </div>
                     </div>
                   </section>
-                  <section class="review-list-section2">
-                     <c:forEach var="review" items="${reviews}">
-	                     <article class="review-article">
-	                        <div class="review-article-info">
-	                           <div class="review-article-info-top">
-	                              <span class="review-writer-profile"> 
-	                              	<img class="review-writer-profile-img" alt="" src="${pageContext.request.contextPath}/resources/img/detailView/profile.png">
-	                              </span>
-	                              <div class="review-name-star-date">
-	                                 <div class="review-writer-name">
-	                                    <span>${review.us_name}</span>
-	                                 </div>
-	                                 <div class="review-writer-content">
-	                                    <span class="review-content-star">
-	                                    	<c:forEach var="star" begin="1" end="${review.rev_star_rate}">
-                        						<span class="rating-star">★</span> 
-                        					</c:forEach>
-	                                    </span> 
-	                                    <span class="review-content-date">${review.str_date}</span>
-	                                 </div>
-	                              </div>
-	                           </div>
-	                           <div class="review-content-product-info">${review.prd_name}</div>
-	                        </div>
-	                        <div class="review-content-text">
-	                           	${review.rev_content}
-	                        </div>
-	                     </article>
-                     </c:forEach>
-                  </section>
+                  <section class="review-list-section2" data-pg_no="${pg_no}"></section>
                </div>
                
                <div class="prod-inquiry-list">

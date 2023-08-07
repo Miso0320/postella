@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
@@ -53,7 +54,7 @@ public class DetailViewController {
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
 		pg_no = 3;
-		
+		model.addAttribute("pg_no",pg_no);
 		//상품 옵션 목록 가져오기
 		List<Product> optionList = productService.getOptions(pg_no);
 		Image optionImg; 
@@ -123,13 +124,7 @@ public class DetailViewController {
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
 		//리뷰 목록 가져오기
-		List<Review> reviews = reviewService.getAllReviews(pg_no);
-		SimpleDateFormat rformat = new SimpleDateFormat("yyyy.MM.dd");
-		for(int i=0; i < reviews.size(); i++) {
-			reviews.get(i).setUs_name(odersService.getUserName(reviews.get(i).getOd_detail_no()));
-			reviews.get(i).setPrd_name(reviewService.getPrdName(reviews.get(i).getPrd_no()));
-			reviews.get(i).setStr_date(rformat.format(reviews.get(i).getRev_date()));
-		}
+		List<Review> reviews = getReviewFromDB(pg_no);
 		model.addAttribute("reviews", reviews);
 		return "detailView/detailView";
 	}
@@ -139,6 +134,7 @@ public class DetailViewController {
 		Product clikedOption  = productService.getInfo(prdNo);
 		int pg_no = clikedOption.getPg_no();
 		int prd_no = clikedOption.getPrd_no();
+		model.addAttribute("pg_no",pg_no);
 		
 		//가격들 세팅
 		model.addAttribute("TopPrdPrice", clikedOption.getPrd_org_price());
@@ -204,6 +200,16 @@ public class DetailViewController {
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
 		//리뷰 목록 가져오기
+		List<Review> reviews = getReviewFromDB(pg_no);
+		model.addAttribute("reviews", reviews);
+		
+		
+		return "detailView/detailView";
+	}
+	//리뷰 불러오기
+	@RequestMapping("/getReviewFromDB")
+    @ResponseBody
+    public List<Review> getReviewFromDB(@RequestParam("pg_no") int pg_no) {
 		List<Review> reviews = reviewService.getAllReviews(pg_no);
 		SimpleDateFormat rformat = new SimpleDateFormat("yyyy.MM.dd");
 		for(int i=0; i < reviews.size(); i++) {
@@ -211,10 +217,9 @@ public class DetailViewController {
 			reviews.get(i).setPrd_name(reviewService.getPrdName(reviews.get(i).getPrd_no()));
 			reviews.get(i).setStr_date(rformat.format(reviews.get(i).getRev_date()));
 		}
-		model.addAttribute("reviews", reviews);
-		
-		
-		return "detailView/detailView";
-	}
+        return reviews; 
+    }
+	
+
 
 }

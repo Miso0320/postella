@@ -10,6 +10,43 @@ function init() {
    shareBtn = document.getElementById("prod-share-btn");
    shareLayer = document.getElementById("prod-share-layer");
    shareBtn.addEventListener('click', shareWindow);
+   pg_no = $(".review-list-section2").data("pg_no");
+   $.ajax({
+       type: "GET",
+       url: "getReviewFromDB", // 컨트롤러의 RequestMapping 경로
+       data: {
+           pg_no: pg_no
+       },
+       success: function (review) {
+           // 서버에서 받은 데이터를 처리하여 원하는 형태로 보여주기
+       		var articles = "";
+       	 for (var i = 0; i < review.length; i++) {
+             var item = review[i];
+             articles += "<article class='review-article'>" +
+                 " <div class='review-article-info'>" +
+                 "<div class='review-article-info-top'>" +
+                 "<span class='review-writer-profile'>" +
+                 "<img class='review-writer-profile-img' alt='' src='/postella/resources/img/detailView/profile.png'>" +
+                 "</span> <div class='review-name-star-date'> <div class='review-writer-name'>" +
+                 "<span>" +
+                 item.us_name +
+                 "</span> </div>" +
+                 "<div class='review-writer-content'> <span class='review-content-star'>";
+             for (var j = 1; j <= item.rev_star_rate; j++) {
+                 articles += "<span class='rating-star'>★</span>";
+             }
+             articles += "</span> <span class='review-content-date'>" +
+                 item.str_date +
+                 "</span> </div> </div> </div> <div class='review-content-product-info'>" +
+                 item.prd_name +
+                 "</div> </div> <div class='review-content-text'>" +
+                 item.rev_content +
+                 "</div>" +
+                 "</article>";
+         }
+           $(".review-list-section2").html(articles); //section에 article 추가
+       }
+   });
    
    /*// 썸네일 확대
      var innerFrameVisible = false;
@@ -142,7 +179,6 @@ function init() {
    //버튼 클릭하면 슬라이드 하기
    slider = listWrap.querySelector('.recommendation-list');
    slideLis = slider.querySelectorAll('li')
-   console.log(slideLis[0].clientWidth);
    moveButton = listWrap.querySelector('.reco-btn');
    /* ul 넓이 계산해 주기 */
    liWidth = slideLis[0].clientWidth;
