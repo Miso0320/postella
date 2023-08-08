@@ -1193,6 +1193,8 @@ td {
    margin-bottom: 30px;
 }
 
-
+.tooltip_layer {
+	display:none;
+	border-radius:10px;}
 
 

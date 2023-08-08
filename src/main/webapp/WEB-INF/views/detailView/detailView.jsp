@@ -196,7 +196,8 @@
                      </div>
                   </div>
                   <div class="cart-buy-btn">
-                     <button class="cart-btn">장바구니 담기</button>
+                     <!-- <button class="cart-btn">장바구니 담기</button> -->
+                     <button type="button" class="cart-btn btn" data-toggle="tooltip" data-placement="bottom" title="장바구니에 담겼습니다.">장바구니 담기</button>
                      <button class="buy-btn">바로구매 ></button>
                   </div>
                </div>

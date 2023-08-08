@@ -1,15 +1,19 @@
 $(init);
 
 function init() {
-   // 찜버튼 이벤트
+	
+	// 찜버튼 이벤트
    likeBtn = document.getElementById("prod-favorite-btn");
    liked = 0;
    likeBtn.addEventListener('click', turnRed);
+   
    //공유 버튼 이벤트
    shared = 0;
    shareBtn = document.getElementById("prod-share-btn");
    shareLayer = document.getElementById("prod-share-layer");
    shareBtn.addEventListener('click', shareWindow);
+   
+   //리뷰 리스트 출력
    pg_no = $(".review-list-section2").data("pg_no");
    $.ajax({
        type: "GET",
@@ -299,3 +303,5 @@ function slideNext(event) {
      currentIdx += 1;
   }
 }
+
+
