@@ -67,12 +67,7 @@ public class ProductGroupController {
 		//categoryList = (String) session.getAttribute("categoryList");
 		/*String sessionCheck = (String) session.getAttribute("categoryList");
 		log.info("session: "+ sessionCheck);*/
-		
-		int prdNo = prd.getPrd_no();
-		
-		Product product = productService.getInfo(prdNo);
-		product.getPrd_price();
-		log.info("상품번호:" + prd);
+
 		
 		int totalProductGroupNum = productGroupService.getTotalProductGroupNum(categoryList);
 		log.info("카테고리 :" + totalProductGroupNum);
@@ -106,33 +101,8 @@ public class ProductGroupController {
 
 	      }
 		
-		/*int price;
-		for(int i = 0; i < list.size(); i++) {
-			pgNo = list.get(i).getPg_no();
-			price = productService.getInfo();
-			if(img != null) {
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				//log.info("리스트 : " + list.get(i).getPg_no());
-				
-				//String type = img.getImg_type();
-				//String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
-				//log.info("가져온거 :" + img.getImg_type());		
-				
-				//list.get(i).setEncodedFile(imgFile);
-				//list.get(i).setImg_type(type);
-			}*/
-			
 
-	      }
-		
+			
 		
 
 		
