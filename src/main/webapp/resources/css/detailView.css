@@ -163,10 +163,16 @@ li {
    flex-direction: row;
 }
 /* 별점 */
-.rating-star {
+.rating-star-active {
    font-size: 19px;
    text-align: left;
    color: #febd00;
+}
+
+.rating-star-disactive {
+   font-size: 19px;
+   text-align: left;
+   color: #cccccc;
 }
 /* 상품평 개수 */
 .rev-cnt {
@@ -654,10 +660,16 @@ li {
    color: #111;
 }
 
-.review-star {
+.review-star-active {
 	font-size: 49px;
 	text-align: left;
 	color: #febd00;
+}
+
+.review-star-disactive {
+	font-size: 49px;
+	text-align: left;
+	color: #cccccc;
 }
 /* 상품 상세정보 */
 .tab-titles {

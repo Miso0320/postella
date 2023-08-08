@@ -33,7 +33,12 @@ function init() {
                  "</span> </div>" +
                  "<div class='review-writer-content'> <span class='review-content-star'>";
              for (var j = 1; j <= item.rev_star_rate; j++) {
-                 articles += "<span class='rating-star'>★</span>";
+                 articles += "<span class='rating-star-active'>★</span>";
+             }
+             if (item.rev_star_rate <= 5) {
+                 for (var j = 1; j <= (5 - item.rev_star_rate); j++) {
+                     articles += "<span class='rating-star-disactive'>★</span>";
+                 }
              }
              articles += "</span> <span class='review-content-date'>" +
                  item.str_date +

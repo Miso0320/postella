@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.ProductGroup;
-import com.mycompany.postella.dto.ProductGroupPager;
+import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.ProductGroupService;
 import com.mycompany.postella.service.productService;
@@ -71,7 +71,7 @@ public class ProductGroupController {
 		int totalProductGroupNum = productGroupService.getTotalProductGroupNum(categoryList);
 		log.info("카테고리 :" + totalProductGroupNum);
 		
-		ProductGroupPager pager = new ProductGroupPager(12, 10, totalProductGroupNum, intpageNo);
+		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
 		
 		//log.info("categoryList : " + categoryList);
 		

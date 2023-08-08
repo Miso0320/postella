@@ -11,7 +11,7 @@ import com.mycompany.postella.dao.ProductGroupDao;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.ProductGroup;
-import com.mycompany.postella.dto.ProductGroupPager;
+import com.mycompany.postella.dto.Pager;
 
 @Service
 public class ProductGroupServiceImpl implements ProductGroupService{
@@ -25,7 +25,7 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	private ProductDao productDao;
 
 	@Override
-	public List<ProductGroup> getList(ProductGroupPager pager) {
+	public List<ProductGroup> getList(Pager pager) {
 		List<ProductGroup> productGroupList = productGroupDao.selectByPage(pager);;
 		return productGroupList;
 	}
@@ -49,7 +49,7 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	}
 
 	@Override
-	public List<ProductGroup> getPhotoList(ProductGroupPager pager) {
+	public List<ProductGroup> getPhotoList(Pager pager) {
 		List<ProductGroup> photoList = productGroupDao.selectPhoto(pager);;
 		return photoList;
 	}

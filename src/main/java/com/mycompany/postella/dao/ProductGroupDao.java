@@ -7,18 +7,18 @@ import org.apache.ibatis.annotations.Mapper;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.ProductGroup;
-import com.mycompany.postella.dto.ProductGroupPager;
+import com.mycompany.postella.dto.Pager;
 
 @Mapper
 public interface ProductGroupDao {
-	public List<ProductGroup> selectByPage(ProductGroupPager pager);
+	public List<ProductGroup> selectByPage(Pager pager);
 	public int count(String categoryList);
 	/*	public int insert(Product product);
 	public Product selectBypg_no(int pg_no);*/
 	
 	public List<Image> selectByPgNo(int pg_no);
 	public String selectTitleByPgNo(int pg_no);
-	public List<ProductGroup> selectPhoto(ProductGroupPager pager);
+	public List<ProductGroup> selectPhoto(Pager pager);
 	public Product selectPriceByPgNo(int pg_no);
 
 }

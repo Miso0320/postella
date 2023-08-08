@@ -51,9 +51,14 @@
                   <div class="title-star-rev">
                      <h2 class="prod-title">${title}</h2>
                      <div class="prod-header-star-rev">
-                        <c:forEach var="star" begin="1" end="${stars}">
-                        	<span class="rating-star">★</span> 
+                        <c:forEach var="ystar" begin="1" end="${stars}">
+                        	<span class="rating-star-active">★</span> 
                         </c:forEach>
+                        <c:if test="${stars < 5}">
+	                        <c:forEach var="gstar" begin="1" end="${5 - stars}">
+	                        	<span class="rating-star-disactive">★</span> 
+	                        </c:forEach>
+                        </c:if>
                         <a class="rev-cnt" href="#">${revCnt}개 상품평</a>
                      </div>
                   </div>
@@ -428,8 +433,13 @@
                      <div class="review-info-starset">
                         <div class="review-info-starimg">
                            <c:forEach var="star" begin="1" end="${stars}">
-                        		<span class="review-star">★</span> 
+                        		<span class="review-star-active">★</span> 
                         	</c:forEach>
+                        	<c:if test="${stars < 5}">
+                        		<c:forEach var="star" begin="1" end="${5 - stars}">
+                        		<span class="review-star-disactive">★</span> 
+                        		</c:forEach>
+                        	</c:if>
                         </div>
                         <div class="review-info-star-cnt">${revCnt}</div>
                         <div class="review-info-detail-look">
