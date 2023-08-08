@@ -27,6 +27,7 @@ import com.mycompany.postella.service.productService;
 import lombok.var;
 import lombok.extern.slf4j.Slf4j;
 
+//테스트
 @Slf4j
 @Controller
 public class ProductGroupController {
