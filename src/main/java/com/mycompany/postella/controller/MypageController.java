@@ -26,14 +26,13 @@ public class MypageController {
 	
 	/**
 	 * 
-	 * @param orders
-	 * 		  주문 정보
+	 * @param 파라미터명
+	 * 		  파라미터 설명
 	 * @param model
 	 * 
 	 **/
 	@GetMapping("/myOrderList")
 	public String joinForm(
-			/*@RequestParam(value = "orders") Orders order,*/
 			Model model ) 
 	{
 		// us_no 나중엔 받아오기

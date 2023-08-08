@@ -87,7 +87,7 @@
 						<h5 class="my_order_title my_order_text_color">주문목록</h5>
 					
 						<!-- 날짜별 분류 -->
-						<div class="classification_date_wrap">
+						<!-- <div class="classification_date_wrap">
 							<div class="classification_date">
 								<div class="order_date_range order_date_range_select" id="recent_six_month">최근 6개월</div>
 								<div class="order_date_range">2023</div>
@@ -97,70 +97,81 @@
 								<div class="order_date_range">2019</div>
 								<div class="order_date_range">2018</div>
 							</div>
-						</div>
-						
-						<!-- 주문내역 -->
+						</div> -->
+												
+						<!-- 주문내역 ----- 기존꺼! -->
 						<div id="order_list_for_date">
-						<c:forEach var="order" items="${orders}">
-								<div class="order_content_date">
-									<!-- 날짜 분류 -->
-									<div class="order_date_grp">
-										<div class="order_date">2023. 6. 30 주문</div>
-										<div class="order_date_detail">
-											<span>주문 상세보기</span>
-											<img alt="주문상세보기" src="${pageContext.request.contextPath}/resources/img/myOrderList/righr_arrow.png">
-										</div>
-									</div>
-									
-									<!-- 주문내역 -->
-									<div class="order_list">
-										<div class="order_list_content">
-											<div class="order_list_content_title">
-												<div class="order_list_content_inner_title">
-													<span class="order_status_title">배송완료</span>
-												</div>
-											</div>
-											
-											<div class="order_list_content_item">
-												<div class="content_item_img">
-													<a href="detailView">
-														<img alt="상품사진" src="${pageContext.request.contextPath}/resources/img/myOrderList/item_thumnail.jpg">
-													</a>
-												</div>
-												<div class="content_item_title">
-													<a href="detailView">
-														<span>${order.prd_name}</span>
-													</a>
-													<div class="content_item_info">
-														<div class="content_item_price_qty">
-															<span>${order.od_detail_price}원</span>
-															<span>${order.od_detail_qty} 개</span>
-														</div>
-														<div>
-															<button class="cart_btn">장바구니 담기</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="order_item_button_wrap">
-											<div class="order_item_button">
-												<button class="blue_button">배송조회</button>
-												<button class="normal_button">교환, 반품 신청</button>
-												<button class="normal_button">리뷰 작성하기</button>
-												<button class="normal_button">주문내역 삭제</button>
-											</div>
-										</div>
-									</div>
-									
-								</div>
-						</c:forEach>
-						
-							<!-- 목록 버튼 -->
-							<div class="list_btn_wrap">
-								<button>< 이전</button>
-								<button>다음 ></button>
-							</div>
+						    <c:forEach var="order" items="${orders}" varStatus="status">
+						        <c:set var="prevIndex" value="${status.index - 1}" />
+						        <c:set var="currentDate" value="${order.od_date}" />
+						        <c:set var="prevDate" value="${orders[prevIndex].od_date}" />
+						        
+						        <c:if test="${status.index > 0 && currentDate != prevDate}">
+						            <div class="order_content_date">
+						                <!-- 날짜 분류 -->
+						                <div class="order_date_grp">
+						                    <div class="order_date">
+						                        <fmt:formatDate value="${order.od_date}" pattern="yyyy.MM.dd"/> 주문
+						                    </div>
+						                    <div class="order_date_detail">
+						                        <span>주문 상세보기</span>
+						                        <img alt="주문상세보기" src="${pageContext.request.contextPath}/resources/img/myOrderList/righr_arrow.png">
+						                    </div>
+						                </div>
+						                
+						                <!-- 주문내역 -->
+						                <c:forEach var="orderList" items="${orders}" varStatus="subStatus">
+						                    <c:if test="${subStatus.index > prevIndex && orderList.od_date == currentDate}">
+						                        <div class="order_list">
+						                            <div class="order_list_content">
+						                                <div class="order_list_content_title">
+						                                    <div class="order_list_content_inner_title">
+						                                        <span class="order_status_title">배송완료</span>
+						                                    </div>
+						                                </div>
+						                                
+						                                <div class="order_list_content_item">
+						                                    <div class="content_item_img">
+						                                        <a href="detailView">
+						                                            <img alt="상품사진" src="${pageContext.request.contextPath}/resources/img/myOrderList/item_thumnail.jpg">
+						                                        </a>
+						                                    </div>
+						                                    <div class="content_item_title">
+						                                        <a href="detailView">
+						                                            <span>${orderList.prd_name}</span>
+						                                        </a>
+						                                        <div class="content_item_info">
+						                                            <div class="content_item_price_qty">
+						                                                <span>${orderList.od_detail_price}원</span>
+						                                                <span>${orderList.od_detail_qty} 개</span>
+						                                            </div>
+						                                            <div>
+						                                                <button class="cart_btn">장바구니 담기</button>
+						                                            </div>
+						                                        </div>
+						                                    </div>
+						                                </div>
+						                            </div>
+						                            <div class="order_item_button_wrap">
+						                                <div class="order_item_button">
+						                                    <button class="blue_button">배송조회</button>
+						                                    <button class="normal_button">교환, 반품 신청</button>
+						                                    <button class="normal_button">리뷰 작성하기</button>
+						                                    <button class="normal_button">주문내역 삭제</button>
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </c:if>
+						                </c:forEach>
+						            </div>
+						        </c:if>
+						    </c:forEach>
+    						
+						    <!-- 목록 버튼 -->
+						    <div class="list_btn_wrap">
+						        <button>< 이전</button>
+						        <button>다음 ></button>
+						    </div>
 						</div>
 						
 						<!-- 배송상품 주문 안내 -->

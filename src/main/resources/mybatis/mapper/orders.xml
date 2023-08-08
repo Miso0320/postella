@@ -24,7 +24,8 @@
 		    prd_name,
 		    od_detail_qty,
 		    od_detail_price,
-		    prd_no
+		    prd_no,
+		    ord.od_no
 		FROM
 		         orders ord
 		    JOIN (
@@ -40,7 +41,8 @@
 		    ) prd ON ord.od_no = prd.od_no
 		WHERE
 		        us_no = ${us_no}
-		    <!-- AND to_char(od_date, 'YYYY.MM.DD') = ${od_date} -->
+		ORDER BY
+    			od_date DESC
 	</select>
 	
 </mapper>

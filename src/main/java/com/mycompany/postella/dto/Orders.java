@@ -11,14 +11,14 @@ public class Orders {
 	private int od_no;	//주문번호
 	private int us_no;	//회원고유번호
 	private int cp_no;	//쿠폰고유번호
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern="yyyy.MM.dd")
 	private Date od_date;	//주문날짜
 	private String od_status;	//주문상태
 	private String od_req_type;	//배송 요청사항 타입
 	private String od_req;	//배송 요청 사항 입력란 있는 경우
 	private String od_door_pwd;	//공동현관 출입번호
 	private int od_item_cnt;	//주문상품 종류의 개수
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern="yyyy.MM.dd")
 	private Date od_arrived_date;	//구매자가 배송받은 날짜
 	
 	// 목록 표출 시 추가로 가져올 내용
