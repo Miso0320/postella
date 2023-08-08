@@ -17,7 +17,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		
 
-		
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_cyborg.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productGroup.css"/>
 		<!-- <script type="text/javascript">
 		function movepage(page) {

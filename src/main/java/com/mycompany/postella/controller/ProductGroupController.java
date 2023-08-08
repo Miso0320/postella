@@ -68,12 +68,6 @@ public class ProductGroupController {
 		/*String sessionCheck = (String) session.getAttribute("categoryList");
 		log.info("session: "+ sessionCheck);*/
 		
-		int prdNo = prd.getPrd_no();
-		
-		Product product = productService.getInfo(prdNo);
-		product.getPrd_price();
-		log.info("상품번호:" + prd);
-		
 		int totalProductGroupNum = productGroupService.getTotalProductGroupNum(categoryList);
 		log.info("카테고리 :" + totalProductGroupNum);
 		
