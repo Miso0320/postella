@@ -6,42 +6,8 @@
 		쓰면 됨 -->
 	<select id="selectByPage" parameterType="Pager"
 		resultType="ProductGroup">
+		
 		<![CDATA[
-		select pg_no, pg_name
-		from (
-			select rownum as rnum, pg_no, pg_name 
-			from (
-				select pg_no, pg_name
-				from product_group
-				order by pg_no
-			)
-			where rownum <= ${endRowNo}
-		)
-		where rnum >= ${startRowNo}
-		]]>
-	</select>
-
-	<select id="count" resultType="int">
-		select count(*)
-		from product_group
-	</select>
-	
-	<select id="selectByPgNo" parameterType="int" resultType="Img">
-		select *
-		from image
-		where pg_no=#{pg_no}
-	</select>
-
-
-	<select id="selectTitleByPgNo" parameterType="int"
-		resultType="String">
-		SELECT pg_name
-		from product_group
-		where pg_no = ${pg_no}
-	</select>
-	
-	<select id="selectPhoto" parameterType="Pager" resultType="ProductGroup">
-      <![CDATA[
          select pg_no, pg_name
          from (
             select rownum as rnum, pg_no, pg_name 
@@ -51,15 +17,56 @@
                    where pg_no in (
                       select distinct pg_no
                       from product
-                      where prd_category=${prd_category}
-                      )
+     	]]>
+                      <where>
+                      	<if test='prd_category != null and prd_category !=""'>
+                      		prd_category=#{prd_category}
+                      	</if>
+                      </where>
+   		<![CDATA[   )
                order by pg_no
             )
             where rownum <= ${endRowNo}
          )
          where rnum >= ${startRowNo}
       ]]>
-   	</select>
+	</select>
 
+	<select id="count" parameterType="String" resultType="int">
+		SELECT count(*)
+                FROM
+                    product_group
+                WHERE
+                    pg_no IN (
+                        SELECT DISTINCT
+                            pg_no
+                        FROM
+                            product
+                        <where>
+                      	<if test='prd_category != null and prd_category !=""'>
+                      		prd_category=#{categoryList}
+                      	</if>
+                      </where>
+                            )
+	</select>
+	
+	<select id="selectByPgNo" parameterType="int" resultType="Img">
+		select *
+		from image
+		where pg_no=#{pg_no}
+	</select>
+
+
+	<select id="selectTitleByPgNo" parameterType="int" resultType="String">
+		SELECT pg_name
+		from product_group
+		where pg_no = ${pg_no}
+	</select>
+	
+	<select id="selectPriceByPgNo" parameterType="int" resultType="Product">
+		select a.prd_price
+		from product a join product_group b
+		on a.pg_no = ${pg_no}
+	</select>
 
 </mapper>

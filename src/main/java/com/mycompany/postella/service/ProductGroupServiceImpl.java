@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.postella.dao.ImageDao;
+import com.mycompany.postella.dao.ProductDao;
 import com.mycompany.postella.dao.ProductGroupDao;
 import com.mycompany.postella.dto.Image;
+import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.ProductGroupPager;
 
@@ -19,11 +21,8 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	@Autowired
 	private ImageDao imageDao;
 	
-/*	@Override
-	public void write(Product product) {
-		productDao.insert(product);
-		
-	}*/
+	@Autowired
+	private ProductDao productDao;
 
 	@Override
 	public List<ProductGroup> getList(ProductGroupPager pager) {
@@ -31,20 +30,9 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 		return productGroupList;
 	}
 
-/*	@Override
-	public int getTotalProductNum() {
-		int totalProductNum = productDao.count();
-		return totalProductNum;
-	}
-
 	@Override
-	public Product getProduct(int pg_no) {
-		Product product = productDao.selectByPg_no(pg_no);
-		return product;
-	}*/
-	@Override
-	public int getTotalProductGroupNum() {
-		int totalProductGroupNum = productGroupDao.count();
+	public int getTotalProductGroupNum(String categoryList) {
+		int totalProductGroupNum = productGroupDao.count(categoryList);
 		return totalProductGroupNum;
 	}
 	
@@ -65,6 +53,11 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 		List<ProductGroup> photoList = productGroupDao.selectPhoto(pager);;
 		return photoList;
 	}
-
+	
+	@Override
+	public Product getInfo(int pg_no) {
+		Product prd = productDao.selectByPrdNo(pg_no);
+		return prd;
+	}
 
 }

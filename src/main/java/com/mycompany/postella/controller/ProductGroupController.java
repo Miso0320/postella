@@ -12,15 +12,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Image;
+import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.ProductGroupPager;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.ProductGroupService;
+import com.mycompany.postella.service.productService;
 
+import lombok.var;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -32,10 +36,22 @@ public class ProductGroupController {
 	
 	@Autowired
 	private ImageService imageService;
+	
+	@Autowired
+	private productService productService;
 
 	
 	@RequestMapping("/productGroup")
-	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
+	
+	public String getProductGroupList(
+			String pageNo,
+			Product prd,
+			@RequestParam(value="category_list", required=false) String categoryList,
+			Model model, 
+			HttpSession session
+			) 
+		{
+		
 		//브라우저에서 pageNo가 넘어오지 않았을 경우
 		if(pageNo == null) {
 			//세션에 저장되어 있는지 확인
@@ -44,19 +60,37 @@ public class ProductGroupController {
 			if (pageNo == null) {
 				pageNo = "1";
 			}
-		}
+		}		
 		int intpageNo = Integer.parseInt(pageNo);
 		session.setAttribute("pageNo", String.valueOf(pageNo));
+		session.setAttribute("categoryList", String.valueOf(categoryList));
+		//categoryList = (String) session.getAttribute("categoryList");
+		/*String sessionCheck = (String) session.getAttribute("categoryList");
+		log.info("session: "+ sessionCheck);*/
 		
-		int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
+		int prdNo = prd.getPrd_no();
+		
+		Product product = productService.getInfo(prdNo);
+		product.getPrd_price();
+		log.info("상품번호:" + prd);
+		
+		int totalProductGroupNum = productGroupService.getTotalProductGroupNum(categoryList);
+		log.info("카테고리 :" + totalProductGroupNum);
 		
 		ProductGroupPager pager = new ProductGroupPager(12, 10, totalProductGroupNum, intpageNo);
-		List<ProductGroup> list = productGroupService.getList(pager);
-		/*List<ProductGroup> list2 = productGroupService.getPhotoList(pager);*/
 		
+		//log.info("categoryList : " + categoryList);
+		
+		pager.setPrd_category(categoryList);
+		log.info("카테고리 : "+categoryList);
+		List<ProductGroup> list = productGroupService.getList(pager);
+		//List<ProductGroup> list = productGroupService.getPhotoList(pager);
+		
+		Image img;
+		int pgNo;
 		for(int i = 0; i < list.size(); i++) {
-			int pgNo = list.get(i).getPg_no();
-			Image img = imageService.getImageByPgNo(pgNo);
+			pgNo = list.get(i).getPg_no();
+			img = imageService.getImageByPgNo(pgNo);
 			if(img != null) {
 				
 				//log.info("리스트 : " + list.get(i).getPg_no());
@@ -72,11 +106,35 @@ public class ProductGroupController {
 
 	      }
 		
-		/*if(PHO = checked) {
-			model.addAttribute("productGroups", list2);
-		} else {
-			model.addAttribute("productGroups", list);
-		}*/
+		/*int price;
+		for(int i = 0; i < list.size(); i++) {
+			pgNo = list.get(i).getPg_no();
+			price = productService.getInfo();
+			if(img != null) {
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				//log.info("리스트 : " + list.get(i).getPg_no());
+				
+				//String type = img.getImg_type();
+				//String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
+				//log.info("가져온거 :" + img.getImg_type());		
+				
+				//list.get(i).setEncodedFile(imgFile);
+				//list.get(i).setImg_type(type);
+			}*/
+			
+
+	      }
+		
+		
+
 		
 		
 		

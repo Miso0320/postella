@@ -33,35 +33,20 @@
 		<div id="container">
 			<section>
 				<aside>
-					<div>
-						<input type="checkbox" id="rocket" value="rocket"/>
-						<label for="rocket">
-							<img id="rk-icon1" src="${pageContext.request.contextPath}/resources/img/product/rocket.png" alt="">
-						</label>
-					</div>
-					<div id="rockets" style="background-color: #F2F2F2;">
-						<div class="rocket1">
-							<input id="rocket11" type="checkbox" value="왈가닥스"/>
-								<label for="rocket11"><img id="rk-icon2" src="${pageContext.request.contextPath}/resources/img/product/rocket_delivery.png" alt="">만 보기</label>
-						</div>
-						<div class="rocket1">
-							<input id="rocket12" type="checkbox" value="왈가닥스"/>
-								<label for="rocket12"><img id="rk-icon3" src="${pageContext.request.contextPath}/resources/img/product/rocket_jikgu.png" alt="">만 보기</label>
-						</div>
-					</div>
-						<div class="free-delivery"><input id="free" type="checkbox" value="free-delivery"/><label for="free">무료배송</label></div>
-						
 						<div>
 							<h1 style="font-size:15px; font-weight:bold;">카테고리</h1>
 							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-								<button class="accordion" style= "cursor : pointer;">엽서
+								<button class="accordion" style= "cursor : pointer; font-weight:bolder;">엽서
 									<input id="arrow1" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png" width="12px" height="12px"/>
 								</button>
 								<div class="panel">
-					          		<div class="panel-body"><input type="checkbox" id="category_list1" name="category_list" value="PHO"><label for="category_list">포토엽서</label></div>
-					          		<div class="panel-body"><input type="checkbox" id="category_list2" name="category_list" value="DES"><label for="category_list">디자인패턴엽서</label></div>
-					          		<div class="panel-body"><input type="checkbox" id="category_list3" name="category_list" value="ILU"><label for="category_list">그림/일러스트엽서</label></div>
-					          		<div class="panel-body"><input type="checkbox" id="category_list4" name="category_list" value="CAL"><label for="category_list">캘리그라피엽서</label></div>
+					          		<div><a href="productGroup?category_list=PHO">포토엽서</a></div>
+					          		<div><a href="productGroup?category_list=ILU">그림/일러스트엽서</a></div>
+					          		<div><a href="productGroup?category_list=DES">디자인패턴엽서</a></div>
+					          		<div><a href="productGroup?category_list=CAL">캘리그라피엽서</a></div>
+					          		<!-- <div><input type="checkbox" id="category_list2" name="category_list" value="DES"><label for="category_list">디자인패턴엽서</label></div>
+					          		<div><input type="checkbox" id="category_list3" name="category_list" value="ILU"><label for="category_list">그림/일러스트엽서</label></div>
+					          		<div><input type="checkbox" id="category_list4" name="category_list" value="CAL"><label for="category_list">캘리그라피엽서</label></div> -->
 								</div>
 							</div>
 						</div> 
@@ -285,7 +270,7 @@
 								
 								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 									<c:if test="${pager.pageNo != i}">
-										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}">${i}</a>
+										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}&categoryList=${selectCategory}">${i}</a>
 									</c:if>
 									<c:if test="${pager.pageNo == i}">
 										<a class="btn btn-primary btn-sm" href="productGroup?pageNo=${i}">${i}</a>
