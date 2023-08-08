@@ -158,6 +158,7 @@
 	height: 100%;
 	padding: 20px;
 	vertical-align: top;
+	width: 550px;
 }
 
 .order_list_content_title {
@@ -246,6 +247,7 @@
 
 .content_item_title a {
 	margin-bottom: 4px;
+	text-decoration: none;
 }
 
 .content_item_title img {
@@ -330,7 +332,7 @@
 	border: 1px solid rgb(52, 106, 255);
 }
 
-/* 목록 버튼 */
+/* 목록 버튼(페이징) */
 .list_btn_wrap {
 	display: flex;
 	align-items: center;

@@ -8,5 +8,39 @@
 		where orders.us_no = users.us_no
 		and od_no = #{od_no}
 	</select>
-
+	
+	<select id="selectOdDate" parameterType="int" resultType="Date">
+		SELECT od_date
+		FROM orders
+		WHERE us_no = #{us_no}
+		GROUP BY od_date
+		ORDER BY od_date DESC
+	</select>
+	
+	<select id="selectOrderList" parameterType="java.util.Map" resultType="Orders">
+		SELECT
+		    od_date,
+		    od_status,
+		    prd_name,
+		    od_detail_qty,
+		    od_detail_price,
+		    prd_no
+		FROM
+		         orders ord
+		    JOIN (
+		        SELECT
+		            pr.prd_name,
+		            od.od_no,
+		            od.prd_no,
+		            od.od_detail_qty,
+		            od.od_detail_price
+		        FROM
+		                 order_detail od
+		            JOIN product pr ON od.prd_no = pr.prd_no
+		    ) prd ON ord.od_no = prd.od_no
+		WHERE
+		        us_no = ${us_no}
+		    <!-- AND to_char(od_date, 'YYYY.MM.DD') = ${od_date} -->
+	</select>
+	
 </mapper>

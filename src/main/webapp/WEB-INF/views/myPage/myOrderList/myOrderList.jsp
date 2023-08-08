@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -97,60 +99,63 @@
 							</div>
 						</div>
 						
-						<!-- 주문내역(날짜별) -->
+						<!-- 주문내역 -->
 						<div id="order_list_for_date">
-							<div class="order_content_date">
-								<!-- 날짜 분류 -->
-								<div class="order_date_grp">
-									<div class="order_date">2023. 6. 30 주문</div>
-									<div class="order_date_detail">
-										<span>주문 상세보기</span>
-										<img alt="주문상세보기" src="${pageContext.request.contextPath}/resources/img/myOrderList/righr_arrow.png">
-									</div>
-								</div>
-								
-								<!-- 주문내역 -->
-								<div class="order_list">
-									<div class="order_list_content">
-										<div class="order_list_content_title">
-											<div class="order_list_content_inner_title">
-												<span class="order_status_title">배송완료</span>
-											</div>
+						<c:forEach var="order" items="${orders}">
+								<div class="order_content_date">
+									<!-- 날짜 분류 -->
+									<div class="order_date_grp">
+										<div class="order_date">2023. 6. 30 주문</div>
+										<div class="order_date_detail">
+											<span>주문 상세보기</span>
+											<img alt="주문상세보기" src="${pageContext.request.contextPath}/resources/img/myOrderList/righr_arrow.png">
 										</div>
-										
-										<div class="order_list_content_item">
-											<div class="content_item_img">
-												<a>
-													<img alt="상품사진" src="${pageContext.request.contextPath}/resources/img/myOrderList/item_thumnail.jpg">
-												</a>
+									</div>
+									
+									<!-- 주문내역 -->
+									<div class="order_list">
+										<div class="order_list_content">
+											<div class="order_list_content_title">
+												<div class="order_list_content_inner_title">
+													<span class="order_status_title">배송완료</span>
+												</div>
 											</div>
-											<div class="content_item_title">
-												<a>
-													<span>프롬비 사일런트 스톰 저소음 휴대용 미니 선풍기, FA135B, 에어리블루</span>
-												</a>
-												<div class="content_item_info">
-													<div class="content_item_price_qty">
-														<span>16,800원</span>
-														<span>1 개</span>
-													</div>
-													<div>
-														<button class="cart_btn">장바구니 담기</button>
+											
+											<div class="order_list_content_item">
+												<div class="content_item_img">
+													<a href="detailView">
+														<img alt="상품사진" src="${pageContext.request.contextPath}/resources/img/myOrderList/item_thumnail.jpg">
+													</a>
+												</div>
+												<div class="content_item_title">
+													<a href="detailView">
+														<span>${order.prd_name}</span>
+													</a>
+													<div class="content_item_info">
+														<div class="content_item_price_qty">
+															<span>${order.od_detail_price}원</span>
+															<span>${order.od_detail_qty} 개</span>
+														</div>
+														<div>
+															<button class="cart_btn">장바구니 담기</button>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="order_item_button_wrap">
-										<div class="order_item_button">
-											<button class="blue_button">배송조회</button>
-											<button class="normal_button">교환, 반품 신청</button>
-											<button class="normal_button">리뷰 작성하기</button>
-											<button class="normal_button">주문내역 삭제</button>
+										<div class="order_item_button_wrap">
+											<div class="order_item_button">
+												<button class="blue_button">배송조회</button>
+												<button class="normal_button">교환, 반품 신청</button>
+												<button class="normal_button">리뷰 작성하기</button>
+												<button class="normal_button">주문내역 삭제</button>
+											</div>
 										</div>
 									</div>
+									
 								</div>
-								
-							</div>
+						</c:forEach>
+						
 							<!-- 목록 버튼 -->
 							<div class="list_btn_wrap">
 								<button>< 이전</button>
