@@ -14,103 +14,77 @@
 		<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_cyborg.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/myOrderList.css">
 		<script src="${pageContext.request.contextPath}/resources/js/myOrderList.js"></script>
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/common/header.jsp" %>
 		
-		<section class="order_list_container" id="order_list_container">
+		<section class="order_list_container">
 			<!-- 전체 내용 -->
 			<div class="order_list_wrap" id="order_list_wrap">
-				<!--  왼쪽 메뉴 -->
-				<div class="left_my_menu" id="left_my_menu">
-					<!-- 마이메뉴 로고 -->
-					<div class="my_menu_logo" id="my_menu_logo">
-						<span>My Menu</span>
-					</div>
-					
-					<!-- 좌측 메뉴 -->
-					<div class="my_menu" id="my_menu">
-						<!-- MY 쇼핑 -->
-						<div class="my_inner_menu" id="my_shopping">
-							<div class="my_inner_title">MY 쇼핑</div>
-							<div class="my_inner_small_menu">
-								<ul>
-									<li>주문목록</li>
-									<li>취소/반품/교환/환불내역</li>
-								</ul>
-							</div>
-						</div>
-						<!-- MY 혜택 -->
-						<div class="my_inner_menu" id="my_benefit">
-							<div class="my_inner_title">MY 혜택</div>
-							<div class="my_inner_small_menu">
-								<ul>
-									<li>할인쿠폰</li>
-									<li>적립금</li>
-								</ul>
-							</div>
-						</div>
-						<!-- MY 활동 -->
-						<div class="my_inner_menu" id="my_act">
-							<div class="my_inner_title">MY 활동</div>
-							<div class="my_inner_small_menu">
-								<ul>
-									<li>문의하기</li>
-									<li>문의내역 확인</li>
-									<li>리뷰관리</li>
-									<li>찜 리스트</li>
-								</ul>
-							</div>
-						</div>
-						<!-- MY 정보 -->
-						<div class="my_inner_menu" id="my_info">
-							<div class="my_inner_title">MY 정보</div>
-							<div class="my_inner_small_menu">
-								<ul>
-									<li>개인정보확인/수정</li>
-									<li>배송지 관리</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					<!-- 좌측 하단 고객메뉴 -->
-					<div class="custom_left_menu" id="custom_left_menu">
-						<!-- 문의 -->
-						<a class="customer_menu_a" href="#">
-							<span class="customer_menu_icon">
-								<img src="${pageContext.request.contextPath}/resources/img/myOrderList/vos.png">
-							</span>
-						</a>
-						<!-- 고객의 소리 -->
-						<a class="customer_menu_a" href="#">
-							<span class="customer_menu_icon">
-								<img src="${pageContext.request.contextPath}/resources/img/myOrderList/inquiry.png">
-							</span>
-						</a>
-					</div>
-				</div>
-				
-				<!-- 상단 메뉴 및 내용 -->
+				<!-- 네비게이터, 메인 컨테이너 -->
 				<div class="upper_my_menu_content">
-					<!-- 주문목록 내용 -->
+					<!-- 네비게이터, 메인 -->
 					<div class="order_content">
-						<!-- 주문목록 타이틀 및 검색창 -->
-						<nav class="navbar navbar-expand-lg order_title_bg" data-bs-theme="light">
-						  <div class="container-fluid order_top_title">
-						    <a class="navbar-brand order_list_title" href="#">주문목록</a>
-						    <div class="collapse navbar-collapse" id="navbarColor03">
+						<!-- 네비게이터 -->
+						<nav class="navbar navbar-expand-lg bg-primary my_order_container" data-bs-theme="dark">
+						  <div class="container-fluid">
+						    <a class="navbar-brand my_order_text_style" href="#">MY MENU</a>
+						    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+						      <span class="navbar-toggler-icon"></span>
+						    </button>
+						    <div class="collapse navbar-collapse" id="navbarColor01">
+						      <ul class="navbar-nav me-auto">
+						        <!-- <li class="nav-item">
+						          <a class="nav-link active" href="#">Home
+						            <span class="visually-hidden">(current)</span>
+						          </a>
+						        </li>
+						        -->
+						        </li> 
+						        <li class="nav-item dropdown">
+						          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 쇼핑</a>
+						          <div class="dropdown-menu my_order_text_size">
+						            <a class="dropdown-item" href="#">주문목록</a>
+						            <a class="dropdown-item" href="#">취소내역</a>
+						            <div class="dropdown-divider"></div>
+						            <a class="dropdown-item" href="#">할인쿠폰</a>
+						            <a class="dropdown-item" href="#">적립금</a>
+						          </div>
+						        </li>
+						        <li class="nav-item dropdown">
+						          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 활동</a>
+						          <div class="dropdown-menu my_order_text_size">
+						            <a class="dropdown-item" href="#">문의하기</a>
+						            <a class="dropdown-item" href="#">문의내역 확인</a>
+						            <a class="dropdown-item" href="#">리뷰관리</a>
+						            <a class="dropdown-item" href="#">찜 리스트</a>
+						          </div>
+						        </li>
+						        <li class="nav-item dropdown">
+						          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 정보</a>
+						          <div class="dropdown-menu my_order_text_size">
+						            <a class="dropdown-item" href="#">개인정보수정</a>
+						            <a class="dropdown-item" href="#">배송지관리</a>
+						            <div class="dropdown-divider"></div>
+						            <a class="dropdown-item" href="#">문의하기</a>
+						          </div>
+						        </li>
+						      </ul>
 						      <form class="d-flex">
 						        <input class="form-control me-sm-2" type="search" placeholder="검색할 상품명 입력">
-						        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+						        <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Search</button>
 						      </form>
 						    </div>
 						  </div>
 						</nav>
 						
-						<!-- 날짜별 보기 -->
+						<!-- 주문목록 타이틀 -->
+						<h5 class="my_order_title my_order_text_color">주문목록</h5>
+					
+						<!-- 날짜별 분류 -->
 						<div class="classification_date_wrap">
 							<div class="classification_date">
 								<div class="order_date_range order_date_range_select" id="recent_six_month">최근 6개월</div>
@@ -142,15 +116,6 @@
 											<div class="order_list_content_inner_title">
 												<span class="order_status_title">배송완료</span>
 											</div>
-											<!-- <div>
-												<div>
-													<button class="more_menu_btn">
-														<div class="more_menu_btn_el"></div>
-														<div class="more_menu_btn_el"></div>
-														<div class="more_menu_btn_el"></div>
-													</button>
-												</div>
-											</div> -->
 										</div>
 										
 										<div class="order_list_content_item">
@@ -304,21 +269,15 @@
 				</div>
 			</div>
 			
-			<!-- 우측 사이드 기능 -->
+			<!-- 우측 사이드 -->
 			<article class="order_list_right" id="order_list_right">
-						
-				<!-- 최근 본 상품 -->
+				<!-- 장바구니 -->
 				<section class="my_view">
 					<div class="my_view_cart">
 						<a>
 							<em class="cart_count">1</em>
 						</a>
 					</div>
-					<!-- <div class="my_view_product">
-						<a>
-							<em class="cart_count">20</em>
-						</a>
-					</div> -->
 					<div class="recent_viewed_list">
 						<ul class="recent_viewed_page">
 							<li>

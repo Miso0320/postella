@@ -1,6 +1,13 @@
 $(init);
 
 function init() {
+	// 드롭다운 메뉴
+	$(".dropdown-toggle").click(dp_menu);
+	$(".dropdown-toggle").blur(dp_menu_hide);
+	
+	// 날짜별 분류(선택)
+	$(".order_date_range").click(orderDateClick);
+	
 	// 사이드바 보이기, 숨기기
 	$(window).scroll(function() {
 		if($(this).scrollTop() > 250) {
@@ -10,51 +17,54 @@ function init() {
 		}
 	});
 	
-	// 상품별 메뉴
-	$(".product_classification_menu").click(function() {
-		var target = event.target.id;
-		var product_classification_total = $("#product_classification_total");
-		var product_classification_delivery = $("#product_classification_delivery");
-		var product_classification_travel = $("#product_classification_travel");
-		var product_classification_ticket = $("#product_classification_ticket");
-		
-		if(target === "product_classification_total") {
-			product_classification_total.addClass("product_classification_menu_select");
-			product_classification_delivery.removeClass("product_classification_menu_select");
-			product_classification_travel.removeClass("product_classification_menu_select");
-			product_classification_ticket.removeClass("product_classification_menu_select");
-		} else if(target === "product_classification_delivery") {
-			product_classification_total.removeClass("product_classification_menu_select");
-			product_classification_delivery.addClass("product_classification_menu_select");
-			product_classification_travel.removeClass("product_classification_menu_select");
-			product_classification_ticket.removeClass("product_classification_menu_select");
-		} else if(target === "product_classification_travel") {
-			product_classification_total.removeClass("product_classification_menu_select");
-			product_classification_delivery.removeClass("product_classification_menu_select");
-			product_classification_travel.addClass("product_classification_menu_select");
-			product_classification_ticket.removeClass("product_classification_menu_select");
-		} else if(target === "product_classification_ticket") {
-			product_classification_total.removeClass("product_classification_menu_select");
-			product_classification_delivery.removeClass("product_classification_menu_select");
-			product_classification_travel.removeClass("product_classification_menu_select");
-			product_classification_ticket.addClass("product_classification_menu_select");
-		}
-	});
-	
-	// 최근 본 상품 정보 열기
+	// 장바구니 상품 정보 열기
 	$(".p_img").mouseover(recentItemView);
 	$(".p_img").mouseout(recentItemHide);
 	
-	$(".order_date_range").click(orderDateClick);
+}
+
+// 드롭다운 메뉴 나타내기
+function dp_menu() {
+	var target = event.target;
+	var dropdown = $(target).siblings();
 	
+	if(dropdown.css("display","none")) {
+		dropdown.css("display","block");
+	} else {
+		dropdown.css("display","none");
+	}
+}
+
+// 드롭다운 메뉴 숨기기
+function dp_menu_hide() {
+	var target = event.target;
+	var dropdown = $(target).siblings();
 	
+	if(dropdown.css("display","block")) {
+		dropdown.css("display","none");
+	} else {
+		dropdown.css("display","block");
+	}
+}
+
+//날짜별 분류
+function orderDateClick() {
+	var target = event.target;
+	$(".order_date_range").each(function(index, el) {
+		var classYn = $(el).is(".order_date_range_select");
+		
+		if(classYn) {
+			$(el).removeClass("order_date_range_select");
+		}
+		
+		if(target === el) {
+			$(el).addClass("order_date_range_select");
+		}
+	});
 }
 
 
-
-
-
-// 최근 본 상품 제품 정보 열기
+// 장바구니 상품 정보 열기
 function recentItemView() {
 	var target = event.target;
 
@@ -72,7 +82,8 @@ function recentItemView() {
 	$(target).parent().next().css("display", "block");
 }
 
-// 최근 본 상품 제품 정보 닫기
+
+// 장바구니 상품 정보 닫기
 function recentItemHide() {
 	var target = event.target;
 		
@@ -90,20 +101,7 @@ function recentItemHide() {
 	$(target).parent().next().css("display", "none");
 }
 
-function orderDateClick() {
-	var target = event.target;
-	$(".order_date_range").each(function(index, el) {
-		var classYn = $(el).is(".order_date_range_select");
-		
-		if(classYn) {
-			$(el).removeClass("order_date_range_select");
-		}
-		
-		if(target === el) {
-			$(el).addClass("order_date_range_select");
-		}
-	});
-}
+
 
 
 

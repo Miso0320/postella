@@ -16,7 +16,6 @@ import com.mycompany.postella.service.JoinService.JoinResult;
 
 import lombok.extern.slf4j.Slf4j;
 
-// 테스트222
 @Slf4j
 @Controller
 public class JoinController {
