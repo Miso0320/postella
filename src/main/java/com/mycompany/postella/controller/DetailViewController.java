@@ -206,12 +206,7 @@ public class DetailViewController {
     @ResponseBody
     public List<Review> getReviewFromDB(@RequestParam("pg_no") int pg_no) {
 		List<Review> reviews = reviewService.getAllReviews(pg_no);
-		SimpleDateFormat rformat = new SimpleDateFormat("yyyy.MM.dd");
-		for(int i=0; i < reviews.size(); i++) {
-			reviews.get(i).setUs_name(ordersService.getUserName(reviews.get(i).getOd_no()));
-			reviews.get(i).setPrd_name(reviewService.getPrdName(reviews.get(i).getPrd_no()));
-			reviews.get(i).setStr_date(rformat.format(reviews.get(i).getRev_date()));
-		}
+		
         return reviews; 
     }
 	
