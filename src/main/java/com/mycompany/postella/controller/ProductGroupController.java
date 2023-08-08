@@ -27,7 +27,6 @@ import com.mycompany.postella.service.productService;
 import lombok.var;
 import lombok.extern.slf4j.Slf4j;
 
-//테스트
 @Slf4j
 @Controller
 public class ProductGroupController {
@@ -68,7 +67,12 @@ public class ProductGroupController {
 		//categoryList = (String) session.getAttribute("categoryList");
 		/*String sessionCheck = (String) session.getAttribute("categoryList");
 		log.info("session: "+ sessionCheck);*/
-
+		
+		int prdNo = prd.getPrd_no();
+		
+		Product product = productService.getInfo(prdNo);
+		product.getPrd_price();
+		log.info("상품번호:" + prd);
 		
 		int totalProductGroupNum = productGroupService.getTotalProductGroupNum(categoryList);
 		log.info("카테고리 :" + totalProductGroupNum);
@@ -101,19 +105,12 @@ public class ProductGroupController {
 			
 
 	      }
-		
 
-			
-		
-
-		
-		
 		
 		model.addAttribute("pager", pager);
 		model.addAttribute("productGroups", list);
 		
-		
-		
+
 		
 		//List<Image> imgList = productGroupService.getImagesBypgNo();
 		
