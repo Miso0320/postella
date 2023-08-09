@@ -25,7 +25,8 @@ public class Orders {
 	private String prd_name;	//상품명
 	private int prd_no;	//상품고유번호
 	private int od_detail_qty;	//개별 상품 개수
-	private int od_detail_price;	//개발 상품 금액
+	private int od_detail_price;	//개별 상품 금액
+	private int od_detail_no;	//개별 상품 식별번호
 	private String img_type;	//이미지 MIME 타입
 	private String encodedFile;	//인코딩된 이미지
 

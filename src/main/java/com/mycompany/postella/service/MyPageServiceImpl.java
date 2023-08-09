@@ -28,4 +28,9 @@ public class MyPageServiceImpl implements MyPageService{
 		return order;
 	}
 
+	@Override
+	public void removeOrder(int od_detail_no) {
+		ordersDao.deleteOrder(od_detail_no);
+	}
+	
 }

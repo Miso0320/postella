@@ -25,7 +25,8 @@
 		    od_detail_qty,
 		    od_detail_price,
 		    prd_no,
-		    ord.od_no as od_no
+		    ord.od_no as od_no,
+		    od_detail_no
 		FROM
 		         orders ord
 		    JOIN (
@@ -34,7 +35,8 @@
 		            od.od_no,
 		            od.prd_no,
 		            od.od_detail_qty,
-		            od.od_detail_price
+		            od.od_detail_price,
+		            od.od_detail_no
 		        FROM
 		                 order_detail od
 		            JOIN product pr ON od.prd_no = pr.prd_no
@@ -44,5 +46,10 @@
 		ORDER BY
     			od_date DESC
 	</select>
+	
+	<delete id="deleteOrder" parameterType="int">
+		delete from orders
+		where od_no = ${od_no}
+	</delete>
 	
 </mapper>

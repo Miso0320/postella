@@ -16,4 +16,6 @@ public interface OrdersDao {
 	public List<Date> selectOdDate(int us_no);
 	// 주문목록 리스트
 	public List<Orders> selectOrderList(Map<String, Object> map);
+	// 주문내역 삭제
+	public int deleteOrder(int od_detail_no);
 }

@@ -327,14 +327,12 @@
 	width: 160px;
 }
 
-.normal_button {
-	color: rgb(17, 17, 17);
-	border: 1px solid rgb(221, 221, 221);
+.btn_size {
+	width: 160px;
 }
 
-.blue_button {
-	color: rgb(52, 106, 255);
-	border: 1px solid rgb(52, 106, 255);
+.modal_txt {
+	color: white;
 }
 
 /* 목록 버튼(페이징) */

@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Orders;
@@ -87,6 +88,17 @@ public class MypageController {
 		 */
 
 		return "myPage/myOrderList/myOrderList";
+	}
+	
+	@GetMapping("/deleteOrder")
+	public String deleteOrder(@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
+		log.info("od_detail_no : " + od_detail_no);
+		
+		//정말 삭제하시겠습니까?!?!? 알림창 필요!!!!
+		
+		
+		//myPageService.removeOrder(od_detail_no);
+		return "redirect:/myOrderList";
 	}
 
 }
