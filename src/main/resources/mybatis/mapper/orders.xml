@@ -20,7 +20,7 @@
 	<select id="selectOrderList" parameterType="java.util.Map" resultType="Orders">
 		SELECT
 		    od_date,
-		    od_status,
+		    get_code_value('OR', od_status) as od_status,
 		    prd_name,
 		    od_detail_qty,
 		    od_detail_price,

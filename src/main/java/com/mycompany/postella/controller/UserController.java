@@ -18,10 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class JoinController {
+public class UserController {
 	@Resource
 	private JoinService joinService;
 	
+	// 회원가입
 	@GetMapping("/join")
 	public String joinForm() {
 		return "join/join";
@@ -59,6 +60,12 @@ public class JoinController {
 			joinService.joinAgreement(agreement);
 			return "redirect:/productGroup";	
 		}
+	}
+	
+	// 로그인
+	@GetMapping("/login")
+	public String loginForm() {
+		return "login/login";
 	}
 	
 }

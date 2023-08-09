@@ -32,7 +32,7 @@ public class MypageController {
 	 * 
 	 **/
 	@GetMapping("/myOrderList")
-	public String joinForm(
+	public String myOrderList(
 			Model model ) 
 	{
 		// us_no 나중엔 받아오기

@@ -49,7 +49,7 @@
 						        <li class="nav-item dropdown">
 						          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 쇼핑</a>
 						          <div class="dropdown-menu my_order_text_size">
-						            <a class="dropdown-item" href="#">주문목록</a>
+						            <a class="dropdown-item" href="myOrderList">주문목록</a>
 						            <a class="dropdown-item" href="#">취소내역</a>
 						            <div class="dropdown-divider"></div>
 						            <a class="dropdown-item" href="#">할인쿠폰</a>
@@ -87,7 +87,7 @@
 						<h5 class="my_order_title my_order_text_color">주문목록</h5>
 					
 						<!-- 날짜별 분류 -->
-						<!-- <div class="classification_date_wrap">
+						<div class="classification_date_wrap">
 							<div class="classification_date">
 								<div class="order_date_range order_date_range_select" id="recent_six_month">최근 6개월</div>
 								<div class="order_date_range">2023</div>
@@ -97,9 +97,9 @@
 								<div class="order_date_range">2019</div>
 								<div class="order_date_range">2018</div>
 							</div>
-						</div> -->
+						</div>
 												
-						<!-- 주문내역 ----- 기존꺼! -->
+						<!-- 주문내역  -->
 						<div id="order_list_for_date">
 						    <c:forEach var="order" items="${orders}" varStatus="status">
 						        <c:set var="prevIndex" value="${status.index - 1}" />
@@ -126,7 +126,7 @@
 						                            <div class="order_list_content">
 						                                <div class="order_list_content_title">
 						                                    <div class="order_list_content_inner_title">
-						                                        <span class="order_status_title">배송완료</span>
+						                                        <span class="order_status_title">${orderList.od_status}</span>
 						                                    </div>
 						                                </div>
 						                                
@@ -297,7 +297,7 @@
 					<div class="recent_viewed_list">
 						<ul class="recent_viewed_page">
 							<li>
-								<a class="recent_viewed_item">
+								<a class="recent_viewed_item" href="detailView">
 									<img class="p_img" src="//thumbnail8.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/893966166889831-9a771868-6b23-4510-bd40-16832fe15e4e.jpg">
 									<span class="p_name">프롬비 사일런트 스톰 저소음 휴대용 미니 선풍기</span>
 									<span class="p_price">
@@ -307,7 +307,7 @@
 								<a class="delete_recent" href="#"></a>
 							</li>
 							<li>
-								<a class="recent_viewed_item">
+								<a class="recent_viewed_item" href="detailView">
 									<img class="p_img" src="//thumbnail8.coupangcdn.com/thumbnails/remote/120x120ex/image/vendor_inventory/c47d/54f86cfc64f5c878a94edc6207977d475259e8b85e131f6c030934671797.jpg">
 									<span class="p_name">[천삼백케이] [아이스타일] [istyle]Korean Minhwa Postcard Set-정(Still)</span>
 									<span class="p_price">
@@ -317,7 +317,7 @@
 								<a class="delete_recent" href="#"></a>
 							</li>
 							<li>
-								<a class="recent_viewed_item">
+								<a class="recent_viewed_item" href="detailView">
 									<img class="p_img" src="//thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/vendor_inventory/c17a/f2c7600d98b0f2cef4f7a804e2441d21e1bb3e4250391b55c9f8b1e94545.jpg">
 									<span class="p_name">일리 클라시코 미디움 플로우팩 캡슐커피, 6.7g</span>
 									<span class="p_price">
@@ -327,7 +327,7 @@
 								<a class="delete_recent" href="#"></a>
 							</li>
 							<li>
-								<a class="recent_viewed_item">
+								<a class="recent_viewed_item" href="detailView">
 									<img class="p_img" src="//thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/vendor_inventory/03ee/c22c163e5ea89841a77ec4682282e5dbaa1a783aecad75bfc714b8ad12d0.jpg">
 									<span class="p_name">공룡 슬리퍼 Q-032 실내</span>
 									<span class="p_price">
