@@ -29,6 +29,12 @@
 		from product
 	</select>
 	
+	<select id="selectTitleByPgNo" parameterType="int" resultType="String">
+		SELECT pg_name
+		from product_group
+		where pg_no = ${pg_no}
+	</select>
+	
 	<select id="selectByPgNo" parameterType="int" resultType="Img">
 		select *
 		from image
