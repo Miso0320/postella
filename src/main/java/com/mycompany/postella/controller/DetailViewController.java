@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -227,6 +229,22 @@ public class DetailViewController {
     @ResponseBody
     public ResponseEntity<List<Review>> orderByDate(@RequestParam("pg_no") int pg_no) {
 		List<Review> reviews = reviewService.orderByDate(pg_no);
+		
+        return ResponseEntity.ok(reviews);
+    }
+	
+	//리뷰 검색하기
+	@RequestMapping("/searchReview")
+    @ResponseBody
+    public ResponseEntity<List<Review>> searchReview(@RequestParam("pg_no") int pg_no, @RequestParam("keyword") String keyword) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("pg_no", pg_no);
+		map.put("keyword", keyword);
+		
+		log.info("!!pg_no: "+map.get("pg_no"));
+		log.info("!!keyword: "+map.get("keyword"));
+		
+		List<Review> reviews = reviewService.searchReviews(map);
 		
         return ResponseEntity.ok(reviews);
     }

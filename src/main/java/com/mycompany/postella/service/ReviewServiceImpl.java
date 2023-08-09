@@ -2,6 +2,7 @@ package com.mycompany.postella.service;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,8 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	
 	@Override
-	public List<Review> searchReviews(String keyword) {
-		List<Review> reviews = reviewDao.selectByKeyword(keyword);
+	public List<Review> searchReviews(Map<String, Object> map) {
+		List<Review> reviews = reviewDao.selectByKeyword(map);
 		addReviewInfo(reviews);
 		return reviews;
 	}	

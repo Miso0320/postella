@@ -16,10 +16,11 @@
 		and review.prd_no = #{prd_no}
 	</select>
 	
-	<select id="selectByKeyword" parameterType="String" resultType="Review">
+	<select id="selectByKeyword" parameterType="java.util.Map" resultType="Review">
 		select review.*
-		from review
-		where rev_content like '#{keyword}'
+		from review, product
+		where review.prd_no = product.prd_no
+		and product.pg_no = #{pg_no} and rev_content LIKE '%' || #{keyword} || '%'
 	</select>
 	
 	<select id="orderByRate" parameterType="int" resultType="Review">

@@ -456,7 +456,7 @@
                      </div>
                      <div class="review-search">
                         <input class="review-search-Input" type="text" name="reviewSearch" placeholder="상품평을 검색해보세요." maxlength="30">
-           				<a class="review-search-Btn"><img src="//img1a.coupangcdn.com/image/productreview/web/pdp/article/search-btn_v1.png" alt="찾기"></a>
+           				<a href="#" id="searchReview" class="review-search-Btn"><img src="//img1a.coupangcdn.com/image/productreview/web/pdp/article/search-btn_v1.png" alt="찾기"></a>
         			</div>
                     <div class="review-search-star">
                        <button id="review-star-List-btn">모든 별점 보기</button>
