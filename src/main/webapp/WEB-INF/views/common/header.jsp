@@ -7,9 +7,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
-		<title>Insert title here</title>
+		<title>POSTELLA</title>
 		
+		<!-- 부트스트랩 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+		<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_cyborg.css">
+		
+		<!-- css -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/myOrderList.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
+		<!-- js -->
+		<script src="${pageContext.request.contextPath}/resources/js/myOrderList.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/detailView.js"></script>
 	</head>
 	<body>
 		<header>
@@ -88,5 +101,3 @@
 		      		
 	      	</section>
 		</header>
-	</body>
-</html>
