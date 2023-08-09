@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.flayer1 a {
+	text-decoration: none;
+}
+.flayer2 a {
+	text-decoration: none;
+}
+.flayer3 a {
+	text-decoration: none;
+}
+.flayer4 a {
+	text-decoration: none;
+}
+
+.flayer1 ul {
+	list-style: none;
+}
+.flayer2 ul {
+	list-style: none;
+}
+.flayer3 ul {
+	list-style: none;
+}
+.flayer4 ul {
+	list-style: none;
+}
+
+
+.flayer1 li {
+	list-style: none;
+}
+.flayer2 li {
+	list-style: none;
+}
+.flayer3 li {
+	list-style: none;
+}
+.flayer4 li {
+	list-style: none;
+}
+
+.flayer2 div {
+	 display: block;
+}
+.flayer3 div {
+	 display: block;
+}
+
+footer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.flayer1 {
+	border-bottom: #ddd solid 1px;
+	height: 34px;
+    text-align: center;
+    padding: 5px 0px;
+    white-space: nowrap;
+}
+
+.flayer1 a{
+	display: inline-block;
+    white-space: nowrap;
+    padding: 0px 14px;
+    font-size: 12px;
+    color: #555;
+    height: 12px;
+    border-left: #888 solid 1px;
+}
+.footer-site-picker {
+	position: relative;
+    font-size: 14px;
+    display: inline-block;
+    text-align: left;
+    margin-top: -9px;
+    color: #212b36;
+    margin-left: 5px;
+}
+
+.dropbtn {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.footer-site-picker label {
+    height: 30px; 
+    border: 1px solid #c4cdd5;
+    display: flex;
+    align-items: center;
+    width: 180px;
+    border-radius: 3px;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: white;
+}
+.site-picker-arrow {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #333;
+    -webkit-mask-size: 100%;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjI0MTggNC41NTg2MkMxMS40NjI2IDQuMzIzOTcgMTEuODMxNyA0LjMxMjcyIDEyLjA2NjQgNC41MzM0OEMxMi4yODMgNC43MzcyNiAxMi4zMDkyIDUuMDY3NDkgMTIuMTM4NCA1LjMwMTY1TDEyLjA5MTUgNS4zNTgwNUw3LjQyNjU1IDEwLjMxNjRDNy4yMTI3MiAxMC41NDM3IDYuODYyMSAxMC41NiA2LjYyODY2IDEwLjM2NTJMNi41NzY5OCAxMC4zMTY1TDEuOTA4NjIgNS4zNTgyMUMxLjY4Nzc4IDUuMTIzNjUgMS42OTg5IDQuNzU0NDcgMS45MzM0NiA0LjUzMzYyQzIuMTQ5OTggNC4zMjk3NyAyLjQ4MTIgNC4zMjM1NiAyLjcwNDU4IDQuNTA4M0wyLjc1ODA1IDQuNTU4NDZMNy4wMDExNiA5LjA2NDk5TDExLjI0MTggNC41NTg2MloiIGZpbGw9IiMyMTJCMzYiLz4KPC9zdmc+Cg==);
+}
+.fdropdown-content {
+    position: absolute;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+    background: #fff;
+    box-shadow: 0 1px 7px rgba(0,0,0,0.26);
+    top: 36px;
+    left: 0;
+    width: 180px;
+    border-radius: 4px;
+    display: none;
+}
+
+.fdropdown-content a {
+    white-space: nowrap;
+    text-decoration: none;
+			display: block;
+}
+
+.footer-site-picker:hover .fdropdown-content {
+  display: block;
+}
+
+.footer-site-picker:hover .site-picker-arrow {
+	transform: rotate(180deg);
+	transition: 0.3s;
+}
+
+.flayer2 {
+	width: 1020px;
+    height: 100px;
+    margin: 30px auto;
+    font-size: 12px;
+    color: #555;
+    line-height: 150%;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 10px;
+}
+
+.flayer2 h1 {
+    width: 150px;
+    background-image: none;
+}
+
+.fseller-info {
+	white-space: nowrap;
+}
+
+.fseller-info p {
+	margin: 0;
+}
+
+.footer-sns {
+	display:flex;
+	flex-direction: rows;
+	list-style: none;
+	padding-top: 40px;
+}
+
+.footer-sns a {
+	margin: 0 5px;
+}
+
+.footer-certification-list {
+	width: 968px;
+	height: 80px; 
+	margin: 0 auto; 
+	background: url(//static.coupangcdn.com/image/coupang/common/footer_asset_v12.png) no-repeat; 
+	background-position: -44px -92px; 
+	position: relative
+}
+
+.fbottom {
+	padding-top:9px; 
+	white-space: nowrap;
+}
+
+.flayer4 {
+	background-color: #333; 
+	color: #888888;
+}
+
+.f-info {
+	margin: 0 100px; 
+	white-space: nowrap;
+}
+
+.f-info div{
+	margin: 10px 0px; 
+}
+
+.fservice p {
+ 	margin: 0; 
+}
+
+.real-bottom {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0px 10px;
+}

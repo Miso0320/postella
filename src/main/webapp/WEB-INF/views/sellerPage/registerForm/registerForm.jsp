@@ -5,10 +5,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="//image9.coupangcdn.com/image/coupang/favicon/v2/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 	
 	<title>큐팡! 판매자</title>
 	<link rel="stylesheet" href="registerForm.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/registerForm.css">
 </head>
 <body>
 	<!-- header -->
