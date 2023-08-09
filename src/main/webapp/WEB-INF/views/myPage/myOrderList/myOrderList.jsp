@@ -132,12 +132,12 @@
 						                                
 						                                <div class="order_list_content_item">
 						                                    <div class="content_item_img">
-						                                        <a href="detailView">
+						                                        <a href="setDetailPage?prdNo=${orderList.prd_no}">
 						                                       		<img alt="상품사진" src="data:${orderList.img_type};base64, ${orderList.encodedFile}">
 						                                        </a>
 						                                    </div>
 						                                    <div class="content_item_title">
-						                                        <a href="detailView">
+						                                        <a href="setDetailPage?prdNo=${orderList.prd_no}">
 						                                            <span>${orderList.prd_name}</span>
 						                                        </a>
 						                                        <div class="content_item_info">
