@@ -24,5 +24,5 @@ public class CartController {
 	public String joinForm() {
 		return "cartNormal/cartNormal";
 	}
-	//테스트2
+	//테스트22
 }
