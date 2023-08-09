@@ -241,13 +241,23 @@ public class DetailViewController {
 		map.put("pg_no", pg_no);
 		map.put("keyword", keyword);
 		
-		log.info("!!pg_no: "+map.get("pg_no"));
-		log.info("!!keyword: "+map.get("keyword"));
-		
 		List<Review> reviews = reviewService.searchReviews(map);
 		
         return ResponseEntity.ok(reviews);
     }
+	
+	//리뷰 별점별로 보기
+	@RequestMapping("/groupByStar")
+	@ResponseBody
+	public ResponseEntity<List<Review>> orderByStar(@RequestParam("pg_no") int pg_no, @RequestParam("starAmount") int starAmount) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("pg_no", pg_no);
+		map.put("starAmount", starAmount);
+		
+		List<Review> reviews = reviewService.groupByRate(map);
+	    return ResponseEntity.ok(reviews);
+	}
+
 	
 	
 }

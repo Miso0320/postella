@@ -57,8 +57,8 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	
 	@Override
-	public List<Review> groupByRate(int pg_no, int rate) {
-		List<Review> reviews = reviewDao.groupByRate(pg_no, rate);
+	public List<Review> groupByRate(Map<String, Object> map) {
+		List<Review> reviews = reviewDao.groupByRate(map);
 		addReviewInfo(reviews);
 		return reviews;
 	}

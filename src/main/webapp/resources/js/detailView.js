@@ -35,6 +35,13 @@ function init() {
        searchReview(pg_no, keyword);
    });
    
+   //리뷰 별점별로 보기 버튼 클릭
+   $(".star-content").click(function(e) {
+       e.preventDefault();
+       var starAmount = $(this).data("star-amount");
+       groupByStar(pg_no, starAmount);
+   });
+   
    /*// 썸네일 확대
      var innerFrameVisible = false;
      
@@ -286,7 +293,7 @@ function slideNext(event) {
 }
 
 function loadInitialReview() {
-    loadData("getReviewFromDB", { pg_no: pg_no }); // 페이지 번호 설정
+    loadData("getReviewFromDB", { pg_no: pg_no }); 
 }
 
 //리뷰 별점순
@@ -302,6 +309,11 @@ function orderByDate(pg_no) {
 //리뷰 검색
 function searchReview(pg_no, keyword) {
 	loadData("searchReview", { pg_no: pg_no, keyword: keyword });
+}
+
+//리뷰 별점별로 보기
+function groupByStar(pg_no, starAmount) {
+    loadData("groupByStar", { pg_no: pg_no, starAmount: starAmount });
 }
 
 //리뷰 보여주기

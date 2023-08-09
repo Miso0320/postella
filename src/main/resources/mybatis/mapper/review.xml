@@ -39,13 +39,13 @@
         order by review.rev_date DESC
 	</select>
 	
-	<select id="groupByRate" parameterType="int" resultType="Review">
+	<select id="groupByRate" parameterType="java.util.Map" resultType="Review">
 		select *
 		from (select review.*
 				from review, product
 				where review.prd_no = product.prd_no
 				and product.pg_no = #{pg_no})
-		where rev_star_rate = #{rate}
+		where rev_star_rate = #{starAmount}
 	</select>
 	
 	<select id="selectReviewCnt" parameterType="int" resultType="int">

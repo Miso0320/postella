@@ -425,75 +425,74 @@
             </div>
          </div>
 
-               <div class="review-list-container">
-                  <div class="review-tab-container" id="review-tab-container">
-                     <div class="review-rule">상품평 운영원칙</div>
-                     <h4 class="review-title">상품평</h4>
-                     <div class="review-guide">동일한 상품에 대해 작성된 상품평으로, 판매자는 다를 수
-                        있습니다.</div>
-                     <div class="review-info-starset">
-                        <div class="review-info-starimg">
-                           <c:forEach var="star" begin="1" end="${stars}">
-                        		<span class="review-star-active">★</span> 
-                        	</c:forEach>
-                        	<c:if test="${stars < 5}">
-                        		<c:forEach var="star" begin="1" end="${5 - stars}">
-                        		<span class="review-star-disactive">★</span> 
-                        		</c:forEach>
-                        	</c:if>
-                        </div>
-                        <div class="review-info-star-cnt">${revCnt}</div>
-                        <div class="review-info-detail-look">
-                           <span class="review-info-detail-link"> 자세히보기 ></span>
-                        </div>
-                     </div>
-                  </div>
-                  <section class="review-list-section1">
-                     <div class="review-sort">
-                        <a href="#" id="orderByStar" class="sort-best" style="color: white;">별점순</a>
-                        <div class="sort-text-bar">|</div>
-                        <a href="#" id="orderByDate" class="sort-date" style="color: white;">최신순</a>
-                     </div>
-                     <div class="review-search">
-                        <input class="review-search-Input" type="text" name="reviewSearch" placeholder="상품평을 검색해보세요." maxlength="30">
-           				<a href="#" id="searchReview" class="review-search-Btn"><img src="//img1a.coupangcdn.com/image/productreview/web/pdp/article/search-btn_v1.png" alt="찾기"></a>
-        			</div>
-                    <div class="review-search-star">
-                       <button id="review-star-List-btn">모든 별점 보기</button>
-                       <div class="star-list" id="star-list">
-                        <div class="star-content">
-                        	<span class="star-list-text">최고</span>
-                        	<span class="star-list-active-stars">★★★★★</span>
-                        	<span class="star-list-amount">2</span>
-                        </div>
-                         <div class="star-content">
-                        	<span class="star-list-text">좋음</span>
-                        	<span class="star-list-active-stars">★★★★</span>
-                        	<span class="star-list-disactive-stars">★</span>
-                        	<span class="star-list-amount">2</span>
-                        </div>
-                         <div class="star-content">
-                        	<span class="star-list-text">보통</span>
-                        	<span class="star-list-active-stars">★★★</span>
-                        	<span class="star-list-disactive-stars">★★</span>
-                        	<span class="star-list-amount">2</span>
-                        </div>
-                         <div class="star-content">
-                        	<span class="star-list-text">별로</span>
-                        	<span class="star-list-active-stars">★★</span>
-                        	<span class="star-list-disactive-stars">★★★</span>
-                        	<span class="star-list-amount">2</span>
-                        </div>
-                         <div class="star-content">
-                        	<span class="star-list-text">나쁨</span>
-                        	<span class="star-list-active-stars">★</span>
-                        	<span class="star-list-disactive-stars">★★★★</span>
-                        	<span class="star-list-amount">2</span>
-                        </div>
-                       </div>
-                    </div>
-                  </section>
-                  <section class="review-list-section2" data-pg_no="${pg_no}"></section>
+					<div class="review-list-container">
+						<div class="review-tab-container" id="review-tab-container">
+							<div class="review-rule">상품평 운영원칙</div>
+							<h4 class="review-title">상품평</h4>
+							<div class="review-guide">동일한 상품에 대해 작성된 상품평으로, 판매자는 다를 수 있습니다.</div>
+							<div class="review-info-starset">
+								<div class="review-info-starimg">
+									<c:forEach var="star" begin="1" end="${stars}">
+										<span class="review-star-active">★</span>
+									</c:forEach>
+									<c:if test="${stars < 5}">
+										<c:forEach var="star" begin="1" end="${5 - stars}">
+											<span class="review-star-disactive">★</span>
+										</c:forEach>
+									</c:if>
+								</div>
+								<div class="review-info-star-cnt">${revCnt}</div>
+								<div class="review-info-detail-look">
+									<span class="review-info-detail-link"> 자세히보기 ></span>
+								</div>
+							</div>
+						</div>
+						<section class="review-list-section1">
+							<div class="review-sort">
+								<a href="#" id="orderByStar" class="sort-best" style="color: white;">별점순</a>
+								<div class="sort-text-bar">|</div>
+								<a href="#" id="orderByDate" class="sort-date" style="color: white;">최신순</a>
+							</div>
+							<div class="review-search">
+								<input class="review-search-Input" type="text" name="reviewSearch" placeholder="상품평을 검색해보세요." maxlength="30"> <a href="#" id="searchReview" class="review-search-Btn"><img src="//img1a.coupangcdn.com/image/productreview/web/pdp/article/search-btn_v1.png" alt="찾기"></a>
+							</div>
+							<div class="review-search-star">
+								<button id="review-star-List-btn">모든 별점 보기</button>
+								<div class="star-list" id="star-list">
+									<a href="#" class="star-content groupByStar" data-star-amount="5"> 
+										<span class="star-list-text">최고</span> 
+										<span class="star-list-active-stars">★★★★★</span> 
+										<span class="star-list-amount">2</span> 
+									</a> 
+									<a href="#" class="star-content groupByStar" data-star-amount="4"> 
+										<span class="star-list-text">좋음</span> 
+										<span class="star-list-active-stars">★★★★</span> 
+										<span class="star-list-disactive-stars">★</span> 
+										<span class="star-list-amount">2</span>
+									</a> 
+									<a href="#" class="star-content groupByStar" data-star-amount="3"> 
+										<span class="star-list-text">보통</span> 
+										<span class="star-list-active-stars">★★★</span> 
+										<span class="star-list-disactive-stars">★★</span> 
+										<span class="star-list-amount">2</span>
+									</a> 
+									<a href="#" class="star-content groupByStar" data-star-amount="2"> 
+										<span class="star-list-text">별로</span> 
+										<span class="star-list-active-stars">★★</span> 
+										<span class="star-list-disactive-stars">★★★</span> 
+										<span class="star-list-amount">2</span>
+									</a> 
+									<a href="#" class="star-content groupByStar" data-star-amount="1"> 
+										<span class="star-list-text">나쁨</span> 
+										<span class="star-list-active-stars">★</span> 
+										<span class="star-list-disactive-stars">★★★★</span> 
+										<span class="star-list-amount">2</span>
+									</a>
+								</div>
+							</div>
+					</div>
+					</section>
+					<section class="review-list-section2" data-pg_no="${pg_no}"></section>
                </div>
                
                <div class="prod-inquiry-list">
