@@ -2,9 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.ProductGroupDao">
 
-	<select id="selectByPage" parameterType="Pager"
-		resultType="ProductGroup">
-		
+	<select id="selectByPage" parameterType="Pager" resultType="ProductGroup">
 		<![CDATA[
          select pg_no, pg_name
          from (
@@ -35,11 +33,10 @@
 		where pg_no = ${pg_no}
 	</select>
 	
+	<!-- 대표이미지가져오기 -->
 	<select id="selectByPgNo" parameterType="int" resultType="Img">
 		select *
 		from image
-		where pg_no=#{pg_no}
+		where pg_no=#{pg_no} and ROWNUM = 1
 	</select>
-
-
 </mapper>

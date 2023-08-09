@@ -139,13 +139,6 @@
 						<div class="state"><input id="state5" type="checkbox" value="왈가닥스"/><label for="state5">중고</label></div>
 					</div>
 					<div>
-						<h1 style="font-size:15px; font-weight:bold;">엽서 디자인종류</h1>
-						<div class="design"><input id="design1" type="checkbox" value="왈가닥스"/><label for="design1">포토</label></div>
-						<div class="design"><input id="design2" type="checkbox" value="왈가닥스"/><label for="design2">그림/일러스트</label></div>
-						<div class="design"><input id="design3" type="checkbox" value="왈가닥스"/><label for="design3">타이포/캘리그라피</label></div>
-						<div class="design"><input id="design4" type="checkbox" value="왈가닥스"/><label for="design4">디자인패턴</label></div>
-					</div>
-					<div>
 						<h1 style="font-size:15px; font-weight:bold;">카드/엽서 메시지</h1>
 						<div class="message"><input id="message1" type="checkbox" value="왈가닥스"/><label for="message1">축하/기념일</label></div>
 						<div class="message"><input id="message2" type="checkbox" value="왈가닥스"/><label for="message2">사랑/고백</label></div>
@@ -253,9 +246,9 @@
 									<a href="detailView" class="pproduct">
 											<div>
 												<%-- <img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}"> --%>
-										
+												<div><img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}"></div>
 												<div>${productGroup.pg_name}</div>
-												<%-- <td>${}</td> --%>
+												
 											</div>
 									</a>
 						</c:forEach>

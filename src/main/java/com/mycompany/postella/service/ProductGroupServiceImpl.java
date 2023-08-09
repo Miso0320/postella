@@ -42,4 +42,10 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 		int totalProductGroupNum = productGroupDao.count();
 		return totalProductGroupNum;
 	}
+
+	@Override
+	public List<Image> getImagesBypgNo(int pg_no) {
+		List<Image> img = productGroupDao.selectByPgNo(pg_no);
+		return img;
+	}
 }

@@ -31,7 +31,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class ProductGroupController {
-	
 	@Autowired
 	private ProductGroupService productGroupService;
 	
@@ -41,12 +40,9 @@ public class ProductGroupController {
 	@Autowired
 	private productService productService;
 
-	
-	
 	@RequestMapping("/productGroup")
-	
 	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
-		//브라우저에서 pageNo가 넘어오지 않았을 경우
+				//pageNo가 넘어오지 않았을 경우
 				if(pageNo == null) {
 					//세션에 저장되어 있는지 확인
 					pageNo = (String) session.getAttribute("pageNo");
@@ -56,42 +52,46 @@ public class ProductGroupController {
 					}
 				}
 				int intpageNo = Integer.parseInt(pageNo);
-				log.info("pageno" + pageNo);
 				session.setAttribute("pageNo", String.valueOf(pageNo));
 				
 				int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
-				log.info("totalProductGroupNum" + totalProductGroupNum);
 				
 				Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
 				List<ProductGroup> list = productGroupService.getList(pager);
 				
-				model.addAttribute("pager", pager);
-				model.addAttribute("productGroups", list);		
-		
-		//model.addAttribute("title", title);
-/*	{			
+				
+				
 				int pgNo;
+				Image img;
 				for(int i = 0; i < list.size(); i++) {
 					pgNo = list.get(i).getPg_no();
 					img = imageService.getImageByPgNo(pgNo);
-					if(img != null) {
-						
-						//log.info("리스트 : " + list.get(i).getPg_no());
-						
-						String type = img.getImg_type();
-						String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
-						//log.info("가져온거 :" + img.getImg_type());		
-						
-						list.get(i).setEncodedFile(imgFile);
-						list.get(i).setImg_type(type);
-					}
-					
-		
-			      }*/
-
-
+					String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
+					list.get(i).setEncodedFile(imgFile);
+					list.get(i).setImg_type(img.getImg_type());
+				}
+				
+				model.addAttribute("pager", pager);
+				model.addAttribute("productGroups", list);	
+				
+			/*{
+							int pgNo;
+							Image img;
+							for(int i = 0; i < list.size(); i++) {
+								pgNo = list.get(i).getPg_no();
+								img = imageService.getImageByPgNo(pgNo);
+								if(img != null) {
+									
+									//log.info("리스트 : " + list.get(i).getPg_no());
+									
+									String type = img.getImg_type();
+									String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
+									//log.info("가져온거 :" + img.getImg_type());		
+									
+									list.get(i).setEncodedFile(imgFile);
+									list.get(i).setImg_type(type);
+								}					
+						      }*/
 		return "productGroup/productGroup";
 	}
-	
-
 }
