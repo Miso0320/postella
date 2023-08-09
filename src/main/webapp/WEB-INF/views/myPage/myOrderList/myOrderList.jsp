@@ -133,7 +133,7 @@
 						                                <div class="order_list_content_item">
 						                                    <div class="content_item_img">
 						                                        <a href="detailView">
-						                                            <img alt="상품사진" src="${pageContext.request.contextPath}/resources/img/myOrderList/item_thumnail.jpg">
+						                                       		<img alt="상품사진" src="data:${orderList.img_type};base64, ${orderList.encodedFile}">
 						                                        </a>
 						                                    </div>
 						                                    <div class="content_item_title">

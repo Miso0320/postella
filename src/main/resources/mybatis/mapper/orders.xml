@@ -25,7 +25,7 @@
 		    od_detail_qty,
 		    od_detail_price,
 		    prd_no,
-		    ord.od_no
+		    ord.od_no as od_no
 		FROM
 		         orders ord
 		    JOIN (

@@ -22,8 +22,11 @@ public class Orders {
 	private Date od_arrived_date;	//구매자가 배송받은 날짜
 	
 	// 목록 표출 시 추가로 가져올 내용
-	private String prd_name;
-	private int od_detail_qty;
-	private int od_detail_price;
+	private String prd_name;	//상품명
+	private int prd_no;	//상품고유번호
+	private int od_detail_qty;	//개별 상품 개수
+	private int od_detail_price;	//개발 상품 금액
+	private String img_type;	//이미지 MIME 타입
+	private String encodedFile;	//인코딩된 이미지
 
 }

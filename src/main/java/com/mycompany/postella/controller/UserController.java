@@ -22,7 +22,12 @@ public class UserController {
 	@Resource
 	private JoinService joinService;
 	
-	// 회원가입
+	/**
+	 * 
+	 * 회원가입 폼
+	 * 
+	 * @return String
+	 */
 	@GetMapping("/join")
 	public String joinForm() {
 		return "join/join";
@@ -30,19 +35,18 @@ public class UserController {
 	
 	/**
 	 * 
-	 * @param users
-	 * 		  유저 가입 정보
-	 * @param agreement
-	 * 		  약관동의 정보
-	 * @param model
+	 * 회원가입
 	 * 
-	 **/
+	 * @param users 유저 가입 정보
+	 * @param agreement 약관동의 정보
+	 * @param model
+	 * @return String
+	 */
 	@PostMapping("/join")
 	public String join(
 			@ModelAttribute("users") Users users, 
 			@ModelAttribute("agreement") Agreement agreement,
-			Model model )
-	{
+			Model model ) {
 		JoinResult result = joinService.joinUsers(users);
 		
 		if(result == JoinResult.FAIL_EMAIL) {
