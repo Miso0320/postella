@@ -1,6 +1,7 @@
 package com.mycompany.postella.controller;
 
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,75 +42,54 @@ public class ProductGroupController {
 	private productService productService;
 
 	
+	
 	@RequestMapping("/productGroup")
 	
-	public String getProductGroupList(
-			String pageNo,
-			Product prd,
-			@RequestParam(value="category_list", required=false) String categoryList,
-			Model model, 
-			HttpSession session
-			) 
-		{
-		
+	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
 		//브라우저에서 pageNo가 넘어오지 않았을 경우
-		if(pageNo == null) {
-			//세션에 저장되어 있는지 확인
-			pageNo = (String) session.getAttribute("pageNo");
-			//저장되어 있지 않다면 "1"로 초기화
-			if (pageNo == null) {
-				pageNo = "1";
-			}
-		}		
-		int intpageNo = Integer.parseInt(pageNo);
-		session.setAttribute("pageNo", String.valueOf(pageNo));
-		session.setAttribute("categoryList", String.valueOf(categoryList));
-		//categoryList = (String) session.getAttribute("categoryList");
-		/*String sessionCheck = (String) session.getAttribute("categoryList");
-		log.info("session: "+ sessionCheck);*/
-		
-		int totalProductGroupNum = productGroupService.getTotalProductGroupNum(categoryList);
-		log.info("카테고리 :" + totalProductGroupNum);
-		
-		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
-		
-		//log.info("categoryList : " + categoryList);
-		
-		pager.setPrd_category(categoryList);
-		log.info("카테고리 : "+categoryList);
-		List<ProductGroup> list = productGroupService.getList(pager);
-		//List<ProductGroup> list = productGroupService.getPhotoList(pager);
-		
-		Image img;
-		int pgNo;
-		for(int i = 0; i < list.size(); i++) {
-			pgNo = list.get(i).getPg_no();
-			img = imageService.getImageByPgNo(pgNo);
-			if(img != null) {
+				if(pageNo == null) {
+					//세션에 저장되어 있는지 확인
+					pageNo = (String) session.getAttribute("pageNo");
+					//저장되어 있지 않다면 "1"로 초기화
+					if (pageNo == null) {
+						pageNo = "1";
+					}
+				}
+				int intpageNo = Integer.parseInt(pageNo);
+				log.info("pageno" + pageNo);
+				session.setAttribute("pageNo", String.valueOf(pageNo));
 				
-				//log.info("리스트 : " + list.get(i).getPg_no());
+				int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
+				log.info("totalProductGroupNum" + totalProductGroupNum);
 				
-				String type = img.getImg_type();
-				String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
-				//log.info("가져온거 :" + img.getImg_type());		
+				Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
+				List<ProductGroup> list = productGroupService.getList(pager);
 				
-				list.get(i).setEncodedFile(imgFile);
-				list.get(i).setImg_type(type);
-			}
-			
+				model.addAttribute("pager", pager);
+				model.addAttribute("productGroups", list);		
+		
+		//model.addAttribute("title", title);
+/*	{			
+				int pgNo;
+				for(int i = 0; i < list.size(); i++) {
+					pgNo = list.get(i).getPg_no();
+					img = imageService.getImageByPgNo(pgNo);
+					if(img != null) {
+						
+						//log.info("리스트 : " + list.get(i).getPg_no());
+						
+						String type = img.getImg_type();
+						String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
+						//log.info("가져온거 :" + img.getImg_type());		
+						
+						list.get(i).setEncodedFile(imgFile);
+						list.get(i).setImg_type(type);
+					}
+					
+		
+			      }*/
 
-	      }
 
-		
-		model.addAttribute("pager", pager);
-		model.addAttribute("productGroups", list);
-		
-
-		
-		//List<Image> imgList = productGroupService.getImagesBypgNo();
-		
-		
-		
 		return "productGroup/productGroup";
 	}
 	

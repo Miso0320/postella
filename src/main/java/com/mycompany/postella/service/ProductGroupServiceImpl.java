@@ -1,6 +1,7 @@
 package com.mycompany.postella.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,41 +24,22 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	
 	@Autowired
 	private ProductDao productDao;
-
-	@Override
-	public List<ProductGroup> getList(Pager pager) {
-		List<ProductGroup> productGroupList = productGroupDao.selectByPage(pager);;
-		return productGroupList;
-	}
-
-	@Override
-	public int getTotalProductGroupNum(String categoryList) {
-		int totalProductGroupNum = productGroupDao.count(categoryList);
-		return totalProductGroupNum;
-	}
 	
-	@Override
+	@Override //dao에서 selectTitleByPgNo로 제목가져와서 title에 넣기
 	public String getTitle(int pg_no) {
 		String title = productGroupDao.selectTitleByPgNo(pg_no);
-	    return title;
+		return title;
 	}
 
-	@Override
-	public List<Image> getImagesBypgNo(int pg_no) {
-		List<Image> imgs = imageDao.selectAllByPgNo(pg_no);
-	    return imgs;
+	@Override //dao에서 selectByPage로 productGroup 리스트를 가져와서 list에 넣기
+	public List<ProductGroup> getList(Pager pager) {
+		List<ProductGroup> list = productGroupDao.selectByPage(pager);
+		return list;
 	}
 
-	@Override
-	public List<ProductGroup> getPhotoList(Pager pager) {
-		List<ProductGroup> photoList = productGroupDao.selectPhoto(pager);;
-		return photoList;
+	@Override //productGroup갯수 count해서 totalProductGroupNum에 넣기
+	public int getTotalProductGroupNum() {
+		int totalProductGroupNum = productGroupDao.count();
+		return totalProductGroupNum;
 	}
-	
-	@Override
-	public Product getInfo(int pg_no) {
-		Product prd = productDao.selectByPrdNo(pg_no);
-		return prd;
-	}
-
 }

@@ -14,38 +14,19 @@
                from product_group
                    where pg_no in (
                       select distinct pg_no
-                      from product
-     	]]>
-                      <where>
-                      	<if test='prd_category != null and prd_category !=""'>
-                      		prd_category=#{prd_category}
-                      	</if>
-                      </where>
-   		<![CDATA[   )
+                      from product)
                order by pg_no
             )
             where rownum <= ${endRowNo}
          )
          where rnum >= ${startRowNo}
-      ]]>
+      	]]>
 	</select>
-
-	<select id="count" parameterType="String" resultType="int">
-		SELECT count(*)
-                FROM
-                    product_group
-                WHERE
-                    pg_no IN (
-                        SELECT DISTINCT
-                            pg_no
-                        FROM
-                            product
-                        <where>
-                      	<if test='prd_category != null and prd_category !=""'>
-                      		prd_category=#{categoryList}
-                      	</if>
-                      </where>
-                            )
+	
+	<!-- product의 갯수 -->
+	<select id="count" resultType="int">
+		select count(*) 
+		from product
 	</select>
 	
 	<select id="selectByPgNo" parameterType="int" resultType="Img">
@@ -54,17 +35,5 @@
 		where pg_no=#{pg_no}
 	</select>
 
-
-	<select id="selectTitleByPgNo" parameterType="int" resultType="String">
-		SELECT pg_name
-		from product_group
-		where pg_no = ${pg_no}
-	</select>
-	
-	<select id="selectPriceByPgNo" parameterType="int" resultType="Product">
-		select a.prd_price
-		from product a join product_group b
-		on a.pg_no = ${pg_no}
-	</select>
 
 </mapper>

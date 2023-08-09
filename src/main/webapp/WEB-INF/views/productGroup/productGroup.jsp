@@ -40,10 +40,10 @@
 									<input id="arrow1" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png" width="12px" height="12px"/>
 								</button>
 								<div class="panel">
-					          		<div><a href="productGroup?category_list=PHO">포토엽서</a></div>
-					          		<div><a href="productGroup?category_list=ILU">그림/일러스트엽서</a></div>
-					          		<div><a href="productGroup?category_list=DES">디자인패턴엽서</a></div>
-					          		<div><a href="productGroup?category_list=CAL">캘리그라피엽서</a></div>
+					          		<div><a href="productGroup">포토엽서</a></div>
+					          		<div><a href="productGroup">그림/일러스트엽서</a></div>
+					          		<div><a href="productGroup">디자인패턴엽서</a></div>
+					          		<div><a href="productGroup">캘리그라피엽서</a></div>
 					          		<!-- <div><input type="checkbox" id="category_list2" name="category_list" value="DES"><label for="category_list">디자인패턴엽서</label></div>
 					          		<div><input type="checkbox" id="category_list3" name="category_list" value="ILU"><label for="category_list">그림/일러스트엽서</label></div>
 					          		<div><input type="checkbox" id="category_list4" name="category_list" value="CAL"><label for="category_list">캘리그라피엽서</label></div> -->
@@ -234,7 +234,7 @@
 									<li><a href="">최신순</a></li>
 								</div>
 								
-								<div class="list2">
+			<!-- 					<div class="list2">
 									<ul class="amount-menu">
 					                  <li>
 					                     <a href="#" style="color:black;"><b>60개씩 보기</b></a>
@@ -243,7 +243,7 @@
 					                     </ul>
 					                  </li>
 					               </ul>
-								</div>  
+								</div> -->  
 							</ul>
 						</div>
 					</div>
@@ -251,77 +251,55 @@
 					<div class="item-list">
 						<c:forEach var="productGroup" items="${productGroups}">
 									<a href="detailView" class="pproduct">
-											<tr>
-												<img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}">
-												<td>${productGroup.pg_no}</td>
-												<td>${productGroup.pg_name}</td>
-											</tr>
+											<div>
+												<%-- <img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}"> --%>
+										
+												<div>${productGroup.pg_name}</div>
+												<%-- <td>${}</td> --%>
+											</div>
 									</a>
 						</c:forEach>
 					</div>
 					
-					<td colspan="4" class="text-center">
-						<div>
-							<div class="pager">
-								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1">처음</a>
-								<c:if test="${pager.groupNo>1}">
-									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}">이전</a>
-								</c:if>
-								
-								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-									<c:if test="${pager.pageNo != i}">
-										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}&categoryList=${selectCategory}">${i}</a>
-									</c:if>
-									<c:if test="${pager.pageNo == i}">
-										<a class="btn btn-primary btn-sm" href="productGroup?pageNo=${i}">${i}</a>
-									</c:if>
-								</c:forEach>
-								
-								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.endPageNo+1}">다음</a>
-								</c:if>
-								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=${pager.totalPageNo}">맨끝</a>
-							</div>
-						</div>
-					</td>
-					
+					<div class="card-body">
+						<table class="table table-sm table-bordered">
+							<%-- <c:forEach var="board" items="${boards}">
+								<tr>
+									<td>${board.bno}</td>
+									<td><a href="detailBoard?bno=${board.bno}">${board.btitle}</a></td>
+									<td>${board.mid}</td>
+									<td><fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd"/></td>
+								</tr>
+							</c:forEach> --%>
+							<tr>
+								<td colspan="4" class="productPager text-center" style="background-color: white;">
+									<div>
+										<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1">처음</a>
+										<c:if test="${pager.groupNo>1}">
+											<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}">이전</a>
+										</c:if>
+										
+										<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+											<c:if test="${pager.pageNo != i}">
+												<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}">${i}</a>
+											</c:if>
+											<c:if test="${pager.pageNo == i}">
+												<a class="btn btn-danger btn-sm" href="productGroup?pageNo=${i}">${i}</a>
+											</c:if>
+										</c:forEach>
+										
+										<c:if test="${pager.groupNo<pager.totalGroupNo}">
+											<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.endPageNo+1}">다음</a>
+										</c:if>
+										<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=${pager.totalPageNo}">맨끝</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>					
 				</div> 
-					<hr>
-					
-					
-		
-					
-					
-					
-					
-					
-					
-					
-					
-					
-		
-<!-- 					<div id="product-paging" class="product-list-paging" style="display: block;">
-						<div class="page-wrapper" style="margin: 0 430px;">
-							<a class="icon-prevpage" data-page="1">
-								<span><img class="arrow-img" alt="코인" src="${pageContext.request.contextPath}/resources/img/product/leftarrow.png" style="width: 16px;"></span>
-							</a>
-							<a class="selected" data-page="1">1</a>
-							<a data-page="2">2</a>
-							<a data-page="3">3</a>
-							<a data-page="4">4</a>
-							<a data-page="5">5</a>
-							<a data-page="6">6</a>
-							<a data-page="7">7</a>
-							<a data-page="8">8</a>
-							<a data-page="9">9</a>
-							<a data-page="10">10</a>
-							<a class="icon-nextpage" data-page="11">
-								<span><img class="arrow-img" alt="코인" src="${pageContext.request.contextPath}/resources/img/product/rightarrow.png" style="width: 16px;"></span>
-							</a>
-						</div>
-					</div> -->
 				</div>
-			</section> <hr>
+			</section>
 		</div>
 		<div>		
 			<%@ include file="/WEB-INF/views/common/footer.jsp" %>
