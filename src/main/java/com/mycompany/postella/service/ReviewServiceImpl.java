@@ -42,8 +42,15 @@ public class ReviewServiceImpl implements ReviewService{
 	}	
 	
 	@Override
-	public List<Review> orderByRate(int pg_no, int rate) {
-		List<Review> reviews = reviewDao.orderByRate(pg_no, rate);
+	public List<Review> orderByRate(int pg_no) {
+		List<Review> reviews = reviewDao.orderByRate(pg_no);
+		addReviewInfo(reviews);
+		return reviews;
+	}
+	
+	@Override
+	public List<Review> orderByDate(int pg_no) {
+		List<Review> reviews = reviewDao.orderByDate(pg_no);
 		addReviewInfo(reviews);
 		return reviews;
 	}
@@ -59,6 +66,20 @@ public class ReviewServiceImpl implements ReviewService{
 	public int countReview(int pg_no) {
 		int cnt = reviewDao.selectReviewCnt(pg_no);
 		return cnt;
+	}
+	
+	@Override
+	public List<Review> getReviewsOrderByDate(int pg_no) {
+		List<Review> reviews = reviewDao.orderByDate(pg_no);
+		addReviewInfo(reviews);
+		return reviews;
+	}
+	
+	@Override
+	public List<Review> getReviewsOrderByStar(int pg_no) {
+		List<Review> reviews = reviewDao.orderByRate(pg_no);
+		addReviewInfo(reviews);
+		return reviews;
 	}
 	
 	public void addReviewInfo(List<Review> reviews) {

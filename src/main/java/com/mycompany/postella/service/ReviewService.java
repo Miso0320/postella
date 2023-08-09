@@ -8,7 +8,10 @@ public interface ReviewService {
 	public List<Review> getAllReviews(int pg_no);
 	public String getPrdName(int prd_no);
 	public List<Review> searchReviews(String keyword);
-	public List<Review> orderByRate(int pg_no, int rate);
+	public List<Review> orderByRate(int pg_no);
+	public List<Review> orderByDate(int pg_no);
 	public List<Review> groupByRate(int pg_no, int rate);
 	public int countReview(int pg_no);
+	public List<Review> getReviewsOrderByStar(int pg_no);
+	public List<Review> getReviewsOrderByDate(int pg_no);
 }

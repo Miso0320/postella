@@ -11,6 +11,7 @@ import java.util.Locale;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -122,6 +123,8 @@ public class DetailViewController {
 		//리뷰 목록 가져오기
 		List<Review> reviews = getReviewFromDB(pg_no);
 		model.addAttribute("reviews", reviews);
+		
+		
 		return "detailView/detailView";
 	}
 	
@@ -210,6 +213,23 @@ public class DetailViewController {
         return reviews; 
     }
 	
-
-
+	//리뷰 별점순으로 가져오기
+	@RequestMapping("/orderByStar")
+    @ResponseBody
+    public ResponseEntity<List<Review>> orderByStar(@RequestParam("pg_no") int pg_no) {
+		List<Review> reviews = reviewService.orderByRate(pg_no);
+		
+        return ResponseEntity.ok(reviews);
+    }
+	
+	//리뷰 최신순으로 가져오기
+	@RequestMapping("/orderByDate")
+    @ResponseBody
+    public ResponseEntity<List<Review>> orderByDate(@RequestParam("pg_no") int pg_no) {
+		List<Review> reviews = reviewService.orderByDate(pg_no);
+		
+        return ResponseEntity.ok(reviews);
+    }
+	
+	
 }

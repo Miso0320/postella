@@ -13,7 +13,23 @@ function init() {
    shareLayer = document.getElementById("prod-share-layer");
    shareBtn.addEventListener('click', shareWindow);
    
-   //리뷰 리스트 출력
+   //리뷰를 위한 그룹 번호 
+   pg_no = $(".review-list-section2").data("pg_no");
+   
+   //리뷰 별점순 버튼 클릭
+   $("#orderByStar").click(function(e) {
+       e.preventDefault();
+       orderByStar(pg_no);
+   });
+   
+ //리뷰 최신순 버튼 클릭
+   $("#orderByDate").click(function(e) {
+       e.preventDefault();
+       orderByDate(pg_no);
+   });
+
+   
+  /* //리뷰 리스트 출력
    pg_no = $(".review-list-section2").data("pg_no");
    $.ajax({
        type: "GET",
@@ -22,40 +38,43 @@ function init() {
            pg_no: pg_no
        },
        success: function (review) {
-           // 서버에서 받은 데이터를 처리하여 원하는 형태로 보여주기
-       		var articles = "";
-       	 for (var i = 0; i < review.length; i++) {
-             var item = review[i];
-             articles += "<article class='review-article'>" +
-                 " <div class='review-article-info'>" +
-                 "<div class='review-article-info-top'>" +
-                 "<span class='review-writer-profile'>" +
-                 "<img class='review-writer-profile-img' alt='' src='/postella/resources/img/detailView/profile.png'>" +
-                 "</span> <div class='review-name-star-date'> <div class='review-writer-name'>" +
-                 "<span>" +
-                 item.us_name +
-                 "</span> </div>" +
-                 "<div class='review-writer-content'> <span class='review-content-star'>";
-             for (var j = 1; j <= item.rev_star_rate; j++) {
-                 articles += "<span class='rating-star-active'>★</span>";
-             }
-             if (item.rev_star_rate <= 5) {
-                 for (var j = 1; j <= (5 - item.rev_star_rate); j++) {
-                     articles += "<span class='rating-star-disactive'>★</span>";
-                 }
-             }
-             articles += "</span> <span class='review-content-date'>" +
-                 item.str_date +
-                 "</span> </div> </div> </div> <div class='review-content-product-info'>" +
-                 item.prd_name +
-                 "</div> </div> <div class='review-content-text'>" +
-                 item.rev_content +
-                 "</div>" +
-                 "</article>";
+             // 서버에서 받은 데이터를 처리하여 원하는 형태로 보여주기
+       		 var articles = "";
+	       	 for (var i = 0; i < review.length; i++) {
+	             var item = review[i];
+	             articles += "<article class='review-article'>" +
+	                 " <div class='review-article-info'>" +
+	                 "<div class='review-article-info-top'>" +
+	                 "<span class='review-writer-profile'>" +
+	                 "<img class='review-writer-profile-img' alt='' src='/postella/resources/img/detailView/profile.png'>" +
+	                 "</span> <div class='review-name-star-date'> <div class='review-writer-name'>" +
+	                 "<span>" +
+	                 item.us_name +
+	                 "</span> </div>" +
+	                 "<div class='review-writer-content'> <span class='review-content-star'>";
+	             for (var j = 1; j <= item.rev_star_rate; j++) {
+	                 articles += "<span class='rating-star-active'>★</span>";
+	             }
+	             if (item.rev_star_rate <= 5) {
+	                 for (var j = 1; j <= (5 - item.rev_star_rate); j++) {
+	                     articles += "<span class='rating-star-disactive'>★</span>";
+	                 }
+	             }
+	             articles += "</span> <span class='review-content-date'>" +
+	                 item.str_date +
+	                 "</span> </div> </div> </div> <div class='review-content-product-info'>" +
+	                 item.prd_name +
+	                 "</div> </div> <div class='review-content-text'>" +
+	                 item.rev_content +
+	                 "</div>" +
+	                 "</article>";
          }
            $(".review-list-section2").html(articles); //section에 article 추가
        }
-   });
+   });*/
+   
+   
+   
    
    /*// 썸네일 확대
      var innerFrameVisible = false;
@@ -205,9 +224,12 @@ function init() {
    moreBtn.addEventListener('click', seeMore);
    classList = document.querySelector('.prod-detail-img').classList; // 더보기 프레임의 클래스 정보 얻기
    contentHeight = document.querySelector('.prod-detail-img > img').offsetHeight; //컨텐츠 높이 얻기
-
    
+   //처음 리뷰 보여주기
+   loadInitialReview()
 }
+
+
 //공유 버튼 이벤트
 function shareWindow() {
    if (shared == 0) {
@@ -304,4 +326,64 @@ function slideNext(event) {
   }
 }
 
+function loadInitialReview() {
+    loadData("getReviewFromDB", { pg_no: pg_no }); // 페이지 번호 설정
+}
+
+//리뷰 별점순
+function orderByStar(pg_no) {
+    loadData("orderByStar", { pg_no: pg_no });
+}
+
+//리뷰 최신순
+function orderByDate(pg_no) {
+    loadData("orderByDate", { pg_no: pg_no });
+}
+
+//리뷰 보여주기
+function loadData(url, data) {
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: data,
+        success: function(data) {
+            updateReviewList(data); // 리뷰 목록 업데이트 함수 호출
+        }
+    });
+}
+
+//리뷰 업데이트하기
+function updateReviewList(review) {
+	 var articles = "";
+  	 for (var i = 0; i < review.length; i++) {
+        var item = review[i];
+        articles += "<article class='review-article'>" +
+            " <div class='review-article-info'>" +
+            "<div class='review-article-info-top'>" +
+            "<span class='review-writer-profile'>" +
+            "<img class='review-writer-profile-img' alt='' src='/postella/resources/img/detailView/profile.png'>" +
+            "</span> <div class='review-name-star-date'> <div class='review-writer-name'>" +
+            "<span>" +
+            item.us_name +
+            "</span> </div>" +
+            "<div class='review-writer-content'> <span class='review-content-star'>";
+        for (var j = 1; j <= item.rev_star_rate; j++) {
+            articles += "<span class='rating-star-active'>★</span>";
+        }
+        if (item.rev_star_rate <= 5) {
+            for (var j = 1; j <= (5 - item.rev_star_rate); j++) {
+                articles += "<span class='rating-star-disactive'>★</span>";
+            }
+        }
+        articles += "</span> <span class='review-content-date'>" +
+            item.str_date +
+            "</span> </div> </div> </div> <div class='review-content-product-info'>" +
+            item.prd_name +
+            "</div> </div> <div class='review-content-text'>" +
+            item.rev_content +
+            "</div>" +
+            "</article>";
+	    }
+  	$(".review-list-section2").html(articles); //section에 article 추가
+}
 

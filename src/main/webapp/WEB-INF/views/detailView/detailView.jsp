@@ -196,8 +196,8 @@
                      </div>
                   </div>
                   <div class="cart-buy-btn">
-                     <!-- <button class="cart-btn">장바구니 담기</button> -->
-                     <button type="button" class="cart-btn btn" data-toggle="tooltip" data-placement="bottom" title="장바구니에 담겼습니다.">장바구니 담기</button>
+                     <button class="cart-btn">장바구니 담기</button>
+                     <!-- <button type="button" class="cart-btn btn" data-toggle="tooltip" data-placement="bottom" title="장바구니에 담겼습니다.">장바구니 담기</button> -->
                      <button class="buy-btn">바로구매 ></button>
                   </div>
                </div>
@@ -450,9 +450,9 @@
                   </div>
                   <section class="review-list-section1">
                      <div class="review-sort">
-                        <button class="sort-best">별점순</button>
+                        <a href="#" id="orderByStar" class="sort-best" style="color: white;">별점순</a>
                         <div class="sort-text-bar">|</div>
-                        <button class="sort-date">최신순</button>
+                        <a href="#" id="orderByDate" class="sort-date" style="color: white;">최신순</a>
                      </div>
                      <div class="review-search">
                         <input class="review-search-Input" type="text" name="reviewSearch" placeholder="상품평을 검색해보세요." maxlength="30">
