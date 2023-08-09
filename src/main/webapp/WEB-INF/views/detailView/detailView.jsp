@@ -462,31 +462,31 @@
 									<a href="#" class="star-content groupByStar" data-star-amount="5"> 
 										<span class="star-list-text">최고</span> 
 										<span class="star-list-active-stars">★★★★★</span> 
-										<span class="star-list-amount">2</span> 
+										<span class="star-list-amount">${starRevCnt[4]}</span> 
 									</a> 
 									<a href="#" class="star-content groupByStar" data-star-amount="4"> 
 										<span class="star-list-text">좋음</span> 
 										<span class="star-list-active-stars">★★★★</span> 
 										<span class="star-list-disactive-stars">★</span> 
-										<span class="star-list-amount">2</span>
+										<span class="star-list-amount">${starRevCnt[3]}</span>
 									</a> 
 									<a href="#" class="star-content groupByStar" data-star-amount="3"> 
 										<span class="star-list-text">보통</span> 
 										<span class="star-list-active-stars">★★★</span> 
 										<span class="star-list-disactive-stars">★★</span> 
-										<span class="star-list-amount">2</span>
+										<span class="star-list-amount">${starRevCnt[2]}</span>
 									</a> 
 									<a href="#" class="star-content groupByStar" data-star-amount="2"> 
 										<span class="star-list-text">별로</span> 
 										<span class="star-list-active-stars">★★</span> 
 										<span class="star-list-disactive-stars">★★★</span> 
-										<span class="star-list-amount">2</span>
+										<span class="star-list-amount">${starRevCnt[1]}</span>
 									</a> 
 									<a href="#" class="star-content groupByStar" data-star-amount="1"> 
 										<span class="star-list-text">나쁨</span> 
 										<span class="star-list-active-stars">★</span> 
 										<span class="star-list-disactive-stars">★★★★</span> 
-										<span class="star-list-amount">2</span>
+										<span class="star-list-amount">${starRevCnt[0]}</span>
 									</a>
 								</div>
 							</div>

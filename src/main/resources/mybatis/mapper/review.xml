@@ -54,5 +54,13 @@
 		WHERE review.prd_no = product.prd_no
         and product.pg_no = ${pg_no}
 	</select>
+	
+	<select id="selectReviewCntWithRate" parameterType="java.util.Map" resultType="int">
+		SELECT count(*)
+		FROM review, product
+		WHERE review.prd_no = product.prd_no
+        and product.pg_no = ${pg_no}
+        and review.rev_star_rate = ${rate}
+	</select>
 
 </mapper>

@@ -70,6 +70,12 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	
 	@Override
+	public int countRevWithRate(Map<String, Object> map) {
+		int cnt = reviewDao.selectReviewCntWithRate(map);
+		return cnt;
+	}
+	
+	@Override
 	public List<Review> getReviewsOrderByDate(int pg_no) {
 		List<Review> reviews = reviewDao.orderByDate(pg_no);
 		addReviewInfo(reviews);

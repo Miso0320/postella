@@ -13,6 +13,8 @@ public interface ReviewService {
 	public List<Review> orderByDate(int pg_no);
 	public List<Review> groupByRate(Map<String, Object> map);
 	public int countReview(int pg_no);
+	public int countRevWithRate(Map<String, Object> map);
 	public List<Review> getReviewsOrderByStar(int pg_no);
 	public List<Review> getReviewsOrderByDate(int pg_no);
+	
 }

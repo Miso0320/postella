@@ -16,4 +16,5 @@ public interface ReviewDao {
 	public List<Review> orderByDate(int pg_no);
 	public List<Review> groupByRate(Map<String, Object> map);
 	public int selectReviewCnt(int pg_no);
+	public int selectReviewCntWithRate(Map<String, Object> map);
 }

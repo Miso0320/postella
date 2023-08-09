@@ -126,6 +126,17 @@ public class DetailViewController {
 		List<Review> reviews = getReviewFromDB(pg_no);
 		model.addAttribute("reviews", reviews);
 		
+		//별점 별 리뷰수 가져오기
+		int[] reviewCntGroup = new int[5];
+		Map<String, Object> rGmap = new HashMap<>();
+		rGmap.put("pg_no", pg_no);
+		
+		for(int i=1; i<=5; i++) {
+			rGmap.put("rate", i);
+			reviewCntGroup[i-1] = reviewService.countRevWithRate(rGmap);
+		}
+		
+		model.addAttribute("starRevCnt", reviewCntGroup);
 		
 		return "detailView/detailView";
 	}
