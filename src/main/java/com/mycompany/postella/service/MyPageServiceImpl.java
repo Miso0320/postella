@@ -27,4 +27,5 @@ public class MyPageServiceImpl implements MyPageService{
 		List<Orders> order = ordersDao.selectOrderList(map);
 		return order;
 	}
+
 }
