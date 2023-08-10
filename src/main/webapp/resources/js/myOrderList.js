@@ -1,10 +1,6 @@
 $(init);
 
 function init() {
-	// 드롭다운 메뉴
-	$(".dropdown-toggle").click(dp_menu);
-	$(".dropdown-toggle").blur(dp_menu_hide);
-	
 	// 날짜별 분류(선택)
 	$(".order_date_range").click(orderDateClick);
 	

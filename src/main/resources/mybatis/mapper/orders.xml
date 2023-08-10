@@ -9,14 +9,6 @@
 		and od_no = #{od_no}
 	</select>
 	
-	<select id="selectOdDate" parameterType="int" resultType="Date">
-		SELECT od_date
-		FROM orders
-		WHERE us_no = #{us_no}
-		GROUP BY od_date
-		ORDER BY od_date DESC
-	</select>
-	
 	<select id="selectOrderList" parameterType="java.util.Map" resultType="Orders">
 		SELECT
 		    od_date,
@@ -43,13 +35,14 @@
 		    ) prd ON ord.od_no = prd.od_no
 		WHERE
 		        us_no = ${us_no}
+		        <!-- and to_char(od_date, 'YYYY.MM.DD') between #{startDate} and #{endDate} -->
 		ORDER BY
     			od_date DESC
 	</select>
 	
 	<delete id="deleteOrder" parameterType="int">
 		delete from order_detail
-		where od_detail_no = ${od_detail_no}
+		where od_detail_no = #{od_detail_no}
 	</delete>
 	
 </mapper>

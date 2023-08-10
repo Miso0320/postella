@@ -30,17 +30,14 @@ public class MypageController {
 	
 	/**
 	 * 
-	 * @param 파라미터명
-	 * 		  파라미터 설명
+	 * @param us_no
 	 * @param model
-	 * 
-	 **/
+	 * @return
+	 */
 	@GetMapping("/myOrderList")
 	public String myOrderList(
+			@RequestParam(name = "od_detail_no", defaultValue="1" ,required = true) int us_no,
 			Model model ) {
-		// us_no 나중엔 받아오기
-		int us_no = 1;
-		
 		// 해당 유저의 날짜별 그룹 가져오기
 		//List<Date> dates = myPageService.getOdDate(us_no);
 		
@@ -68,6 +65,22 @@ public class MypageController {
 		}
 
 		model.addAttribute("orders", orders);
+		
+		
+		
+		
+		
+
+		// HttpServletResponse rep 매개값 필요
+		/*HashMap< String , Object > map = new HashMap< String , Object >();
+		map.put( "return_type" , return_type );
+		map.put( "user_grp_key" , user_grp_key );
+		map.put( "dir_id" , dir_id );
+		map.put( "dir_name" , URLDecoder.decode(StringUtil.nullChk( dir_name , "" ) , "UTF-8" ) );
+		System.out.println( "#### Parameter (" + this.getClass().getName() + - chDir) = [" + map + "]" );
+		myLibraryService.chDir( map , rep );
+		*/
+		
 		
 		return "myPage/myOrderList/myOrderList";
 	}

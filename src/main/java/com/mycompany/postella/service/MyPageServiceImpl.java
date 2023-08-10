@@ -17,12 +17,6 @@ public class MyPageServiceImpl implements MyPageService{
 	private OrdersDao ordersDao;
 	
 	@Override
-	public List<Date> getOdDate(int us_no) {
-		List<Date> dates = ordersDao.selectOdDate(us_no);
-		return dates;
-	}
-
-	@Override
 	public List<Orders> getOrderList(Map<String, Object> map) {
 		List<Orders> order = ordersDao.selectOrderList(map);
 		return order;

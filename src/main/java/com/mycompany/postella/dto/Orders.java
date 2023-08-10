@@ -29,5 +29,11 @@ public class Orders {
 	private int od_detail_no;	//개별 상품 식별번호
 	private String img_type;	//이미지 MIME 타입
 	private String encodedFile;	//인코딩된 이미지
+	
+	// 날짜별 분류 시 기준 날짜
+	@DateTimeFormat(pattern="yyyy.MM.dd")
+	private Date startDate;	//시작하는 일자
+	@DateTimeFormat(pattern="yyyy.MM.dd")
+	private Date endDate;	//끝나는 일자
 
 }

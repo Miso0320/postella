@@ -13,55 +13,51 @@
 			<!-- 네비게이터, 메인 -->
 			<div class="order_content">
 				<!-- 네비게이터 -->
-				<nav class="navbar navbar-expand-lg bg-primary my_order_container" data-bs-theme="dark">
-				  <div class="container-fluid">
-				    <a class="navbar-brand my_order_text_style" href="#">MY MENU</a>
-				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-				      <span class="navbar-toggler-icon"></span>
-				    </button>
-				    <div class="collapse navbar-collapse" id="navbarColor01">
-				      <ul class="navbar-nav me-auto">
-				        <!-- <li class="nav-item">
-				          <a class="nav-link active" href="#">Home
-				            <span class="visually-hidden">(current)</span>
-				          </a>
-				        </li>
-				        -->
-				        </li> 
-				        <li class="nav-item dropdown">
-				          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 쇼핑</a>
-				          <div class="dropdown-menu my_order_text_size">
-				            <a class="dropdown-item" href="myOrderList">주문목록</a>
-				            <a class="dropdown-item" href="#">취소내역</a>
-				            <div class="dropdown-divider"></div>
-				            <a class="dropdown-item" href="#">할인쿠폰</a>
-				            <a class="dropdown-item" href="#">적립금</a>
-				          </div>
-				        </li>
-				        <li class="nav-item dropdown">
-				          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 활동</a>
-				          <div class="dropdown-menu my_order_text_size">
-				            <a class="dropdown-item" href="#">문의하기</a>
-				            <a class="dropdown-item" href="#">문의내역 확인</a>
-				            <a class="dropdown-item" href="#">리뷰관리</a>
-				            <a class="dropdown-item" href="#">찜 리스트</a>
-				          </div>
-				        </li>
-				        <li class="nav-item dropdown">
-				          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 정보</a>
-				          <div class="dropdown-menu my_order_text_size">
-				            <a class="dropdown-item" href="#">개인정보수정</a>
-				            <a class="dropdown-item" href="#">배송지관리</a>
-				            <div class="dropdown-divider"></div>
-				            <a class="dropdown-item" href="#">문의하기</a>
-				          </div>
-				        </li>
-				      </ul>
-				      <form class="d-flex">
-				        <input class="form-control me-sm-2" type="search" placeholder="검색할 상품명 입력">
-				        <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Search</button>
-				      </form>
-				    </div>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary my_order_container">
+				  <a class="navbar-brand" href="#">MY MENU</a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarColor01">
+				    <ul class="navbar-nav mr-auto">
+				      <!-- <li class="nav-item active">
+				        <a class="nav-link" href="#">Home
+				          <span class="sr-only">(current)</span>
+				        </a>
+				      </li> -->
+				      <li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 쇼핑</a>
+				        <div class="dropdown-menu">
+				          <a class="dropdown-item" href="myOrderList">주문목록</a>
+				          <a class="dropdown-item" href="#">취소내역</a>
+				          <div class="dropdown-divider"></div>
+				          <a class="dropdown-item" href="#">할인쿠폰</a>
+				          <a class="dropdown-item" href="#">적립금</a>
+				        </div>
+				      </li>
+				      <li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 활동</a>
+				        <div class="dropdown-menu">
+				          <a class="dropdown-item" href="myOrderList">문의하기</a>
+				          <a class="dropdown-item" href="#">문의내역 확인</a>
+				          <a class="dropdown-item" href="#">리뷰관리</a>
+				          <a class="dropdown-item" href="#">찜 리스트</a>
+				        </div>
+				      </li>
+				      <li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 정보</a>
+				        <div class="dropdown-menu">
+				          <a class="dropdown-item" href="myOrderList">개인정보수정</a>
+				          <a class="dropdown-item" href="#">배송지관리</a>
+				          <div class="dropdown-divider"></div>
+				          <a class="dropdown-item" href="#">문의하기</a>
+				        </div>
+				      </li>
+				    </ul>
+				    <form class="form-inline my-2 my-lg-0">
+				      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+				      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+				    </form>
 				  </div>
 				</nav>
 				
