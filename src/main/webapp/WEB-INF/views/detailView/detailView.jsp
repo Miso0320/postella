@@ -200,7 +200,7 @@
 					    </div>
 					  </div>
 					</div>
-                     <button class="buy-btn">바로구매 ></button>
+					<button class="buy-btn" id="buy-btn">바로구매 ></button>
                   </div>
                </div>
 

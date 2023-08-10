@@ -56,6 +56,16 @@ function init() {
        sendCartData(quantityValue, prdNo);
    });
    
+   //바로 구매 버튼
+   payButton = document.getElementById("buy-btn");
+   
+   payButton.addEventListener("click", function() {
+	    const quantityValue = document.querySelector(".prod-quantity-input").value;
+	    const prdNo = $(".selectedOName").data("prdno"); // 이 부분은 해당 값을 올바르게 가져와야 합니다.
+
+	    window.location.href = "orderNpay?quantity=" + encodeURIComponent(quantityValue) + "&prdNo=" + encodeURIComponent(prdNo);
+	});
+   
    /*// 썸네일 확대
      var innerFrameVisible = false;
      
