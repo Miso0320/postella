@@ -23,7 +23,6 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
 		<!-- js -->
 		<script src="${pageContext.request.contextPath}/resources/js/myOrderList.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/detailView.js"></script>
 	</head>
 	<body>
 		<header>
