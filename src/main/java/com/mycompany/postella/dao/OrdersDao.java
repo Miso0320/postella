@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Orders;
 
-// 테스트
 @Mapper
 public interface OrdersDao {
 	public String selectUsName(int od_no);

@@ -48,8 +48,8 @@
 	</select>
 	
 	<delete id="deleteOrder" parameterType="int">
-		delete from orders
-		where od_no = ${od_no}
+		delete from order_detail
+		where od_detail_no = ${od_detail_no}
 	</delete>
 	
 </mapper>

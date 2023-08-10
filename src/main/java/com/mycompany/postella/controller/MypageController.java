@@ -69,35 +69,11 @@ public class MypageController {
 
 		model.addAttribute("orders", orders);
 		
-		
-		
-		
-		
-
-		// HttpServletResponse rep 매개값 필요
-		/*
-		 * HashMap< String , Object > map = new HashMap< String , Object >(); map.put(
-		 * "return_type" , return_type ); map.put( "user_grp_key" , user_grp_key );
-		 * map.put( "dir_id" , dir_id ); map.put( "dir_name" , URLDecoder.decode(
-		 * StringUtil.nullChk( dir_name , "" ) , "UTF-8" ) );
-		 * 
-		 * System.out.println( "#### Parameter (" + this.getClass().getName() +
-		 * " - chDir) = [" + map + "]" );
-		 * 
-		 * myLibraryService.chDir( map , rep );
-		 */
-
 		return "myPage/myOrderList/myOrderList";
 	}
-	
 	@GetMapping("/deleteOrder")
 	public String deleteOrder(@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
-		log.info("od_detail_no : " + od_detail_no);
-		
-		//정말 삭제하시겠습니까?!?!? 알림창 필요!!!!
-		
-		
-		//myPageService.removeOrder(od_detail_no);
+		myPageService.removeOrder(od_detail_no);
 		return "redirect:/myOrderList";
 	}
 

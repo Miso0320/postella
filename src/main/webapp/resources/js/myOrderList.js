@@ -17,6 +17,15 @@ function init() {
 		}
 	});
 	
+	// 모달창에서 삭제 링크 전달
+	$('#deleteCk').on('show.bs.modal', function (event) {
+	    var button = $(event.relatedTarget);
+	    var odDetailNo = button.data('od-detail-no');
+	    
+	    var deleteLink = $('#deleteCk').find('.modal-footer .btn-primary');
+	    deleteLink.attr('href', 'deleteOrder?od_detail_no=' + odDetailNo);
+	});
+	
 	// 장바구니 상품 정보 열기
 	$(".p_img").mouseover(recentItemView);
 	$(".p_img").mouseout(recentItemHide);

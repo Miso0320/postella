@@ -139,33 +139,30 @@
 				                                    <a href="#" class="btn btn-primary btn_size">배송조회</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size">교환, 반품 신청</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size">리뷰 작성하기</a>
-				                                    <a href="#" class="btn btn-outline-primary btn_size" data-toggle="modal" data-target="#deleteCk">주문내역 삭제</a>
-				                                   <%--  deleteOrder?od_detail_no=${orderList.od_detail_no} --%>
-				                                    
-				                                    <!-- 모달 -->
-													<div class="modal modal_txt" id="deleteCk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-													    <div class="modal-dialog" role="document">
-													        <div class="modal-content">
-													            <div class="modal-header">
-													                <h5 class="modal-title modal_txt">주문내역 삭제</h5>
-													                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-													                    <span aria-hidden="true"></span>
-													                </button>
-													            </div>
-													            <div class="modal-body">
-													                <p>정말 삭제하시겠습니까?</p>
-													            </div>
-													            <div class="modal-footer">
-													                <button type="button" class="btn btn-primary">삭제</button>
-													                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-													            </div>
-													        </div>
+				                                    <a href="#" class="btn btn-outline-primary btn_size" data-toggle="modal" data-target="#deleteCk" data-od-detail-no="${orderList.od_detail_no}">주문내역 삭제</a>
+				                                	<!-- 모달 -->
+													<div class="modal modal_txt" id="deleteCk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+													  <div class="modal-dialog" role="document">
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title modal_txt">주문내역 삭제</h5>
+													        <a class="close" data-dismiss="modal" aria-label="Close">
+													          <span aria-hidden="true">&times;</span>
+													        </a>
+													      </div>
+													      <div class="modal-body">
+													        <p>정말 삭제하시겠습니까?</p>
+													      </div>
+													      <div class="modal-footer">
+													        <a href="#" class="btn btn-primary">삭제</a>
+													        <a class="btn btn-secondary" data-dismiss="modal">취소</a>
+													      </div>
 													    </div>
+													  </div>
 													</div>
-													
-				                                </div>
-				                            </div>
-				                        </div>
+						                        </div>
+			                                </div>
+			                            </div>
 				                    </c:if>
 				                </c:forEach>
 				            </div>
