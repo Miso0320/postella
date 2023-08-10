@@ -31,7 +31,7 @@
 		<%@ include file="/WEB-INF/views/common/header.jsp" %>
 		
 		<div id="container">
-			<section>
+			<section style="display:flex">
 				<aside>
 						<div>
 							<h1 style="font-size:15px; font-weight:bold;">카테고리</h1>
@@ -245,10 +245,10 @@
 						<c:forEach var="productGroup" items="${productGroups}">
 									<a href="detailView" class="pproduct">
 											<div>
-												<%-- <img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}"> --%>
 												<div><img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}"></div>
 												<div>${productGroup.pg_name}</div>
-												
+												<div>${productGroup.prd_org_price}</div>
+												<div>${productGroup.prd_price}</div>
 											</div>
 									</a>
 						</c:forEach>

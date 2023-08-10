@@ -8,4 +8,6 @@ public class ProductGroup {
 	private String pg_name;//product group의 이름(상품페이지의 상품제목)
 	private String img_type;//img 타입
 	private String encodedFile;//encoded된 이미지파일
+	private int prd_org_price; //정상가
+	private int prd_price;//판매가
 }

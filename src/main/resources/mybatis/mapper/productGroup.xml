@@ -39,4 +39,11 @@
 		from image
 		where pg_no=#{pg_no} and ROWNUM = 1
 	</select>
+	
+	<!-- product 가격 가져옴 -->
+	<select id="selectAllByPgNo" parameterType="int" resultType="Product">
+		SELECT *
+		from product
+		where pg_no = ${pg_no} and ROWNUM = 1
+	</select>
 </mapper>

@@ -21,7 +21,9 @@ import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.Pager;
+import com.mycompany.postella.dto.Price;
 import com.mycompany.postella.service.ImageService;
+import com.mycompany.postella.service.PriceService;
 import com.mycompany.postella.service.ProductGroupService;
 import com.mycompany.postella.service.productService;
 
@@ -39,6 +41,9 @@ public class ProductGroupController {
 	
 	@Autowired
 	private productService productService;
+	
+	@Autowired
+	private PriceService priceService;
 
 	@RequestMapping("/productGroup")
 	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
@@ -59,40 +64,39 @@ public class ProductGroupController {
 		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
 		List<ProductGroup> list = productGroupService.getList(pager);
 		
-		
+		/*int Price = priceService.getPrice(pg_no);*/
 		
 		int pgNo;
 		Image img = null;
+		Price price;
+		int prd_price;
+		int prd_org_price;
+		
 		for(int i = 0; i < list.size(); i++) {
 			pgNo = list.get(i).getPg_no();
 			img = imageService.getImageByPgNo(pgNo);
+			price = priceService.getPrice(pgNo);
+			prd_price = price.getPrd_price();
+			prd_org_price = price.getPrd_org_price();
+			list.get(i).setPrd_price(prd_price); 
+			list.get(i).setPrd_org_price(prd_org_price);
+			log.info("prd_price : " + list.get(i).getPrd_price());
+			log.info("prd_org_price : " + list.get(i).getPrd_org_price());
 			if(img != null) {
 				String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
 				list.get(i).setEncodedFile(imgFile);
 				list.get(i).setImg_type(img.getImg_type());
 			}
-		}			
-		model.addAttribute("pager", pager);
-		model.addAttribute("productGroups", list);	
+			
+		}
 		
-	/*{
-					int pgNo;
-					Image img;
-					for(int i = 0; i < list.size(); i++) {
-						pgNo = list.get(i).getPg_no();
-						img = imageService.getImageByPgNo(pgNo);
-						if(img != null) {
-							
-							//log.info("리스트 : " + list.get(i).getPg_no());
-							
-							String type = img.getImg_type();
-							String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
-							//log.info("가져온거 :" + img.getImg_type());		
-							
-							list.get(i).setEncodedFile(imgFile);
-							list.get(i).setImg_type(type);
-						}					
-				      }*/
+		
+		
+		
+		
+		model.addAttribute("pager", pager);
+		model.addAttribute("productGroups", list);
+		
 		return "productGroup/productGroup";
 	}
 }

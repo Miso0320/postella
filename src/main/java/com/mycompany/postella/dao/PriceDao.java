@@ -12,9 +12,6 @@ import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.dto.Price;
 
 @Mapper
-public interface ProductGroupDao {	
-	public String selectTitleByPgNo(int pg_no); //제목  하나 가져오기
-	public List<ProductGroup> selectByPage(Pager pager); //전체리스트 페이징하기
-	public int count(); //총 상품갯수 카운트
-	public List<Image> selectByPgNo(int pg_no);//상품그룹번호로 이미지리스트 가져오기
+public interface PriceDao {	
+	public Price selectPriceByPgNo(int pg_no);//가격가져오기
 }
