@@ -21,6 +21,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/myOrderList.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productGroup.css"/>
 	</head>
 	<body>
 		<header>
