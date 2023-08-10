@@ -31,10 +31,8 @@ public class Orders {
 	private String encodedFile;	//인코딩된 이미지
 	
 	// 날짜별 분류 시 기준 날짜
-	@DateTimeFormat(pattern="yyyy.MM.dd")
-	private Date startDate;	//시작하는 일자
-	@DateTimeFormat(pattern="yyyy.MM.dd")
-	private Date endDate;	//끝나는 일자
+	private String startDate;	//시작하는 일자
+	private String endDate;	//끝나는 일자
 	
 	// 주문목록 내 검색
 	private String keyword;	//검색어

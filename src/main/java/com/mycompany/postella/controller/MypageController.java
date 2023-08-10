@@ -1,6 +1,11 @@
 package com.mycompany.postella.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Base64;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,23 +49,66 @@ public class MypageController {
 	public String myOrderList(
 			@RequestParam(name = "od_detail_no", defaultValue="1", required = true) int us_no,
 			@RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam(name = "requestYear", required = false) String requestYear,
 			Model model ) throws Exception {
-		// 해당 유저의 날짜별 그룹 가져오기
-		//List<Date> dates = myPageService.getOdDate(us_no);
-		
-		//map.put("od_date", dates);
-		
-		/*for(Date odDate : dates) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-			String dateTest = sdf.format(odDate);
-			
-			log.info("날짜 확인용!!!!!!!!!!! : " + dateTest);
-		}*/
 		
 		// 주문목록 전체 리스트 가져오기
 		Map<String, Object> map = new HashMap<>();
 		map.put("us_no", us_no);
-		map.put("keyword", keyword);
+		
+		// 검색 기능 추가
+		if(keyword != null) {
+			map.put("keyword", keyword);
+		}
+		
+		// 연도별 목록
+		// 연도별 날짜를 불러올 때 사용할 변수
+		int year = 0;
+		int startMonth = 1;
+		int startDay = 1;
+		int endMonth = 12;
+		int endDay = 31;
+		Date startDate = null;
+		Date endDate = null;
+		
+        if(requestYear != null) {
+        	if(requestYear.equals("2020")) {
+    			year = 2020;
+    		} else if(requestYear.equals("2021")) {
+    			year = 2021;
+    		} else if(requestYear.equals("2022")) {
+    			year = 2022;
+    		} else if(requestYear.equals("2023")) {
+    			year = 2023;
+    		}
+        	
+        	LocalDate localStartDate = LocalDate.of(year, startMonth, startDay);
+        	startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            
+            LocalDate localEndDate = LocalDate.of(year, endMonth, endDay);
+            endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            
+            // 최근 6개월
+            if(requestYear.equals("recent6Month")) {
+            	Calendar calendar = Calendar.getInstance();
+                Date today = calendar.getTime();
+                
+                calendar.add(Calendar.MONTH, -6);
+                Date sixMonthsAgo = calendar.getTime();
+                
+                startDate = sixMonthsAgo;
+                endDate = today;
+            }
+            
+            // Date -> String 변환
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+            String startDateStr = dateFormat.format(startDate);
+            String endDateStr = dateFormat.format(endDate);
+            
+            map.put("startDate", startDateStr);
+            map.put("endDate", endDateStr);
+        }
+		
 		List<Orders> orders = myPageService.getOrderList(map);
 		
 		// 상품 이미지 가져오기

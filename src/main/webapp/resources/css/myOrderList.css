@@ -102,6 +102,11 @@
 	color: rgb(255, 255, 255);
 }
 
+.order_date_range a {
+	text-decoration: none;
+	color: white;
+}
+
 /* 선택된 메뉴일 때 -> 자바스크립트로 변경 필요 */
 #recent_six_month {
 	width: 72px; /* 이건 고유 옵션 */

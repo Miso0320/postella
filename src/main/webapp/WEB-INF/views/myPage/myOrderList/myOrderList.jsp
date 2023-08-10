@@ -71,13 +71,11 @@
 				<!-- 날짜별 분류 -->
 				<div class="classification_date_wrap">
 					<div class="classification_date">
-						<div class="order_date_range order_date_range_select" id="recent_six_month">최근 6개월</div>
-						<div class="order_date_range">2023</div>
-						<div class="order_date_range">2022</div>
-						<div class="order_date_range">2021</div>
-						<div class="order_date_range">2020</div>
-						<div class="order_date_range">2019</div>
-						<div class="order_date_range">2018</div>
+						<div class="order_date_range order_date_range_select" id="recent_six_month"><a href="myOrderList?requestYear=recent6Month">최근 6개월</a></div>
+						<div class="order_date_range"><a href="myOrderList?requestYear=2023">2023</a></div>
+						<div class="order_date_range"><a href="myOrderList?requestYear=2022">2022</a></div>
+						<div class="order_date_range"><a href="myOrderList?requestYear=2021">2021</a></div>
+						<div class="order_date_range"><a href="myOrderList?requestYear=2020">2020</a></div>
 					</div>
 				</div>
 										
