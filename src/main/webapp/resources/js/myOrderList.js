@@ -68,6 +68,18 @@ function orderDateClick() {
 	});
 }
 
+// 장바구니에 넣기
+function addCart() {
+   /* $.ajax({
+    	url: "addCart",
+    	method: "post",
+    	contentType: 'application/json',
+    	data: JSON.stringify(cartList), 
+        success: function (data) {
+            console.log(data);
+        }
+    });*/
+}
 
 // 장바구니 상품 정보 열기
 function recentItemView() {

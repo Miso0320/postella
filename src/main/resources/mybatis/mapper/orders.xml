@@ -35,6 +35,9 @@
 		    ) prd ON ord.od_no = prd.od_no
 		WHERE
 		        us_no = ${us_no}
+		        <if test='keyword != null and keyword != ""'>
+		        	AND REGEXP_REPLACE(LOWER(REPLACE(prd_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
+		        </if>
 		        <!-- and to_char(od_date, 'YYYY.MM.DD') between #{startDate} and #{endDate} -->
 		ORDER BY
     			od_date DESC

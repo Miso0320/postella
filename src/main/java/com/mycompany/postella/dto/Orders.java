@@ -35,5 +35,8 @@ public class Orders {
 	private Date startDate;	//시작하는 일자
 	@DateTimeFormat(pattern="yyyy.MM.dd")
 	private Date endDate;	//끝나는 일자
+	
+	// 주문목록 내 검색
+	private String keyword;	//검색어
 
 }

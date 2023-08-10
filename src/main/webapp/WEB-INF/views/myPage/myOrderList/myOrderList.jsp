@@ -5,6 +5,10 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script src="${pageContext.request.contextPath}/resources/js/myOrderList.js"></script>
 
+<script>
+	var cartList = ${jsonCartList};
+</script>
+
 <section class="order_list_container">
 	<!-- 전체 내용 -->
 	<div class="order_list_wrap" id="order_list_wrap">
@@ -54,8 +58,8 @@
 				        </div>
 				      </li>
 				    </ul>
-				    <form class="form-inline my-2 my-lg-0">
-				      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+				    <form class="form-inline my-2 my-lg-0" action="myOrderList">
+				      <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search">
 				      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 				    </form>
 				  </div>
@@ -124,7 +128,7 @@
 				                                                <span>${orderList.od_detail_qty} 개</span>
 				                                            </div>
 				                                            <div>
-				                                                <button class="cart_btn">장바구니 담기</button>
+				                                                <button class="cart_btn" onclick="javascript:addCart()">장바구니 담기</button>
 				                                            </div>
 				                                        </div>
 				                                    </div>
@@ -150,8 +154,8 @@
 													        <p>정말 삭제하시겠습니까?</p>
 													      </div>
 													      <div class="modal-footer">
-													        <a href="#" class="btn btn-primary">삭제</a>
-													        <a class="btn btn-secondary" data-dismiss="modal">취소</a>
+													        <a href="#" class="btn btn-primary modal_txt">삭제</a>
+													        <a class="btn btn-secondary " data-dismiss="modal">취소</a>
 													      </div>
 													    </div>
 													  </div>
@@ -285,7 +289,7 @@
 	
 	<!-- 우측 사이드 -->
 	<article class="order_list_right" id="order_list_right">
-		<!-- 장바구니 -->
+		<!-- 장바구니 목록 -->
 		<section class="my_view">
 			<div class="my_view_cart">
 				<a>

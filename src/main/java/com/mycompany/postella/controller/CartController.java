@@ -1,18 +1,13 @@
 package com.mycompany.postella.controller;
 
-import javax.annotation.Resource;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mycompany.postella.dto.Agreement;
-import com.mycompany.postella.dto.Users;
-import com.mycompany.postella.service.JoinService;
-import com.mycompany.postella.service.JoinService.JoinResult;
+import com.mycompany.postella.dto.Cart;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,5 +19,15 @@ public class CartController {
 	public String joinForm() {
 		return "cartNormal/cartNormal";
 	}
-	//테스트22
+
+	@PostMapping("/addCart")
+	@ResponseBody
+	public ResponseEntity<String> addCart(@RequestBody Cart cart) {
+		log.info("피알디" + cart.getPrd_no());
+		log.info("유저" + cart.getUs_no());
+		log.info("수량" + cart.getCrt_qty());
+		
+		return ResponseEntity.ok("success");
+	}
+	
 }
