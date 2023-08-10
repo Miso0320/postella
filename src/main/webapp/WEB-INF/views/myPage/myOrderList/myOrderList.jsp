@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!-- 테스트2 -->
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<script src="${pageContext.request.contextPath}/resources/js/myOrderList.js"></script>
 
 <section class="order_list_container">
 	<!-- 전체 내용 -->
@@ -156,8 +156,8 @@
 													                <p>정말 삭제하시겠습니까?</p>
 													            </div>
 													            <div class="modal-footer">
-													                <button type="button" class="btn btn-primary">Save changes</button>
-													                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+													                <button type="button" class="btn btn-primary">삭제</button>
+													                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 													            </div>
 													        </div>
 													    </div>
