@@ -17,13 +17,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.Review;
+import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.OrdersService;
 import com.mycompany.postella.service.ProductGroupService;
@@ -49,6 +52,9 @@ public class DetailViewController {
 	
 	@Autowired
 	private OrdersService ordersService;
+	
+	@Autowired
+	private CartService cartService;
 	
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
@@ -269,6 +275,21 @@ public class DetailViewController {
 	    return ResponseEntity.ok(reviews);
 	}
 
-	
+	@PostMapping("/detailView/cartAdd")
+    @ResponseBody
+    public String addToCart(@RequestParam("quantity") int quantity) {
+       
+		int us_no = 1;
+        int prd_no = 2;
+        
+        Cart cart = new Cart();
+        
+        cart.setUs_no(us_no);
+        cart.setPrd_no(prd_no);
+        cart.setCrt_qty(quantity);
+        
+		cartService.addToCart(cart);
+        return "success";
+    }
 	
 }

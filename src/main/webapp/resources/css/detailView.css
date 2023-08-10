@@ -259,9 +259,9 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 /* 원래 가격 */
 .origin-price {
-   text-decoration: line-through;
-   color: #888;
-   font-size: 14px;
+   text-decoration: line-through !important;
+   color: #888 !important;
+   font-size: 14px !important;
 }
 /* 가격 밑에 뱃지 */
 .reward-badge {

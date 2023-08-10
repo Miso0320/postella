@@ -42,6 +42,35 @@ function init() {
        groupByStar(pg_no, starAmount);
    });
    
+   //장바구니 버튼
+   cartButton = document.getElementById("cartButton");
+   
+   cartButton.addEventListener("click", function() {
+       const quantityInput = document.querySelector(".prod-quantity-input");
+       const quantityValue = quantityInput.value;
+       
+       const xhr = new XMLHttpRequest();
+       xhr.open("POST", "/postella/detailView/cartAdd", true);
+       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+       xhr.onreadystatechange = function() {
+           if (xhr.readyState === 4) {
+               if (xhr.status === 200) {
+                   if (xhr.responseText === "success") {
+                       console.log("데이터 삽입 완료");
+                       // 적절한 후속 동작 수행
+                   } else {
+                       console.log("데이터 삽입 실패");
+                   }
+               } else {
+                   console.log("서버 응답 에러");
+               }
+           }
+       };
+       
+       const formData = "quantity=" + encodeURIComponent(quantityValue);
+       xhr.send(formData);
+   });
+   
    /*// 썸네일 확대
      var innerFrameVisible = false;
      

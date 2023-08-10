@@ -168,8 +168,7 @@
                <!--수량,장바구니,바로구매-->
                <div class="prod-quantity-cart-buy">
                   <div class="prod-quantity-form">
-                     <input type="text" value="1" class="prod-quantity-input"
-                        style="width: 60px;">
+                     <input type="text" name="quantity" value="1" class="prod-quantity-input" style="width: 60px;">
                      <div class="updown-btn">
                         <button class="prod-cnt-btn" id="cnt-plus" type="button">
                            <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/up.png">
@@ -180,8 +179,7 @@
                      </div>
                   </div>
                   <div class="cart-buy-btn">
-                     <button class="cart-btn">장바구니 담기</button>
-                     <!-- <button type="button" class="cart-btn btn" data-toggle="tooltip" data-placement="bottom" title="장바구니에 담겼습니다.">장바구니 담기</button> -->
+                     <button class="cart-btn" id="cartButton">장바구니 담기</button>
                      <button class="buy-btn">바로구매 ></button>
                   </div>
                </div>
