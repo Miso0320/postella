@@ -52,6 +52,7 @@
 			}
 			a:hover{
 				color:#0073e9;
+				text-decoration: none; 
 			}
 			.rocket1{
 				color: #111111;
@@ -137,7 +138,7 @@
 				width: 14px;
 				height: 14px;
 			}
-			section{
+			.productGroupSection{
 				display: flex;
 				flex-direction: row;
 				justify-content: center;

@@ -6,7 +6,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <div id="container">
-	<section style="display:flex">
+	<section class="productGroupSection">
 		<aside>
 			<div>
 				<h1 style="font-size:15px; font-weight:bold;">카테고리</h1>
