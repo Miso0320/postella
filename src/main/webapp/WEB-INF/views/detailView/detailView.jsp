@@ -133,8 +133,9 @@
                         <div class="op_btn_text">
                            <div class="title" style="text-align: left;">색상</div>
                            <div class="op_btn_set">
-                              <span class="value " style="width: auto; padding: 2px;">
-                                 ${selectedOption.prd_name}</span>
+                              <span class="selectedOName" style="width: auto; padding: 2px;" data-prdNo="${selectedOption.prd_no}">
+                                 ${selectedOption.prd_name}
+                              </span>
                            </div>
                         </div>
                         <div class="op_btn_imgset">

@@ -277,15 +277,13 @@ public class DetailViewController {
 
 	@PostMapping("/detailView/cartAdd")
     @ResponseBody
-    public String addToCart(@RequestParam("quantity") int quantity) {
-       
-		int us_no = 1;
-        int prd_no = 2;
+    public String addToCart(@RequestParam("quantity") int quantity, @RequestParam("prdNo") int prdNo) {
+		int usNo = 1;
         
-        Cart cart = new Cart();
+		Cart cart = new Cart();
         
-        cart.setUs_no(us_no);
-        cart.setPrd_no(prd_no);
+        cart.setUs_no(usNo);
+        cart.setPrd_no(prdNo);
         cart.setCrt_qty(quantity);
         
 		cartService.addToCart(cart);
