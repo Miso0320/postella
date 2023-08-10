@@ -180,7 +180,26 @@
                      </div>
                   </div>
                   <div class="cart-buy-btn">
-                     <button class="cart-btn" id="cartButton">장바구니 담기</button>
+                     <button class="cart-btn" id="cartButton" data-toggle="modal" data-target="#moveToCart">장바구니 담기</button>
+                     <!-- 모달 -->
+					<div class="modal modal_txt" id="moveToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <a class="close" data-dismiss="modal" aria-label="Close">
+					        <span aria-hidden="true">&times;</span>
+					        </a>
+					      </div>
+					      <div class="modal-body">
+					        <p style="text-align: center;">상품이 장바구니에 담겼습니다.</p>
+					      </div>
+					      <div class="modal-footer" style="justify-content: center; display: flex;">
+					        <a class="btn btn-outline-primary" data-dismiss="modal" style="color: white; margin-right: 10px;">계속 쇼핑하기</a>
+					        <a href="cartNormal" class="btn btn-outline-success" style="color: white;">장바구니로 가기</a>
+					      </div>
+					    </div>
+					  </div>
+					</div>
                      <button class="buy-btn">바로구매 ></button>
                   </div>
                </div>
