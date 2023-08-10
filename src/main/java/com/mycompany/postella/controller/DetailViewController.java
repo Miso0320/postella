@@ -221,6 +221,18 @@ public class DetailViewController {
 		List<Review> reviews = getReviewFromDB(pg_no);
 		model.addAttribute("reviews", reviews);
 		
+		//별점 별 리뷰수 가져오기
+		int[] reviewCntGroup = new int[5];
+		Map<String, Object> rGmap = new HashMap<>();
+		rGmap.put("pg_no", pg_no);
+		
+		for(int i=1; i<=5; i++) {
+			rGmap.put("rate", i);
+			reviewCntGroup[i-1] = reviewService.countRevWithRate(rGmap);
+		}
+		
+		model.addAttribute("starRevCnt", reviewCntGroup);
+		
 		
 		return "detailView/detailView";
 	}
@@ -304,7 +316,10 @@ public class DetailViewController {
     @PostMapping("/deleteWish")
     public ResponseEntity<String> deleteWish(@RequestParam("pg_no") int pg_no) {
     	int usNo = 1;
-    	wishService.removeWish(pg_no);
+    	Wish wish = new Wish();
+		wish.setPg_no(pg_no);
+		wish.setUs_no(usNo);
+    	wishService.removeWish(wish);
         return new ResponseEntity<>("찜 목록 삭제 성공", HttpStatus.OK);
     }
 	

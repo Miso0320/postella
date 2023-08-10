@@ -8,8 +8,9 @@
 	</insert>
 
  
- 	<delete id="deleteWish" parameterType="int">
+ 	<delete id="deleteWish" parameterType="Wish">
  		DELETE from wish 
  		where pg_no=#{pg_no}
+ 		and us_no=#{us_no}
  	</delete>
 </mapper>

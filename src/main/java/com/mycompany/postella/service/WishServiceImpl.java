@@ -18,7 +18,7 @@ public class WishServiceImpl implements WishService{
 	}
 	
 	@Override
-	public void removeWish(int pg_no) {
-		wishDao.deleteWish(pg_no);
+	public void removeWish(Wish wish) {
+		wishDao.deleteWish(wish);
 	}
 }
