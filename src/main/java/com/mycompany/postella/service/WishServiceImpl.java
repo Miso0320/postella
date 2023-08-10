@@ -13,12 +13,12 @@ public class WishServiceImpl implements WishService{
 	private WishDao wishDao;
 	
 	@Override
-	public void add(Wish wish) {
-		wishDao.insert(wish);
+	public void addWish(Wish wish) {
+		wishDao.insertWish(wish);
 	}
 	
 	@Override
-	public void remove(int pg_no) {
-		wishDao.delete(pg_no);
+	public void removeWish(int pg_no) {
+		wishDao.deleteWish(pg_no);
 	}
 }

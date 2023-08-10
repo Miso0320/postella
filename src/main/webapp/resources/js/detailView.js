@@ -5,7 +5,7 @@ function init() {
 	// 찜버튼 이벤트
    likeBtn = document.getElementById("prod-favorite-btn");
    liked = 0;
-   likeBtn.addEventListener('click', turnRed);
+   likeBtn.addEventListener('click', toggleLike);
    
    //공유 버튼 이벤트
    shared = 0;
@@ -52,6 +52,7 @@ function init() {
       
        const prdNo = $(".selectedOName").data("prdno"); //상품 번호 가져오기
        
+       // AJAX 요청 보내기
        sendCartData(quantityValue, prdNo);
    });
    
@@ -222,13 +223,16 @@ function shareWindow() {
 }
 
 //클릭시 찜버튼 색 변경
-function turnRed() {
-   if (liked == 0) {
+function toggleLike() {
+   //버튼 비활성화 시
+	if (liked == 0) {
       likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -262px -209px';
       liked = 1;
+      insertWish(pg_no);
    } else if (liked == 1) {
       likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -218px -209px';
       liked = 0;
+      deleteWish(pg_no);
    }
 
 }
@@ -397,4 +401,33 @@ function sendCartData(quantityValue, prdNo) {
     
     const formData = "quantity=" + encodeURIComponent(quantityValue) + "&prdNo=" + encodeURIComponent(prdNo);
     xhr.send(formData);
+}
+
+//찜 버튼 클릭시 insert,delete 처리
+function insertWish(pg_no) {
+    $.ajax({
+        type: "POST",
+        url: "insertWish",
+        data: { pg_no: pg_no },
+        success: function(response) {
+            console.log("찜 목록 추가 성공");
+        },
+        error: function(error) {
+            console.error("찜 목록 추가 실패 : ", error);
+        }
+    });
+}
+
+function deleteWish(pg_no) {
+    $.ajax({
+        type: "POST",
+        url: "deleteWish",
+        data: { pg_no: pg_no },
+        success: function(response) {
+            console.log("찜 목록 삭제 성공");
+        },
+        error: function(error) {
+            console.error("찜 목록 삭제 실패 : ", error);
+        }
+    });
 }

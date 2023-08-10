@@ -7,6 +7,6 @@ import com.mycompany.postella.dto.Wish;
 
 @Mapper
 public interface WishDao {
-	public void insert(Wish wish);
-	public void delete(int pg_no); 
+	public int insertWish(Wish wish);
+	public int deleteWish(int pg_no); 
 }

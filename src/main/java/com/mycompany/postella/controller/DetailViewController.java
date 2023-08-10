@@ -1,18 +1,14 @@
 package com.mycompany.postella.controller;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +22,13 @@ import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.Review;
+import com.mycompany.postella.dto.Wish;
 import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.OrdersService;
 import com.mycompany.postella.service.ProductGroupService;
 import com.mycompany.postella.service.ReviewService;
+import com.mycompany.postella.service.WishService;
 import com.mycompany.postella.service.productService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -55,6 +53,9 @@ public class DetailViewController {
 	
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+    private WishService wishService;
 	
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
@@ -288,6 +289,23 @@ public class DetailViewController {
         
 		cartService.addToCart(cart);
         return "success";
+    }
+	
+	@PostMapping("/insertWish")
+    public ResponseEntity<String> insertWish(@RequestParam("pg_no") int pg_no) {
+		int usNo = 1;
+		Wish wish = new Wish();
+		wish.setPg_no(pg_no);
+		wish.setUs_no(usNo);
+        wishService.addWish(wish);
+        return new ResponseEntity<>("찜 목록 추가 성공", HttpStatus.OK);
+    }
+
+    @PostMapping("/deleteWish")
+    public ResponseEntity<String> deleteWish(@RequestParam("pg_no") int pg_no) {
+    	int usNo = 1;
+    	wishService.removeWish(pg_no);
+        return new ResponseEntity<>("찜 목록 삭제 성공", HttpStatus.OK);
     }
 	
 }
