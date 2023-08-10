@@ -98,6 +98,7 @@
 			}
 			.pproduct {
 				padding: 10px;
+				border: 2px double #F2F2F2;
 			}
 			
 			.pproduct:hover {
@@ -336,4 +337,20 @@
 			
 			.list2 {
 				display: flex;
+			}
+			
+			.productGroup-name {
+				font-size:18px;
+				font-weight: bolder;
+			}
+			.productGroup-orgprice {
+				display: flex;
+				text-decoration: line-through;
+				color: #60b0ea;
+			}
+			.productGroup-prdprice {
+				display: flex;
+				font-size: 20px;
+				font-weight: bolder;
+				color: #cb1400;
 			}
