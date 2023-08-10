@@ -8,4 +8,13 @@
 		where pg_no = #{pg_no}
 	</select>
 	
+	<select id="selectSelName" parameterType="int" resultType="String">
+		select unique seller.sel_name
+		from QNA,seller
+		where seller.sel_no = (select unique sel_no
+								from QNA, product
+								where qna.pg_no = product.pg_no
+								and qna.pg_no =#{pg_no})
+	</select>
+	
 </mapper>

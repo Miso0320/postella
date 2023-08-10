@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
+import com.mycompany.postella.dto.Qna;
 import com.mycompany.postella.dto.Review;
 import com.mycompany.postella.dto.Wish;
 import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.OrdersService;
 import com.mycompany.postella.service.ProductGroupService;
+import com.mycompany.postella.service.QnaService;
 import com.mycompany.postella.service.ReviewService;
 import com.mycompany.postella.service.WishService;
 import com.mycompany.postella.service.productService;
@@ -49,13 +51,13 @@ public class DetailViewController {
 	private ReviewService reviewService;
 	
 	@Autowired
-	private OrdersService ordersService;
-	
-	@Autowired
 	private CartService cartService;
 	
 	@Autowired
     private WishService wishService;
+	
+	@Autowired
+	private QnaService qnaService;
 	
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
@@ -145,6 +147,10 @@ public class DetailViewController {
 		
 		model.addAttribute("starRevCnt", reviewCntGroup);
 		
+		//리뷰 목록 가져오기
+		List<Qna> qnas = getQnaFromDB(pg_no);
+		model.addAttribute("qnas", qnas);
+		
 		return "detailView/detailView";
 	}
 	
@@ -233,9 +239,13 @@ public class DetailViewController {
 		
 		model.addAttribute("starRevCnt", reviewCntGroup);
 		
+		//리뷰 목록 가져오기
+		List<Qna> qnas = getQnaFromDB(pg_no);
+		model.addAttribute("qnas", qnas);
 		
 		return "detailView/detailView";
 	}
+	
 	//리뷰 불러오기
 	@RequestMapping("/getReviewFromDB")
     @ResponseBody
@@ -322,5 +332,13 @@ public class DetailViewController {
     	wishService.removeWish(wish);
         return new ResponseEntity<>("찜 목록 삭제 성공", HttpStatus.OK);
     }
+    
+    //상품문의 불러오기
+  	@RequestMapping("/getQnaFromDB")
+	@ResponseBody
+	public List<Qna> getQnaFromDB(@RequestParam("pg_no") int pg_no) {
+  		List<Qna> qnas = qnaService.getQnasBypgNo(pg_no);
+		return qnas; 
+	}
 	
 }

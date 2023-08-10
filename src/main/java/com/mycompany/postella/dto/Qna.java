@@ -16,4 +16,11 @@ public class Qna {
 	private String a_content; //답변 작성 내용
 	private Date a_date; //답변 작성 시간
 	private int pg_no; //상품 대분류 구분번호
+	
+	//변환한 날짜 저장
+	private String stringQdate;
+	private String stringAdate;
+	
+	private String prd_name; //상품 옵션 이름
+	private String sel_name;//판매자 이름
 }

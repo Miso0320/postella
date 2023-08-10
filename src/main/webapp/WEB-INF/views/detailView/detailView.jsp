@@ -521,35 +521,10 @@
 
                   <div class="prod-inquiry-qna">
                      <div class="prod-inquiry-items">
-                        <div class="prod-inquiry-item">
-                           <div class="prod-inquiry-qpname-set">
-                              <em class="prod-inquiry-item-q">질문</em>
-                              <div class="prod-inquiry-item-option">1세트 | PC-02 키티엽서</div>
-                           </div>
-                           <div class="prod-inquiry-item-text">재입고 언제 되나요?</div>
-
-                           <div class="prod-inquiry-item-date">2023/06/16 00:52:18</div>
-                           <hr class="sep-line" />
-                           <div class="prod-inquiry-qpname-set">
-                              <img alt="" src="${pageContext.request.contextPath}/resources/img/detailView/pointer.png"
-                                 style="width: 20px; height: 20px;"> <em
-                                 class="prod-inquiry-item-a">답변</em>
-                              <div class="prod-inquiry-item-option">아기 고양이</div>
-                           </div>
-                           <div class="prod-inquiry-item-text">안녕하세요 아기고양이입니다. 재입고
-                              안합니다.</div>
-
-                           <div class="prod-inquiry-item-date">2023/06/26 00:52:18</div>
-                           <hr class="sep-line" />
-                        </div>
+                        
                      </div>
                   </div>
-                  <div class="prod-report">
-                     <p class="prod-report__text">판매 부적격 상품 또는 허위과장광고 및 지식재산권을
-                        침해하는 상품의 경우 신고하여 주시기 바랍니다.</p>
-                     <a href="javascript:;" class="prod-report__button"
-                        id="productReport" title="신고하기">신고하기</a>
-                  </div>
+                  
                </div>
                <div class="etc-info-set" id="etc-info-set">
                   <div class="etc-info-group">

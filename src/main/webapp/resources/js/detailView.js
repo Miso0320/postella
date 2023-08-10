@@ -13,7 +13,7 @@ function init() {
    shareLayer = document.getElementById("prod-share-layer");
    shareBtn.addEventListener('click', shareWindow);
    
-   //리뷰를 위한 그룹 번호 
+   //상품 페이지 그룹 번호 
    pg_no = $(".review-list-section2").data("pg_no");
    
    //리뷰 별점순 버튼 클릭
@@ -217,6 +217,9 @@ function init() {
    
    //처음 리뷰 보여주기
    loadInitialReview()
+   
+   //상품문의 보여주기
+   loadQna(pg_no)
 }
 
 
@@ -319,6 +322,35 @@ function slideNext(event) {
   }
 }
 
+//상품문의 불러오기
+function loadQna(pg_no) {
+	$.ajax({
+        type: "GET",
+        url: "getQnaFromDB",
+        data: { pg_no: pg_no },
+        success: function(qna) {
+            var inquiries = "";
+            for (var i = 0; i < qna.length; i++) {
+                var item = qna[i];
+                inquiries += "<div class='prod-inquiry-item'> " +
+                    "<div class='prod-inquiry-qpname-set'>" +
+                    " <em class='prod-inquiry-item-q'>질문</em>" +
+                    "<div class='prod-inquiry-item-option'>" +
+                    item.prd_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
+                    item.q_content + "</div> <div class='prod-inquiry-item-date'>" +
+                    item.stringQdate + "</div> <hr class='sep-line' /> <div class='prod-inquiry-qpname-set'> " +
+                    "<img alt='' src='/postella/resources/img/detailView/pointer.png' style='width: 20px; height: 20px;'>" +
+                    " <em class='prod-inquiry-item-a'>답변</em> <div class='prod-inquiry-item-option'>" +
+                    item.prd_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
+                    item.a_content + "</div> <div class='prod-inquiry-item-date'>" +
+                    item.a_date + "</div> <hr class='sep-line' /> </div> </div>";
+            }
+            $(".prod-inquiry-items").html(inquiries);
+        }
+    });
+}
+
+//처음 리뷰 불러오기
 function loadInitialReview() {
     loadData("getReviewFromDB", { pg_no: pg_no }); 
 }
