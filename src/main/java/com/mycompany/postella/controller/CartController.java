@@ -21,6 +21,8 @@ public class CartController {
 	public String joinForm() {
 		return "cartNormal/cartNormal";
 	}
+	
+	@GetMapping("/getCartList")
 
 	@PostMapping("/addCart")
 	@ResponseBody

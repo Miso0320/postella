@@ -47,6 +47,10 @@
 		      				</li>
 		      				<li class="header_list" id="header_join">
 		      					<a href="join">회원가입</a>
+		      					<c:if test="${userLogin != null}">
+							     	<a href="${pageContext.request.contextPath}/logout">로그아웃</a> 
+							     	[환영합니다! ${userLogin.us_name}님]
+			                    </c:if>
 		      				</li>
 		      				<li class="header_dropdown_list">
 		      					<a href="#">고객센터</a>

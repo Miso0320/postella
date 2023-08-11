@@ -68,6 +68,7 @@ public class ProductGroupController {
 		int prd_price;
 		int prd_org_price;
 		
+		//상품목록: 사진,이름,원가,판매가
 		for(int i = 0; i < list.size(); i++) {
 			pgNo = list.get(i).getPg_no();
 			img = imageService.getImageByPgNo(pgNo);

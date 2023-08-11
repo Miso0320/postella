@@ -32,11 +32,7 @@
 				  <div class="form-group userIdentity">
 				  	<div class="input_email d-flex">
 					    <label for="email"></label>
-					    <!-- <div class="member_icon">
-							<img src="img/member_email.JPG" width="20px">
-						</div> -->
 						<input type="email" name="us_email" class="form-control" value="${users.us_email}">
-					    <!-- <input type="email" class="form-control" placeholder="아이디(이메일)" id="email" name="email"> -->
 					</div>
 				    <span id="emailErr1" class="errorMsg text-danger d-none small">이메일은 필수 입력 사항입니다.</span>
 				    <span id="emailErr2" class="errorMsg text-danger d-none small">이메일 형식이 맞지 않습니다.</span>

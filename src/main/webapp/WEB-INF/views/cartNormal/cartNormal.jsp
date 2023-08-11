@@ -21,17 +21,17 @@
 	<body style="background-color:#F2F2F2;">
 		<header class="cartHeader">
 			<div>
-				<a href="product.jsp"><img src="img/coupang.png" class="cart-coupang-logo" style="margin:15px;"></a>
+				<a href="productGroup"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="200px" height="50px"></img></a>
 			</div>
 		</header>
 		<main class="main-cart" style="background-color:white;">
 			<div class="cart-title">
-				<h1><img src="img/cart/cart-title.png" class="cart-img"></h1>
+				<h1><img src="${pageContext.request.contextPath}/resources/img/cart/cart-title.png" class="cart-img"></h1>
 			</div>
 			<div class="cart-contents">
 				<div class="cart-part d-flex">
-					<span class="normal-cart d-flex justify-content-center">일반구매</span>
-					<a href="cartSubscribe.jsp" class="subscribe-cart d-flex justify-content-center">정기배송</a>
+					<span class="normal-cart d-flex justify-content-center">구매목록</span>
+					<a class="subscribe-cart d-flex justify-content-center">정기배송</a>
 				</div>
 				<div class="cart-part table" id="cart-chart">
 					<table id="myTable">

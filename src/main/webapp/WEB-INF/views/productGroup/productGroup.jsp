@@ -89,8 +89,7 @@
 					    }
 					  });
 					}
-					</script>
-					
+					</script>			
 					<script type="text/javascript">
 						function movepage(page)
 						{
@@ -212,14 +211,6 @@
 			</div>
 			<div class="card-body">
 				<table class="table table-sm table-bordered">
-					<%-- <c:forEach var="board" items="${boards}">
-						<tr>
-							<td>${board.bno}</td>
-							<td><a href="detailBoard?bno=${board.bno}">${board.btitle}</a></td>
-							<td>${board.mid}</td>
-							<td><fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd"/></td>
-						</tr>
-					</c:forEach> --%>
 					<tr>
 						<td colspan="4" class="text-center" style="background-color: white; border-style: hidden;">
 							<div>
