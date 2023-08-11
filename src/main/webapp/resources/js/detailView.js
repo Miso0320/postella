@@ -352,31 +352,31 @@ function loadQna(pg_no) {
 
 //처음 리뷰 불러오기
 function loadInitialReview() {
-    loadData("getReviewFromDB", { pg_no: pg_no }); 
+    loadReview("getReviewFromDB", { pg_no: pg_no }); 
 }
 
 //리뷰 별점순
 function orderByStar(pg_no) {
-    loadData("orderByStar", { pg_no: pg_no });
+    loadReview("orderByStar", { pg_no: pg_no });
 }
 
 //리뷰 최신순
 function orderByDate(pg_no) {
-    loadData("orderByDate", { pg_no: pg_no });
+    loadReview("orderByDate", { pg_no: pg_no });
 }
 
 //리뷰 검색
 function searchReview(pg_no, keyword) {
-	loadData("searchReview", { pg_no: pg_no, keyword: keyword });
+	loadReview("searchReview", { pg_no: pg_no, keyword: keyword });
 }
 
 //리뷰 별점별로 보기
 function groupByStar(pg_no, starAmount) {
-    loadData("groupByStar", { pg_no: pg_no, starAmount: starAmount });
+    loadReview("groupByStar", { pg_no: pg_no, starAmount: starAmount });
 }
 
 //리뷰 보여주기
-function loadData(url, params) {
+function loadReview(url, params) {
     $.ajax({
         type: "GET",
         url: url,
@@ -424,25 +424,17 @@ function updateReviewList(review) {
 
 //장바구니 넣기 버튼 이벤트
 function sendCartData(quantityValue, prdNo) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/postella/detailView/cartAdd", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                if (xhr.responseText === "success") {
-                    console.log("장바구니 넣기 완료");
-                } else {
-                    console.log("장바구니 넣기 실패");
-                }
-            } else {
-                console.log("서버 응답 에러");
-            }
+	 $.ajax({
+        type: "POST",
+        url: "detailView/cartAdd",
+        data: { quantity: quantityValue, prdNo: prdNo },
+        success: function(response) {
+            console.log("장바구니 추가 성공");
+        },
+        error: function(error) {
+            console.error("장바구니 추가 실패 : ", error);
         }
-    };
-    
-    const formData = "quantity=" + encodeURIComponent(quantityValue) + "&prdNo=" + encodeURIComponent(prdNo);
-    xhr.send(formData);
+    });
 }
 
 //찜 버튼 클릭시 insert,delete 처리

@@ -300,17 +300,30 @@ public class DetailViewController {
 
 	@PostMapping("/detailView/cartAdd")
     @ResponseBody
-    public String addToCart(@RequestParam("quantity") int quantity, @RequestParam("prdNo") int prdNo) {
+    public ResponseEntity<String> addToCart(@RequestParam("quantity") int quantity, @RequestParam("prdNo") int prdNo) {
 		int usNo = 1;
         
-		Cart cart = new Cart();
-        
-        cart.setUs_no(usNo);
-        cart.setPrd_no(prdNo);
-        cart.setCrt_qty(quantity);
-        
-		cartService.addToCart(cart);
-        return "success";
+		// 장바구니에 해당 상품이 이미 담겨있는지 검사
+		Map<String, Object> map = new HashMap<>();
+		map.put("us_no", usNo);
+		map.put("prd_no", prdNo);
+		
+	    Cart existingCart = cartService.getCart(map);
+
+	    if (existingCart != null) {
+	        // 이미 카트에 존재하는 경우, 수량 업데이트
+	        existingCart.setCrt_qty(existingCart.getCrt_qty() + quantity);
+	        cartService.updateCart(existingCart);
+	    } else {
+	        // 카트에 없는 경우, 새로 추가
+	        Cart cart = new Cart();
+	        cart.setUs_no(usNo);
+	        cart.setPrd_no(prdNo);
+	        cart.setCrt_qty(quantity);
+	        cartService.addToCart(cart);
+	    }
+	    
+        return ResponseEntity.ok("success");
     }
 	
 	@PostMapping("/insertWish")

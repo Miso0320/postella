@@ -5,5 +5,16 @@
 	<insert id="insertPrdToCart" parameterType="Cart">
 		insert into cart(us_no, prd_no, crt_qty) VALUES (#{us_no},#{prd_no},#{crt_qty})
 	</insert>
+	
+	<select id="selectCart" parameterType="java.util.Map" resultType="Cart">
+		select *
+		from cart
+		where us_no = #{us_no} and prd_no = #{prd_no}
+	</select>
+	
+	<update id="updateCart" parameterType="Cart">
+		update cart set crt_qty = #{crt_qty}
+		where us_no = #{us_no} and prd_no = #{prd_no}
+	</update>
 
 </mapper>
