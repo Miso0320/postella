@@ -17,9 +17,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Orders;
+import com.mycompany.postella.interceptor.Login;
 import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.MyPageService;
@@ -45,16 +45,13 @@ public class MypageController {
 	 * @param model
 	 * @return
 	 */
+	@Login
 	@GetMapping("/myOrderList")
 	public String myOrderList(
 			@RequestParam(name = "od_detail_no", defaultValue="1", required = true) int us_no,
 			@RequestParam(name = "keyword", required = false) String keyword,
-			@RequestParam(name = "requestYear", defaultValue="recent6Month", required = false) String requestYear,
+			@RequestParam(name = "requestYear", required = false) String requestYear,
 			Model model ) throws Exception {
-		
-		if(requestYear == null) {
-			requestYear = "recent6Month";
-		}
 		
 		// 주문목록 전체 리스트 가져오기
 		Map<String, Object> map = new HashMap<>();

@@ -37,7 +37,7 @@
 
 /* 네비게이터, 메인 컨테이너 */
 .upper_my_menu_content {
-	width: 850px;
+	width: 913px;
 	float: left;
 	margin: 0px 30px;
 }
@@ -62,7 +62,7 @@
 /* 주문목록 타이틀 */
 .my_order_title {
 	font-weight: bold;
-	margin: 30px 10px;
+	margin: 30px 10px 30px 30px;
 }
 
 
@@ -70,7 +70,7 @@
 .classification_date_wrap {
 	display: flex;
 	flex-direction: row;
-	margin: 10px;
+	margin: 10px 10px 10px 30px;
 }
 
 .classification_date {
@@ -115,7 +115,7 @@
 
 /* 주문내역(날짜별) */
 #order_list_for_date {
-	margin: 0px 10px;
+	margin: 0px 10px 0px 30px;
 }
 
 
