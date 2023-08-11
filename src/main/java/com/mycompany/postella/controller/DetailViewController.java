@@ -61,7 +61,6 @@ public class DetailViewController {
 	
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
-		pg_no = 3;
 		model.addAttribute("pg_no",pg_no);
 		//상품 옵션 목록 가져오기
 		List<Product> optionList = productService.getOptions(pg_no);
