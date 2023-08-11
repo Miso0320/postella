@@ -1,4 +1,4 @@
-package com.mycompany.postella.aspect;
+package com.mycompany.postella.interceptor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,33 +1,27 @@
 package com.mycompany.postella.controller;
 
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Image;
-import com.mycompany.postella.dto.Product;
-import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.dto.Price;
+import com.mycompany.postella.dto.ProductGroup;
+import com.mycompany.postella.interceptor.Login;
 import com.mycompany.postella.service.ImageService;
+import com.mycompany.postella.service.LoginService;
 import com.mycompany.postella.service.PriceService;
 import com.mycompany.postella.service.ProductGroupService;
 import com.mycompany.postella.service.productService;
 
-import lombok.var;
 import lombok.extern.slf4j.Slf4j;
 
 //테스트
@@ -45,7 +39,10 @@ public class ProductGroupController {
 	
 	@Autowired
 	private PriceService priceService;
-
+	
+	@Autowired
+	private LoginService loginService;
+	
 	@RequestMapping("/productGroup")
 	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
 		//pageNo가 넘어오지 않았을 경우

@@ -40,6 +40,7 @@
 									     </c:if>
 									     <c:if test="${userLogin != null}">
 									     	<a href="${pageContext.request.contextPath}/logout">로그아웃</a> 
+									     	[환영합니다! ${userLogin.us_name}님]
 					                     </c:if>	                     
 					               </div>
 		      					</div>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.postella.dto.Cart;
+import com.mycompany.postella.interceptor.Login;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CartController {
 	
 	@GetMapping("/cartNormal")
+	@Login
 	public String joinForm() {
 		return "cartNormal/cartNormal";
 	}
