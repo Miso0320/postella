@@ -20,7 +20,10 @@
 		select review.*
 		from review, product
 		where review.prd_no = product.prd_no
-		and product.pg_no = #{pg_no} and rev_content LIKE '%' || #{keyword} || '%'
+		and product.pg_no = #{pg_no} 
+		<if test='keyword != null and keyword != ""'>
+		   AND REGEXP_REPLACE(LOWER(REPLACE(rev_content,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
+		</if>
 	</select>
 	
 	<select id="orderByRate" parameterType="int" resultType="Review">

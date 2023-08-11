@@ -520,9 +520,8 @@
                   </div>
 
                   <div class="prod-inquiry-qna">
-                     <div class="prod-inquiry-items">
-                        
-                     </div>
+                     <div class="prod-inquiry-items"></div>
+                     <div class="qnaPageBtn"></div>
                   </div>
                   
                </div>

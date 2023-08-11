@@ -218,8 +218,8 @@ function init() {
    //처음 리뷰 보여주기
    loadInitialReview()
    
-   //상품문의 보여주기
-   loadQna(pg_no)
+   //처음 상품문의 보여주기
+   loadInitialQna()
 }
 
 
@@ -322,8 +322,8 @@ function slideNext(event) {
   }
 }
 
-//상품문의 불러오기
-function loadQna(pg_no) {
+//상품문의 처음 불러오기
+function loadInitialQna() {
 	$.ajax({
         type: "GET",
         url: "getQnaFromDB",
@@ -346,7 +346,7 @@ function loadQna(pg_no) {
                     " <em class='prod-inquiry-item-a'>답변</em> <div class='prod-inquiry-item-option'>" +
                     item.sel_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
                     item.a_content + "</div> <div class='prod-inquiry-item-date'>" +
-                    item.a_date + "</div>";
+                    item.stringAdate + "</div>";
                 }
                 
                 inquiries += " <hr class='sep-line' /> </div> </div>";
@@ -471,3 +471,4 @@ function deleteWish(pg_no) {
         }
     });
 }
+
