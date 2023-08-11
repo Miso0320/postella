@@ -65,8 +65,6 @@ public class ProductGroupController {
 		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
 		List<ProductGroup> list = productGroupService.getList(pager);
 		
-		/*int Price = priceService.getPrice(pg_no);*/
-		
 		int pgNo;
 		Image img = null;
 		Price price;
@@ -81,20 +79,14 @@ public class ProductGroupController {
 			prd_org_price = price.getPrd_org_price();
 			list.get(i).setPrd_price(prd_price); 
 			list.get(i).setPrd_org_price(prd_org_price);
-			log.info("prd_price : " + list.get(i).getPrd_price());
-			log.info("prd_org_price : " + list.get(i).getPrd_org_price());
+
 			if(img != null) {
 				String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
 				list.get(i).setEncodedFile(imgFile);
 				list.get(i).setImg_type(img.getImg_type());
-			}
-			
+			}		
 		}
-		
-		
-		
-		
-		
+	
 		model.addAttribute("pager", pager);
 		model.addAttribute("productGroups", list);
 		

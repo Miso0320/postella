@@ -31,7 +31,18 @@
 		      		<menu class="header_menu">
 		      			<ul class="header_outer_ul">
 		      				<li class="header_list" id="header_login">
-		      					<a href="login">로그인</a>
+		      					<!-- <a href="login">로그인</a> -->
+		      					<div>
+		      						<div>
+					                     <c:if test="${userLogin == null}">
+									   		<a href="${pageContext.request.contextPath}/login">로그인</a>
+									      	</form>
+									     </c:if>
+									     <c:if test="${userLogin != null}">
+									     	<a href="${pageContext.request.contextPath}/logout">로그아웃</a> 
+					                     </c:if>	                     
+					               </div>
+		      					</div>
 		      				</li>
 		      				<li class="header_list" id="header_join">
 		      					<a href="join">회원가입</a>

@@ -12,4 +12,5 @@ public interface UsersDao {
 	public Users selectEmail(String us_email);
 	public Users selectTel(String us_tel);
 	public int insertAgree(Agreement agreement);
+	public Users selectByUser(String us_email);
 }

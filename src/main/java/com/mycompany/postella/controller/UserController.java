@@ -1,6 +1,7 @@
 package com.mycompany.postella.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,8 @@ import com.mycompany.postella.dto.Agreement;
 import com.mycompany.postella.dto.Users;
 import com.mycompany.postella.service.JoinService;
 import com.mycompany.postella.service.JoinService.JoinResult;
+import com.mycompany.postella.service.LoginService;
+import com.mycompany.postella.service.LoginService.LoginResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 	@Resource
 	private JoinService joinService;
+	
+	@Resource LoginService loginService;
 	
 	/**
 	 * 
@@ -70,6 +75,33 @@ public class UserController {
 	@GetMapping("/login")
 	public String loginForm() {
 		return "login/login";
+	}
+	
+   @PostMapping("/login")
+   public String login(Users users, Model model, HttpSession session) {
+	LoginResult result = loginService.loginUsers(users);
+      String error = "";
+      if(result == LoginResult.FAIL_UID) {
+    	  error = "MID가 없습니다.";
+      } else if(result == LoginResult.FAIL_UENABLED) {
+    	  error = "MID가 비활성화 되어 있습니다";
+      } else if(result == LoginResult.FAIL_UPASSWORD) {
+    	  error = "MPASSWORD가 틀립니다";
+      } else {
+    	  Users dbUsers = loginService.getUser(users.getUs_email());
+    	  session.setAttribute("userLogin", dbUsers);
+    	  return "redirect:/productGroup";
+      }
+      
+      model.addAttribute("error", error);
+      return "login/login";
+   }
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("userLogin");
+		return "redirect:/productGroup";
+		
 	}
 	
 }
