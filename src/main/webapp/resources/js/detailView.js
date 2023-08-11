@@ -338,12 +338,18 @@ function loadQna(pg_no) {
                     "<div class='prod-inquiry-item-option'>" +
                     item.prd_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
                     item.q_content + "</div> <div class='prod-inquiry-item-date'>" +
-                    item.stringQdate + "</div> <hr class='sep-line' /> <div class='prod-inquiry-qpname-set'> " +
+                    item.stringQdate + "</div> ";
+                //답변이 있을 때만 추가
+                if (item.a_content !== null) {
+                	inquiries += "<hr class='sep-line' /> <div class='prod-inquiry-qpname-set'> " +
                     "<img alt='' src='/postella/resources/img/detailView/pointer.png' style='width: 20px; height: 20px;'>" +
                     " <em class='prod-inquiry-item-a'>답변</em> <div class='prod-inquiry-item-option'>" +
-                    item.prd_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
+                    item.sel_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
                     item.a_content + "</div> <div class='prod-inquiry-item-date'>" +
-                    item.a_date + "</div> <hr class='sep-line' /> </div> </div>";
+                    item.a_date + "</div>";
+                }
+                
+                inquiries += " <hr class='sep-line' /> </div> </div>";
             }
             $(".prod-inquiry-items").html(inquiries);
         }

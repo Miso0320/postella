@@ -31,7 +31,9 @@ public class QnaServiceImpl implements QnaService{
 			qnas.get(i).setPrd_name(reviewService.getPrdName(qnas.get(i).getPrd_no()));
 			qnas.get(i).setSel_name(qnaDao.selectSelName(qnas.get(i).getPg_no()));
 			qnas.get(i).setStringQdate(rformat.format(qnas.get(i).getQ_date()));
-			qnas.get(i).setStringAdate(rformat.format(qnas.get(i).getA_date()));
+			if(qnas.get(i).getA_date() != null) {
+				qnas.get(i).setStringAdate(rformat.format(qnas.get(i).getA_date()));
+			}
 		}
 	}
 }
