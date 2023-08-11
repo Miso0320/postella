@@ -39,7 +39,7 @@
 	</insert>
 	
 	<select id="selectByUser" parameterType="String" resultType="Users">
-		select us_email, us_name, us_password, us_sleep
+		select us_no, us_email, us_name, us_password, us_sleep
 		from users
 		where us_email=#{us_email, jdbcType=VARCHAR}
 	</select>
