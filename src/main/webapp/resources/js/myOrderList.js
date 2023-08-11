@@ -1,8 +1,52 @@
 $(init);
 
+$(document).ready(function() {
+	var container = $(".classification_date");
+	var requestYear = 'recent6Month';
+	requestYear = container.data('request-year');
+	
+	if(requestYear === 'recent6Month') {
+		$("#recent_six_month").addClass("order_date_range_select");
+	} else if(requestYear === '2023year') {
+		console.log("2023 인가?");
+		$("#2023year").addClass("order_date_range_select");
+	} else if(requestYear === '2022year') {
+		$("#2022year").addClass("order_date_range_select");
+	} else if(requestYear === '2021year') {
+		$("#2021year").addClass("order_date_range_select");
+	} else if(requestYear === '2020year') {
+		$("#2020year").addClass("order_date_range_select");
+	} 
+	
+	console.log("requestYear!!!!!!!!!!!! : " + requestYear);
+	
+	//날짜별 분류 선택 적용하기
+    /*$(document).on("click", ".order_date_range", function(event) {
+        var target = event.target;
+        $(".order_date_range").each(function(index, el) {
+            var classYn = $(el).is(".order_date_range_select");
+            
+            if(classYn) {
+                $(el).removeClass("order_date_range_select");
+            }
+            
+            if(target === el) {
+                $(el).addClass("order_date_range_select");
+            }
+        });
+    });*/
+});
+
 function init() {
 	// 날짜별 분류(선택)
-	$(".order_date_range").click(orderDateClick);
+	/*$(".order_date_range").click(orderDateClick);*/
+	
+	// 장바구니 담기 변수 선언
+	/*var container = $(".content_item_img");
+	var us_no = container.data('us-no');
+	var prd_no = container.data('prd-no');
+	var crt_qty = 1;
+	addCart(us_no, prd_no, crt_qty);*/
 	
 	// 사이드바 보이기, 숨기기
 	$(window).scroll(function() {
@@ -52,33 +96,26 @@ function dp_menu_hide() {
 	}
 }
 
-//날짜별 분류
-function orderDateClick() {
-	var target = event.target;
-	$(".order_date_range").each(function(index, el) {
-		var classYn = $(el).is(".order_date_range_select");
-		
-		if(classYn) {
-			$(el).removeClass("order_date_range_select");
-		}
-		
-		if(target === el) {
-			$(el).addClass("order_date_range_select");
-		}
-	});
-}
-
 // 장바구니에 넣기
-function addCart() {
-   /* $.ajax({
+function addCart(us_no, prd_no, crt_qty) {
+	console.log(us_no + " - " + prd_no + " - " + crt_qty);
+	
+	var cartData = {
+        us_no: us_no,
+        prd_no: prd_no,
+        crt_qty: crt_qty
+    };
+	
+    $.ajax({
     	url: "addCart",
     	method: "post",
     	contentType: 'application/json',
-    	data: JSON.stringify(cartList), 
+    	data: JSON.stringify(cartData), 
         success: function (data) {
             console.log(data);
         }
-    });*/
+    });
+    
 }
 
 // 장바구니 상품 정보 열기

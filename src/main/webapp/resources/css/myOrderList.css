@@ -95,16 +95,16 @@
 	margin-right: 5px;
 	line-height: 1;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 .order_date_range_select {
 	background-color: #60b0ea;
-	color: rgb(255, 255, 255);
 }
 
-.order_date_range a {
+.order_date_range_select a {
 	text-decoration: none;
-	color: white;
+	color: white !important;
 }
 
 /* 선택된 메뉴일 때 -> 자바스크립트로 변경 필요 */
@@ -337,7 +337,7 @@
 }
 
 .modal_txt {
-	color: white;
+	color: white !important;
 }
 
 /* 목록 버튼(페이징) */

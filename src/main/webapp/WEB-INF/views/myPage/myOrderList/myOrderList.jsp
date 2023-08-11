@@ -5,10 +5,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script src="${pageContext.request.contextPath}/resources/js/myOrderList.js"></script>
 
-<script>
-	var cartList = ${jsonCartList};
-</script>
-
 <section class="order_list_container">
 	<!-- 전체 내용 -->
 	<div class="order_list_wrap" id="order_list_wrap">
@@ -24,11 +20,6 @@
 				  </button>
 				  <div class="collapse navbar-collapse" id="navbarColor01">
 				    <ul class="navbar-nav mr-auto">
-				      <!-- <li class="nav-item active">
-				        <a class="nav-link" href="#">Home
-				          <span class="sr-only">(current)</span>
-				        </a>
-				      </li> -->
 				      <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 쇼핑</a>
 				        <div class="dropdown-menu">
@@ -42,7 +33,7 @@
 				      <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 활동</a>
 				        <div class="dropdown-menu">
-				          <a class="dropdown-item" href="myOrderList">문의하기</a>
+				          <a class="dropdown-item" href="#">문의하기</a>
 				          <a class="dropdown-item" href="#">문의내역 확인</a>
 				          <a class="dropdown-item" href="#">리뷰관리</a>
 				          <a class="dropdown-item" href="#">찜 리스트</a>
@@ -51,7 +42,7 @@
 				      <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 정보</a>
 				        <div class="dropdown-menu">
-				          <a class="dropdown-item" href="myOrderList">개인정보수정</a>
+				          <a class="dropdown-item" href="#">개인정보수정</a>
 				          <a class="dropdown-item" href="#">배송지관리</a>
 				          <div class="dropdown-divider"></div>
 				          <a class="dropdown-item" href="#">문의하기</a>
@@ -59,7 +50,8 @@
 				      </li>
 				    </ul>
 				    <form class="form-inline my-2 my-lg-0" action="myOrderList">
-				      <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search">
+				      <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search" value="${param.keyword}">
+				      <input type="hidden" name="requestYear" value="${param.requestYear}">
 				      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 				    </form>
 				  </div>
@@ -70,15 +62,45 @@
 			
 				<!-- 날짜별 분류 -->
 				<div class="classification_date_wrap">
-					<div class="classification_date">
-						<div class="order_date_range order_date_range_select" id="recent_six_month"><a href="myOrderList?requestYear=recent6Month">최근 6개월</a></div>
-						<div class="order_date_range"><a href="myOrderList?requestYear=2023">2023</a></div>
-						<div class="order_date_range"><a href="myOrderList?requestYear=2022">2022</a></div>
-						<div class="order_date_range"><a href="myOrderList?requestYear=2021">2021</a></div>
-						<div class="order_date_range"><a href="myOrderList?requestYear=2020">2020</a></div>
+					<div class="classification_date" data-request-year="${param.requestYear}">
+						<div class="order_date_range" id="recent_six_month">
+							<c:set var="yearLink" value="myOrderList?requestYear=recent6Month"/>
+							<c:if test="${not empty param.keyword}">
+							    <c:set var="yearLink" value="${yearLink}&amp;keyword=${param.keyword}"/>
+							</c:if>
+							<a href="${yearLink}">최근 6개월</a>
+						</div>
+						<div class="order_date_range" id="2023year">
+							<c:set var="yearLink" value="myOrderList?requestYear=2023year"/>
+							<c:if test="${not empty param.keyword}">
+							    <c:set var="yearLink" value="${yearLink}&amp;keyword=${param.keyword}"/>
+							</c:if>
+							<a href="${yearLink}">2023</a>
+						</div>
+						<div class="order_date_range" id="2022year">
+							<c:set var="yearLink" value="myOrderList?requestYear=2022year"/>
+							<c:if test="${not empty param.keyword}">
+							    <c:set var="yearLink" value="${yearLink}&amp;keyword=${param.keyword}"/>
+							</c:if>
+							<a href="${yearLink}">2022</a>
+						</div>
+						<div class="order_date_range" id="2021year">
+							<c:set var="yearLink" value="myOrderList?requestYear=2021year"/>
+							<c:if test="${not empty param.keyword}">
+							    <c:set var="yearLink" value="${yearLink}&amp;keyword=${param.keyword}"/>
+							</c:if>
+							<a href="${yearLink}">2021</a>
+						</div>
+						<div class="order_date_range" id="2020year">
+							<c:set var="yearLink" value="myOrderList?requestYear=2020year"/>
+							<c:if test="${not empty param.keyword}">
+							    <c:set var="yearLink" value="${yearLink}&amp;keyword=${param.keyword}"/>
+							</c:if>
+							<a href="${yearLink}">2020</a>
+						</div>
 					</div>
 				</div>
-										
+				
 				<!-- 주문내역  -->
 				<div id="order_list_for_date">
 				    <c:forEach var="order" items="${orders}" varStatus="status">
@@ -111,7 +133,7 @@
 				                                </div>
 				                                
 				                                <div class="order_list_content_item">
-				                                    <div class="content_item_img">
+				                                    <div class="content_item_img" data-prd-no="${orderList.prd_no}" data-us-no="${orderList.us_no}">
 				                                        <a href="setDetailPage?prdNo=${orderList.prd_no}">
 				                                       		<img alt="상품사진" src="data:${orderList.img_type};base64, ${orderList.encodedFile}">
 				                                        </a>
@@ -134,7 +156,7 @@
 				                            </div>
 				                            <div class="order_item_button_wrap">
 				                                <div class="order_item_button">
-				                                    <a href="#" class="btn btn-primary btn_size">배송조회</a>
+				                                    <a href="#" class="btn btn-primary btn_size modal_txt">배송조회</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size">교환, 반품 신청</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size">리뷰 작성하기</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size" data-toggle="modal" data-target="#deleteCk" data-od-detail-no="${orderList.od_detail_no}">주문내역 삭제</a>

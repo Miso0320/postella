@@ -49,8 +49,12 @@ public class MypageController {
 	public String myOrderList(
 			@RequestParam(name = "od_detail_no", defaultValue="1", required = true) int us_no,
 			@RequestParam(name = "keyword", required = false) String keyword,
-			@RequestParam(name = "requestYear", required = false) String requestYear,
+			@RequestParam(name = "requestYear", defaultValue="recent6Month", required = false) String requestYear,
 			Model model ) throws Exception {
+		
+		if(requestYear == null) {
+			requestYear = "recent6Month";
+		}
 		
 		// 주문목록 전체 리스트 가져오기
 		Map<String, Object> map = new HashMap<>();
@@ -72,13 +76,13 @@ public class MypageController {
 		Date endDate = null;
 		
         if(requestYear != null) {
-        	if(requestYear.equals("2020")) {
+        	if(requestYear.equals("2020year")) {
     			year = 2020;
-    		} else if(requestYear.equals("2021")) {
+    		} else if(requestYear.equals("2021year")) {
     			year = 2021;
-    		} else if(requestYear.equals("2022")) {
+    		} else if(requestYear.equals("2022year")) {
     			year = 2022;
-    		} else if(requestYear.equals("2023")) {
+    		} else if(requestYear.equals("2023year")) {
     			year = 2023;
     		}
         	
@@ -107,6 +111,8 @@ public class MypageController {
             
             map.put("startDate", startDateStr);
             map.put("endDate", endDateStr);
+            map.put("requestYear", requestYear);
+            
         }
 		
 		List<Orders> orders = myPageService.getOrderList(map);
@@ -121,12 +127,6 @@ public class MypageController {
 		}
 		
 		model.addAttribute("orders", orders);
-		
-		// cart 만드는 중
-		// orders를 JSON 형식의 문자열로 변환하여 모델에 추가
-	    ObjectMapper objectMapper = new ObjectMapper();
-	    String jsonCartList = objectMapper.writeValueAsString(orders);
-	    model.addAttribute("jsonCartList", jsonCartList);
 		
 		return "myPage/myOrderList/myOrderList";
 	}
