@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.ProductGroupDao">
 
+	<!-- 상품목록 -->
 	<select id="selectByPage" parameterType="java.util.Map" resultType="Product">
-		
 		SELECT pg_no, pg_name, prd_no, prd_org_price, prd_price, prd_category, prd_date
 			FROM
 			    (
@@ -30,17 +30,10 @@
       	]]>
 	</select>
 	
-	<!-- product의 갯수 -->
+	<!-- 상품전체 개수 -->
 	<select id="count" resultType="int">
 		select count(*) 
 		from product
-	</select>
-	
-	<!-- product제목 -->
-	<select id="selectTitleByPgNo" parameterType="int" resultType="String">
-		SELECT pg_name
-		from product_group
-		where pg_no = ${pg_no}
 	</select>
 	
 	<!-- 대표이미지가져오기 -->
@@ -48,6 +41,26 @@
 		select *
 		from image
 		where pg_no=#{pg_no} and ROWNUM = 1
+	</select>
+	
+	<!-- 카테고리 목록 -->
+	<select id="selectCategoryList" resultType="CodeTb">
+		select code, codeval from code where groupcode = 'PR'
+	</select>
+	
+	<!-- 브랜드 목록(필터) -->
+	<select id="selectBrandList" resultType="CodeTb">
+		select code, codeval from code where groupcode = 'FB'
+	</select>
+	
+	<!-- 상품상태 목록(필터) -->
+	<select id="selectStatusList" resultType="CodeTb">
+		select code, codeval from code where groupcode = 'FS'
+	</select>
+	
+	<!-- 상품메시지 목록(필터) -->
+	<select id="selectMessageList" resultType="CodeTb">
+		select code, codeval from code where groupcode = 'FM'
 	</select>
 	
 	<!-- product 전체 -->

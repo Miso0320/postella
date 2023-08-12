@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.postella.dto.CodeTb;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.dto.Price;
@@ -52,6 +53,7 @@ public class ProductGroupController {
 		if(pageNo == null) {
 			//세션에 저장되어 있는지 확인
 			pageNo = (String) session.getAttribute("pageNo");
+			
 			//저장되어 있지 않다면 "1"로 초기화
 			if (pageNo == null) {
 				pageNo = "1";
@@ -66,6 +68,7 @@ public class ProductGroupController {
 		
 		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
 		
+		// 상품목록 가져오기
 		Map<String, Object> map = new HashMap<>();
 		map.put("pager", pager);
 		map.put("prd_category", prd_category);
@@ -94,9 +97,22 @@ public class ProductGroupController {
 				list.get(i).setImg_type(img.getImg_type());
 			}		
 		}
-	
+		
+		// 카테고리 리스트 가져오기
+		List<CodeTb> categoryList = productGroupService.getCategoryList();
+		// 브랜드 리스트 가져오기
+		List<CodeTb> brandList = productGroupService.getBrandList();
+		// 상품상태 리스트 가져오기
+		List<CodeTb> statusList = productGroupService.getStatusList();
+		// 메시지 리스트 가져오기
+		List<CodeTb> messageList = productGroupService.getMessageList();
+		
 		model.addAttribute("pager", pager);
 		model.addAttribute("productGroups", list);
+		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("brandList", brandList);
+		model.addAttribute("statusList", statusList);
+		model.addAttribute("messageList", messageList);
 		
 		return "productGroup/productGroup";
 	}

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.postella.dao.ImageDao;
 import com.mycompany.postella.dao.ProductDao;
 import com.mycompany.postella.dao.ProductGroupDao;
+import com.mycompany.postella.dto.CodeTb;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 
@@ -48,4 +49,32 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 		List<Image> img = productGroupDao.selectByPgNo(pg_no);
 		return img;
 	}
+
+	@Override
+	public List<CodeTb> getCategoryList() {
+		List<CodeTb> categoryList = productGroupDao.selectCategoryList();
+		return categoryList;
+	}
+
+	@Override
+	public List<CodeTb> getBrandList() {
+		List<CodeTb> brandList = productGroupDao.selectBrandList();
+		return brandList;
+	}
+
+	@Override
+	public List<CodeTb> getStatusList() {
+		List<CodeTb> statusList = productGroupDao.selectStatusList();
+		return statusList;
+	}
+
+	@Override
+	public List<CodeTb> getMessageList() {
+		List<CodeTb> messageList = productGroupDao.selectMessageList();
+		return messageList;
+	}
+	
+	
+	
+	
 }

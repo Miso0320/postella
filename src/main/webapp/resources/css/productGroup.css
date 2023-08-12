@@ -324,12 +324,6 @@
 	color:#0073E9;
 }
 
-.accordion2 {
-	border:none;
-	background-color:white;
-	color:#0073E9;
-}
-
 .active, .accordion:hover {
   background-color: white;
 }
