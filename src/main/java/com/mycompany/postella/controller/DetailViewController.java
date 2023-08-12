@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,10 +25,11 @@ import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.Qna;
 import com.mycompany.postella.dto.Review;
+import com.mycompany.postella.dto.Users;
 import com.mycompany.postella.dto.Wish;
+import com.mycompany.postella.interceptor.Login;
 import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
-import com.mycompany.postella.service.OrdersService;
 import com.mycompany.postella.service.ProductGroupService;
 import com.mycompany.postella.service.QnaService;
 import com.mycompany.postella.service.ReviewService;
@@ -60,8 +63,9 @@ public class DetailViewController {
 	private QnaService qnaService;
 	
 	@RequestMapping("/detailView")
-	public String content(@RequestParam(defaultValue="1") int pg_no, Model model) {
+	public String content(@RequestParam(defaultValue="1") int pg_no, Model model, HttpSession session) {
 		model.addAttribute("pg_no",pg_no);
+		log.info("컨트롤러 로그인 정보: "+session.getAttribute("userLogin"));
 		//상품 옵션 목록 가져오기
 		List<Product> optionList = productService.getOptions(pg_no);
 		Image optionImg; 
@@ -298,11 +302,14 @@ public class DetailViewController {
 	}
 
 	@PostMapping("/detailView/cartAdd")
-    @ResponseBody
-    public ResponseEntity<String> addToCart(@RequestParam("quantity") int quantity, @RequestParam("prdNo") int prdNo) {
-		int usNo = 1;
-        
-		// 장바구니에 해당 상품이 이미 담겨있는지 검사
+	@Login
+	@ResponseBody
+    public ResponseEntity<String> addToCart(@RequestParam("quantity") int quantity, @RequestParam("prdNo") int prdNo, HttpSession session) {
+		Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+		 
+	    int usNo = user.getUs_no();
+	    log.info("usNo"+usNo);
+	    // 장바구니에 해당 상품이 이미 담겨있는지 검사
 		Map<String, Object> map = new HashMap<>();
 		map.put("us_no", usNo);
 		map.put("prd_no", prdNo);
@@ -326,8 +333,11 @@ public class DetailViewController {
     }
 	
 	@PostMapping("/insertWish")
-    public ResponseEntity<String> insertWish(@RequestParam("pg_no") int pg_no) {
-		int usNo = 1;
+	@Login
+    public ResponseEntity<String> insertWish(@RequestParam("pg_no") int pg_no, HttpSession session) {
+		Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+		int usNo = user.getUs_no();
+		log.info("usNo"+usNo);
 		Wish wish = new Wish();
 		wish.setPg_no(pg_no);
 		wish.setUs_no(usNo);
@@ -336,8 +346,10 @@ public class DetailViewController {
     }
 
     @PostMapping("/deleteWish")
-    public ResponseEntity<String> deleteWish(@RequestParam("pg_no") int pg_no) {
-    	int usNo = 1;
+    @Login
+    public ResponseEntity<String> deleteWish(@RequestParam("pg_no") int pg_no, HttpSession session) {
+    	Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+	    int usNo = user.getUs_no();
     	Wish wish = new Wish();
 		wish.setPg_no(pg_no);
 		wish.setUs_no(usNo);

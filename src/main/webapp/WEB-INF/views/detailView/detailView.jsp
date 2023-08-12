@@ -5,8 +5,16 @@
    <%@ include file="/WEB-INF/views/common/header.jsp" %>
    <script src="${pageContext.request.contextPath}/resources/js/detailView.js"></script>
    <main id="contents" class="contents_product">
-
-      <!-- 상품 상세페이지 윗부분 -->
+	
+	<%@ page import="com.mycompany.postella.dto.Users" %>
+	<%
+	    Users userLogin = (Users) session.getAttribute("userLogin");
+	%>
+	<script>
+	    var userLogin = <%= userLogin != null ? "true" : "false" %>;
+	</script>
+     
+	<!-- 상품 상세페이지 윗부분 -->
       <div class="prod-btop">
          <div class="prod-btop-main">
             <div class="prod-image">

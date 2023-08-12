@@ -46,14 +46,16 @@ function init() {
    cartButton = document.getElementById("cartButton");
    
    cartButton.addEventListener("click", function() {
-       
-	   const quantityInput = document.querySelector(".prod-quantity-input");
-       const quantityValue = quantityInput.value; //입력된 수량 가져오기
-      
-       const prdNo = $(".selectedOName").data("prdno"); //상품 번호 가져오기
-       
-       // AJAX 요청 보내기
-       sendCartData(quantityValue, prdNo);
+	   
+	   if (isLoggedIn()) {
+	        const quantityInput = document.querySelector(".prod-quantity-input");
+	        const quantityValue = quantityInput.value;
+
+	        const prdNo = $(".selectedOName").data("prdno");
+
+	        sendCartData(quantityValue, prdNo);
+	    }
+
    });
    
    //바로 구매 버튼
@@ -237,17 +239,21 @@ function shareWindow() {
 
 //클릭시 찜버튼 색 변경
 function toggleLike() {
-   //버튼 비활성화 시
-	if (liked == 0) {
-      likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -262px -209px';
-      liked = 1;
-      insertWish(pg_no);
-   } else if (liked == 1) {
-      likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -218px -209px';
-      liked = 0;
-      deleteWish(pg_no);
-   }
-
+	
+	// 로그인 상태 체크
+    if (isLoggedIn()) {
+    	console.log("라이크 로그인 됨!!!");
+    	//버튼 비활성화 시
+    	if (liked == 0) {
+          likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -262px -209px';
+          liked = 1;
+          insertWish(pg_no);
+       } else if (liked == 1) {
+          likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -218px -209px';
+          liked = 0;
+          deleteWish(pg_no);
+       }
+    } 
 }
 
 // 상품 옵션 드롭다운
@@ -472,3 +478,15 @@ function deleteWish(pg_no) {
     });
 }
 
+//로그인 여부 체크 
+function isLoggedIn() {
+    if (!userLogin) {
+        console.log("로그인 상태가 아님!");
+        // 로그인되지 않은 상태일 때 로그인 페이지로 이동
+        window.location.href = "/postella/login"; // 로그인 페이지 URL로 수정
+        return false;
+    }
+    
+    console.log("로그인됨!!!");
+    return true;
+}
