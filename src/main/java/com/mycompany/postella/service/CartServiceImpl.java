@@ -1,5 +1,6 @@
 package com.mycompany.postella.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.postella.dao.CartDao;
 import com.mycompany.postella.dto.Cart;
+import com.mycompany.postella.dto.Image;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,6 +34,18 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public void updateCart(Cart cart) {
 		int check = cartDao.updateCart(cart);
+	}
+
+	@Override
+	public List<Cart> getProductCart(int us_no) {
+		List<Cart> list = cartDao.selectCartByUsNo(us_no);
+		return list;
+	}
+
+	@Override
+	public List<Image> getImageCart() {
+		List<Image> image = cartDao.selectImgByPrdNo();
+		return image;
 	}
 
 	

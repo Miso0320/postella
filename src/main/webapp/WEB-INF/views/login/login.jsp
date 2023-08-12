@@ -84,8 +84,8 @@
 				<div><small>첫 방문이신가요?</small></div>
 				<div><small>회원가입 후 사용해 보세요.</small></div>
 				<div>
-                	<a href="#" class="id-pwd-find">
-                        	<img src="img/arrow-right.png" width="16px" height="16px"></img>
+                	<a href="join">
+                        	<img src="${pageContext.request.contextPath}/resources/img/join/joinImg.png" width="96px" height="96px"></img>
                 	</a>
 				</div>
 				<div style="font-size:12px">©Postella Corp. All rights reserved.</div>

@@ -53,10 +53,9 @@
 						    	<span><span>무료배송</span></span>
 						    </td>
 						  </tr>
-						</thead>
+						</thead>					
 						
-						
-					  <tbody id="cart-product-contents">	
+					  <tbody id="cart-product-contents" class="cart-product-contentes">	
 							
 					  </tbody>
 					  
@@ -79,7 +78,6 @@
 						  </tr>
 					  </tfoot>
 					</table>
-					
 				</div>
 				<div class="cart-part1">
 					<span>
@@ -135,13 +133,6 @@
 			</div>
 		</main>
 		<div>
-		</div>
-		
-
-		
-		
-		<div style="background-color:white;">		
-			<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-		</div>
+		</div>	
 	</body>
-</html>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

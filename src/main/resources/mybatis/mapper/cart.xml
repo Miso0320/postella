@@ -12,9 +12,32 @@
 		where us_no = #{us_no} and prd_no = #{prd_no}
 	</select>
 	
+	<!-- <delete id="deleteCart" parameterType="">
+		delete prd_no
+		from cart
+		where
+	</delete> -->
+	
 	<update id="updateCart" parameterType="Cart">
 		update cart set crt_qty = #{crt_qty}
 		where us_no = #{us_no} and prd_no = #{prd_no}
 	</update>
+	
+	<select id="selectCartByUsNo" parameterType="int" resultType="Cart">
+		select p.prd_name, p.prd_price, c.us_no, c.prd_no, c.crt_qty
+		from product p, cart c
+		where p.prd_no = c.prd_no and us_no=#{us_no}
+	</select>
+	
+	<select id="selectImgByPrdNo" resultType="Img">
+		SELECT img_file, img_type, prd_no
+		FROM (
+		    SELECT i.img_file, i.img_type, c.prd_no,
+		           ROW_NUMBER() OVER (PARTITION BY c.prd_no ORDER BY c.prd_no) AS rn
+		    FROM image i
+		    INNER JOIN cart c ON i.prd_no = c.prd_no
+		)
+		WHERE rn = 1
+	</select>
 
 </mapper>

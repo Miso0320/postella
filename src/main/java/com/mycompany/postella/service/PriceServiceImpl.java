@@ -17,7 +17,4 @@ public class PriceServiceImpl implements PriceService {
 		Price price = priceDao.selectPriceByPgNo(pg_no);
 		return price;
 	}
-
-
-
 }

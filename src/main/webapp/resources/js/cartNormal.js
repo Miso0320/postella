@@ -145,10 +145,9 @@ function cart() {
 		let deliveryDate = ("내일(" + dayText + ")" +month + "/" + date + "도착 보장");	
 		
 	$.ajax({
-		url: "cartContent.jsp",
-		method: "get",
+		url: "cartNormal",
+		method: "POST",
 		success: function(data) {
-			
 			if(data.length == 0) {
 				$('#tbody').removeClass("d-none");
 			} else {
@@ -156,22 +155,19 @@ function cart() {
 			tableCount(data.length);
 			let html = "";
 			  data.forEach((item,index) => {
-				  
-				  
-				  
-				  
+				    
 				  html += '<tr class="cart-product-contents">';
 				  html += '  <td>';
 				  html += '  	<input type="checkbox" name="checkBox" class="checkBox" checked>';
 				  html += '  </td>';
 				  html += '  <td class="cart-item-img">';
 				  html += '  	<a href="#">';
-				  html += '  		<img src="img/cart/' + item.img + '" width="78" height="78">';
+				  html += '  		<img src="data:${' + item.img_type + '};base64, ${'+ item.encodedFile + '}" width="78" height="78">';
 				  html += '  	</a>';
 				  html += '  </td>';
 				  html += '  <td>';
 				  html += '  	<div class="cart-product-name">';
-				  html += '  		<a href="">' + item.title + '</a>';
+				  html += '  		<a href="">' + item.prd_name + '</a>';
 				  html += '  	</div>';
 				  html += '  	<hr/>';
 				  html += '  	<div class="cart-product-option">';
@@ -179,7 +175,7 @@ function cart() {
 				  html += '  		<span class="cart-product-option-info1-2">(밤 12시 전 주문 시)</span>';
 				  html += '  		</div>';
 				  html += '  		<div class="cart-product-option-price">';
-				  html += '  			<span id="prodPrice">' + item.price + '</span>';
+				  html += '  			<span id="prodPrice">' + item.prd_price + '</span>';
 				  html += '  			<span>원</span>';
 				  html += '					<select id="selectBtn" class="prod-quantity-form" onchange="javascript:sumItemPrice(); checkInput(this.value);" style="width:52px; height:24px;">';
 				  html += '						<option value="1">1</option>';
@@ -203,7 +199,7 @@ function cart() {
 				  html += '  	<div class="badge-list">';
 				  html += '			<div class="badge-item option-benefit">';
 				  html += '				<span class="promo-cash-benefit ">';
-				  html += '					<img class="cash-icon" src="img/cart/cash-icon.png"><em class="promo-cash-benefit__text">최대' + (item.price * 0.01) + '원 적립</em>';
+				  html += '					<img class="cash-icon" src="img/cart/cash-icon.png"><em class="promo-cash-benefit__text">최대' + (item.prd_price * 0.01) + '원 적립</em>';
 				  html += '				</span>';		
 				  html += '			</div>';
 				  html += '  	</div>';
@@ -212,10 +208,10 @@ function cart() {
 				  html += '  	<button type="button" class="btn_delete">삭제</button>';
 				  html += '  </td>';
 				  html += '  <td>';
-				  html += '  	<div class="cart-product-price" id="cart-product-price">' + item.price + '</div>';
-				  html += '  	<img class="cart-rocket" src="img/cart/' + item.img2 + '" alt="로켓배송">';
+				  html += '  	<div class="cart-product-price" id="cart-product-price">' + item.prd_price + '</div>';
+				  //html += '  	<img class="cart-rocket" src="img/cart/' + item.img2 + '" alt="로켓배송">';
 				  html += '  </td>';
-				  html += '  <td>' + item.delivery + '</td>';
+				  //html += '  <td>' + item.delivery + '</td>';
 				  html += '</tr>';
 				  
 				  

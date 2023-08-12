@@ -27,6 +27,7 @@
 		from product
 	</select>
 	
+	<!-- product제목 -->
 	<select id="selectTitleByPgNo" parameterType="int" resultType="String">
 		SELECT pg_name
 		from product_group
@@ -40,7 +41,7 @@
 		where pg_no=#{pg_no} and ROWNUM = 1
 	</select>
 	
-	<!-- product 가격 가져옴 -->
+	<!-- product 전체 -->
 	<select id="selectAllByPgNo" parameterType="int" resultType="Product">
 		SELECT *
 		from product
