@@ -24,6 +24,10 @@
 	justify-content: center;
 }
 
+.order_list_container a:visited {
+	text-decoration: none !important;
+}
+
 
 /* 전체내용 */
 .order_list_wrap {
@@ -88,7 +92,7 @@
 	border-radius: 13px;
 	border: 1px solid rgb(196, 205, 213);
 	background-color: rgb(255, 255, 255);
-	color: rgb(69, 79, 91);
+	color: #60b0ea;
 	font-size: 12px;
 	text-align: center;
 	vertical-align: middle;
@@ -97,6 +101,7 @@
 	cursor: pointer;
 	text-decoration: none;
 }
+
 
 .order_date_range_select {
 	background-color: #60b0ea;

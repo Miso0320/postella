@@ -2,13 +2,11 @@ $(init);
 
 $(document).ready(function() {
 	var container = $(".classification_date");
-	var requestYear = 'recent6Month';
 	requestYear = container.data('request-year');
 	
 	if(requestYear === 'recent6Month') {
 		$("#recent_six_month").addClass("order_date_range_select");
 	} else if(requestYear === '2023year') {
-		console.log("2023 인가?");
 		$("#2023year").addClass("order_date_range_select");
 	} else if(requestYear === '2022year') {
 		$("#2022year").addClass("order_date_range_select");

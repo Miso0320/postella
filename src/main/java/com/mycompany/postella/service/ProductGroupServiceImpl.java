@@ -11,8 +11,6 @@ import com.mycompany.postella.dao.ProductDao;
 import com.mycompany.postella.dao.ProductGroupDao;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
-import com.mycompany.postella.dto.ProductGroup;
-import com.mycompany.postella.dto.Pager;
 
 @Service
 public class ProductGroupServiceImpl implements ProductGroupService{
@@ -25,15 +23,17 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	@Autowired
 	private ProductDao productDao;
 	
-	@Override //dao에서 selectTitleByPgNo로 제목가져와서 title에 넣기
+	//dao에서 selectTitleByPgNo로 제목가져와서 title에 넣기
+	@Override 
 	public String getTitle(int pg_no) {
 		String title = productGroupDao.selectTitleByPgNo(pg_no);
 		return title;
 	}
-
-	@Override //dao에서 selectByPage로 productGroup 리스트를 가져와서 list에 넣기
-	public List<ProductGroup> getList(Pager pager) {
-		List<ProductGroup> list = productGroupDao.selectByPage(pager);
+	
+	//dao에서 selectByPage로 product 리스트를 가져와서 list에 넣기
+	@Override 
+	public List<Product> getList(Map<String, Object> map) {
+		List<Product> list = productGroupDao.selectByPage(map);
 		return list;
 	}
 

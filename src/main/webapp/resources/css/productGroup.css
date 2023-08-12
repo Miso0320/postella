@@ -1,357 +1,387 @@
 
-		/* label은 폼의 양식에 이름 붙이는 태그이다. 주요 속성은 for이다. label의 for의 값과 양식의 id의 값이 같으면 연결된다. label을 클릭하면, 연결된 양식에 입력할 수 있도록 하거나, 체크를 하거나, 체크를 해제한다.
-			 Hover란 이미지, 텍스트, 버튼 등에 마우스 포인터가 올라갔을 때 발동되는 일종의 전환효과를 말합니다 */
-			
-			* {
-				margin: 0px;
-				padding: 0px;
-			}		
-			#container{
-				display: flex;
-				flex-direction: column;
-				/* flex-wrap: wrap; */
-			}
-			#list{
-				display: flex;
-				flex-direction: row;
-				list-style: none;
-				background-color: #F2F2F2;
-			}
-			.list:hover{
-				color:#0073e9;
-			}
-			#list>li{
-				display: inline;
-				background-color: #F2F2F2;
-				padding: 0px 10px 0px 0px;
-			}
-			#list>li>a:hover{
-				color:#0073e9;
-			}
-			#list>li>a{
-				color: #555555;
-				font-size: 12px;
-			}
-			#rk-icon1{
-				width: 40px;
-				height: 16px;
-			}
-			#rk-icon2{
-				width: 48px;
-				height: 12px;
-			}
-			#rk-icon3{
-				width: 48px;
-				height: 12px;
-			}	
-			a{
-				text-decoration: none; 
-			}
-			a:visited{
-				color:#555555;
-			}
-			a:hover{
-				color:#0073e9;
-				text-decoration: none; 
-			}
-			.rocket1{
-				color: #111111;
-			}
-			.free-delivery:hover{
-				color:#0073e9;
-			}
-			.brand:hover{
-				color:#0073e9;
-			}
-			.state:hover{
-				color:#0073e9;
-			}
-			.message:hover{
-				color:#0073e9;
-			}
-			.design:hover{
-				color:#0073e9;
-			}
-			.dimension:hover{
-				color:#0073e9;
-			}
-			.item-list{
-				flex-wrap: wrap;
-				display: flex;
-				flex-direction: row; 
-				padding: 10px;
-			}
-			
-			.head {
-				color:black;
-				text-decoration:underline;
-				text-decoration-color:black;
-			}
-			
-			h3{
-				font-size: 20px;
-			}
-			.item-list a{
-				
-				width: 300px;
-				height: 496px;
-				
-			}
-			.pproduct {
-				padding: 10px;
-				border: 2px double #F2F2F2;
-			}
-			
-			.pproduct:hover {
-				  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-				  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-				  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-				  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-				  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-				  transition:all .4s;
-			}
-			.item-list .product .img .image{
-				width: 212px;
-				height: 212px;
-				padding: 25px;
-				
-			}
-			.item-list .product .text{
-				font-size: 11px;
-				font-family: "맑은고딕";
+/* label은 폼의 양식에 이름 붙이는 태그이다. 주요 속성은 for이다. label의 for의 값과 양식의 id의 값이 같으면 연결된다. label을 클릭하면, 연결된 양식에 입력할 수 있도록 하거나, 체크를 하거나, 체크를 해제한다.
+	 Hover란 이미지, 텍스트, 버튼 등에 마우스 포인터가 올라갔을 때 발동되는 일종의 전환효과를 말합니다 */
 
-			}
-			.item-list .product .product-price{
-				font-size: 15px;
-				font-family: "맑은고딕";
-				padding: 5px;
-				color: black;
-				text-decoration-line: none;
-			}
-			.item-list .product .product-price .real-price{
-				font-size: 20px;
-				color: #cb1400;
-				font-family: "맑은고딕";
-				text-decoration-line: none;
-			}
-			.pcoin{
-				width: 14px;
-				height: 14px;
-			}
-			.productGroupSection{
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				padding: 0px 80px;
-			}
-			aside{
-				font-size: 80%;
-				width: 220px;
-			}
-			.category{
-				padding: 5px 0px;
-			}
-			.brand{
-				padding: 5px 0px;
-			}
-			.state{
-				padding: 5px 0px;
-			}
-			.design{
-				padding: 5px 0px;
-			}
-			.message{
-				padding: 5px 0px;
-			}
-			.dimension{
-				padding: 5px 0px;
-			}
-			.star-rating{
-				font-size:12px;
-				color: black;
-			}
-			.star {
-			 padding: 5px;
-			}
-			
-			.product-date{
-				text-decoration: none;
-			}
-			.span{
-				text-decoration: line-through;
-			}
-			header {
-				text-align: center;
+* {
+	margin: 0px;
+	padding: 0px;
+}		
+#container{
+	display: flex;
+	flex-direction: column;
+	/* flex-wrap: wrap; */
+}
 
-			}
-			aside>div{
-				border: 1px solid #F2F2F2;
-				width: 180px;
-				font-family: "맑은고딕";
-				padding: 5px 0px;
-			}
-			
-			.product>span {
-				color: black;
-			}
+#list{
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	background-color: #F2F2F2;
+}
 
-			footer {
-				border: 1px solid white;
-				text-align: center;
-				padding: 10px;
-				color: black;
-				font-size: 11px;
-			}
-			.ppoint {
-			    box-sizing: border-box;
-			    display: inline-block;
-			    padding: 0 8px;
-			    height: 27px;
-			    border-radius: 10px;
-			    border: solid 1px #ccc;
-			    background-color: #fff;
-			}
-			.amount-menu {
-                 display: inline;
-                 font-size: 11pt;
-                 float: right;
-                 margin-left: 800px;
-           }
-           .amount-menu li {
-                 display: inline-block;
-           }
-           .amount-menu li:hover ul {
-                 display: block;
-           }
-           .amount-menu2 {
-                 position: absolute;
-                 display: none;
-                 font-size: 11pt;
-           }
-           .amount-menu2 li{
-                 display: block;
-                 margin: 3px;
-           }
-           .amount-menu2 li a {
-                 display: block !important;
-                 margin: 5px;
-           }
-           .amount-menu2 li a:hover {
-                 background-color: #f2f2f2;
-                 color: black;
-           }
-           .item-list-4 {
-           		display: flex;
-				flex-direction: row;
-           }
-           #item-group3 {
-           	  	justify-content:  flex-start;
-           }
-           .head:hover {
-           		text-decoration: underline;
-           }
-           .pager {
-           	display: flex;
-           	justify-content: center;
-           }
-           .page-wrapper{
-           		cursor: pointer;
-           }
-           
-           .flayer1 {
-            	display: inline-block;   
-           }
-           
-           #arrow1 {
-           		transition : transform 1s;
-           }
+.list:hover{
+	color:#0073e9;
+}
 
-           
-           .panel-heading:hover #arrow1{
-				transform: rotate(180deg);
-			} 
-			
-			.pagination {
-				  position: sticky;
-				  bottom: 20px;
-				  align-self: center; 
-			}
-			
-			
-			.accordion {
-			  background-color: white;
-			  color: #444;
-			  padding: 18px;
-			  width: 179px;
-			  border: 1px solid #F2F2F2;
-			  text-align: left;
-			  outline: none;
-			  font-size: 12.8px;
-			  transition: 0.4s;
-			}
-			
-			.accordion1 {
-				border:none;
-				background-color:white;
-				color:#0073E9;
-			}
-			
-			.accordion2 {
-				border:none;
-				background-color:white;
-				color:#0073E9;
-			}
-			
-			.active, .accordion:hover {
-			  background-color: white;
-			}
-			
-			.panel {
-			  padding: 0 18px;
-			  display: none;
-			  background-color: white;
-			  overflow: hidden;
-			}
-			
-			.accordion:hover {
-				color : blue;
-			}
-			
-			.page{
-				display: contents;
-				bottom : 20px;
-			  position : fixed;
-			  background : white;
-			  opacity: 0.7;
-  			  backdrop-filter: blur(30px);
-  			  border : 1px solid #F2F2F2;
-			}
-			
-			.plist {
-				padding: 0 10px;
-			}
-			
-			.productGroup {
-				height: 280px;
-				width: 280px;
-			}
-			
-			.list2 {
-				display: flex;
-			}
-			
-			.productGroup-name {
-				font-size:18px;
-				font-weight: bolder;
-			}
-			.productGroup-orgprice {
-				display: flex;
-				text-decoration: line-through;
-				color: #60b0ea;
-			}
-			.productGroup-prdprice {
-				display: flex;
-				font-size: 20px;
-				font-weight: bolder;
-				color: #cb1400;
-			}
+#list>li{
+	display: inline;
+	background-color: #F2F2F2;
+	padding: 0px 10px 0px 0px;
+}
+
+#list>li>a:hover{
+	color:#0073e9;
+}
+
+#list>li>a{
+	color: #555555;
+	font-size: 12px;
+}
+
+#rk-icon1{
+	width: 40px;
+	height: 16px;
+}
+
+#rk-icon2{
+	width: 48px;
+	height: 12px;
+}
+
+#rk-icon3{
+	width: 48px;
+	height: 12px;
+}	
+
+#container a{
+	color: black;
+	text-decoration: none; 
+}
+
+#container a:visited{
+	color: black;
+}
+
+#container a:hover{
+	color: #60b0ea;
+	text-decoration: none; 
+}
+
+.rocket1{
+	color: #111111;
+}
+
+.free-delivery:hover{
+	color:#0073e9;
+}
+
+.brand:hover{
+	color:#0073e9;
+}
+
+.state:hover{
+	color:#0073e9;
+}
+
+.message:hover{
+	color:#0073e9;
+}
+
+.design:hover{
+	color:#0073e9;
+}
+
+.dimension:hover{
+	color:#0073e9;
+}
+
+.item-list{
+	flex-wrap: wrap;
+	display: flex;
+	flex-direction: row; 
+	padding: 10px;
+}
+
+
+#container h3{
+	font-size: 20px;
+}
+.item-list a{
+	
+	width: 300px;
+	height: 496px;
+	
+}
+.pproduct {
+	padding: 10px;
+	border: 2px double #F2F2F2;
+}
+
+.pproduct:hover {
+	  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  transition:all .4s;
+}
+
+.item-list .product .img .image{
+	width: 212px;
+	height: 212px;
+	padding: 25px;
+	
+}
+
+.item-list .product .text{
+	font-size: 11px;
+	font-family: "맑은고딕";
+
+}
+
+.item-list .product .product-price{
+	font-size: 15px;
+	font-family: "맑은고딕";
+	padding: 5px;
+	color: black;
+	text-decoration-line: none;
+}
+
+.item-list .product .product-price .real-price{
+	font-size: 20px;
+	color: #cb1400;
+	font-family: "맑은고딕";
+	text-decoration-line: none;
+}
+
+.pcoin{
+	width: 14px;
+	height: 14px;
+}
+
+.productGroupSection{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 0px 80px;
+}
+
+#container aside{
+	font-size: 80%;
+	width: 220px;
+}
+
+.category{
+	padding: 5px 0px;
+}
+
+.brand{
+	padding: 5px 0px;
+}
+
+.state{
+	padding: 5px 0px;
+}
+
+.design{
+	padding: 5px 0px;
+}
+
+.message{
+	padding: 5px 0px;
+}
+
+.dimension{
+	padding: 5px 0px;
+}
+
+.star-rating{
+	font-size:12px;
+	color: black;
+}
+
+.star {
+	padding: 5px;
+}
+
+.product-date{
+	text-decoration: none;
+}
+
+.span{
+	text-decoration: line-through;
+}
+
+#container aside>div{
+	border: 1px solid #F2F2F2;
+	width: 180px;
+	font-family: "맑은고딕";
+	padding: 5px 0px;
+}
+
+.product>span {
+	color: black;
+}
+
+.ppoint {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 8px;
+    height: 27px;
+    border-radius: 10px;
+    border: solid 1px #ccc;
+    background-color: #fff;
+}
+
+.amount-menu {
+	display: inline;
+	font-size: 11pt;
+	float: right;
+	margin-left: 800px;
+}
+
+.amount-menu li {
+	display: inline-block;
+}
+
+.amount-menu li:hover ul {
+	display: block;
+}
+
+.amount-menu2 {
+	position: absolute;
+	display: none;
+	font-size: 11pt;
+}
+
+.amount-menu2 li{
+	display: block;
+	margin: 3px;
+}
+
+.amount-menu2 li a {
+	display: block !important;
+	margin: 5px;
+}
+
+.amount-menu2 li a:hover {
+	background-color: #f2f2f2;
+	color: black;
+}
+
+.item-list-4 {
+	display: flex;
+	flex-direction: row;
+}
+       
+#item-group3 {
+	justify-content:  flex-start;
+}
+.head:hover {
+	text-decoration: underline;
+}
+.pager {
+	display: flex;
+	justify-content: center;
+}
+.page-wrapper{
+	cursor: pointer;
+}
+       
+.flayer1 {
+	display: inline-block;   
+}
+       
+#arrow1 {
+	transition : transform 1s;
+}
+       
+.panel-heading:hover #arrow1{
+	transform: rotate(180deg);
+} 
+
+.pagination {
+	position: sticky;
+	bottom: 20px;
+	align-self: center; 
+}
+
+.accordion {
+  background-color: white;
+  color: #444;
+  padding: 18px;
+  width: 179px;
+  border: 1px solid #F2F2F2;
+  text-align: left;
+  outline: none;
+  font-size: 12.8px;
+  transition: 0.4s;
+}
+
+.accordion1 {
+	border:none;
+	background-color:white;
+	color:#0073E9;
+}
+
+.accordion2 {
+	border:none;
+	background-color:white;
+	color:#0073E9;
+}
+
+.active, .accordion:hover {
+  background-color: white;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+.accordion:hover {
+	color : blue;
+}
+
+.page{
+	display: contents;
+	bottom : 20px;
+	position : fixed;
+	background : white;
+	opacity: 0.7;
+	backdrop-filter: blur(30px);
+	border : 1px solid #F2F2F2;
+}
+
+.plist {
+	padding: 0 10px;
+}
+
+.productGroup {
+	height: 280px;
+	width: 280px;
+}
+
+.list2 {
+	display: flex;
+}
+
+.productGroup-name {
+	font-size:18px;
+	font-weight: bolder;
+}
+
+.productGroup-orgprice {
+	display: flex;
+	text-decoration: line-through;
+	color: #60b0ea;
+}
+
+.productGroup-prdprice {
+	display: flex;
+	font-size: 20px;
+	font-weight: bolder;
+	color: #cb1400;
+}

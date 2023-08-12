@@ -50,7 +50,7 @@
 				      </li>
 				    </ul>
 				    <form class="form-inline my-2 my-lg-0" action="myOrderList">
-				      <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search" value="${param.keyword}">
+				      <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="검색할 상품명 입력" value="${param.keyword}">
 				      <input type="hidden" name="requestYear" value="${param.requestYear}">
 				      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 				    </form>

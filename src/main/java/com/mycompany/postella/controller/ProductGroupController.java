@@ -1,21 +1,22 @@
 package com.mycompany.postella.controller;
 
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.dto.Price;
-import com.mycompany.postella.dto.ProductGroup;
-import com.mycompany.postella.interceptor.Login;
+import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.LoginService;
 import com.mycompany.postella.service.PriceService;
@@ -44,7 +45,9 @@ public class ProductGroupController {
 	private LoginService loginService;
 	
 	@RequestMapping("/productGroup")
-	public String getProductGroupList(String pageNo, Model model, HttpSession session) {
+	public String getProductGroupList(
+			@RequestParam(name="prd_category", required=false) String prd_category,
+			String pageNo, Model model, HttpSession session) {
 		//pageNo가 넘어오지 않았을 경우
 		if(pageNo == null) {
 			//세션에 저장되어 있는지 확인
@@ -54,13 +57,20 @@ public class ProductGroupController {
 				pageNo = "1";
 			}
 		}
+		
+		// 페이징 객체 생성
 		int intpageNo = Integer.parseInt(pageNo);
 		session.setAttribute("pageNo", String.valueOf(pageNo));
 		
 		int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
 		
 		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
-		List<ProductGroup> list = productGroupService.getList(pager);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("pager", pager);
+		map.put("prd_category", prd_category);
+		
+		List<Product> list = productGroupService.getList(map);
 		
 		int pgNo;
 		Image img = null;

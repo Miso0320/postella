@@ -2,22 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.ProductGroupDao">
 
-	<select id="selectByPage" parameterType="Pager" resultType="ProductGroup">
+	<select id="selectByPage" parameterType="java.util.Map" resultType="Product">
+		
+		SELECT pg_no, pg_name, prd_no, prd_org_price, prd_price, prd_category, prd_date
+			FROM
+			    (
+			        SELECT ROWNUM AS rnum, pg_no, pg_name, prd_no, prd_org_price, prd_price, prd_category, prd_date
+			        FROM
+			            (
+			                SELECT pg.pg_no, pg.pg_name, p.prd_no, p.prd_org_price, p.prd_price, p.prd_category, p.prd_date,
+			                    ROW_NUMBER() OVER(PARTITION BY pg.pg_no ORDER BY pg.pg_no ) AS row_num
+			                FROM product p
+			                    LEFT JOIN product_group pg ON p.pg_no = pg.pg_no
+			            ) a
+			        WHERE
+			                a.row_num = 1
+			            <if test='prd_category != null and prd_category != ""'>
+			            	AND prd_category = #{prd_category, jdbcType=VARCHAR}
+			            </if>
 		<![CDATA[
-         select pg_no, pg_name
-         from (
-            select rownum as rnum, pg_no, pg_name 
-            from (
-               select pg_no, pg_name
-               from product_group
-                   where pg_no in (
-                      select distinct pg_no
-                      from product)
-               order by pg_no
-            )
-            where rownum <= ${endRowNo}
-         )
-         where rnum >= ${startRowNo}
+			            AND ROWNUM <= ${pager.endRowNo}
+			        ORDER BY
+			            a.pg_no
+			    )
+			WHERE
+			    rnum >= ${pager.startRowNo}
       	]]>
 	</select>
 	

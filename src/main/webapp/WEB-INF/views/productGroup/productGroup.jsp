@@ -15,10 +15,10 @@
 						<input id="arrow1" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png" width="12px" height="12px"/>
 					</button>
 					<div class="panel">
-		          		<div><a href="productGroup">포토엽서</a></div>
-		          		<div><a href="productGroup">그림/일러스트엽서</a></div>
-		          		<div><a href="productGroup">디자인패턴엽서</a></div>
-		          		<div><a href="productGroup">캘리그라피엽서</a></div>
+		          		<div><a href="productGroup?prd_category=PHO">포토엽서</a></div>
+		          		<div><a href="productGroup?prd_category=DES">그림/일러스트엽서</a></div>
+		          		<div><a href="productGroup?prd_category=ILU">디자인패턴엽서</a></div>
+		          		<div><a href="productGroup?prd_category=CAL">캘리그라피엽서</a></div>
 					</div>
 				</div>
 			</div> 
@@ -54,28 +54,73 @@
 				<div class="brand"><input id="brand5" type="checkbox" value="왈가닥스"/><label for="brand5">케이트가든</label></div>
 				<div class="brand"><input id="brand6" type="checkbox" value="왈가닥스"/><label for="brand6">핑크풋</label></div>
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			      	<button class="accordion1" style= "cursor : pointer;">+더보기
-					</button>
-					<div class="panel">
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">청현재이</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">마이데일리룸</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">제로퍼제로</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">플라잉웨일즈</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">물가</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">클리니스</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">도나앤데코</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">솔룸</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">언어세상</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">네울나비</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">바보사랑</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">라이트앤</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">후카후카스튜디오</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">모몽</label></div>
-					</div>
-		    	</div>
-			</div>
+		      	<button class="accordion1" style= "cursor : pointer;">+더보기</button>
+				<div class="panel">
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">청현재이</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">마이데일리룸</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">제로퍼제로</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">플라잉웨일즈</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">물가</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">클리니스</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">도나앤데코</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">솔룸</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">언어세상</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">네울나비</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">바보사랑</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">라이트앤</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">후카후카스튜디오</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">모몽</label></div>
+				</div>
+	    	</div>
+		</div>
+		<script>
+			var acc = document.getElementsByClassName("accordion1");
+			var i;
+			
+			for (i = 0; i < acc.length; i++) {
+			  acc[i].addEventListener("click", function() {
+			    this.classList.toggle("active");
+			    var panel = this.nextElementSibling;
+			    if (panel.style.display === "block") {
+			      panel.style.display = "none";
+			    } else {
+			      panel.style.display = "block";
+			    }
+			  });
+			}
+			</script>			
+			<script type="text/javascript">
+				function movepage(page)
+				{
+				window.document.location.href=page;
+				return;
+				}
+		</script>
+		<div>
+			<h1 style="font-size:15px; font-weight:bold;">상품상태</h1>
+			<div class="state"><input id="state1" type="checkbox" value="왈가닥스"/><label for="state1">새상품</label></div>
+			<div class="state"><input id="state2" type="checkbox" value="왈가닥스"/><label for="state2">박스 훼손</label></div>
+			<div class="state"><input id="state3" type="checkbox" value="왈가닥스"/><label for="state3">재포장</label></div>
+			<div class="state"><input id="state4" type="checkbox" value="왈가닥스"/><label for="state4">반품</label></div>
+			<div class="state"><input id="state5" type="checkbox" value="왈가닥스"/><label for="state5">중고</label></div>
+		</div>
+		<div>
+			<h1 style="font-size:15px; font-weight:bold;">카드/엽서 메시지</h1>
+			<div class="message"><input id="message1" type="checkbox" value="왈가닥스"/><label for="message1">축하/기념일</label></div>
+			<div class="message"><input id="message2" type="checkbox" value="왈가닥스"/><label for="message2">사랑/고백</label></div>
+			<div class="message"><input id="message3" type="checkbox" value="왈가닥스"/><label for="message3">감사</label></div>
+			<div class="message"><input id="message4" type="checkbox" value="왈가닥스"/><label for="message4">사과</label></div>
+			<div class="message"><input id="message5" type="checkbox" value="왈가닥스"/><label for="message5">격려</label></div>
+			<div class="message"><input id="message6" type="checkbox" value="왈가닥스"/><label for="message6">크리스마스</label></div>
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		      	<button class="accordion2" style= "cursor : pointer;">+더보기</button>
+				<div class="panel">
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">새해</label></div>
+	          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">할로윈</label></div>
+				</div>
+	    	</div>
 				<script>
-					var acc = document.getElementsByClassName("accordion1");
+					var acc = document.getElementsByClassName("accordion2");
 					var i;
 					
 					for (i = 0; i < acc.length; i++) {
@@ -89,68 +134,22 @@
 					    }
 					  });
 					}
-					</script>			
+				</script>
+					
 					<script type="text/javascript">
 						function movepage(page)
 						{
-						window.document.location.href=page;
-						return;
-						}
-				</script>
-			<div>
-				<h1 style="font-size:15px; font-weight:bold;">상품상태</h1>
-				<div class="state"><input id="state1" type="checkbox" value="왈가닥스"/><label for="state1">새상품</label></div>
-				<div class="state"><input id="state2" type="checkbox" value="왈가닥스"/><label for="state2">박스 훼손</label></div>
-				<div class="state"><input id="state3" type="checkbox" value="왈가닥스"/><label for="state3">재포장</label></div>
-				<div class="state"><input id="state4" type="checkbox" value="왈가닥스"/><label for="state4">반품</label></div>
-				<div class="state"><input id="state5" type="checkbox" value="왈가닥스"/><label for="state5">중고</label></div>
-			</div>
-			<div>
-				<h1 style="font-size:15px; font-weight:bold;">카드/엽서 메시지</h1>
-				<div class="message"><input id="message1" type="checkbox" value="왈가닥스"/><label for="message1">축하/기념일</label></div>
-				<div class="message"><input id="message2" type="checkbox" value="왈가닥스"/><label for="message2">사랑/고백</label></div>
-				<div class="message"><input id="message3" type="checkbox" value="왈가닥스"/><label for="message3">감사</label></div>
-				<div class="message"><input id="message4" type="checkbox" value="왈가닥스"/><label for="message4">사과</label></div>
-				<div class="message"><input id="message5" type="checkbox" value="왈가닥스"/><label for="message5">격려</label></div>
-				<div class="message"><input id="message6" type="checkbox" value="왈가닥스"/><label for="message6">크리스마스</label></div>
-				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			      	<button class="accordion2" style= "cursor : pointer;">+더보기</button>
-					<div class="panel">
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">새해</label></div>
-		          		<div class="panel-body"><input type="checkbox" id="category_list" onclick="movepage('detailView.jsp');"><label for="category_list">할로윈</label></div>
-					</div>
-		    	</div>
-					<script>
-						var acc = document.getElementsByClassName("accordion2");
-						var i;
-						
-						for (i = 0; i < acc.length; i++) {
-						  acc[i].addEventListener("click", function() {
-						    this.classList.toggle("active");
-						    var panel = this.nextElementSibling;
-						    if (panel.style.display === "block") {
-						      panel.style.display = "none";
-						    } else {
-						      panel.style.display = "block";
-						    }
-						  });
-						}
-					</script>
-						
-						<script type="text/javascript">
-							function movepage(page)
-							{
 							window.document.location.href=page;
 							return;
-							}
-					</script>
+						}
+				</script>
 			</div>
-			<div>
+			<!-- <div>
 				<h1 style="font-size:15px; font-weight:bold;">카드 입체여부</h1>
 				<div class="dimension"><input id="dimension1" type="checkbox" value="왈가닥스"/><label for="dimension1">평면</label></div>
 				<div class="dimension"><input id="dimension2" type="checkbox" value="왈가닥스"/><label for="dimension2">입체</label></div>
-			</div>
-			<div>
+			</div> -->
+			<%-- <div>
 				<h1 style="font-size:15px; font-weight:bold;">별점</h1>
 				<a href="detailView.jsp" class="pproduct">
 					<a href="#">별점 전체</a> <br>
@@ -159,8 +158,8 @@
 					<input type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/2star.png" width="100"/><br>
 					<input type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/1star.png" width="100"/>
 				</a>
-			</div>
-			<div>
+			</div> --%>
+			<!-- <div>
 				<h1 style="font-size:15px; font-weight:bold;">가격</h1>
 				<a class="price" href="#">가격 전체</a> <br>
 				<a class="price" href="#">5천원 이하</a> <br>
@@ -174,7 +173,7 @@
 						<input type="text" class="maxprice" maxlength="10" value style="width: 50px; height:20px"/>원 <a href="detailView.jsp"><input type="button" value="검색" /></a>
 					</span>
 				</div>	
-			</div>
+			</div> -->
 		</aside>	
 		<div class="article">
 			<div class="post" style="padding: 15px 0px;">
