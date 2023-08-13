@@ -6,6 +6,12 @@ revCurrentPage = 1;
 //리뷰 전체 페이지
 revtotalPages = 0;
 
+//문의 현재 페이지
+qnaCurrentPage = 1;
+
+//문의 전체 페이지
+qnaTotalPages = 0;
+
 function init() {
 	
 	// 찜버튼 이벤트
@@ -227,7 +233,7 @@ function init() {
    loadInitialReview()
    
    //처음 상품문의 보여주기
-   loadInitialQna()
+   loadInitialQna(qnaCurrentPage)
 }
 
 
@@ -335,35 +341,67 @@ function slideNext(event) {
 }
 
 //상품문의 처음 불러오기
-function loadInitialQna() {
-	$.ajax({
+function loadInitialQna(qnaCurrentPage) {
+    $.ajax({
         type: "GET",
         url: "getQnaFromDB",
-        data: { pg_no: pg_no },
-        success: function(qna) {
-            var inquiries = "";
-            for (var i = 0; i < qna.length; i++) {
-                var item = qna[i];
-                inquiries += "<div class='prod-inquiry-item'> " +
-                    "<div class='prod-inquiry-qpname-set'>" +
-                    " <em class='prod-inquiry-item-q'>질문</em>" +
-                    "<div class='prod-inquiry-item-option'>" +
-                    item.prd_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
-                    item.q_content + "</div> <div class='prod-inquiry-item-date'>" +
-                    item.stringQdate + "</div> ";
-                //답변이 있을 때만 추가
-                if (item.a_content !== null) {
-                	inquiries += "<hr class='sep-line' /> <div class='prod-inquiry-qpname-set'> " +
-                    "<img alt='' src='/postella/resources/img/detailView/pointer.png' style='width: 20px; height: 20px;'>" +
-                    " <em class='prod-inquiry-item-a'>답변</em> <div class='prod-inquiry-item-option'>" +
-                    item.sel_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
-                    item.a_content + "</div> <div class='prod-inquiry-item-date'>" +
-                    item.stringAdate + "</div>";
-                }
-                
-                inquiries += " <hr class='sep-line' /> </div> </div>";
-            }
-            $(".prod-inquiry-items").html(inquiries);
+        data: { pg_no: pg_no, page: qnaCurrentPage },
+        success: function(data) {
+            var qnas = data.qnas;
+            var totalPages = data.totalPages;
+
+            updateQnaList(qnas);
+            qnaPageButtons(qnaCurrentPage, totalPages, "getQnaFromDB");
+        }
+    });
+}
+
+//문의 업데이트하기
+function updateQnaList(qnas) {
+    var inquiries = "";
+    
+    for (var i = 0; i < qnas.length; i++) {
+        var item = qnas[i];
+        inquiries += "<div class='prod-inquiry-item'> " +
+            "<div class='prod-inquiry-qpname-set'>" +
+            " <em class='prod-inquiry-item-q'>질문</em>" +
+            "<div class='prod-inquiry-item-option'>" +
+            item.prd_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
+            item.q_content + "</div> <div class='prod-inquiry-item-date'>" +
+            item.stringQdate + "</div> ";
+        
+        if (item.a_content !== null) {
+            inquiries += "<hr class='sep-line' /> <div class='prod-inquiry-qpname-set'> " +
+                "<img alt='' src='/postella/resources/img/detailView/pointer.png' style='width: 20px; height: 20px;'>" +
+                " <em class='prod-inquiry-item-a'>답변</em> <div class='prod-inquiry-item-option'>" +
+                item.sel_name + "</div> </div> <div class='prod-inquiry-item-text'>" +
+                item.a_content + "</div> <div class='prod-inquiry-item-date'>" +
+                item.stringAdate + "</div>";
+        }
+        
+        inquiries += " <hr class='sep-line' /> </div> </div>";
+    }
+    
+    $(".prod-inquiry-items").html(inquiries);
+}
+
+
+//문의 페이지 버튼
+function qnaPageButtons(qnaCurrentPage, qnaTotalPages, url) {
+    var pageHtml = "";
+
+    for (var i = 1; i <= qnaTotalPages; i++) {
+        pageHtml += "<button class='qna-page-button btn btn-outline-primary btn-sm mr-2' data-page='" + i + "'>" + i + "</button>";
+    }
+
+    $(".qnaPageBtn").html(pageHtml);
+
+    // 생성된 버튼에 클릭 이벤트 핸들러를 연결
+    $(".qna-page-button").click(function() {
+        var newPage = parseInt($(this).data("page"));
+        if (newPage !== qnaCurrentPage) {
+        	qnaCurrentPage = newPage;
+        	loadInitialQna(qnaCurrentPage);
         }
     });
 }
@@ -445,18 +483,18 @@ function updateReviewList(review) {
   	$(".review-list-section2").html(articles); //section에 article 추가
 }
 
-//페이징 버튼 업데이트하기
+//리뷰 페이징 버튼 업데이트하기
 function updatePaginationButtons(currentPage, totalPages, url) {
     var pageHtml = "";
 
     for (var i = 1; i <= totalPages; i++) {
-        pageHtml += "<button class='qna-page-button btn btn-outline-primary btn-sm mr-2' data-page='" + i + "'>" + i + "</button>";
+        pageHtml += "<button class='rev-page-button btn btn-outline-primary btn-sm mr-2' data-page='" + i + "'>" + i + "</button>";
     }
 
     $(".revPageBtn").html(pageHtml);
 
     // 생성된 버튼에 클릭 이벤트 핸들러를 연결
-    $(".qna-page-button").click(function() {
+    $(".rev-page-button").click(function() {
         var newPage = parseInt($(this).data("page"));
         if (newPage !== revCurrentPage) {
             revCurrentPage = newPage;

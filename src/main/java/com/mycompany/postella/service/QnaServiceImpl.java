@@ -2,6 +2,7 @@ package com.mycompany.postella.service;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,19 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public List<Qna> getQnasBypgNo(int pg_no) {
 		List<Qna> qna = qnaDao.selectByPgNo(pg_no);
+		addQnaInfo(qna);
+		return qna;
+	}
+	
+	@Override
+	public int getTotalQnasCount(int pg_no) {
+		int cnt = qnaDao.selectQnaCnt(pg_no);
+		return cnt;
+	}
+	
+	@Override
+	public List<Qna> getQnasPaged(Map<String, Object> map) {
+		List<Qna> qna = qnaDao.selectQnasByPage(map);
 		addQnaInfo(qna);
 		return qna;
 	}

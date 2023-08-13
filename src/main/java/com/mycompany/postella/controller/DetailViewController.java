@@ -150,9 +150,9 @@ public class DetailViewController {
 		
 		model.addAttribute("starRevCnt", reviewCntGroup);
 		
-		//리뷰 목록 가져오기
+		/*//리뷰 목록 가져오기
 		List<Qna> qnas = getQnaFromDB(pg_no);
-		model.addAttribute("qnas", qnas);
+		model.addAttribute("qnas", qnas);*/
 		
 		return "detailView/detailView";
 	}
@@ -242,9 +242,9 @@ public class DetailViewController {
 		
 		model.addAttribute("starRevCnt", reviewCntGroup);
 		
-		//리뷰 목록 가져오기
+		/*//리뷰 목록 가져오기
 		List<Qna> qnas = getQnaFromDB(pg_no);
-		model.addAttribute("qnas", qnas);
+		model.addAttribute("qnas", qnas);*/
 		
 		return "detailView/detailView";
 	}
@@ -435,9 +435,27 @@ public class DetailViewController {
     //상품문의 불러오기
   	@RequestMapping("/getQnaFromDB")
 	@ResponseBody
-	public List<Qna> getQnaFromDB(@RequestParam("pg_no") int pg_no) {
-  		List<Qna> qnas = qnaService.getQnasBypgNo(pg_no);
-		return qnas; 
+	public Map<String, Object> getQnaFromDB(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
+  		int itemsPerPage = 5; // 페이지 당 아이템 수
+
+  	    int totalQnas = qnaService.getTotalQnasCount(pg_no);
+  	    int totalPages = (int) Math.ceil((double) totalQnas / itemsPerPage);
+
+  	    int startRow = (page - 1) * itemsPerPage + 1;
+  	    int endRow = page * itemsPerPage;
+
+  	    Map<String, Object> map = new HashMap<>();
+  	    map.put("pg_no", pg_no);
+  	    map.put("startRow", startRow);
+  	    map.put("endRow", endRow);
+  	    List<Qna> qnas = qnaService.getQnasPaged(map);
+  	    
+  	    Map<String, Object> result = new HashMap<>();
+  	    result.put("qnas", qnas);
+  	    result.put("totalPages", totalPages);
+
+  	    return result;
+  		
 	}
 	
 }

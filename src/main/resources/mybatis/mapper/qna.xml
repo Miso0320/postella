@@ -17,4 +17,26 @@
 								and qna.pg_no =#{pg_no})
 	</select>
 	
+	<select id="selectQnaCnt" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM QNA
+		WHERE pg_no = ${pg_no}
+	</select>
+	
+	<select id="selectQnasByPage" parameterType="map" resultType="Qna">
+	<![CDATA[
+	  SELECT *
+	  FROM (
+	    SELECT t.*, ROWNUM AS RNUM
+	    FROM (
+            select * 
+			from QNA 
+			where pg_no = #{pg_no}
+	    ) t
+	    WHERE ROWNUM <= #{endRow}
+	  )
+	  WHERE RNUM >= #{startRow}
+	  ]]>
+	</select>
+	
 </mapper>
