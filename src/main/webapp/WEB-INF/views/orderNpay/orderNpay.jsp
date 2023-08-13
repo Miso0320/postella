@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +40,11 @@
 			        <tbody>
 			        <tr>
 			            <td class="customer__col customer__col--1">이름</td>
-			            <td class="customer__col customer__col--2">박쥐홍</td>
+			            <td class="customer__col customer__col--2">${user.us_name}</td>
 			        </tr>
 			        <tr>
 			            <td class="customer__col customer__col--1">이메일</td>
-			            <td class="customer__col customer__col--2">GHong@gmail.com</td>
+			            <td class="customer__col customer__col--2">${user.us_email}</td>
 			        </tr>
 			        <tr>
 			            <td class="customer__col customer__col--1">휴대폰 번호</td>
@@ -53,8 +54,7 @@
 							    	<div class="customer-phone__root_upper">
 											<form>
 												<div>
-													<input type="tel" class="customer-phone__input-tel "
-														placeholder="010-2023-0707">
+													<input type="tel" class="customer-phone__input-tel " value="${user.us_tel}" />
 													<button type="submit" class="edit-btn">수정</button>
 													<span class="customer-phone__tel-desc">쿠폰/티켓정보는 구매한
 														분의 번호로 전송됩니다.</span>
@@ -93,7 +93,7 @@
      		<div data-component="deliveryAddress">    
      			<h2 class="delivery-address__caption-header">
 				        받는사람정보
-				    <button class="delivery-address__popup-list-button" type="button" onclick="window.open('editAddress.jsp', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
+				    <button class="delivery-address__popup-list-button" type="button" onclick="window.open('editAddress', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
 				</h2>
 			    <table class="delivery-address">
 			        <tbody>
@@ -153,8 +153,7 @@
 	                        <div class="bundle-info__vendor-item">
 	                            <p>쥬시앤폴 홀로그램 엽서 [01~08] 문구편지카드, 01.CheerUpCherry</p>
 	                        </div>
-	                        <div class="bundle-info__item-description">
-	                            	수량 1개 / <span>무료배송</span>
+	                        <div class="bundle-info__item-description">${quantity}<span>무료배송</span>
 	                        </div>
 	                        <div class="bundle-info__delivery-service">
 	                            <img class="bundle-info__icon" src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" height="16" alt="로켓배송 상품">

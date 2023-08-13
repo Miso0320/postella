@@ -65,7 +65,6 @@ public class DetailViewController {
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model, HttpSession session) {
 		model.addAttribute("pg_no",pg_no);
-		log.info("컨트롤러 로그인 정보: "+session.getAttribute("userLogin"));
 		//상품 옵션 목록 가져오기
 		List<Product> optionList = productService.getOptions(pg_no);
 		Image optionImg; 
@@ -383,7 +382,6 @@ public class DetailViewController {
 		Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
 		 
 	    int usNo = user.getUs_no();
-	    log.info("usNo"+usNo);
 	    // 장바구니에 해당 상품이 이미 담겨있는지 검사
 		Map<String, Object> map = new HashMap<>();
 		map.put("us_no", usNo);
