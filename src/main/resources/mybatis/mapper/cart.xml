@@ -24,12 +24,12 @@
 	</update>
 	
 	<select id="selectCartByUsNo" parameterType="int" resultType="Cart">
-		select p.prd_name, p.prd_price, c.us_no, c.prd_no, c.crt_qty
+		select p.prd_name, p.prd_price, p.prd_ship_fee, c.us_no, c.prd_no, c.crt_qty
 		from product p, cart c
 		where p.prd_no = c.prd_no and us_no=#{us_no}
 	</select>
 	
-	<select id="selectImgByPrdNo" resultType="Img">
+	<select id="selectCartImg" resultType="Img">
 		SELECT img_file, img_type, prd_no
 		FROM (
 		    SELECT i.img_file, i.img_type, c.prd_no,

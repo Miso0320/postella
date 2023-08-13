@@ -15,5 +15,5 @@ public interface CartDao {
 	public Cart selectCart(Map<String, Object> map); //장바구니에 담김 상품 하나 검색
 	public int updateCart(Cart cart); //장바구니 변경
 	public List<Cart> selectCartByUsNo(int us_no);
-	public List<Image> selectImgByPrdNo();
+	public List<Image> selectCartImg();
 }

@@ -49,10 +49,13 @@ public class CartController {
 	public List<Cart> getCartProduct(Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
 		us_no = users.getUs_no();
-		List<Cart> list = cartService.getProductCart(us_no);
-	
-		List<Image> image = cartService.getImageCart();
 		
+		//user별 cart목록 담기
+		List<Cart> list = cartService.getProductCart(us_no);
+		List<Image> image = cartService.getImageCart();
+		log.info("list : " + list);
+		
+		//카트list에 이미지 추가
 		for(Cart cart : list) {
 			for(Image img : image) {
 				if(cart.getPrd_no() == img.getPrd_no()) {

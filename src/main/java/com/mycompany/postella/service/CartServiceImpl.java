@@ -44,7 +44,7 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public List<Image> getImageCart() {
-		List<Image> image = cartDao.selectImgByPrdNo();
+		List<Image> image = cartDao.selectCartImg();
 		return image;
 	}
 

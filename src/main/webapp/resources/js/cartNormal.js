@@ -125,7 +125,7 @@ function cart() {
 	let year = now.getFullYear();
 		let month = now.getMonth() + 1;
 		let date = now.getDate() + 1;
-		let day = now.getDay() + 1; //요일 일요일(0)~토요일(6)
+		let day = now.getDay() + 3; //요일 일요일(0)~토요일(6)
 			if(day == 0) {
 				dayText = "일";
 			} else if(day == 1) {
@@ -142,7 +142,7 @@ function cart() {
 				dayText = "토";
 			}
 		
-		let deliveryDate = ("내일(" + dayText + ")" +month + "/" + date + "도착 보장");	
+		let deliveryDate = ("(" + dayText + ")" +month + "/" + date + "도착 보장");	
 		
 	$.ajax({
 		url: "cartNormal",
@@ -153,6 +153,10 @@ function cart() {
 			} else {
 			
 			tableCount(data.length);
+			
+			//var imgData = data;
+			//displayImage(imgData);
+			
 			let html = "";
 			  data.forEach((item,index) => {
 				    
@@ -161,13 +165,13 @@ function cart() {
 				  html += '  	<input type="checkbox" name="checkBox" class="checkBox" checked>';
 				  html += '  </td>';
 				  html += '  <td class="cart-item-img">';
-				  html += '  	<a href="#">';
-				  html += '  		<img src="data:${' + item.img_type + '};base64, ${'+ item.encodedFile + '}" width="78" height="78">';
+				  html += '  	<a href="setDetailPage?prdNo=' + item.prd_no + '">';
+				  html += '			<img src="data:' + item.img_type + ';base64,' + item.encodedFile + '" width="78" height="78">';
 				  html += '  	</a>';
 				  html += '  </td>';
 				  html += '  <td>';
 				  html += '  	<div class="cart-product-name">';
-				  html += '  		<a href="">' + item.prd_name + '</a>';
+				  html += '  		<a href="setDetailPage?prdNo=' + item.prd_no + '">' + item.prd_name + '</a>';
 				  html += '  	</div>';
 				  html += '  	<hr/>';
 				  html += '  	<div class="cart-product-option">';
@@ -199,7 +203,7 @@ function cart() {
 				  html += '  	<div class="badge-list">';
 				  html += '			<div class="badge-item option-benefit">';
 				  html += '				<span class="promo-cash-benefit ">';
-				  html += '					<img class="cash-icon" src="img/cart/cash-icon.png"><em class="promo-cash-benefit__text">최대' + (item.prd_price * 0.01) + '원 적립</em>';
+				  html += '					<em class="promo-cash-benefit__text">최대' + (item.prd_price * 0.01) + '원 적립</em>';
 				  html += '				</span>';		
 				  html += '			</div>';
 				  html += '  	</div>';
@@ -209,9 +213,10 @@ function cart() {
 				  html += '  </td>';
 				  html += '  <td>';
 				  html += '  	<div class="cart-product-price" id="cart-product-price">' + item.prd_price + '</div>';
-				  //html += '  	<img class="cart-rocket" src="img/cart/' + item.img2 + '" alt="로켓배송">';
 				  html += '  </td>';
-				  //html += '  <td>' + item.delivery + '</td>';
+				  html += '  <td>';
+				  html += '  	<div class="cart-product-ship-fee" id="cart-product-ship-fee">' + item.prd_ship_fee + '</div>';
+				  html += '  </td>';
 				  html += '</tr>';
 				  
 				  
@@ -220,9 +225,10 @@ function cart() {
 			  $(".checkBox").click(checkCount);
 			  $(".checkBox").click(checkCheck);
 			  $(".btn_delete").click(delete_table);
-	
 			  $(".prod-quantity-form").click(sum);
 			  sum();
+			  
+			  
 
 
 			}	  
@@ -232,6 +238,16 @@ function cart() {
 		}
 	});
 }
+
+//이미지 불러오기
+/*function displayImage(imgData) {
+	var imageContainer = $("#imageContainer");
+	var imgElement = $("<img>", {
+        "class": "productGroup",
+        "src": "data:image/jpeg;base64," + imgData // 이미지 데이터 추가
+    });
+    imageContainer.append(imgElement);
+}*/
 
 //상품가격 합계 계산, 적립금계산
 function sumItemPrice() {
@@ -280,6 +296,7 @@ function bye() {
 		$('#thead').addClass("d-none");
 		$('#tbody').removeClass("d-none");
 		$('#tfoot').addClass("d-none");
+		$('#myTable').addClass("d-none");
 		$('.cart-part1').addClass("d-none");
 
 	}

@@ -60,9 +60,8 @@
 					  </tbody>
 					  
 					  <tbody>
-					  	<div  id="tbody" class="d-none">
+					  	<div id="tbody" class="d-none">
 					  		<p class="noItemWarning">장바구니에 담은 상품이 없습니다.</p>
-					  		<img src="img/cart/cart-empty.jpg" id="cartEmpty">
 					  	</div>
 					  </tbody>
 					  

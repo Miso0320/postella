@@ -1871,8 +1871,8 @@ progress {
   --bs-table-bg-type: initial;
   --bs-table-color-state: initial;
   --bs-table-bg-state: initial;
-  --bs-table-color: #fff;
-  --bs-table-bg: var(--bs-body-bg);
+  /* --bs-table-color: #fff; */
+  /* --bs-table-bg: var(--bs-body-bg); */
   --bs-table-border-color: #282828;
   --bs-table-accent-bg: rgba(255, 255, 255, 0.05);
   --bs-table-striped-color: #fff;
