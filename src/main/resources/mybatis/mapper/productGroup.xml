@@ -36,6 +36,13 @@
 		from product
 	</select>
 	
+	<!-- product제목 -->
+	<select id="selectTitleByPgNo" parameterType="int" resultType="String">
+		SELECT pg_name
+		from product_group
+		where pg_no = ${pg_no}
+	</select>
+	
 	<!-- 대표이미지가져오기 -->
 	<select id="selectByPgNo" parameterType="int" resultType="Img">
 		select *
