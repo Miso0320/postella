@@ -48,7 +48,9 @@ public class ProductGroupController {
 	@RequestMapping("/productGroup")
 	public String getProductGroupList(
 			@RequestParam(name="prd_category", required=false) String prd_category,
-			String pageNo, Model model, HttpSession session) {
+			@RequestParam(name="kind", required=false) String kind,
+			@RequestParam(name="pageNo", required=false) String pageNo,
+			Model model, HttpSession session) {
 		//pageNo가 넘어오지 않았을 경우
 		if(pageNo == null) {
 			//세션에 저장되어 있는지 확인
@@ -67,11 +69,13 @@ public class ProductGroupController {
 		int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
 		
 		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
+		log.info("페이저 확인중!!!!!!!!!!!!!!!!!!!!!!!! : " + pager.getEndPageNo());
 		
 		// 상품목록 가져오기
 		Map<String, Object> map = new HashMap<>();
 		map.put("pager", pager);
 		map.put("prd_category", prd_category);
+		map.put("kind", kind);
 		
 		List<Product> list = productGroupService.getList(map);
 		

@@ -14,6 +14,28 @@
 			                    ROW_NUMBER() OVER(PARTITION BY pg.pg_no ORDER BY pg.pg_no ) AS row_num
 			                FROM product p
 			                    LEFT JOIN product_group pg ON p.pg_no = pg.pg_no
+			               <if test='kind != null and kind != ""'>
+						       <choose>
+						        	<!-- 낮은 가격순 -->
+						        	<when test='kind == "1"'>
+						        		ORDER BY prd_price, pg_no
+						        	</when>
+						        	<!-- 높은 가격순 -->
+						        	<when test='kind == "2"'>
+						        		ORDER BY prd_price desc, pg_no
+						        	</when>
+						        	<!-- 최신순 -->
+						        	<when test='kind == "3"'>
+						        		ORDER BY prd_date desc, pg_no
+						        	</when>
+							        <otherwise>
+							        	ORDER BY pg_no
+							        </otherwise>
+						        </choose>
+					        </if>
+					        <if test='kind == null and kind == ""'>
+					        	ORDER BY pg_no
+					        </if>
 			            ) a
 			        WHERE
 			                a.row_num = 1
@@ -22,8 +44,6 @@
 			            </if>
 		<![CDATA[
 			            AND ROWNUM <= ${pager.endRowNo}
-			        ORDER BY
-			            a.pg_no
 			    )
 			WHERE
 			    rnum >= ${pager.startRowNo}
@@ -32,8 +52,18 @@
 	
 	<!-- 상품전체 개수 -->
 	<select id="count" resultType="int">
-		select count(*) 
-		from product
+		SELECT count(*)
+		FROM
+		    (
+		        SELECT
+		            pg.pg_no, pg.pg_name, p.prd_no, p.prd_org_price, p.prd_price, p.prd_category, p.prd_date,
+		            ROW_NUMBER() OVER(PARTITION BY pg.pg_no ORDER BY pg.pg_no) AS row_num
+		        FROM
+		            product       p
+		            LEFT JOIN product_group pg ON p.pg_no = pg.pg_no
+		    ) a
+		WHERE
+		    a.row_num = 1
 	</select>
 	
 	<!-- product제목 -->
