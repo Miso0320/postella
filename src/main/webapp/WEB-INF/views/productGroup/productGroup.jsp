@@ -6,6 +6,10 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script src="${pageContext.request.contextPath}/resources/js/productGroup.js"></script>
 
+<script>
+	var contextPath = "${pageContext.request.contextPath}";
+</script>
+
 <div id="container">
 	<section class="productGroupSection">
 		<aside>
@@ -17,35 +21,45 @@
 					</button>
 					<div class="panel">
 						<c:forEach var="categoryList" items="${categoryList}">
-							<div><a href="productGroup?prd_category=${categoryList.code}">${categoryList.codeval}</a></div>
+							<div>
+								<a href="productGroup?prd_category=${categoryList.code}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">${categoryList.codeval}</a>
+							</div>
 						</c:forEach>
 					</div>
 				</div>
 			</div> 
 			<div>
 				<h1 style="font-size:15px; font-weight:bold;">브랜드</h1>
-				<div class="brand"><input name="brand" id="brand1" type="checkbox" value="MON"><label for="brand">모노라이크</label></div>
-				<div class="brand"><input name="brand" id="brand2" type="checkbox" value="KAT"><label for="brand">케이트가든</label></div>
-				<div class="brand"><input name="brand" id="brand3" type="checkbox" value="BAB"><label for="brand">아기고홍</label></div>
-				<div class="brand"><input name="brand" id="brand4" type="checkbox" value="SON"><label for="brand">데일리송</label></div>
-				<div class="brand"><input name="brand" id="brand5" type="checkbox" value="FOO"><label for="brand">송미풋</label></div>
-				<div class="brand"><input name="brand" id="brand6" type="checkbox" value="ROO"><label for="brand">마이데일리룸</label></div>
+				<c:forEach var="brandList" items="${brandList}" varStatus="loop">
+					<div class="brand">
+						<a href="productGroup?prd_category=${param.prd_category}&brand=${brandList.code}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">
+							${brandList.codeval}
+						</a>
+					</div>
+				</c:forEach>
+				<!-- <div class="brand"><input name="brand" id="brand1" type="checkbox" value="MON" data-value="MON"><label for="brand">모노라이크</label></div>
+				<div class="brand"><input name="brand" id="brand2" type="checkbox" value="KAT" data-value="KAT"><label for="brand">케이트가든</label></div>
+				<div class="brand"><input name="brand" id="brand3" type="checkbox" value="BAB" data-value="BAB"><label for="brand">아기고홍</label></div>
+				<div class="brand"><input name="brand" id="brand4" type="checkbox" value="SON" data-value="SON"><label for="brand">데일리송</label></div>
+				<div class="brand"><input name="brand" id="brand5" type="checkbox" value="FOO" data-value="FOO"><label for="brand">송미풋</label></div>
+				<div class="brand"><input name="brand" id="brand6" type="checkbox" value="ROO" data-value="ROO"><label for="brand">마이데일리룸</label></div>
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<button class="accordion1" style= "cursor : pointer;">+더보기</button>
 					<div class="panel">
-						<div class="panel-body"><input name="brand" id="brand7" type="checkbox" value="SMI"><label for="brand">스마일리</label></div>
-						<div class="panel-body"><input name="brand" id="brand8" type="checkbox" value="APP"><label for="brand">풋사과당</label></div>
-						<div class="panel-body"><input name="brand" id="brand9" type="checkbox" value="BBU"><label for="brand">뿌뿌팬시</label></div>
-						<div class="panel-body"><input name="brand" id="brand10" type="checkbox" value="HON"><label for="brand">홍홍앤데코</label></div>
+						<div class="panel-body"><input name="brand" id="brand7" type="checkbox" value="SMI" data-value="SMI"><label for="brand">스마일리</label></div>
+						<div class="panel-body"><input name="brand" id="brand8" type="checkbox" value="APP" data-value="APP"><label for="brand">풋사과당</label></div>
+						<div class="panel-body"><input name="brand" id="brand9" type="checkbox" value="BBU" data-value="BBU"><label for="brand">뿌뿌팬시</label></div>
+						<div class="panel-body"><input name="brand" id="brand10" type="checkbox" value="HON" data-value="HON"><label for="brand">홍홍앤데코</label></div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div>
 				<h1 style="font-size:15px; font-weight:bold;">상품상태</h1>
 				<c:forEach var="statusList" items="${statusList}" varStatus="loop">
 					<div class="state">
-						<input name="status" id="status${loop.index}" type="checkbox" value="${statusList.code}"/>
-						<label for="status">${statusList.codeval}</label>
+						<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${statusList.code}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">
+							${statusList.codeval}
+						</a>
 					</div>
 				</c:forEach>
 			</div>
@@ -53,8 +67,9 @@
 				<h1 style="font-size:15px; font-weight:bold;">카드/엽서 메시지</h1>
 				<c:forEach var="messageList" items="${messageList}" varStatus="loop">
 					<div class="message">
-						<input name="message"id="message${loop.index}" type="checkbox" value="${messageList.code}"/>
-						<label for="message">${messageList.codeval}</label>
+						<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${messageList.code}&kind=${param.kind}&keyword=${param.keyword}">
+							${messageList.codeval}
+						</a>
 					</div>
 				</c:forEach>
 			</div>
@@ -67,9 +82,9 @@
 				<div>
 					<ul id="list" class="list" style="white-space: nowrap;">
 						<div class="list2">
-							<li><a href="productGroup?kind=1">낮은가격순 | </a></li>
-							<li><a href="productGroup?kind=2">높은가격순 | </a></li>
-							<li><a href="productGroup?kind=3">최신순</a></li>
+							<li><a href="productGroup?kind=1&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">낮은가격순 | </a></li>
+							<li><a href="productGroup?kind=2&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">높은가격순 | </a></li>
+							<li><a href="productGroup?kind=3&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">최신순</a></li>
 						</div> 
 					</ul>
 				</div>
@@ -99,20 +114,20 @@
 							<div>
 								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1&kind=${param.kind}">처음</a>
 								<c:if test="${pager.groupNo>1}">
-									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}&kind=${param.kind}">이전</a>
+									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">이전</a>
 								</c:if>
 								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 									<c:if test="${pager.pageNo != i}">
-										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}&kind=${param.kind}">${i}</a>
+										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">${i}</a>
 									</c:if>
 									<c:if test="${pager.pageNo == i}">
-										<a class="btn btn-danger btn-sm" href="productGroup?pageNo=${i}&kind=${param.kind}">${i}</a>
+										<a class="btn btn-danger btn-sm" href="productGroup?pageNo=${i}&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">${i}</a>
 									</c:if>
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.endPageNo+1}&kind=${param.kind}">다음</a>
+									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.endPageNo+1}&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">다음</a>
 								</c:if>
-								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=${pager.totalPageNo}&kind=${param.kind}">맨끝</a>
+								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=${pager.totalPageNo}&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">맨끝</a>
 							</div>
 						</td>
 					</tr>

@@ -39,8 +39,8 @@ public class ProductGroupServiceImpl implements ProductGroupService{
 	}
 
 	@Override //productGroup갯수 count해서 totalProductGroupNum에 넣기
-	public int getTotalProductGroupNum() {
-		int totalProductGroupNum = productGroupDao.count();
+	public int getTotalProductGroupNum(Map<String, Object> map) {
+		int totalProductGroupNum = productGroupDao.count(map);
 		return totalProductGroupNum;
 	}
 

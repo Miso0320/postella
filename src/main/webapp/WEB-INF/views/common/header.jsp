@@ -50,12 +50,6 @@
 		      				</li>
 		      				<li class="header_dropdown_list">
 		      					<a href="#">고객센터</a>
-		      					<!-- <ul class="header_enter">
-		      						<li><a href="#">자주묻는 질문</a></li>
-		      						<li><a href="#">1:1 채팅문의</a></li>
-		      						<li><a href="#">마음의 소리</a></li>
-		      						<li><a href="#">취소 /반품 안내</a></li>
-		      					</ul> -->
 		      				</li>
 		      			</ul>
 		      		</menu>
@@ -88,10 +82,19 @@
       				</div>
       				
       				<!-- 검색창 -->
-      				<div class="header_search_product header_every_a_font">
-      					<input type="text" class="header_text_search" placeholder="찾고 싶은 상품을 검색해보세요!"/>
-      					<a href="productGroup"><img class="header_search_img" src="${pageContext.request.contextPath}/resources/img/header/search_icon.png" alt="찾기"></a>
-      				</div>
+      				<form action="productGroup" method="get">
+	      				<div class="header_search_product header_every_a_font">
+	      					<input name="keyword" type="text" class="header_text_search" placeholder="찾고 싶은 상품을 검색해보세요!"/>
+	      					<input type="hidden" name="kind" value="${param.kind}">
+	      					<input type="hidden" name="prd_category" value="${param.prd_category}">
+	      					<input type="hidden" name="brand" value="${param.brand}">
+	      					<input type="hidden" name="status" value="${param.status}">
+	      					<input type="hidden" name="message" value="${param.message}">
+	      					<button class="header_btn_sub" type="submit">
+	      						<img class="header_search_img" src="${pageContext.request.contextPath}/resources/img/header/search_icon.png" alt="찾기">
+	      					</button>
+	      				</div>
+      				</form>
    				
    					<!-- 마이메뉴 -->
    					<div class="header_my_menu header_every_a_font">

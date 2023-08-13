@@ -176,6 +176,14 @@ header {
 	margin: 4px;
 }
 
+.header_btn_sub {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
 
 /* 마이메뉴 */
 .header_my_menu {

@@ -10,7 +10,7 @@ import com.mycompany.postella.dto.Product;
 public interface ProductGroupService {
 	public String getTitle(int pg_no);
 	public List<Product> getList(Map<String, Object> map); 
-	public int getTotalProductGroupNum();
+	public int getTotalProductGroupNum(Map<String, Object> map);
 	public List<Image> getImagesBypgNo(int pg_no);
 	public List<CodeTb> getCategoryList();
 	public List<CodeTb> getBrandList();

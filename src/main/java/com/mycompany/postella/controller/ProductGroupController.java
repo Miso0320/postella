@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.postella.dto.CodeTb;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Pager;
-import com.mycompany.postella.dto.Price;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.LoginService;
@@ -47,10 +46,32 @@ public class ProductGroupController {
 	
 	@RequestMapping("/productGroup")
 	public String getProductGroupList(
-			@RequestParam(name="prd_category", required=false) String prd_category,
-			@RequestParam(name="kind", required=false) String kind,
-			@RequestParam(name="pageNo", required=false) String pageNo,
-			Model model, HttpSession session) {
+			@RequestParam(name="prd_category", required=false)
+			String prd_category,
+			@RequestParam(name="kind", required=false)
+			String kind,
+			@RequestParam(name="pageNo", required=false)
+			String pageNo,
+			@RequestParam(name = "brand", required = false)
+			String brand,
+			@RequestParam(name="status", required=false)
+			String status,
+			@RequestParam(name="message", required=false)
+			String message,
+			@RequestParam(name="keyword", required=false)
+			String keyword,
+			Model model,
+			HttpSession session) {
+		
+		// 파라미터로 받은 값 전달
+		Map<String, Object> map = new HashMap<>();
+		map.put("prd_category", prd_category);
+		map.put("kind", kind);
+		map.put("brand", brand);
+		map.put("status", status);
+		map.put("message", message);
+		map.put("keyword", keyword);
+		
 		//pageNo가 넘어오지 않았을 경우
 		if(pageNo == null) {
 			//세션에 저장되어 있는지 확인
@@ -65,35 +86,21 @@ public class ProductGroupController {
 		// 페이징 객체 생성
 		int intpageNo = Integer.parseInt(pageNo);
 		session.setAttribute("pageNo", String.valueOf(pageNo));
-		
-		int totalProductGroupNum = productGroupService.getTotalProductGroupNum();
+		int totalProductGroupNum = productGroupService.getTotalProductGroupNum(map);
 		
 		Pager pager = new Pager(12, 10, totalProductGroupNum, intpageNo);
-		log.info("페이저 확인중!!!!!!!!!!!!!!!!!!!!!!!! : " + pager.getEndPageNo());
-		
-		// 상품목록 가져오기
-		Map<String, Object> map = new HashMap<>();
 		map.put("pager", pager);
-		map.put("prd_category", prd_category);
-		map.put("kind", kind);
 		
+		// 전체 상품 리스트
 		List<Product> list = productGroupService.getList(map);
 		
+		// 상품 이미지 가져오기
 		int pgNo;
 		Image img = null;
-		Price price;
-		int prd_price;
-		int prd_org_price;
 		
-		//상품목록: 사진,이름,원가,판매가
 		for(int i = 0; i < list.size(); i++) {
 			pgNo = list.get(i).getPg_no();
 			img = imageService.getImageByPgNo(pgNo);
-			price = priceService.getPrice(pgNo);
-			prd_price = price.getPrd_price();
-			prd_org_price = price.getPrd_org_price();
-			list.get(i).setPrd_price(prd_price); 
-			list.get(i).setPrd_org_price(prd_org_price);
 
 			if(img != null) {
 				String imgFile = Base64.getEncoder().encodeToString(img.getImg_file());
