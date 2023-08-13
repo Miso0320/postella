@@ -24,19 +24,19 @@
 			</div> 
 			<div>
 				<h1 style="font-size:15px; font-weight:bold;">브랜드</h1>
-				<div class="brand"><input name="brand" id="brand1" type="checkbox" value="MON" onclick="movepage('productGroup');"/><label for="brand">모노라이크</label></div>
-				<div class="brand"><input name="brand" id="brand2" type="checkbox" value="KAT" onclick="movepage('productGroup');"/><label for="brand">케이트가든</label></div>
-				<div class="brand"><input name="brand" id="brand3" type="checkbox" value="BAB" onclick="movepage('productGroup');"/><label for="brand">아기고홍</label></div>
-				<div class="brand"><input name="brand" id="brand4" type="checkbox" value="SON" onclick="movepage('productGroup');"/><label for="brand">데일리송</label></div>
-				<div class="brand"><input name="brand" id="brand5" type="checkbox" value="FOO" onclick="movepage('productGroup');"/><label for="brand">송미풋</label></div>
-				<div class="brand"><input name="brand" id="brand6" type="checkbox" value="ROO" onclick="movepage('productGroup');"/><label for="brand">마이데일리룸</label></div>
+				<div class="brand"><input name="brand" id="brand1" type="checkbox" value="MON"><label for="brand">모노라이크</label></div>
+				<div class="brand"><input name="brand" id="brand2" type="checkbox" value="KAT"><label for="brand">케이트가든</label></div>
+				<div class="brand"><input name="brand" id="brand3" type="checkbox" value="BAB"><label for="brand">아기고홍</label></div>
+				<div class="brand"><input name="brand" id="brand4" type="checkbox" value="SON"><label for="brand">데일리송</label></div>
+				<div class="brand"><input name="brand" id="brand5" type="checkbox" value="FOO"><label for="brand">송미풋</label></div>
+				<div class="brand"><input name="brand" id="brand6" type="checkbox" value="ROO"><label for="brand">마이데일리룸</label></div>
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<button class="accordion1" style= "cursor : pointer;">+더보기</button>
 					<div class="panel">
-						<div class="panel-body"><input name="brand" id="brand7" type="checkbox" value="SMI" onclick="movepage('productGroup');"/><label for="brand">스마일리</label></div>
-						<div class="panel-body"><input name="brand" id="brand8" type="checkbox" value="APP" onclick="movepage('productGroup');"/><label for="brand">풋사과당</label></div>
-						<div class="panel-body"><input name="brand" id="brand9" type="checkbox" value="BBU" onclick="movepage('productGroup');"/><label for="brand">뿌뿌팬시</label></div>
-						<div class="panel-body"><input name="brand" id="brand10" type="checkbox" value="HON" onclick="movepage('productGroup');"/><label for="brand">홍홍앤데코</label></div>
+						<div class="panel-body"><input name="brand" id="brand7" type="checkbox" value="SMI"><label for="brand">스마일리</label></div>
+						<div class="panel-body"><input name="brand" id="brand8" type="checkbox" value="APP"><label for="brand">풋사과당</label></div>
+						<div class="panel-body"><input name="brand" id="brand9" type="checkbox" value="BBU"><label for="brand">뿌뿌팬시</label></div>
+						<div class="panel-body"><input name="brand" id="brand10" type="checkbox" value="HON"><label for="brand">홍홍앤데코</label></div>
 					</div>
 				</div>
 			</div>
