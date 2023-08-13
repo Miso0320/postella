@@ -67,9 +67,9 @@
 				<div>
 					<ul id="list" class="list" style="white-space: nowrap;">
 						<div class="list2">
-							<li><a href="">낮은가격순 | </a></li>
-							<li><a href="">높은가격순 | </a></li>
-							<li><a href="">최신순</a></li>
+							<li><a href="productGroup?kind=1">낮은가격순 | </a></li>
+							<li><a href="productGroup?kind=2">높은가격순 | </a></li>
+							<li><a href="productGroup?kind=3">최신순</a></li>
 						</div> 
 					</ul>
 				</div>
@@ -97,22 +97,22 @@
 					<tr>
 						<td colspan="4" class="text-center" style="background-color: white; border-style: hidden;">
 							<div>
-								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1">처음</a>
+								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1&kind=${param.kind}">처음</a>
 								<c:if test="${pager.groupNo>1}">
-									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}">이전</a>
+									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}&kind=${param.kind}">이전</a>
 								</c:if>
 								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 									<c:if test="${pager.pageNo != i}">
-										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}">${i}</a>
+										<a class="btn btn-outline-success btn-sm" href="productGroup?pageNo=${i}&kind=${param.kind}">${i}</a>
 									</c:if>
 									<c:if test="${pager.pageNo == i}">
-										<a class="btn btn-danger btn-sm" href="productGroup?pageNo=${i}">${i}</a>
+										<a class="btn btn-danger btn-sm" href="productGroup?pageNo=${i}&kind=${param.kind}">${i}</a>
 									</c:if>
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.endPageNo+1}">다음</a>
+									<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.endPageNo+1}&kind=${param.kind}">다음</a>
 								</c:if>
-								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=${pager.totalPageNo}">맨끝</a>
+								<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=${pager.totalPageNo}&kind=${param.kind}">맨끝</a>
 							</div>
 						</td>
 					</tr>

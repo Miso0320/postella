@@ -24,4 +24,5 @@ public class Product {
 	private String pg_name;	//상품 대분류 이름
 	private String img_type;	//img 타입
 	private String encodedFile;	//encoded된 이미지파일
+	private String kind;	//정렬기준 1:낮은가격순, 2:높은가격순, 3:최신순
 }
