@@ -74,10 +74,12 @@ function init() {
    payButton = document.getElementById("buy-btn");
    
    payButton.addEventListener("click", function() {
-	    const quantityValue = document.querySelector(".prod-quantity-input").value;
-	    const prdNo = $(".selectedOName").data("prdno"); // 이 부분은 해당 값을 올바르게 가져와야 합니다.
-
-	    window.location.href = "orderNpay?quantity=" + encodeURIComponent(quantityValue) + "&prdNo=" + encodeURIComponent(prdNo);
+	   if (isLoggedIn()) { 
+		    const quantityValue = document.querySelector(".prod-quantity-input").value;
+		    const prdNo = $(".selectedOName").data("prdno");
+	
+		    window.location.href = "orderNpay?quantity=" + encodeURIComponent(quantityValue) + "&prdNo=" + encodeURIComponent(prdNo);
+	   }
 	});
    
    /*// 썸네일 확대
@@ -254,7 +256,6 @@ function toggleLike() {
 	
 	// 로그인 상태 체크
     if (isLoggedIn()) {
-    	console.log("라이크 로그인 됨!!!");
     	//버튼 비활성화 시
     	if (liked == 0) {
           likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -262px -209px';
@@ -550,12 +551,9 @@ function deleteWish(pg_no) {
 //로그인 여부 체크 
 function isLoggedIn() {
     if (!userLogin) {
-        console.log("로그인 상태가 아님!");
         // 로그인되지 않은 상태일 때 로그인 페이지로 이동
         window.location.href = "/postella/login"; // 로그인 페이지 URL로 수정
         return false;
     }
-    
-    console.log("로그인됨!!!");
     return true;
 }
