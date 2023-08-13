@@ -1,5 +1,11 @@
 $(init);
 
+//리뷰 현재 페이지
+revCurrentPage = 1;
+
+//리뷰 전체 페이지
+revtotalPages = 0;
+
 function init() {
 	
 	// 찜버튼 이벤트
@@ -364,37 +370,42 @@ function loadInitialQna() {
 
 //처음 리뷰 불러오기
 function loadInitialReview() {
-    loadReview("getReviewFromDB", { pg_no: pg_no }); 
+    loadReview("getReviewFromDB", { pg_no: pg_no, page: revCurrentPage }); 
 }
 
-//리뷰 별점순
+// 리뷰 별점순
 function orderByStar(pg_no) {
-    loadReview("orderByStar", { pg_no: pg_no });
+    loadReview("orderByStar", { pg_no: pg_no, page: revCurrentPage });
 }
 
-//리뷰 최신순
+// 리뷰 최신순
 function orderByDate(pg_no) {
-    loadReview("orderByDate", { pg_no: pg_no });
+    loadReview("orderByDate", { pg_no: pg_no, page: revCurrentPage });
 }
 
-//리뷰 검색
+// 리뷰 검색
 function searchReview(pg_no, keyword) {
-	loadReview("searchReview", { pg_no: pg_no, keyword: keyword });
+    loadReview("searchReview", { pg_no: pg_no, keyword: keyword, page: revCurrentPage });
 }
 
-//리뷰 별점별로 보기
+// 리뷰 별점별로 보기
 function groupByStar(pg_no, starAmount) {
-    loadReview("groupByStar", { pg_no: pg_no, starAmount: starAmount });
+    loadReview("groupByStar", { pg_no: pg_no, starAmount: starAmount, page: revCurrentPage });
 }
 
-//리뷰 보여주기
+// 리뷰 보여주기
 function loadReview(url, params) {
     $.ajax({
         type: "GET",
         url: url,
         data: params, // 매개변수 객체 전달
         success: function(data) {
-            updateReviewList(data); // 리뷰 목록 업데이트 함수 호출
+    	  var reviews = data.reviews;
+          var totalPages = data.totalPages;
+
+          updateReviewList(reviews);
+          revTotalPages = totalPages;
+          updatePaginationButtons(revCurrentPage, revTotalPages, url);
         }
     });
 }
@@ -432,6 +443,26 @@ function updateReviewList(review) {
             "</article>";
 	    }
   	$(".review-list-section2").html(articles); //section에 article 추가
+}
+
+//페이징 버튼 업데이트하기
+function updatePaginationButtons(currentPage, totalPages, url) {
+    var pageHtml = "";
+
+    for (var i = 1; i <= totalPages; i++) {
+        pageHtml += "<button class='qna-page-button btn btn-outline-primary btn-sm mr-2' data-page='" + i + "'>" + i + "</button>";
+    }
+
+    $(".revPageBtn").html(pageHtml);
+
+    // 생성된 버튼에 클릭 이벤트 핸들러를 연결
+    $(".qna-page-button").click(function() {
+        var newPage = parseInt($(this).data("page"));
+        if (newPage !== revCurrentPage) {
+            revCurrentPage = newPage;
+            loadReview(url, { pg_no: pg_no, page: revCurrentPage });
+        }
+    });
 }
 
 //장바구니 넣기 버튼 이벤트

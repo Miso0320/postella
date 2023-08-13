@@ -134,10 +134,10 @@ public class DetailViewController {
 		String StrDeliverDay = fomatter.format(deliverDay);
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
-		//리뷰 목록 가져오기
-		List<Review> reviews = getReviewFromDB(pg_no);
+		/*//리뷰 목록 가져오기
+		List<Review> reviews = getReviewFromDB(pg_no, 1);
 		model.addAttribute("reviews", reviews);
-		
+		*/
 		//별점 별 리뷰수 가져오기
 		int[] reviewCntGroup = new int[5];
 		Map<String, Object> rGmap = new HashMap<>();
@@ -226,9 +226,9 @@ public class DetailViewController {
 		String StrDeliverDay = fomatter.format(deliverDay);
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
-		//리뷰 목록 가져오기
-		List<Review> reviews = getReviewFromDB(pg_no);
-		model.addAttribute("reviews", reviews);
+		/*//리뷰 목록 가져오기
+		List<Review> reviews = getReviewFromDB(pg_no, 1);
+		model.addAttribute("reviews", reviews);*/
 		
 		//별점 별 리뷰수 가져오기
 		int[] reviewCntGroup = new int[5];
@@ -252,55 +252,130 @@ public class DetailViewController {
 	//리뷰 불러오기
 	@RequestMapping("/getReviewFromDB")
     @ResponseBody
-    public List<Review> getReviewFromDB(@RequestParam("pg_no") int pg_no) {
-		List<Review> reviews = reviewService.getAllReviews(pg_no);
-		
-        return reviews; 
+    public Map<String, Object> getReviewFromDB(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
+		int itemsPerPage = 5; // 페이지 당 아이템 수
+		int totalReviews = reviewService.countReview(pg_no);
+		int totalPages = (int) Math.ceil((double) totalReviews / itemsPerPage); //총 페이지 수
+		int startRow = (page - 1) * itemsPerPage + 1; //시작 페이지
+	    int endRow = page * itemsPerPage; //끝 페이지
+
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("pg_no", pg_no);
+	    map.put("startRow", startRow);
+	    map.put("endRow", endRow);
+	    List<Review> reviews = reviewService.getReviewsPaged(map);
+	    
+	    Map<String, Object> result = new HashMap<>();
+	    result.put("reviews", reviews);
+	    result.put("totalPages", totalPages);
+
+	    return result;
     }
 	
 	//리뷰 별점순으로 가져오기
 	@RequestMapping("/orderByStar")
     @ResponseBody
-    public ResponseEntity<List<Review>> orderByStar(@RequestParam("pg_no") int pg_no) {
-		List<Review> reviews = reviewService.orderByRate(pg_no);
-		
-        return ResponseEntity.ok(reviews);
+    public Map<String, Object> orderByStar(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
+		int itemsPerPage = 5;
+	    int totalReviews = reviewService.countReview(pg_no);
+	    int totalPages = (int) Math.ceil((double) totalReviews / itemsPerPage);
+
+	    int startRow = (page - 1) * itemsPerPage + 1; //시작 페이지
+	    int endRow = page * itemsPerPage; //끝 페이지
+
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("pg_no", pg_no);
+	    map.put("startRow", startRow);
+	    map.put("endRow", endRow);
+
+	    List<Review> reviews = reviewService.orderByRate(map);
+
+	    Map<String, Object> result = new HashMap<>();
+	    result.put("reviews", reviews);
+	    result.put("totalPages", totalPages);
+
+	    return result;
     }
 	
 	//리뷰 최신순으로 가져오기
 	@RequestMapping("/orderByDate")
     @ResponseBody
-    public ResponseEntity<List<Review>> orderByDate(@RequestParam("pg_no") int pg_no) {
-		List<Review> reviews = reviewService.orderByDate(pg_no);
+    public Map<String, Object> orderByDate(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
+		int itemsPerPage = 5;
+	    int totalReviews = reviewService.countReview(pg_no);
+	    int totalPages = (int) Math.ceil((double) totalReviews / itemsPerPage);
+
+	    int startRow = (page - 1) * itemsPerPage + 1; //시작 페이지
+	    int endRow = page * itemsPerPage; //끝 페이지
+
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("pg_no", pg_no);
+	    map.put("startRow", startRow);
+	    map.put("endRow", endRow);
+		List<Review> reviews = reviewService.orderByDate(map);
 		
-        return ResponseEntity.ok(reviews);
+		Map<String, Object> result = new HashMap<>();
+	    result.put("reviews", reviews);
+	    result.put("totalPages", totalPages);
+		
+	    return result;
     }
 	
 	//리뷰 검색하기
 	@RequestMapping("/searchReview")
     @ResponseBody
-    public ResponseEntity<List<Review>> searchReview(@RequestParam("pg_no") int pg_no, @RequestParam("keyword") String keyword) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("pg_no", pg_no);
-		map.put("keyword", keyword);
-		
+    public Map<String, Object> searchReview(@RequestParam("pg_no") int pg_no, @RequestParam("keyword") String keyword, @RequestParam("page") int page) {
+		int itemsPerPage = 5;
+	    int totalReviews = reviewService.countReview(pg_no);
+	    int totalPages = (int) Math.ceil((double) totalReviews / itemsPerPage);
+
+	    int startRow = (page - 1) * itemsPerPage + 1; //시작 페이지
+	    int endRow = page * itemsPerPage; //끝 페이지
+
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("pg_no", pg_no);
+	    map.put("keyword", keyword);
+	    map.put("startRow", startRow);
+	    map.put("endRow", endRow);
 		List<Review> reviews = reviewService.searchReviews(map);
 		
-        return ResponseEntity.ok(reviews);
+		Map<String, Object> result = new HashMap<>();
+	    result.put("reviews", reviews);
+	    result.put("totalPages", totalPages);
+		
+	    return result;
     }
 	
 	//리뷰 별점별로 보기
 	@RequestMapping("/groupByStar")
 	@ResponseBody
-	public ResponseEntity<List<Review>> orderByStar(@RequestParam("pg_no") int pg_no, @RequestParam("starAmount") int starAmount) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("pg_no", pg_no);
-		map.put("starAmount", starAmount);
+	public Map<String, Object> groupByStar(@RequestParam("pg_no") int pg_no, @RequestParam("starAmount") int starAmount, @RequestParam("page") int page) {
+		int itemsPerPage = 5;
+		Map<String, Object> cntMap = new HashMap<>();
+		cntMap.put("pg_no", pg_no);
+		cntMap.put("rate", starAmount);
+	    int totalReviews = reviewService.countRevWithRate(cntMap);
+	    int totalPages = (int) Math.ceil((double) totalReviews / itemsPerPage);
+
+	    int startRow = (page - 1) * itemsPerPage + 1; //시작 페이지
+	    int endRow = page * itemsPerPage; //끝 페이지
+
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("pg_no", pg_no);
+	    map.put("starAmount", starAmount);
+	    map.put("startRow", startRow);
+	    map.put("endRow", endRow);
 		
 		List<Review> reviews = reviewService.groupByRate(map);
-	    return ResponseEntity.ok(reviews);
+		
+		Map<String, Object> result = new HashMap<>();
+	    result.put("reviews", reviews);
+	    result.put("totalPages", totalPages);
+		
+	    return result;
 	}
-
+	
+	//장바구니 담기
 	@PostMapping("/detailView/cartAdd")
 	@Login
 	@ResponseBody

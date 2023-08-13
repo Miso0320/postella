@@ -503,6 +503,7 @@
 					</div>
 					</section>
 					<section class="review-list-section2" data-pg_no="${pg_no}"></section>
+					<div class="revPageBtn"></div>
                </div>
                
                <div class="prod-inquiry-list" id="prod-inquiry-list">

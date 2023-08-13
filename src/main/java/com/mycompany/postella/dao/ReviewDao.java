@@ -12,9 +12,10 @@ public interface ReviewDao {
 	public List<Review> selectAllByPgNo(int pg_no);
 	public String selectPrdName(int prd_no);
 	public List<Review> selectByKeyword(Map<String, Object> map);
-	public List<Review> orderByRate(int pg_no);
-	public List<Review> orderByDate(int pg_no);
+	public List<Review> orderByRate(Map<String, Object> map);
+	public List<Review> orderByDate(Map<String, Object> map);
 	public List<Review> groupByRate(Map<String, Object> map);
 	public int selectReviewCnt(int pg_no);
 	public int selectReviewCntWithRate(Map<String, Object> map);
+	public List<Review> selectReviewsByPage(Map<String, Object> map);
 }

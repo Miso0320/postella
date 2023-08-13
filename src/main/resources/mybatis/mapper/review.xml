@@ -17,38 +17,76 @@
 	</select>
 	
 	<select id="selectByKeyword" parameterType="java.util.Map" resultType="Review">
-		select review.*
-		from review, product
-		where review.prd_no = product.prd_no
-		and product.pg_no = #{pg_no} 
-		<if test='keyword != null and keyword != ""'>
-		   AND REGEXP_REPLACE(LOWER(REPLACE(rev_content,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
-		</if>
+		  SELECT *
+		  FROM (
+		    SELECT t.*, ROWNUM AS RNUM
+		    FROM (
+	            select review.*
+				from review, product
+				where review.prd_no = product.prd_no
+				and product.pg_no = #{pg_no} 
+				<if test='keyword != null and keyword != ""'>
+				   AND REGEXP_REPLACE(LOWER(REPLACE(rev_content,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
+				</if>
+		    ) t
+		    WHERE <![CDATA[ ROWNUM <= #{endRow} ]]>
+		  )
+		  WHERE <![CDATA[ RNUM >= #{startRow} ]]>
 	</select>
 	
 	<select id="orderByRate" parameterType="int" resultType="Review">
-		select review.*
-		from review, product
-		where review.prd_no = product.prd_no
-		and product.pg_no = #{pg_no}
-        order by review.rev_star_rate DESC
+        <![CDATA[
+	        SELECT *
+			  FROM (
+			    SELECT t.*, ROWNUM AS RNUM
+			    FROM (
+		           select review.*
+					from review, product
+					where review.prd_no = product.prd_no
+					and product.pg_no = #{pg_no}
+			        order by review.rev_star_rate DESC
+			    ) t
+			    WHERE  ROWNUM <= #{endRow} 
+			  )
+			  WHERE RNUM >= #{startRow}
+		  ]]>
 	</select>
 	
 	<select id="orderByDate" parameterType="int" resultType="Review">
-		select review.*
-		from review, product
-		where review.prd_no = product.prd_no
-		and product.pg_no = 3
-        order by review.rev_date DESC
+         <![CDATA[
+	        SELECT *
+			  FROM (
+			    SELECT t.*, ROWNUM AS RNUM
+			    FROM (
+		            select review.*
+					from review, product
+					where review.prd_no = product.prd_no
+					and product.pg_no = #{pg_no}
+				    order by review.rev_date DESC
+			    ) t
+			    WHERE  ROWNUM <= #{endRow} 
+			  )
+			  WHERE RNUM >= #{startRow}
+		  ]]>
 	</select>
 	
 	<select id="groupByRate" parameterType="java.util.Map" resultType="Review">
-		select *
-		from (select review.*
-				from review, product
-				where review.prd_no = product.prd_no
-				and product.pg_no = #{pg_no})
-		where rev_star_rate = #{starAmount}
+		<![CDATA[
+	        SELECT *
+			  FROM (
+			    SELECT t.*, ROWNUM AS RNUM
+			    FROM (
+		            select *
+					from (select review.*
+							from review, product
+							where review.prd_no = product.prd_no
+							and product.pg_no = #{pg_no})
+					where rev_star_rate = #{starAmount}
+			    ) t
+			    WHERE  ROWNUM <= #{endRow} 
+			  )
+			  WHERE RNUM >= #{startRow}
+		  ]]>
 	</select>
 	
 	<select id="selectReviewCnt" parameterType="int" resultType="int">
@@ -65,5 +103,23 @@
         and product.pg_no = ${pg_no}
         and review.rev_star_rate = ${rate}
 	</select>
+	
+	<select id="selectReviewsByPage" parameterType="map" resultType="Review">
+	<![CDATA[
+	  SELECT *
+	  FROM (
+	    SELECT t.*, ROWNUM AS RNUM
+	    FROM (
+            select review.*
+            from review, product
+            where review.prd_no = product.prd_no
+            and product.pg_no = #{pg_no}
+	    ) t
+	    WHERE ROWNUM <= #{endRow}
+	  )
+	  WHERE RNUM >= #{startRow}
+	  ]]>
+	</select>
+
 
 </mapper>

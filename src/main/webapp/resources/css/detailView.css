@@ -1197,5 +1197,10 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 
 .tooltip_layer {
 	display:none;
-	border-radius:10px;}
+	border-radius:10px;
+}
+
+.revPageBtn {
+	margin: 10px 0;
+}
 
