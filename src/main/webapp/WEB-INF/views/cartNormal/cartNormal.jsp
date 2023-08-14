@@ -95,7 +95,7 @@
 	                    <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
 	                    <h3 class="payment-reward-cash-area__title" style="font-size:medium;">캐시적립 혜택</h3>
 	                  
-	                    <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 1% 적립</span>
+	                    <span class="payment-reward-cash-area__desc">카드 결제 시 1% 적립</span>
                 	</div>
 				</div>
 				
@@ -105,10 +105,10 @@
                     <div class="price-area">
                         	총 상품가격
                         <em id="finalPrice" class="final-product-price">0</em>원
-                        <img src="img/cart/cart-plus.gif" class="math-icon">
+                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-plus.gif" class="math-icon">
                        	 총 배송비
                         <em id="finalPrice" class="final-delivery-charge">0</em>원
-                        <img src="img/cart/cart-equal.gif" class="math-icon">
+                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-equal.gif" class="math-icon">
                         	총 주문금액
                         <em class="final-order-price">
                           0
