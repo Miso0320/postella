@@ -1,7 +1,9 @@
 package com.mycompany.postella.controller;
 
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,6 +51,7 @@ public class CartController {
 	public List<Cart> getCartProduct(Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
 		us_no = users.getUs_no();
+		log.info("usususususus : " + us_no);
 		
 		//user별 cart목록 담기
 		List<Cart> list = cartService.getProductCart(us_no);
@@ -66,9 +69,19 @@ public class CartController {
 			}
 		}
 		
-
 		model.addAttribute("list", list);
 		
 		return list;
+	}
+	
+	@GetMapping("/deleteCart")
+	@Login
+	public String deleteCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "us_no", required = true) int us_no) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("prd_no", prd_no);
+		map.put("us_no", us_no);
+		cartService.deleteToCart(map);
+		
+		return "redirect:/cartNormal";
 	}
 }

@@ -153,6 +153,7 @@ function cart() {
 			} else {
 			
 			tableCount(data.length);
+			console.log("data : " +data.us_no);
 			
 			//var imgData = data;
 			//displayImage(imgData);
@@ -209,7 +210,8 @@ function cart() {
 				  html += '  	</div>';
 				  html += '  </td>';
 				  html += '  <td>';
-				  html += '  	<button type="button" class="btn_delete">삭제</button>';
+				  //html += '  	<button type="button" class="btn_delete">삭제</button>';
+				  html += '		<a href="deleteCart?prd_no=' + item.prd_no + '&us_no=' + item.us_no + '" class="btn btn-primary">삭제</a>';
 				  html += '  </td>';
 				  html += '  <td>';
 				  html += '  	<div class="cart-product-price" id="cart-product-price">' + item.prd_price + '</div>';

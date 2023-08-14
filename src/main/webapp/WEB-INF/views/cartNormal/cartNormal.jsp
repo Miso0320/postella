@@ -131,7 +131,5 @@
 				</div>
 			</div>
 		</main>
-		<div>
-		</div>	
+		<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	</body>
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>

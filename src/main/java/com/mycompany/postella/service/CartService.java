@@ -13,4 +13,5 @@ public interface CartService {
 	public void updateCart(Cart cart);
 	public List<Cart> getProductCart(int us_no);
 	public List<Image> getImageCart();
+	public void deleteToCart(Map<String, Object> map);
 }

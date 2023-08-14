@@ -48,5 +48,10 @@ public class CartServiceImpl implements CartService{
 		return image;
 	}
 
+	@Override
+	public void deleteToCart(Map<String, Object> map) {
+		cartDao.deleteCart(map);
+	}
+
 	
 }

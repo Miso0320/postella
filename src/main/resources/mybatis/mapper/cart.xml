@@ -35,7 +35,7 @@
 		WHERE rn = 1
 	</select>
 	
-	<delete id="deleteCart" parameterType="Cart">
+	<delete id="deleteCart" parameterType="java.util.Map">
 		DELETE from cart
  		where prd_no=#{prd_no}
  		and us_no=#{us_no}
