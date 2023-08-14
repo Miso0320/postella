@@ -383,3 +383,29 @@
 	font-weight: bolder;
 	color: #cb1400;
 }
+
+/* 검색결과 없는 경우 */
+.product_not_found_container {
+	text-align: center;
+	margin: 50px 0px;
+}
+
+.product_not_found_img_container {
+	margin: 20px 0px;
+}
+
+.product_not_found_img {
+	width: 234px;
+}
+
+.product_not_found_text_1 {
+	display: block;
+	font-size: 16px;
+}
+
+.product_not_found_text_2 {
+	display: block;
+	font-size: 14px;
+	color: #555;
+}
+

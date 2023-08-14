@@ -35,15 +35,28 @@ public class ProductGroupController {
 	@Autowired
 	private ImageService imageService;
 	
-	@Autowired
-	private productService productService;
-	
-	@Autowired
-	private PriceService priceService;
-	
-	@Autowired
-	private LoginService loginService;
-	
+	/**
+	 * 
+	 * @param prd_category
+	 * 			카테고리
+	 * @param kind
+	 * 			정렬방법
+	 * @param pageNo
+	 * 			현재 페이지 번호
+	 * @param brand
+	 * 			브랜드 필터
+	 * @param status
+	 * 			상품상태 필터
+	 * @param message
+	 * 			엽서 메시지 필터
+	 * @param keyword
+	 * 			검색어
+	 * @param model
+	 * 			Model
+	 * @param session
+	 * 			HttpSession
+	 * @return	productGroup/productGroup
+	 */
 	@RequestMapping("/productGroup")
 	public String getProductGroupList(
 			@RequestParam(name="prd_category", required=false)
@@ -94,6 +107,12 @@ public class ProductGroupController {
 		// 전체 상품 리스트
 		List<Product> list = productGroupService.getList(map);
 		
+		// 검색 결과 여부 확인
+		boolean searchResult = true;
+		if(totalProductGroupNum == 0) {
+			searchResult = false;
+		}
+		
 		// 상품 이미지 가져오기
 		int pgNo;
 		Image img = null;
@@ -124,6 +143,9 @@ public class ProductGroupController {
 		model.addAttribute("brandList", brandList);
 		model.addAttribute("statusList", statusList);
 		model.addAttribute("messageList", messageList);
+		model.addAttribute("searchResult", searchResult);
+		
+		log.info("****************************************************searchResult : " + searchResult);
 		
 		return "productGroup/productGroup";
 	}
