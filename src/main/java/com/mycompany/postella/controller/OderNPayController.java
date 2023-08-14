@@ -24,6 +24,7 @@ public class OderNPayController {
 	    
 	    //구매자 정보
 	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+	    
 	    model.addAttribute("user",user);
 	    
 	    return "orderNpay/orderNpay"; 
@@ -33,6 +34,12 @@ public class OderNPayController {
     public String editAddress(Model model) {
         
         return "orderNpay/editAddress"; 
+    }
+	
+	@GetMapping("/addAddress")
+    public String addAddress(Model model) {
+        
+        return "orderNpay/addAddress"; 
     }
 	
 }

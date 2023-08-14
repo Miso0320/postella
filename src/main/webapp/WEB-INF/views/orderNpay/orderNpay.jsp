@@ -14,6 +14,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/oderNpay.css">
 	<script src="${pageContext.request.contextPath}/resources/js/oderNpay.js"></script>
 </head>
@@ -54,7 +55,7 @@
 							    	<div class="customer-phone__root_upper">
 											<form>
 												<div>
-													<input type="tel" class="customer-phone__input-tel " value="${user.us_tel}" />
+													<input type="text" class="customer-phone__input-tel " value="${user.us_tel}" />
 													<button type="submit" class="edit-btn">수정</button>
 													<span class="customer-phone__tel-desc">쿠폰/티켓정보는 구매한
 														분의 번호로 전송됩니다.</span>
@@ -126,15 +127,6 @@
 			        </tbody>
 			    </table>
 			</div>
-     	</div>
-     	
-     	<div class="oder-weekends">
-        	<div class="nonWeekends-delivery-area">
-            	<label for="nonWeekendsDelivery">
-                	<input type="checkbox" id="nonWeekendsDelivery" checked="checked">
-                	<span class="nonWeekends-delivery-area__text">주말 및 공휴일 수령 가능</span>
-           		 </label>
-        	</div>
      	</div>
      	
      	<div class="oder-delivery">
@@ -427,49 +419,8 @@
      		</table>
      	</div>
 
-		<div class="oder-cash-receipt">
-			<h2 class="cash-receipt__title">현금영수증</h2>
-			<div class="cash-receipt__wrap">
-				<div class="cash-receipt__checkbox-title__wrap">
-					<span class="cash-receipt__checkbox" id="cash-receipt__checkbox" onclick="checked()"></span> 
-					<span class="cash-receipt__checkbox-title">현금영수증 신청</span>
-				</div>
-				<div style="display: block;">
-					<div class="cash-receipt__request-type__root" id="cash-text1">
-						<span> 
-							<span class="cash-receipt__request-type__radio" id="cashRadio1" onclick="selectCash1()"></span>
-							<span class="cash-receipt__request-type__desc">소득공제</span>
-						</span> 
-						<span> 
-							<span class="cash-receipt__request-type__radio" id="cashRadio2" onclick="selectCash2()"></span>
-							<span class="cash-receipt__request-type__desc">지출증빙</span>
-						</span>
-					</div>
-					<div class="cash-receipt__resiter-type__wrap" id="cash-text2">
-						<span>
-							 <select name="cashReceiptRegisterType" class="cash-receipt__resiter-type__select">
-								<option value="PHONE_NUMBER">휴대폰번호</option>
-								<option value="CASH_RECEIPT_CARD_NUMBER">현금영수증카드</option>
-							</select>
-						</span> 
-						<span id="phone-input">
-							<input name="cashReceiptRequestNo" type="tel" size="20" maxlength="18" placeholder="숫자만 입력해 주세요">
-						</span>
-					</div>
-					<div style="display: block;">
-						<div class="cash-receipt__notification_wrap">
-							<div class="cash-receipt__notification_li">* 해외구매대행 / 로켓직구
-								구매금액은 현금영수증 발행이 제외됩니다.</div>
-							<div class="cash-receipt__notification_li">* 쿠팡캐시 결제시 현금성
-								적립액에 한하여 현금영수증이 발행됩니다.</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
 		<div class="confirm-agreements-message">
-            위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공(해외직구의 경우 국외제공) 및 결제에 동의합니다.
+            	위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공(해외직구의 경우 국외제공) 및 결제에 동의합니다.
         </div>
 		<div class="oder-pay">
 			<div class="agreeBtn" id="btn_all">
