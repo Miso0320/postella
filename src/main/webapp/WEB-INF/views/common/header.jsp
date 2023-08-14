@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +32,6 @@
 		      		<menu class="header_menu">
 		      			<ul class="header_outer_ul">
 		      				<li class="header_list" id="header_login">
-		      					<!-- <a href="login">로그인</a> -->
 		      					<div>
 		      						<div>
 					                     <c:if test="${userLogin == null}">
@@ -45,9 +45,11 @@
 					               </div>
 		      					</div>
 		      				</li>
-		      				<li class="header_list" id="header_join">
-		      					<a href="join">회원가입</a>
-		      				</li>
+		      				<c:if test="${userLogin == null}">
+			      				<li class="header_list" id="header_join">
+			      					<a href="join">회원가입</a>
+			      				</li>
+		      				</c:if>
 		      				<li class="header_dropdown_list">
 		      					<a href="#">고객센터</a>
 		      				</li>
