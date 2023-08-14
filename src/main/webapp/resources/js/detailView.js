@@ -389,22 +389,56 @@ function updateQnaList(qnas) {
 
 //문의 페이지 버튼
 function qnaPageButtons(qnaCurrentPage, qnaTotalPages, url) {
-    var pageHtml = "";
+	var pageHtml = "";
+	
+	pageHtml +=  "<ul class='pagination pagination-sm'> <li class='page-item' id='qna-prev-page'>" +
+	"<a class='page-link'>&laquo;</a> </li>";
+	
+	for (var i = 1; i <= qnaTotalPages; i++) {
+		if(qnaCurrentPage == i) {
+			pageHtml += "<li class='qna-page-item page-item active' data-page='" + i + "'><a class='qna-page-button page-link'>" + i + "</a></li>"
+		} else {
+			pageHtml += "<li class='qna-page-item page-item' data-page='" + i + "'><a class='qna-page-button page-link'>" + i + "</a></li>"
+		}
+		
+	}
+	
+	pageHtml +=  " <li class='page-item' id='qna-next-page'> <a class='page-link'>&raquo;</a></li></ul>";
+	$(".qnaPageBtn").html(pageHtml);
+	
+	// 생성된 버튼에 클릭 이벤트 핸들러를 연결
+	$(".qna-page-item").click(function() {
+		var newPage = parseInt($(this).data("page"));
+		if (newPage !== qnaCurrentPage) {
+			
+			qnaCurrentPage = newPage;
+			
+			// 다른 버튼의 'active' 클래스 제거
+            $(".qna-page-item").removeClass("active");
+            
+            // 현재 클릭한 버튼에 'active' 클래스 추가
+            $(this).addClass("active");
+            console.log("!!qnaCurrentPage:"+qnaCurrentPage);
+			loadInitialQna(qnaCurrentPage);
+		}
+	});
+	
+	// 이전 페이지 버튼 클릭
+	$("#qna-prev-page").click(function() {
+		if (1 < qnaCurrentPage) {
+			qnaCurrentPage -= 1;
+			loadInitialQna(qnaCurrentPage);
+		}
+	});
+	
+	// 다음 페이지 버튼 클릭
+	$("#qna-next-page").click(function() {
+		if (qnaTotalPages > qnaCurrentPage) {
+			qnaCurrentPage += 1;
+			loadInitialQna(qnaCurrentPage);
+		}
+	});
 
-    for (var i = 1; i <= qnaTotalPages; i++) {
-        pageHtml += "<button class='qna-page-button btn btn-outline-primary btn-sm mr-2' data-page='" + i + "'>" + i + "</button>";
-    }
-
-    $(".qnaPageBtn").html(pageHtml);
-
-    // 생성된 버튼에 클릭 이벤트 핸들러를 연결
-    $(".qna-page-button").click(function() {
-        var newPage = parseInt($(this).data("page"));
-        if (newPage !== qnaCurrentPage) {
-        	qnaCurrentPage = newPage;
-        	loadInitialQna(qnaCurrentPage);
-        }
-    });
 }
 
 //처음 리뷰 불러오기
@@ -487,21 +521,52 @@ function updateReviewList(review) {
 //리뷰 페이징 버튼 업데이트하기
 function updatePaginationButtons(currentPage, totalPages, url) {
     var pageHtml = "";
-
+    
+    pageHtml +=  "<ul class='pagination pagination-sm'> <li class='page-item' id='rev-prev-page'>" +
+	"<a class='page-link'>&laquo;</a> </li>";
+    
     for (var i = 1; i <= totalPages; i++) {
-        pageHtml += "<button class='rev-page-button btn btn-outline-primary btn-sm mr-2' data-page='" + i + "'>" + i + "</button>";
+    	if(currentPage == i) {
+    		pageHtml += "<li class='rev-page-item page-item active' data-page='" + i + "'><a class='rev-page-button page-link'>" + i + "</a></li>"
+    	} else {
+    		pageHtml += "<li class='rev-page-item page-item' data-page='" + i + "'><a class='rev-page-button page-link'>" + i + "</a></li>"
+    	}
     }
-
+    
+    pageHtml +=  " <li class='page-item' id='rev-next-page'> <a class='page-link'>&raquo;</a></li></ul>";
+    
     $(".revPageBtn").html(pageHtml);
 
     // 생성된 버튼에 클릭 이벤트 핸들러를 연결
-    $(".rev-page-button").click(function() {
+    $(".rev-page-item").click(function() {
         var newPage = parseInt($(this).data("page"));
         if (newPage !== revCurrentPage) {
             revCurrentPage = newPage;
+            
+            // 다른 버튼의 'active' 클래스 제거
+            $(".rev-page-item").removeClass("active");
+            
+            // 현재 클릭한 버튼에 'active' 클래스 추가
+            $(this).addClass("active");
             loadReview(url, { pg_no: pg_no, page: revCurrentPage });
         }
     });
+    
+    // 이전 페이지 버튼 클릭
+	$("#rev-prev-page").click(function() {
+		if (1 < revCurrentPage) {
+			revCurrentPage -= 1;
+			loadReview(url, { pg_no: pg_no, page: revCurrentPage });
+		}
+	});
+	
+	// 다음 페이지 버튼 클릭
+	$("#rev-next-page").click(function() {
+		if (revTotalPages > revCurrentPage) {
+			revCurrentPage += 1;
+			loadReview(url, { pg_no: pg_no, page: revCurrentPage });
+		}
+	});
 }
 
 //장바구니 넣기 버튼 이벤트
