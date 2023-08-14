@@ -42,15 +42,25 @@ public class MypageController {
 	/**
 	 * 
 	 * @param us_no
+	 * 			유저식별번호
+	 * @param keyword
+	 * 			검색어
+	 * @param requestYear
+	 * 			연도별 필터
 	 * @param model
-	 * @return
+	 * 			Model
+	 * @return	myPage/myOrderList/myOrderList
+	 * @throws Exception
 	 */
-	@Login
+	/*@Login*/
 	@GetMapping("/myOrderList")
 	public String myOrderList(
-			@RequestParam(name = "od_detail_no", defaultValue="1", required = true) int us_no,
-			@RequestParam(name = "keyword", required = false) String keyword,
-			@RequestParam(name = "requestYear", required = false) String requestYear,
+			@RequestParam(name = "od_detail_no", defaultValue="1", required = true)
+			int us_no,
+			@RequestParam(name = "keyword", required = false) 
+			String keyword,
+			@RequestParam(name = "requestYear", required = false)
+			String requestYear,
 			Model model ) throws Exception {
 		
 		// 주문목록 전체 리스트 가져오기
@@ -128,6 +138,12 @@ public class MypageController {
 		return "myPage/myOrderList/myOrderList";
 	}
 	
+	/**
+	 * 
+	 * @param od_detail_no
+	 * 			주문식별번호
+	 * @return
+	 */
 	@GetMapping("/deleteOrder")
 	public String deleteOrder(@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
 		myPageService.removeOrder(od_detail_no);

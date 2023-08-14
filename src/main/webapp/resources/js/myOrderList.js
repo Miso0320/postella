@@ -132,14 +132,3 @@ function recentItemHide() {
 	$(target).parent().next().css("display", "none");
 }
 
-
-
-
-
-
-
-
-
-
-
-
