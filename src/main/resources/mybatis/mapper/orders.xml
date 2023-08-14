@@ -39,7 +39,7 @@
 		        <if test='keyword != null and keyword != ""'>
 		        	AND REGEXP_REPLACE(LOWER(REPLACE(prd_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
 		        </if>
-		        <if test='startDate != null and startDate != ""'>
+		        <if test='requestYear != null and requestYear != ""'>
 		        	AND to_char(od_date, 'YYYY.MM.DD') BETWEEN #{startDate} and #{endDate}
 		        </if>
 		ORDER BY
