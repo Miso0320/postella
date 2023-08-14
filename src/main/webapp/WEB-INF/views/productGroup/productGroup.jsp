@@ -19,7 +19,7 @@
 						<div class="panel">
 							<c:forEach var="categoryList" items="${categoryList}">
 								<div>
-									<a href="productGroup?prd_category=${categoryList.code}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">${categoryList.codeval}</a>
+									<a href="productGroup?prd_category=${categoryList.code}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">${categoryList.codeval}</a>
 								</div>
 							</c:forEach>
 						</div>
@@ -29,7 +29,7 @@
 					<h1 style="font-size:15px; font-weight:bold;">브랜드</h1>
 					<c:forEach var="brandList" items="${brandList}" varStatus="loop">
 						<div class="brand">
-							<a href="productGroup?prd_category=${param.prd_category}&brand=${brandList.code}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">
+							<a href="productGroup?prd_category=${param.prd_category}&brand=${brandList.code}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
 								${brandList.codeval}
 							</a>
 						</div>
@@ -39,7 +39,7 @@
 					<h1 style="font-size:15px; font-weight:bold;">상품상태</h1>
 					<c:forEach var="statusList" items="${statusList}" varStatus="loop">
 						<div class="state">
-							<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${statusList.code}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">
+							<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${statusList.code}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
 								${statusList.codeval}
 							</a>
 						</div>
@@ -49,7 +49,7 @@
 					<h1 style="font-size:15px; font-weight:bold;">카드/엽서 메시지</h1>
 					<c:forEach var="messageList" items="${messageList}" varStatus="loop">
 						<div class="message">
-							<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${messageList.code}&kind=${param.kind}&keyword=${param.keyword}">
+							<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${messageList.code}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
 								${messageList.codeval}
 							</a>
 						</div>
@@ -94,7 +94,7 @@
 						<tr>
 							<td colspan="4" class="text-center" style="background-color: white; border-style: hidden;">
 								<div>
-									<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1&kind=${param.kind}">처음</a>
+									<a class="btn btn-outline-primary btn-sm" href="productGroup?pageNo=1&kind=${param.kind}&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">처음</a>
 									<c:if test="${pager.groupNo>1}">
 										<a class="btn btn-outline-info btn-sm" href="productGroup?pageNo=${pager.startPageNo-1}&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}">이전</a>
 									</c:if>

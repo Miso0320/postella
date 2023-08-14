@@ -18,10 +18,7 @@ import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.service.ImageService;
-import com.mycompany.postella.service.LoginService;
-import com.mycompany.postella.service.PriceService;
 import com.mycompany.postella.service.ProductGroupService;
-import com.mycompany.postella.service.productService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -144,8 +141,6 @@ public class ProductGroupController {
 		model.addAttribute("statusList", statusList);
 		model.addAttribute("messageList", messageList);
 		model.addAttribute("searchResult", searchResult);
-		
-		log.info("****************************************************searchResult : " + searchResult);
 		
 		return "productGroup/productGroup";
 	}

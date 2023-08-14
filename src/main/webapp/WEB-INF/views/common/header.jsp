@@ -86,12 +86,13 @@
       				<!-- 검색창 -->
       				<form action="productGroup" method="get">
 	      				<div class="header_search_product header_every_a_font">
-	      					<input name="keyword" type="text" class="header_text_search" placeholder="찾고 싶은 상품을 검색해보세요!"/>
+	      					<input name="keyword" type="text" class="header_text_search" placeholder="찾고 싶은 상품을 검색해보세요!" value="${param.keyword}"/>
 	      					<input type="hidden" name="kind" value="${param.kind}">
 	      					<input type="hidden" name="prd_category" value="${param.prd_category}">
 	      					<input type="hidden" name="brand" value="${param.brand}">
 	      					<input type="hidden" name="status" value="${param.status}">
 	      					<input type="hidden" name="message" value="${param.message}">
+	      					<input type="hidden" name="pageNo" value="1">
 	      					<button class="header_btn_sub" type="submit">
 	      						<img class="header_search_img" src="${pageContext.request.contextPath}/resources/img/header/search_icon.png" alt="찾기">
 	      					</button>
@@ -114,6 +115,5 @@
    						</a>
    					</div>
    				</div>
-		      		
 	      	</section>
 		</header>

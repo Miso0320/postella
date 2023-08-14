@@ -19,7 +19,7 @@
 			                    LEFT JOIN product_group pg ON p.pg_no = pg.pg_no
 			               <if test='keyword != null and keyword != ""'>
 			                	<where>
-			                		AND REGEXP_REPLACE(LOWER(REPLACE(pg_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
+			                		REGEXP_REPLACE(LOWER(REPLACE(pg_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
 			                	</where>
 			               </if>			                    
 			               <if test='kind != null and kind != ""'>
@@ -84,7 +84,7 @@
 			                    LEFT JOIN product_group pg ON p.pg_no = pg.pg_no
 			               <if test='keyword != null and keyword != ""'>
 			                	<where>
-			                		AND REGEXP_REPLACE(LOWER(REPLACE(pg_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
+			                		REGEXP_REPLACE(LOWER(REPLACE(pg_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
 			                	</where>
 			               </if>
 			            ) a
