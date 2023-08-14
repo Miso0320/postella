@@ -1,7 +1,6 @@
 $(init)
 
-function init() { //시작될때
-	
+function init() {
 	//"checkBoxSelectAll" 클래스를 가진 요소가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
 	$(".checkBoxSelectAll").click(checkAll);
 	$(".checkBoxSelectAll").click(allcheckCount);
@@ -20,11 +19,11 @@ function checkAll() {
 	   } else {
 	      $("input[name=checkBox]").prop("checked", false);  //체크박스 전체선택 둘다 체크풀림
 	      $(".checkBoxSelectAll").prop("checked", false);
-	   }
-	   
+	   }	   
 	   totalPrice(); //체크박스 값이 변경될때마다 totalPrice함수 호출
 	}
 
+//체크박스 갯수 세기, 전체선택체크
 function checkCheck() {
 	var chks = document.getElementsByName("checkBox");
     var chksChecked = 0;
@@ -42,16 +41,14 @@ function checkCheck() {
        $(".checkBoxSelectAll").prop("checked", true);
     }else{
        $(".checkBoxSelectAll").prop("checked",false);
-    }     
-    
+    }       
     totalPrice();
 }
 
 //체크된 체크박스 갯수 출력
 function checkCount() {
 	var query = "input[name='checkBox']:checked";
-	var selectedElements = document.querySelectorAll(query);
-	
+	var selectedElements = document.querySelectorAll(query);	
 	var selectedElementsCount = selectedElements.length;
 	
 	document.getElementById('result').innerText = selectedElementsCount;
@@ -69,12 +66,10 @@ function allcheckCount() {
 	document.getElementById('result').innerText = selectedElementsCount;
 }
 
-
 function tableCount(rowCnt){
 
 	document.getElementById('result').innerText =rowCnt;
 	result2.innerText = rowCnt;
-
 }
 
 //체크된 상품 삭제
@@ -115,10 +110,7 @@ function delete_table() {
 
 }
 
-
-function cart() {
-	
-	
+function cart() {	
 	var now = new Date();
 
 	let dayText = "";
@@ -150,13 +142,8 @@ function cart() {
 		success: function(data) {
 			if(data.length == 0) {
 				$('#tbody').removeClass("d-none");
-			} else {
-			
-			tableCount(data.length);
-			console.log("data : " +data.us_no);
-			
-			//var imgData = data;
-			//displayImage(imgData);
+			} else {			
+				tableCount(data.length);
 			
 			let html = "";
 			  data.forEach((item,index) => {
@@ -219,9 +206,7 @@ function cart() {
 				  html += '  <td>';
 				  html += '  	<div class="cart-product-ship-fee" id="cart-product-ship-fee">' + item.prd_ship_fee + '</div>';
 				  html += '  </td>';
-				  html += '</tr>';
-				  
-				  
+				  html += '</tr>';		  
 			  });
 			  $("#cart-product-contents").html(html);
 			  $(".checkBox").click(checkCount);
@@ -229,10 +214,6 @@ function cart() {
 			  $(".btn_delete").click(delete_table);
 			  $(".prod-quantity-form").click(sum);
 			  sum();
-			  
-			  
-
-
 			}	  
 		},
 		error: function(error) {
@@ -240,16 +221,6 @@ function cart() {
 		}
 	});
 }
-
-//이미지 불러오기
-/*function displayImage(imgData) {
-	var imageContainer = $("#imageContainer");
-	var imgElement = $("<img>", {
-        "class": "productGroup",
-        "src": "data:image/jpeg;base64," + imgData // 이미지 데이터 추가
-    });
-    imageContainer.append(imgElement);
-}*/
 
 //상품가격 합계 계산, 적립금계산
 function sumItemPrice() {
@@ -326,8 +297,5 @@ function checkInput(sel) {
 	  } else if(sel < 10) {
 		  $('.prod-quantity-form').next().addClass("d-none");
 		  $('.prod-quantity-form').next().next().addClass("d-none");
-	  }
-	 
-	  
-	}
-
+	  }	  
+}

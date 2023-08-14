@@ -41,6 +41,4 @@
  		and us_no=#{us_no}
 	</delete>
 	
-	
-
 </mapper>

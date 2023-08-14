@@ -34,26 +34,16 @@ public class CartController {
 	public String joinForm() {
 		return "cartNormal/cartNormal";
 	}
-	 
-	/*@PostMapping("/addCart")
-	@ResponseBody
-	public ResponseEntity<String> addCart(@RequestBody Cart cart) {
-		log.info("피알디" + cart.getPrd_no());
-		log.info("유저" + cart.getUs_no());
-		log.info("수량" + cart.getCrt_qty());
-		
-		return ResponseEntity.ok("success");
-	}*/
 	
 	@PostMapping("/cartNormal")
 	@Login
 	@ResponseBody
+	//user별 cart상품
 	public List<Cart> getCartProduct(Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
 		us_no = users.getUs_no();
-		log.info("usususususus : " + us_no);
+		log.info("user : " + us_no);
 		
-		//user별 cart목록 담기
 		List<Cart> list = cartService.getProductCart(us_no);
 		List<Image> image = cartService.getImageCart();
 		log.info("list : " + list);
@@ -74,6 +64,7 @@ public class CartController {
 		return list;
 	}
 	
+	//Cart상품삭제
 	@GetMapping("/deleteCart")
 	@Login
 	public String deleteCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "us_no", required = true) int us_no) {
