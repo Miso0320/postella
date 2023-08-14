@@ -42,4 +42,10 @@ public class OderNPayController {
         return "orderNpay/addAddress"; 
     }
 	
+	@GetMapping("/addressRequest")
+    public String addressRequest(Model model) {
+        
+        return "orderNpay/addressRequest"; 
+    }
+	
 }

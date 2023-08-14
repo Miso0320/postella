@@ -17,6 +17,11 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/oderNpay.css">
 	<script src="${pageContext.request.contextPath}/resources/js/oderNpay.js"></script>
+	<script>
+		function addressRequestOpen() {
+			childrenWindows = window.open('addressRequest', '_blank', 'width=518, height=666, left=200, top=200');
+		}
+	</script>
 </head>
 <body>
 	<header class="cartHeader">
@@ -94,7 +99,7 @@
      		<div data-component="deliveryAddress">    
      			<h2 class="delivery-address__caption-header">
 				        받는사람정보
-				    <button class="delivery-address__popup-list-button" type="button" onclick="window.open('editAddress', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
+				    <button class="delivery-address__popup-list-button" type="button" onclick="addressRequestOpen()">배송지변경</button>
 				</h2>
 			    <table class="delivery-address">
 			        <tbody>
@@ -120,8 +125,8 @@
 					            <span>배송 요청사항</span>
 					        </th>
 					        <td class="delivery-address__td">
-					            <span class="delivery-request-spot">문 앞</span>
-					            <button class="delivery-request-message__popup-list-button" type="button">변경</button>
+					            <span class="delivery-request-spot" id="delivery-request-spot">문 앞</span>
+					            <button class="delivery-request-message__popup-list-button" type="button" onclick="window.open('addressRequest', '_blank', 'width=518, height=666, left=200, top=200')">변경</button>
 					        </td>
 					    </tr>
 			        </tbody>
