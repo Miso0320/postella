@@ -50,7 +50,7 @@
 						  </tr>
 						  <tr>
 						    <td colspan="5" class="cart-product-title">
-						    	<span style="font-size:18px; font-weight:bold;">로켓배송 상품</span>
+						    	<span style="font-size:18px; font-weight:bold;">배송 상품</span>
 						    	<span><span>무료배송</span></span>
 						    </td>
 						  </tr>
@@ -68,7 +68,7 @@
 					  
 					  <tfoot id="tfoot">
 						  <tr class="cart-price-total">
-						    <td colspan="6" style="background-color: white; border: 5px solid #f2f2f2;">
+						    <td colspan="6" style="background-color: white; border: 1px solid #f2f2f2;">
 						    	<span style="display:flex; justify-content:end;">
 						    		주문금액
 						    		<span class="orderPrice">0</span>
@@ -87,6 +87,7 @@
 							<span class="cart-count-bottom">( <em id='result'>0</em> / <em id='result2'></em> )</span>
 							<span>
 								<button class="delete btn btn-secondary btn-sm" type="button" onclick="deleteChecked()">선택삭제</button>
+								<%-- <a href="deleteCart?prd_no=${item.prd_no}&us_no=${item.us_no}" class="btn btn-primary" onclick="deleteChecked()">선택삭제</a> --%>
 							</span>
 						</label>
 					</span>
@@ -125,8 +126,8 @@
 				
 				<div class="cart-part1" id="order-buttons">
 					<div class="order-buttons">
-		                <a id="continueShoopingBtn" class="goShopping logging" href="product.jsp" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
-		                <a href="oderNpayjsp.jsp" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false" style="margin:0px 10px">구매하기</a>
+		                <a id="continueShoopingBtn" class="goShopping logging" href="productGroup" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
+		                <a href="orderNpay" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false" style="margin:0px 10px">구매하기</a>
 		                <div class="item-disabled" style="display: none;"></div>
 		            </div>
 				</div>

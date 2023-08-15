@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -42,11 +43,10 @@ public class CartController {
 	public List<Cart> getCartProduct(Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
 		us_no = users.getUs_no();
-		log.info("user : " + us_no);
 		
 		List<Cart> list = cartService.getProductCart(us_no);
 		List<Image> image = cartService.getImageCart();
-		log.info("list : " + list);
+		List<Cart> cartItems = list;
 		
 		//카트list에 이미지 추가
 		for(Cart cart : list) {
@@ -58,13 +58,13 @@ public class CartController {
 				}
 			}
 		}
-		
+		session.setAttribute("cartItems", cartItems);		
 		model.addAttribute("list", list);
 		
 		return list;
 	}
 	
-	//Cart상품삭제
+	//Cart상품 삭제
 	@GetMapping("/deleteCart")
 	@Login
 	public String deleteCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "us_no", required = true) int us_no) {
@@ -74,5 +74,31 @@ public class CartController {
 		cartService.deleteToCart(map);
 		
 		return "redirect:/cartNormal";
+	}
+	
+	//Cart상품 선택삭제
+	@RequestMapping("/deleteProducts")
+	@Login
+	public String deleteProducts( @RequestParam(name = "prd_no", required = true) List<Integer> prd_no,  HttpSession session) {
+		Users users = (Users) session.getAttribute("userLogin");/*@RequestParam("prdNos") List<Long> prdNos@RequestParam(name = "us_no", required = true) int us_no*/
+		/*us_no = users.getUs_no();
+		log.info("실행됨?");
+		log.info("실행됨?" + prd_no);
+		log.info("실행됨?");*/
+		//67  89  90
+		int userNo = users.getUs_no();
+		for(Integer productNo : prd_no) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("prd_no", productNo);
+			map.put("us_no", userNo);
+			
+			cartService.deleteToCart(map);
+		}
+		
+	    /*for (Long cart : prdNos) {
+	    	 map.put("us_no", us_no);
+	        cartService.deleteToCart(map);
+	    }*/
+	    return "redirect:/cartNormal";
 	}
 }
