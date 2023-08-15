@@ -2,19 +2,25 @@ package com.mycompany.postella.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Users;
+import com.mycompany.postella.service.DeliverAddressService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
 public class OderNPayController {
+	
+	@Autowired
+	DeliverAddressService daService;
 	
 	@RequestMapping("/orderNpay")
 	public String orderNPayContent(@RequestParam(name="quantity", required=false) String quantity, @RequestParam(name="prdNo", required=false) String prdNo, Model model, HttpSession session) {
@@ -31,10 +37,18 @@ public class OderNPayController {
 	}
 	
 	@GetMapping("/editAddress")
-    public String editAddress(Model model) {
-        
-        return "orderNpay/editAddress"; 
-    }
+	public String editAddress(Model model) {
+		
+		return "orderNpay/editAddress"; 
+	}
+	
+	@PostMapping("/editAddress/addAddress")
+	public String addAddressBook(int us_no) {
+		daService.getAddressList(us_no);
+
+		return "redirect:/orderNpay/addressBook";
+	}
+	
 	
 	@GetMapping("/addAddress")
     public String addAddress(Model model) {
@@ -42,10 +56,10 @@ public class OderNPayController {
         return "orderNpay/addAddress"; 
     }
 	
-	@GetMapping("/addressRequest")
+	@GetMapping("/deliveryRequest")
     public String addressRequest(Model model) {
         
-        return "orderNpay/addressRequest"; 
+        return "orderNpay/deliveryRequest"; 
     }
 	
 }

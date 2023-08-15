@@ -17,8 +17,15 @@
 		<script src="addressRequest.js"></script>
 		<script>
 		 function setRequestText(){
-			window.opener.document.getElementById("delivery-request-spot").innerHTML = $("input[name='select']:checked").val();
-        	window.close();
+			 parentPage = window.opener.location.href;
+			 if(parentPage.includes('orderNpay')){
+				 window.opener.document.getElementById("delivery-request-spot").innerHTML = $("input[name='select']:checked").val();
+				 window.close();
+			 } else if(parentPage.includes('addAddress')) {
+				 window.opener.document.getElementById("addAddress-request").innerHTML = $("input[name='select']:checked").val();
+				 window.close();
+			 }
+			 
         }
 		</script>
 		

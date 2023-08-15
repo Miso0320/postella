@@ -18,8 +18,12 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/oderNpay.css">
 	<script src="${pageContext.request.contextPath}/resources/js/oderNpay.js"></script>
 	<script>
-		function addressRequestOpen() {
-			childrenWindows = window.open('addressRequest', '_blank', 'width=518, height=666, left=200, top=200');
+		function deliveryRequestOpen() {
+			delReqChildWindow = window.open('deliveryRequest', '_blank', 'width=518, height=666, left=200, top=200');
+			delReqChildWindow.dataFromParent = "orderNpay";
+		}
+		function addAddressClose() {
+			delReqChildWindow.close();
 		}
 	</script>
 </head>
@@ -126,7 +130,7 @@
 					        </th>
 					        <td class="delivery-address__td">
 					            <span class="delivery-request-spot" id="delivery-request-spot">문 앞</span>
-					            <button class="delivery-request-message__popup-list-button" type="button" onclick="addressRequestOpen()">변경</button>
+					            <button class="delivery-request-message__popup-list-button" type="button" onclick="deliveryRequestOpen()">변경</button>
 					        </td>
 					    </tr>
 			        </tbody>

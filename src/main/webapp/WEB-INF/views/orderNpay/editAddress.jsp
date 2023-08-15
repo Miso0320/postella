@@ -12,7 +12,16 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script>
+   function openAddAddressPage() {
+   	addAdrChild = window.open('addAddress', '_blank', 'width=518, height=666, left=200, top=200');
+   	addAdrChild.dataFromParent = "editAddress";
+   }
+   
+   function addAddressClose() {
+	addAdrChild.close();
+   }
+</script>
 <style>
 .content-head {
 	margin: 0;
@@ -208,7 +217,7 @@
 					</div>
 				</div>
 				<div class="addressbook__button-fixer">
-					<button type="submit" class="addressbook__button--new _addressBookFormSubmit" onclick="window.open('addAddress', '_blank', 'width=518, height=666, left=200, top=200')">
+					<button type="submit" class="addressbook__button--new _addressBookFormSubmit" onclick="openAddAddressPage()">
 						<i class="addressbook__icon--plus"></i> 
 						<span class="addressbook__text"> 배송지 추가 </span>
 					</button>

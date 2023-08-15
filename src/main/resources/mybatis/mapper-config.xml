@@ -17,5 +17,6 @@
         <typeAlias alias="Qna" type="com.mycompany.postella.dto.Qna"/>
         <typeAlias alias="Cart" type="com.mycompany.postella.dto.Cart"/>
         <typeAlias alias="CodeTb" type="com.mycompany.postella.dto.CodeTb"/>
+        <typeAlias alias="DeliverAddress" type="com.mycompany.postella.dto.DeliverAddress"/>
 	</typeAliases>
 </configuration>
