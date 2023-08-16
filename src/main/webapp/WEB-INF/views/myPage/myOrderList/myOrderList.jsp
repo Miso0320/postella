@@ -190,10 +190,28 @@
 				    </c:forEach>
   						
 				    <!-- 목록 버튼 -->
-				    <div class="list_btn_wrap">
-				        <button>< 이전</button>
-				        <button>다음 ></button>
-				    </div>
+				    <div>
+					  <ul class="pagination list_btn_wrap">
+					    <li class="page-item">
+					      <a class="page-link" href="myOrderList?pageNo=1&keyword=${param.keyword}&requestYear=${param.requestYear}">&laquo;</a>
+					    </li>
+					    <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+					    	<c:if test="${pager.pageNo != i}">
+						    	<li class="page-item">
+							      <a class="page-link" href="myOrderList?pageNo=${i}&keyword=${param.keyword}&requestYear=${param.requestYear}">${i}</a>
+							    </li>
+					    	</c:if>
+					    	<c:if test="${pager.pageNo == i}">
+						    	<li class="page-item active">
+							      <a class="page-link" href="myOrderList?pageNo=${i}&keyword=${param.keyword}&requestYear=${param.requestYear}">${i}</a>
+							    </li>
+					    	</c:if>
+					    </c:forEach>
+					    <li class="page-item">
+					      <a class="page-link" href="myOrderList?pageNo=${pager.totalPageNo}&keyword=${param.keyword}&requestYear=${param.requestYear}">&raquo;</a>
+					    </li>
+					  </ul>
+					</div>
 				</div>
 				
 				<!-- 배송상품 주문 안내 -->

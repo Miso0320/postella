@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Orders;
-import com.mycompany.postella.interceptor.Login;
-import com.mycompany.postella.service.CartService;
+import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.MyPageService;
 
@@ -34,10 +33,6 @@ public class MypageController {
 	
 	@Resource
 	private ImageService imageService;
-	
-	@Resource
-	private CartService cartService;
-	
 	
 	/**
 	 * 
@@ -61,6 +56,8 @@ public class MypageController {
 			String keyword,
 			@RequestParam(name = "requestYear", required = false)
 			String requestYear,
+			@RequestParam(name="pageNo", required=false)
+			String pageNo,
 			Model model ) throws Exception {
 		
 		// 주문목록 전체 리스트 가져오기
@@ -121,7 +118,19 @@ public class MypageController {
             map.put("requestYear", requestYear);
             
         }
+        
+        // 페이징 객체 생성
+        if(pageNo == null) {
+        	pageNo = "1";
+        }
+        
+        int intpageNo = Integer.parseInt(pageNo);
+        int totalOrderNum = myPageService.getTotalOrderNum(map);
+        
+        Pager pager = new Pager(6, 10, totalOrderNum, intpageNo);
+        map.put("pager", pager);
 		
+        // 주문목록 가져오기
 		List<Orders> orders = myPageService.getOrderList(map);
 		
 		// 상품 이미지 가져오기
@@ -134,6 +143,9 @@ public class MypageController {
 		}
 		
 		model.addAttribute("orders", orders);
+		model.addAttribute("pager", pager);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("requestYear", requestYear);
 		
 		return "myPage/myOrderList/myOrderList";
 	}
