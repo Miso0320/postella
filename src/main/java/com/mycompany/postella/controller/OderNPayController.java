@@ -111,7 +111,7 @@ public class OderNPayController {
 	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
 	    int us_no = user.getUs_no();
 	    
-	    //insert를 위해 추가적인 속성 넣어주기
+	    //insert를 위해 추가적인 속성 넣어주기!
 	    deliverAddress.setUs_no(us_no);
 	    deliverAddress.setDa_type("C");
 	    
