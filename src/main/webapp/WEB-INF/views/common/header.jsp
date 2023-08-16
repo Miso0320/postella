@@ -65,7 +65,10 @@
 		      		<div class="header_category">
 		      			<ul>
 			      			<li class="header_dropdown_list">
-			      				<img class="header_category_img" src="${pageContext.request.contextPath}/resources/img/header/category2.png" alt="카테고리">
+			      				<div class="category_img_container">
+			      					<img class="header_category_img" src="${pageContext.request.contextPath}/resources/img/header/category.png" alt="카테고리">
+			      				</div>
+			      				<div class="header_every_a_font">카테고리</div>
 			      				<ul class="header_enter">
 			      					<li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard1.png" alt="포토엽서">포토엽서</a></li>
 			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard2.png" alt="디자인패턴엽서">디자인패턴엽서</a></li>
@@ -77,7 +80,7 @@
 		      		</div>
 		      		
       				<!-- 로고 -->
-      				<div class="header_title">
+      				<div class="header_title header_every_a_font">
       					<h1>
 	      					<a href="productGroup"><img class="header_logo" src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고"></a>
 	      				</h1>
