@@ -18,5 +18,4 @@ public interface CartDao {
 	public List<Cart> selectCartByUsNo(int us_no);		//장바구니 상품리스트
 	public List<Image> selectCartImg();					//장바구니 상품이미지
 	public int deleteCart(Map<String, Object> map);		//장바구니삭제
-	public void deleteCart2(List<Integer> prd_no);				//장바구니 선택삭제
 }

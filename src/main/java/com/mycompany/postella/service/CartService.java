@@ -14,5 +14,4 @@ public interface CartService {
 	public List<Cart> getProductCart(int us_no);
 	public List<Image> getImageCart();
 	public void deleteToCart(Map<String, Object> map);
-	public void deleteToCart2(List<Integer> prd_no);
 }

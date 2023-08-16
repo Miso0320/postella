@@ -13,7 +13,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_cyborg.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_lumen.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartNormal.css">
 		<script src="${pageContext.request.contextPath}/resources/js/cartNormal.js"></script>
@@ -84,7 +84,7 @@
 						<label>
 							<input title="모든 상품을 결제상품으로 설정" type="checkbox" name="checkBoxSelectAll" class="checkBoxSelectAll" checked>
 							<span>전체선택</span>
-							<span class="cart-count-bottom">( <em id='result'>0</em> / <em id='result2'></em> )</span>
+							<span class="cart-count-bottom">( <em id='result'>0</em> / <em id='result2'>0</em> )</span>
 							<span>
 								<button class="delete btn btn-secondary btn-sm" type="button" onclick="deleteChecked()">선택삭제</button>
 								<%-- <a href="deleteCart?prd_no=${item.prd_no}&us_no=${item.us_no}" class="btn btn-primary" onclick="deleteChecked()">선택삭제</a> --%>

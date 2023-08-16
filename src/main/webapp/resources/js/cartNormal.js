@@ -13,30 +13,69 @@ function init() {
 		$("#selectBtn").val("${param.crt_qty}").attr("selected","selected");
 	});
 	
-	//구매버튼
+	/*//구매버튼
 	goPayment = document.getElementById("goPayment");
 	
 	goPayment.addEventLisener("click", function() {
 		if (isLoggedIn()) {
 		}
-		
+	});*/
+	
+	//crt_qty update
+	
+	$(document).on("change", ".prod-quantity-form", function() {
+	    var selectedValue = $(this).val();
+	    var prd_no = $(this).closest('.cart-product-contents').find('.product-checkBox').val();
+	    console.log("prd_no: " + prd_no);
+	    console.log("selectedValue: " + selectedValue);
+	    
+	    $.ajax({
+	        url: "updateCart", // 업데이트 요청을 처리할 URL을 적절히 지정
+	        method: "POST",
+	        data: {
+	            prd_no: prd_no,
+	            selectedValue: selectedValue
+	        },
+	        success: function(response) {
+	            console.log("업데이트 성공:", response);
+	        },
+	        error: function(error) {
+	            console.log("에러 발생:", error);
+	        }
+	    });
 	});
+		/*var prd_no = $(".product-checkBox").val();
+        
+        // 서버로 선택된 값과 사용자 정보를 전달하여 업데이트 요청
+        $.ajax({
+            url: "updateCart",
+            method: "POST",
+            data: {
+                prd_no: prd_no,
+                selectedValue: selectedValue
+            },
+            success: function(response) {
+                console.log("업데이트 성공:", response);
+            },
+            error: function(error) {
+            	console.log("에러 발생:", error);
+            }
+        });*/
 }
-
 
 //"checkBoxSelectAll" 클래스를 가진 요소가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
 function checkAll() {
 	   if($(event.target).is(':checked')) {   				 //전체선택 박스가 checked되면
-	      $("input[name=checkBox]").prop("checked", true);   //체크박스 전체선택 둘다 체크
-	      $(".checkBoxSelectAll").prop("checked", true);
+	      $("input[name=checkBox]").prop("checked", true);   //checkBox라는 이름을 가진 체크박스는 checked된다
+	      $(".checkBoxSelectAll").prop("checked", true);	 //checkBoxSelectAll 체크박스도 checked됨
 	   } else {
-	      $("input[name=checkBox]").prop("checked", false);  //체크박스 전체선택 둘다 체크풀림
-	      $(".checkBoxSelectAll").prop("checked", false);
+	      $("input[name=checkBox]").prop("checked", false);  //checkBox라는 이름의 checked는 풀림
+	      $(".checkBoxSelectAll").prop("checked", false);	 //checkBoxSelectAll 체크박스 checked 풀림
 	   }	   
 	   totalPrice();
 	}
 
-//체크박스 갯수 세기, 전체선택체크
+//체크박스 갯수 세기, checkBox가 checked이면 chksChecked가 1씩 증가
 function checkCheck() {
 	var chks = document.getElementsByName("checkBox");
     var chksChecked = 0;
@@ -48,9 +87,8 @@ function checkCheck() {
           chksChecked++;
        }
     }
-
-    //체크된 체크박스 갯수가 chks.length길이랑 같으면 전체선택체크  아니면 체크안됨
-    if(chks.length == chksChecked){
+    //체크된 체크박스 갯수(chksChecked)가 chks.length길이랑 같으면 전체선택체크  아니면 체크안됨
+    if(chksChecked === chks.length){
        $(".checkBoxSelectAll").prop("checked", true);
     }else{
        $(".checkBoxSelectAll").prop("checked",false);
@@ -85,42 +123,6 @@ function tableCount(rowCnt){
 	result2.innerText = rowCnt;
 }
 
-//체크된 상품 삭제
-function deleteChecked2() {
-	
-	if(($("input[name=checkBox]:checked")).length === 0) {
-		alert("삭제할 상품을 선택해주세요.");
-	} else {
-		if (confirm("선택한 상품을 삭제하시겠습니까?") == true){ 
-			var checkedProducts = []; // 선택된 상품의 prd_no 값을 저장할 배열
-
-		    // 체크된 체크박스들을 반복하며 prd_no 값을 추출해서 배열에 저장
-		    $(".product-checkBox:checked").each(function() {
-		    	let inputValue = $(this).val();
-		    	checkedProducts.push(inputValue);
-		    	console.log("넣은 밸류 : "+ inputValue );
-		    });
-		    
-		    location.href="deleteProducts?prd_no="+encodeURIComponent(checkedProducts.join(","));
-			
-			   //true는 확인버튼을 눌렀을 때 코드 작성
-			   console.log("완료되었습니다.");
-			 }else{
-			   // false는 취소버튼을 눌렀을 때, 취소됨
-			   return;
-			 }
-	}
-	
-	$("input[name=checkBox]:checked").each(function(c,cVal){
-		let a = cVal.parentElement.parentElement;
-		$(a).remove();
-		$(".checkBoxSelectAll").prop("checked",false);
-	});
-
-// 남은 상품들 가격 다시 계산
-	sum();
-}
-
 //테이블 삭제
 function delete_table() {
 	
@@ -131,7 +133,6 @@ function delete_table() {
 	//테이블 삭제되면 다시 상품가격계산
 	sum();
 	bye();
-
 }
 
 function cart() {	
@@ -241,7 +242,7 @@ function cart() {
 			  $(".btn_delete").click(delete_table);
 			  $(".prod-quantity-form").click(sum);
 			  sum();
-			  $(".product-checkbox").on("change", CheckboxChange);
+			  //$(".product-checkbox").on("change", CheckboxChange);
 			}	  
 		},
 		error: function(error) {
@@ -336,9 +337,43 @@ function deleteChecked() {
     $(".product-checkBox:checked").each(function() {
     	let inputValue = $(this).val();
     	checkedProducts.push(inputValue);
-    	console.log("넣은 밸류 : "+ inputValue );
     });
     
-    location.href="deleteProducts?prd_no="+encodeURIComponent(checkedProducts.join(","));
+    location.href="deleteCheckCart?prd_no="+encodeURIComponent(checkedProducts.join(","));
 }
 
+//체크된 상품 삭제
+function deleteChecked2() {
+	
+	if(($("input[name=checkBox]:checked")).length === 0) {
+		alert("삭제할 상품을 선택해주세요.");
+	} else {
+		if (confirm("선택한 상품을 삭제하시겠습니까?") == true){ 
+			var checkedProducts = []; // 선택된 상품의 prd_no 값을 저장할 배열
+
+		    // 체크된 체크박스들을 반복하며 prd_no 값을 추출해서 배열에 저장
+		    $(".product-checkBox:checked").each(function() {
+		    	let inputValue = $(this).val();
+		    	checkedProducts.push(inputValue);
+		    	console.log("넣은 밸류 : "+ inputValue );
+		    });
+		    
+		    location.href="deleteProducts?prd_no="+encodeURIComponent(checkedProducts.join(","));
+			
+			   //true는 확인버튼을 눌렀을 때 코드 작성
+			   console.log("완료되었습니다.");
+			 }else{
+			   // false는 취소버튼을 눌렀을 때, 취소됨
+			   return;
+			 }
+	}
+	
+	$("input[name=checkBox]:checked").each(function(c,cVal){
+		let a = cVal.parentElement.parentElement;
+		$(a).remove();
+		$(".checkBoxSelectAll").prop("checked",false);
+	});
+
+// 남은 상품들 가격 다시 계산
+	sum();
+}
