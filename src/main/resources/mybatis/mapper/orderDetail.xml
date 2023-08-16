@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.OrderDetailDao">
+	
+	<insert id="insertOrdersDetail" parameterType="OrderDetail">
+		insert into order_detail (od_detail_no, prd_no, od_detail_qty, od_no, od_detail_price)
+		VALUES (od_detail_no_seq.nextval, #{prd_no}, #{od_detail_qty}, #{od_no, jdbcType=INTEGER}, #{od_detail_price, jdbcType=INTEGER})
+	</insert>
+	
+</mapper>

@@ -13,12 +13,23 @@ function init() {
 	 flag = "none";
 	 cashChecked = 0;
 	 isFirst = 1;
-//	 cashRadio1 = 1;
-//	 cashRadio2 = 0;
 	 
 	 //소득공제, 지출증빙 라디오버튼
 	 cashRadio1 = document.getElementById("cashRadio1");
 	 cashRadio2 = document.getElementById("cashRadio2");
+	 
+	 $("#paymentBtn").click(function() {
+	        $.ajax({
+	            type: "POST",
+	            url: "insertOrder", 
+	            success: function(response) {
+	                console.log("주문 성공");
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("주문 실패", error);
+	            }
+	        });
+	 });
 }
 
 //휴대폰 번호 검사
