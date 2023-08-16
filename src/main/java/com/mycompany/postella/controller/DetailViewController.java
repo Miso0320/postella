@@ -374,7 +374,7 @@ public class DetailViewController {
 	    return result;
 	}
 	
-	//장바구니 담기!
+	//장바구니 담기
 	@PostMapping("/detailView/cartAdd")
 	@Login
 	@ResponseBody

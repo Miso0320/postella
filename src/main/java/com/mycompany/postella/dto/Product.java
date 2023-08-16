@@ -38,4 +38,7 @@ public class Product {
 	
 	// 상품 리스트 검색(헤더)
 	private String keyword;	//검색어
+	
+	//상품 수량
+	private int quantity;
 }

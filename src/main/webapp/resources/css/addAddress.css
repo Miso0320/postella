@@ -3947,3 +3947,15 @@ button[disabled] .identity__sprite--minus{
 .titled-text-field+.preference-sub-dawn__length-counter{
     border-left:0
 }
+
+#detailAddress {
+	border-top: 1px solid #ccc;
+}
+
+#requestBox {
+	height: 44px;
+}
+
+#requestIcon {
+	height: 44px;
+}

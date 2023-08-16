@@ -78,7 +78,7 @@ function init() {
 		    const quantityValue = document.querySelector(".prod-quantity-input").value;
 		    const prdNo = $(".selectedOName").data("prdno");
 	
-		    window.location.href = "orderNpay?quantity=" + encodeURIComponent(quantityValue) + "&prdNo=" + encodeURIComponent(prdNo);
+		    window.location.href = "orderFromDetailView?quantity=" + encodeURIComponent(quantityValue) + "&prdNo=" + encodeURIComponent(prdNo);
 	   }
 	});
    

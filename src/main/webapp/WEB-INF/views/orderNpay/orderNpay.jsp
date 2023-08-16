@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="/html_css_javascript/favicon.ico" type="image/x-icon">
-	<title>Insert title here</title>
+	<title>주문/결제</title>
 	
 	<!-- Bootstrap을 사용하기 위한 외부 라이브러리 가져오기 -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -64,7 +64,7 @@
 							    	<div class="customer-phone__root_upper">
 											<form>
 												<div>
-													<input type="text" class="customer-phone__input-tel " value="${user.us_tel}" />
+													<input type="text" class="customer-phone__input-tel " oninput="oninputPhone(this)" maxlength="14" value="${user.us_tel}" />
 													<button type="submit" class="edit-btn">수정</button>
 													<span class="customer-phone__tel-desc">쿠폰/티켓정보는 구매한
 														분의 번호로 전송됩니다.</span>
@@ -103,33 +103,33 @@
      		<div data-component="deliveryAddress">    
      			<h2 class="delivery-address__caption-header">
 				        받는사람정보
-				    <button class="delivery-address__popup-list-button" type="button" onclick="window.open('editAddress', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
+				    <button class="delivery-address__popup-list-button" type="button" onclick="window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
 				</h2>
 			    <table class="delivery-address">
 			        <tbody>
 				        <tr>
 				            <th class="delivery-address__th">이름</th>
 				            <td class="delivery-address__td">
-				                <span class="delivery-address__name">퀸미소</span>
-				                <span class="delivery-address__type-label">기본배송지</span>
+				                <span class="delivery-address__name">${basicDa.da_name}</span>
+				                <c:if test="${basicDa.da_main} == 'Y'">
+				                	<span class="delivery-address__type-label">기본배송지</span>
+				                </c:if>
 				            </td>
 				        </tr>
 				        <tr>
 				            <th class="delivery-address__th">배송주소</th>
-				            <td class="delivery-address__td">
-					                    서울특별시 송파구 가락동 중대로 135
-				            </td>
+				            <td class="delivery-address__td">${basicDa.da_adr} ${basicDa.da_detail_adr}</td>
 				        </tr>
 				        <tr>
 				            <th class="delivery-address__th delivery-address__th--no-line">연락처</th>
-				            <td class="delivery-address__td delivery-address__td--no-line">010-1988-0707</td>
+				            <td class="delivery-address__td delivery-address__td--no-line">${basicDa.da_tel}</td>
 				        </tr>
 				        <tr>
 					        <th class="delivery-address__th"  id="delivery-request">
 					            <span>배송 요청사항</span>
 					        </th>
 					        <td class="delivery-address__td">
-					            <span class="delivery-request-spot" id="delivery-request-spot">문 앞</span>
+					            <span class="delivery-request-spot" id="delivery-request-spot">${basicDa.da_req_type}</span>
 					            <button class="delivery-request-message__popup-list-button" type="button" onclick="deliveryRequestOpen()">변경</button>
 					        </td>
 					    </tr>
@@ -141,26 +141,25 @@
      	<div class="oder-delivery">
      		<div class="bundle-info__retail">
 				<div data-bundle-info__simple-warning-message-box__wrapper=""></div>
-		        <div class="bundle-info__pdd-group-title">배송 1건 중 1</div>
+		        <div class="bundle-info__pdd-group-title">배송 총 건</div>
 		        <div class="bundle-info__pdd-group-box">
 		              <div class="bundle-info__expected-delivery-date-box">
 		                  <span class="bundle-info__expected-delivery-info">
-	                          <strong data-bundle-info__cdm-pdd="">내일(토) 7/8</strong>
+	                          <strong class="deliverDayNum">${deliverDay}</strong>
 	                          <span class="bundle-info__guaranty">도착 보장</span>
 		                  </span>
 		              </div>
-		              <div class="bundle-info__item-list ">
-	                   	<div class="bundle-info__vendor-item-box ">
-	                        <div class="bundle-info__vendor-item">
-	                            <p>쥬시앤폴 홀로그램 엽서 [01~08] 문구편지카드, 01.CheerUpCherry</p>
-	                        </div>
-	                        <div class="bundle-info__item-description">${quantity}<span>무료배송</span>
-	                        </div>
-	                        <div class="bundle-info__delivery-service">
-	                            <img class="bundle-info__icon" src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" height="16" alt="로켓배송 상품">
-	                        </div>
-	                    </div>
-		            </div>
+			              <div class="bundle-info__item-list ">
+				              <c:forEach var="product" items="${products}">
+			                   	<div class="bundle-info__vendor-item-box ">
+			                        <div class="bundle-info__vendor-item">
+			                            <p>${product.pg_name} - </p>
+			                            <p class="option-name-bold">${product.prd_name}</p>
+			                        </div>
+			                        <div class="bundle-info__item-description">수량 ${product.quantity}개</div>
+			                    </div>
+				            </c:forEach>
+			            </div>
 		        </div>
 			</div>
      	</div>

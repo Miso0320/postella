@@ -5,11 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="/html_css_javascript/favicon.ico" type="image/x-icon">
-		<title>Insert title here</title>
-		
-		
-		
-		
+		<title>배송 요청사항</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -19,10 +15,13 @@
 		 function setRequestText(){
 			 parentPage = window.opener.location.href;
 			 if(parentPage.includes('orderNpay')){
-				 window.opener.document.getElementById("delivery-request-spot").innerHTML = $("input[name='select']:checked").val();
+				 window.opener.document.getElementById("delivery-request-spot").value = $("input[name='select']:checked").val();
 				 window.close();
 			 } else if(parentPage.includes('addAddress')) {
-				 window.opener.document.getElementById("addAddress-request").innerHTML = $("input[name='select']:checked").val();
+				 window.opener.document.getElementById("addAddress-request").value = $("input[name='select']:checked").val();
+				 window.close();
+			 } else if(parentPage.includes('editAddress')) {
+				 window.opener.document.getElementById("editRequest").value = $("input[name='select']:checked").val();
 				 window.close();
 			 }
 			 
@@ -138,31 +137,25 @@
 			<div class="selec">
 				<div class="on">
 					<label> 
-						<input type="radio" id="door" name="select" value="문 앞" checked="checked" /> 문 앞
+						<input type="radio" id="door" name="select" value="DOR" checked="checked" /> 문 앞
 					</label>
 				</div>
 				<div class="on">
 					<label> 
-						<input type="radio" id="ftof" name="select" value="직접 수령" /> 직접 받고 부재 시 문 앞
+						<input type="radio" id="ftof" name="select" value="PER" /> 직접 받고 부재 시 문 앞
 					</label>
 				</div>
 				<div class="on">
 					<label> 
-						<input type="radio" id="securityOffice" name="select" value="경비실" /> 경비실
+						<input type="radio" id="securityOffice" name="select" value="SEC" /> 경비실
 					</label>
 				</div>
 				<div class="on">
 					<label> 
-						<input type="radio" id="delBox" name="select" value="택배함" /> 택배함
+						<input type="radio" id="delBox" name="select" value="BOX" /> 택배함
 					</label>
 				</div>
 				
-				<div class="on">
-					<label> 
-						<input type="radio" id="etc" name="select" value="기타사항" /> 기타사항
-					</label>
-				</div>
-	
 			<div><button id="agreeSave" onclick="setRequestText()">동의하고 저장하기</button></div>
 		</div>
 	</body>

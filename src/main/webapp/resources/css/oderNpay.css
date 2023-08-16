@@ -256,9 +256,12 @@
 
 .bundle-info__expected-delivery-info {
     line-height: 26px;
-    font-size: 12px;
     color: #00891a;
     font-size: 16px!important;
+}
+
+.option-name-bold {
+	font-weight: bold;
 }
 
 .bundle-info__item-list {
@@ -267,6 +270,10 @@
     margin-left: 0!important;
     margin-right: 0!important;
     padding: 0 15px 0 20px;
+}
+
+.deliverDayNum {
+	vertical-align: middle;
 }
 
 .bundle-info__vendor-item {
@@ -285,6 +292,7 @@
     padding: 0;
     border: 0;
     color: #888 !important;
+    font-size: 18px !important;
 }
 
 .bundle-info__delivery-service {

@@ -142,25 +142,8 @@ function checked() {
 	}
 }
 
-/*//소득공제, 지출증빙 토글
-function selectCash1() {
-	console.log(cashRadio1 == 1);
-	if(cashRadio1 == 1) {
-		cashRadio1.style.backgroundPosition = '-12px -41px;';
-		cashRadio1 = 0;
-	} else {
-		cashRadio1.style.backgroundPosition = '-47px -41px';
-		cashRadio1 = 1;
-	}
+function oninputPhone(target) {
+    target.value = target.value
+        .replace(/[^0-9]/g, '')
+        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
 }
-function selectCash2() {
-	console.log(cashRadio2 == 0);
-	if(cashRadio2 == 0) {
-		cashRadio2.style.backgroundPosition = '-47px -41px';
-		cashRadio2 = 0;
-	} else {
-		cashRadio2.style.backgroundPosition = '-12px -41px;';
-		cashRadio2 = 1;
-	}
-}
-*/
