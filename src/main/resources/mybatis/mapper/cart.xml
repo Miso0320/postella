@@ -41,10 +41,4 @@
  		and us_no=#{us_no}
 	</delete>
 	
-	<delete id="deleteCart2" parameterType="int">
-		DELETE from cart
- 		where prd_no=#{prd_no}
- 		and us_no=#{us_no}
-	</delete>
-	
 </mapper>

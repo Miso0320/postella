@@ -13,7 +13,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_cyborg.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_lumen.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartNormal.css">
 		<script src="${pageContext.request.contextPath}/resources/js/cartNormal.js"></script>
@@ -32,7 +32,6 @@
 			<div class="cart-contents">
 				<div class="cart-part d-flex">
 					<span class="normal-cart d-flex justify-content-center">구매목록</span>
-					<a class="subscribe-cart d-flex justify-content-center">정기배송</a>
 				</div>
 				<div class="cart-part table" id="cart-chart">
 					<table id="myTable">
@@ -51,7 +50,7 @@
 						  <tr>
 						    <td colspan="5" class="cart-product-title">
 						    	<span style="font-size:18px; font-weight:bold;">배송 상품</span>
-						    	<span><span>무료배송</span></span>
+						    	<span><span>(50,000원 이상 구매 시 무료배송)</span></span>
 						    </td>
 						  </tr>
 						</thead>					
@@ -84,7 +83,7 @@
 						<label>
 							<input title="모든 상품을 결제상품으로 설정" type="checkbox" name="checkBoxSelectAll" class="checkBoxSelectAll" checked>
 							<span>전체선택</span>
-							<span class="cart-count-bottom">( <em id='result'>0</em> / <em id='result2'></em> )</span>
+							<span class="cart-count-bottom">( <em id='result'>0</em> / <em id='result2'>0</em> )</span>
 							<span>
 								<button class="delete btn btn-secondary btn-sm" type="button" onclick="deleteChecked()">선택삭제</button>
 								<%-- <a href="deleteCart?prd_no=${item.prd_no}&us_no=${item.us_no}" class="btn btn-primary" onclick="deleteChecked()">선택삭제</a> --%>

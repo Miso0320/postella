@@ -1,6 +1,5 @@
 package com.mycompany.postella.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,5 +25,13 @@ public class MyPageServiceImpl implements MyPageService{
 	public void removeOrder(int od_detail_no) {
 		ordersDao.deleteOrder(od_detail_no);
 	}
+
+	@Override
+	public int getTotalOrderNum(Map<String, Object> map) {
+		int totalOrderNum = ordersDao.orderListCnt(map);
+		return totalOrderNum;
+	}
+	
+	
 	
 }

@@ -51,7 +51,7 @@
 
 .normal-cart {
 	float: left;
-    width: 50%;
+    width: 100%;
     border-top: 2px solid #0073e9;
     border-right: 2px solid #0073e9;
     border-bottom: 0;
@@ -61,6 +61,7 @@
     background: #fff;
     font-weight: 700;
     color: #0073e9;
+    font-size: 18px;
 }
 
 .subscribe-cart {

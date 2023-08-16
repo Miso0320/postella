@@ -108,17 +108,17 @@
 				        <c:set var="currentDate" value="${order.od_date}" />
 				        <c:set var="prevDate" value="${orders[prevIndex].od_date}" />
 				        
-				        <c:if test="${status.index > 0 && currentDate != prevDate}">
+				        <c:if test="${currentDate != prevDate}">
 				            <div class="order_content_date">
 				                <!-- 날짜 분류 -->
 				                <div class="order_date_grp">
 				                    <div class="order_date">
 				                        <fmt:formatDate value="${order.od_date}" pattern="yyyy.MM.dd"/> 주문
 				                    </div>
-				                    <div class="order_date_detail">
+				                    <%-- <div class="order_date_detail">
 				                        <span>주문 상세보기</span>
 				                        <img alt="주문상세보기" src="${pageContext.request.contextPath}/resources/img/myOrderList/righr_arrow.png">
-				                    </div>
+				                    </div> --%>
 				                </div>
 				                
 				                <!-- 주문내역 -->
@@ -147,9 +147,9 @@
 				                                                <span>${orderList.od_detail_price}원</span>
 				                                                <span>${orderList.od_detail_qty} 개</span>
 				                                            </div>
-				                                            <div>
+				                                            <!-- <div>
 				                                                <button class="cart_btn" onclick="javascript:addCart()">장바구니 담기</button>
-				                                            </div>
+				                                            </div> -->
 				                                        </div>
 				                                    </div>
 				                                </div>
@@ -161,17 +161,17 @@
 				                                    <a href="#" class="btn btn-outline-primary btn_size">리뷰 작성하기</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size" data-toggle="modal" data-target="#deleteCk" data-od-detail-no="${orderList.od_detail_no}">주문내역 삭제</a>
 				                                	<!-- 모달 -->
-													<div class="modal modal_txt" id="deleteCk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+													<div class="modal" id="deleteCk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													  <div class="modal-dialog" role="document">
 													    <div class="modal-content">
 													      <div class="modal-header">
-													        <h5 class="modal-title modal_txt">주문내역 삭제</h5>
+													        <h5 class="modal-title">주문내역 삭제</h5>
 													        <a class="close" data-dismiss="modal" aria-label="Close">
 													          <span aria-hidden="true">&times;</span>
 													        </a>
 													      </div>
 													      <div class="modal-body">
-													        <p>정말 삭제하시겠습니까?</p>
+													        <p class="modal_body_txt">정말 삭제하시겠습니까?</p>
 													      </div>
 													      <div class="modal-footer">
 													        <a href="#" class="btn btn-primary modal_txt">삭제</a>
@@ -190,10 +190,28 @@
 				    </c:forEach>
   						
 				    <!-- 목록 버튼 -->
-				    <div class="list_btn_wrap">
-				        <button>< 이전</button>
-				        <button>다음 ></button>
-				    </div>
+				    <div>
+					  <ul class="pagination list_btn_wrap">
+					    <li class="page-item">
+					      <a class="page-link" href="myOrderList?pageNo=1&keyword=${param.keyword}&requestYear=${param.requestYear}">&laquo;</a>
+					    </li>
+					    <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+					    	<c:if test="${pager.pageNo != i}">
+						    	<li class="page-item">
+							      <a class="page-link" href="myOrderList?pageNo=${i}&keyword=${param.keyword}&requestYear=${param.requestYear}">${i}</a>
+							    </li>
+					    	</c:if>
+					    	<c:if test="${pager.pageNo == i}">
+						    	<li class="page-item active">
+							      <a class="page-link" href="myOrderList?pageNo=${i}&keyword=${param.keyword}&requestYear=${param.requestYear}">${i}</a>
+							    </li>
+					    	</c:if>
+					    </c:forEach>
+					    <li class="page-item">
+					      <a class="page-link" href="myOrderList?pageNo=${pager.totalPageNo}&keyword=${param.keyword}&requestYear=${param.requestYear}">&raquo;</a>
+					    </li>
+					  </ul>
+					</div>
 				</div>
 				
 				<!-- 배송상품 주문 안내 -->

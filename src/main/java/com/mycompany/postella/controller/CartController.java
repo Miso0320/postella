@@ -77,15 +77,11 @@ public class CartController {
 	}
 	
 	//Cart상품 선택삭제
-	@RequestMapping("/deleteProducts")
+	@RequestMapping("/deleteCheckCart")
 	@Login
-	public String deleteProducts( @RequestParam(name = "prd_no", required = true) List<Integer> prd_no,  HttpSession session) {
-		Users users = (Users) session.getAttribute("userLogin");/*@RequestParam("prdNos") List<Long> prdNos@RequestParam(name = "us_no", required = true) int us_no*/
-		/*us_no = users.getUs_no();
-		log.info("실행됨?");
-		log.info("실행됨?" + prd_no);
-		log.info("실행됨?");*/
-		//67  89  90
+	public String deleteCheckCart( @RequestParam(name = "prd_no", required = true) List<Integer> prd_no,  HttpSession session) {
+		Users users = (Users) session.getAttribute("userLogin");
+
 		int userNo = users.getUs_no();
 		for(Integer productNo : prd_no) {
 			Map<String, Object> map = new HashMap<>();
@@ -94,11 +90,23 @@ public class CartController {
 			
 			cartService.deleteToCart(map);
 		}
-		
-	    /*for (Long cart : prdNos) {
-	    	 map.put("us_no", us_no);
-	        cartService.deleteToCart(map);
-	    }*/
+
 	    return "redirect:/cartNormal";
+	}
+	
+	//Cart 상품수량 변경 update
+	@RequestMapping("/updateCart")
+	@Login
+	public String updateCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam("selectedValue") Integer selectedValue, HttpSession session) {
+		Users users = (Users) session.getAttribute("userLogin");
+		
+		Cart cart = new Cart();
+	    cart.setUs_no(users.getUs_no());
+	    cart.setCrt_qty(selectedValue);
+	    cart.setPrd_no(prd_no);
+	    log.info("cart : " + cart);
+		cartService.updateCart(cart);
+		
+		return "redirect:/cartNormal";
 	}
 }

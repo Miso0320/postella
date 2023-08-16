@@ -52,10 +52,5 @@ public class CartServiceImpl implements CartService{
 	public void deleteToCart(Map<String, Object> map) {
 		cartDao.deleteCart(map);
 	}
-
-	@Override
-	public void deleteToCart2(List<Integer> prd_no) {
-		cartDao.deleteCart2(prd_no);
-	}
 	
 }
