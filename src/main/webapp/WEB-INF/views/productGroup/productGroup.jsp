@@ -6,74 +6,102 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script src="${pageContext.request.contextPath}/resources/js/productGroup.js"></script>
 
+<!-- 전체 상품목록 페이지 -->
 <c:if test="${searchResult}">
 	<div id="container">
 		<section class="productGroupSection">
+			<!-- 왼쪽 사이드 메뉴 -->
 			<aside>
-				<div>
-					<h1 style="font-size:15px; font-weight:bold;">카테고리</h1>
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						<button class="accordion" style= "cursor : pointer; font-weight:bolder;">엽서
-							<input id="arrow1" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png" width="12px" height="12px"/>
-						</button>
-						<div class="panel">
-							<c:forEach var="categoryList" items="${categoryList}">
-								<div>
-									<a href="productGroup?prd_category=${categoryList.code}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">${categoryList.codeval}</a>
-								</div>
-							</c:forEach>
-						</div>
-					</div>
-				</div> 
-				<div>
-					<h1 style="font-size:15px; font-weight:bold;">브랜드</h1>
-					<c:forEach var="brandList" items="${brandList}" varStatus="loop">
-						<div class="brand">
-							<a href="productGroup?prd_category=${param.prd_category}&brand=${brandList.code}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
-								${brandList.codeval}
-							</a>
-						</div>
-					</c:forEach>
-				</div>
-				<div>
-					<h1 style="font-size:15px; font-weight:bold;">상품상태</h1>
-					<c:forEach var="statusList" items="${statusList}" varStatus="loop">
-						<div class="state">
-							<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${statusList.code}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
-								${statusList.codeval}
-							</a>
-						</div>
-					</c:forEach>
-				</div>
-				<div>
-					<h1 style="font-size:15px; font-weight:bold;">카드/엽서 메시지</h1>
-					<c:forEach var="messageList" items="${messageList}" varStatus="loop">
-						<div class="message">
-							<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${messageList.code}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
-								${messageList.codeval}
-							</a>
-						</div>
-					</c:forEach>
-				</div>
-			</aside>	
-			<div class="article">
-				<div class="post" style="padding: 15px 0px;">
-					<h3>엽서</h3>
-				</div>
-				<div>
-					<div>
-						<ul id="list" class="list" style="white-space: nowrap;">
-							<div class="list2">
-								<li><a href="productGroup?kind=1&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">낮은가격순 | </a></li>
-								<li><a href="productGroup?kind=2&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">높은가격순 | </a></li>
-								<li><a href="productGroup?kind=3&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">최신순</a></li>
-							</div> 
-						</ul>
+				<!-- 카테고리 -->
+				<div class="left_side_menu_border">
+					<a class="accordion">
+						<h5 class="left_side_menu_title_font">카테고리</h5>
+						<input class="arrow_img" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png">
+					</a>
+					<div class="panel">
+						<c:forEach var="categoryList" items="${categoryList}">
+							<div class="side_menu_list">
+								<a href="productGroup?prd_category=${categoryList.code}&brand=${param.brand}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
+									${categoryList.codeval}
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
+				
+				<!-- 브랜드 -->
+				<div class="left_side_menu_border">
+					<a class="accordion">
+						<h5 class="left_side_menu_title_font">브랜드</h5>
+						<input class="arrow_img" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png">
+					</a>
+					<div class="panel">
+						<c:forEach var="brandList" items="${brandList}" varStatus="loop">
+							<div class="side_menu_list">
+								<a href="productGroup?prd_category=${param.prd_category}&brand=${brandList.code}&status=${param.status}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
+									${brandList.codeval}
+								</a>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+				
+				<!-- 상품상태 -->
+				<div class="left_side_menu_border">
+					<a class="accordion">
+						<h5 class="left_side_menu_title_font">상품상태</h5>
+						<input class="arrow_img" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png">
+					</a>
+					<div class="panel">
+						<c:forEach var="statusList" items="${statusList}" varStatus="loop">
+							<div class="side_menu_list">
+								<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${statusList.code}&message=${param.message}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
+									${statusList.codeval}
+								</a>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+
+				<!-- 메시지 -->
+				<div class="left_side_menu_border">
+					<a class="accordion">
+						<h5 class="left_side_menu_title_font">메시지</h5>
+						<input class="arrow_img" type="image" src="${pageContext.request.contextPath}/resources/img/productGroup/arrow-down.png">
+					</a>
+					<div class="panel">
+						<c:forEach var="messageList" items="${messageList}" varStatus="loop">
+							<div class="side_menu_list">
+								<a href="productGroup?prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${messageList.code}&kind=${param.kind}&keyword=${param.keyword}&pageNo=1">
+									${messageList.codeval}
+								</a>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</aside>
+			
+			<!-- 상품목록 본문 -->	
+			<div>
+				<div>
+					<ol class="breadcrumb order_by_list">
+					  <li class="breadcrumb-item">
+					  	<a href="productGroup?kind=1&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">낮은가격순</a>
+					  </li>
+					  <li class="breadcrumb-item">
+					  	<a href="productGroup?kind=2&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">높은가격순</a>
+					  </li>
+					  <li class="breadcrumb-item">
+					  	<a href="productGroup?kind=3&prd_category=${param.prd_category}&brand=${param.brand}&status=${param.status}&message=${param.message}&keyword=${param.keyword}">최신순</a>
+					  </li>
+					  <!-- <li class="breadcrumb-item active">Data</li> -->
+					</ol>
+				</div>
+				<!-- 상품목록 -->
 				<div class="item-list">
+					<!-- 개별 상품 -->
 					<c:forEach var="productGroup" items="${productGroups}">
-						<a href="detailView?pg_no=${productGroup.pg_no}" class="pproduct">
+						<a class="pproduct" href="detailView?pg_no=${productGroup.pg_no}">
 						<div>
 							<div><img class="productGroup" src="data:${productGroup.img_type};base64, ${productGroup.encodedFile}"></div>
 							<div class="productGroup-name">${productGroup.pg_name}</div>
@@ -89,6 +117,8 @@
 						</a>
 					</c:forEach>
 				</div>
+				
+				<!-- 페이징 -->
 				<div class="card-body">
 					<table class="table table-sm table-bordered">
 						<tr>

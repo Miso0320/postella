@@ -1,57 +1,21 @@
-
-/* label은 폼의 양식에 이름 붙이는 태그이다. 주요 속성은 for이다. label의 for의 값과 양식의 id의 값이 같으면 연결된다. label을 클릭하면, 연결된 양식에 입력할 수 있도록 하거나, 체크를 하거나, 체크를 해제한다.
-	 Hover란 이미지, 텍스트, 버튼 등에 마우스 포인터가 올라갔을 때 발동되는 일종의 전환효과를 말합니다 */
+@charset "UTF-8";
 
 * {
 	margin: 0px;
 	padding: 0px;
 }		
+
+/* 전체 상품목록 페이지 */
 #container{
 	display: flex;
 	flex-direction: column;
 	/* flex-wrap: wrap; */
 }
 
-#list{
-	display: flex;
-	flex-direction: row;
-	list-style: none;
-	background-color: #F2F2F2;
+#container aside{
+	font-size: 80%;
+	width: 220px;
 }
-
-.list:hover{
-	color:#0073e9;
-}
-
-#list>li{
-	display: inline;
-	background-color: #F2F2F2;
-	padding: 0px 10px 0px 0px;
-}
-
-#list>li>a:hover{
-	color:#0073e9;
-}
-
-#list>li>a{
-	color: #555555;
-	font-size: 12px;
-}
-
-#rk-icon1{
-	width: 40px;
-	height: 16px;
-}
-
-#rk-icon2{
-	width: 48px;
-	height: 12px;
-}
-
-#rk-icon3{
-	width: 48px;
-	height: 12px;
-}	
 
 #container a{
 	color: black;
@@ -67,34 +31,115 @@
 	text-decoration: none; 
 }
 
-.rocket1{
-	color: #111111;
+#container aside>div{
+	width: 180px;
+	font-family: "맑은고딕";
+	padding: 5px 0px;
 }
 
-.free-delivery:hover{
+.productGroupSection{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 0px 290px;
+}
+
+
+/* 왼쪽 사이드 메뉴 전체 */
+.left_side_menu_border {
+	border: 1px solid #F2F2F2;
+}
+
+/* 사이드메뉴 타이틀 */
+.left_side_menu_title_font {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 10px;
+}
+
+/* 아코디언메뉴 */
+.accordion {
+	display: flex;
+	background-color: white;
+	padding: 5px;
+	width: 179px;
+	text-align: left;
+	outline: none;
+	font-size: 12.8px;
+	transition: 0.4s;
+	cursor: pointer;
+	font-weight: bolder;
+}
+
+.accordion:hover {
+	color : #60b0ea;
+}
+
+.arrow_img {
+	transition : transform 1s;
+	width: 12px;
+	height: 12px;
+	margin: 15px 5px;
+}
+
+/* 아코디언 메뉴 열렸을 때 */
+.panel {
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+.side_menu_list {
+	margin: 15px;
+	font-size: 12px;
+}
+
+.side_menu_list:hover{
 	color:#0073e9;
 }
 
-.brand:hover{
+
+/* 상품정렬순 선택 */
+.order_by_list {
+	margin: 10px;
+	background-color: #f1f8fe;
+	font-size: 13px;
+}
+
+
+/* .order_by_list {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	background-color: #F2F2F2;
+	white-space: nowrap;
+}
+
+.order_by_list:hover{
 	color:#0073e9;
 }
 
-.state:hover{
+.order_by_list >li{
+	display: inline;
+	background-color: #F2F2F2;
+	padding: 0px 10px 0px 0px;
+}
+
+.order_by_list >li>a:hover{
 	color:#0073e9;
 }
 
-.message:hover{
-	color:#0073e9;
+.order_by_list >li>a{
+	color: #555555;
+	font-size: 12px;
 }
 
-.design:hover{
-	color:#0073e9;
+.inner_order_by_list {
+	display: flex;
 }
+ */
 
-.dimension:hover{
-	color:#0073e9;
-}
-
+/* 상품목록 */
 .item-list{
 	flex-wrap: wrap;
 	display: flex;
@@ -102,41 +147,20 @@
 	padding: 10px;
 }
 
-
-#container h3{
-	font-size: 20px;
-}
 .item-list a{
-	
 	width: 300px;
-	height: 496px;
-	
-}
-.pproduct {
-	padding: 10px;
-	border: 2px double #F2F2F2;
-}
-
-.pproduct:hover {
-	  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-	  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-	  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-	  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-	  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-	  transition:all .4s;
+	height: 430px;
 }
 
 .item-list .product .img .image{
 	width: 212px;
 	height: 212px;
 	padding: 25px;
-	
 }
 
 .item-list .product .text{
 	font-size: 11px;
 	font-family: "맑은고딕";
-
 }
 
 .item-list .product .product-price{
@@ -154,220 +178,27 @@
 	text-decoration-line: none;
 }
 
-.pcoin{
-	width: 14px;
-	height: 14px;
-}
-
-.productGroupSection{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	padding: 0px 80px;
-}
-
-#container aside{
-	font-size: 80%;
-	width: 220px;
-}
-
-.category{
-	padding: 5px 0px;
-}
-
-.brand{
-	padding: 5px 0px;
-	margin: 10px;
-}
-
-.state{
-	padding: 5px 0px;
-	margin: 10px;
-}
-
-.design{
-	padding: 5px 0px;
-	margin: 10px;
-}
-
-.message{
-	padding: 5px 0px;
-	margin: 10px;
-}
-
-.dimension{
-	padding: 5px 0px;
-}
-
-.star-rating{
-	font-size:12px;
-	color: black;
-}
-
-.star {
-	padding: 5px;
-}
-
-.product-date{
-	text-decoration: none;
-}
-
-.span{
-	text-decoration: line-through;
-}
-
-#container aside>div{
-	border: 1px solid #F2F2F2;
-	width: 180px;
-	font-family: "맑은고딕";
-	padding: 5px 0px;
-}
-
-.product>span {
-	color: black;
-}
-
-.ppoint {
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 0 8px;
-    height: 27px;
-    border-radius: 10px;
-    border: solid 1px #ccc;
-    background-color: #fff;
-}
-
-.amount-menu {
-	display: inline;
-	font-size: 11pt;
-	float: right;
-	margin-left: 800px;
-}
-
-.amount-menu li {
-	display: inline-block;
-}
-
-.amount-menu li:hover ul {
-	display: block;
-}
-
-.amount-menu2 {
-	position: absolute;
-	display: none;
-	font-size: 11pt;
-}
-
-.amount-menu2 li{
-	display: block;
-	margin: 3px;
-}
-
-.amount-menu2 li a {
-	display: block !important;
-	margin: 5px;
-}
-
-.amount-menu2 li a:hover {
-	background-color: #f2f2f2;
-	color: black;
-}
-
-.item-list-4 {
-	display: flex;
-	flex-direction: row;
-}
-       
-#item-group3 {
-	justify-content:  flex-start;
-}
-.head:hover {
-	text-decoration: underline;
-}
-.pager {
-	display: flex;
-	justify-content: center;
-}
-.page-wrapper{
-	cursor: pointer;
-}
-       
-.flayer1 {
-	display: inline-block;   
-}
-       
-#arrow1 {
-	transition : transform 1s;
-}
-       
-.panel-heading:hover #arrow1{
-	transform: rotate(180deg);
-} 
-
-.pagination {
-	position: sticky;
-	bottom: 20px;
-	align-self: center; 
-}
-
-.accordion {
-  background-color: white;
-  color: #444;
-  padding: 18px;
-  width: 179px;
-  border: 1px solid #F2F2F2;
-  text-align: left;
-  outline: none;
-  font-size: 12.8px;
-  transition: 0.4s;
-}
-
-.accordion1 {
-	border:none;
-	background-color:white;
-	color:#0073E9;
-}
-
-.active, .accordion:hover {
-  background-color: white;
-}
-
-.panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
-
-.accordion:hover {
-	color : blue;
-}
-
-.page{
-	display: contents;
-	bottom : 20px;
-	position : fixed;
-	background : white;
-	opacity: 0.7;
-	backdrop-filter: blur(30px);
-	border : 1px solid #F2F2F2;
-}
-
-.plist {
-	padding: 0 10px;
-}
-
 .productGroup {
 	height: 280px;
 	width: 280px;
 }
 
-.list2 {
-	display: flex;
+.pproduct {
+	padding: 10px;
+	border: 2px double #F2F2F2;
+}
+
+.pproduct:hover {
+	  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	  transition:all .4s;
 }
 
 .productGroup-name {
-	font-size:18px;
+	font-size: 15px;
 	font-weight: bolder;
 }
 
@@ -375,14 +206,16 @@
 	display: flex;
 	text-decoration: line-through;
 	color: #60b0ea;
+	font-size: 12px;
 }
 
 .productGroup-prdprice {
 	display: flex;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: bolder;
 	color: #cb1400;
 }
+
 
 /* 검색결과 없는 경우 */
 .product_not_found_container {
@@ -408,4 +241,9 @@
 	font-size: 14px;
 	color: #555;
 }
+
+
+
+
+
 

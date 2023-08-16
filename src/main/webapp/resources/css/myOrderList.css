@@ -377,11 +377,17 @@
 
 .btn_size {
 	width: 160px;
+	margin: 1px;
 }
 
 .modal_txt {
 	color: white !important;
 }
+
+.modal_body_txt {
+	margin: 10px 0px;
+}
+
 
 /* 목록 버튼(페이징) */
 .list_btn_wrap {

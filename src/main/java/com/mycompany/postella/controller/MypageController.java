@@ -82,8 +82,6 @@ public class MypageController {
 		Date startDate = null;
 		Date endDate = null;
 		
-		log.info("지금연도는!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! : " + requestYear);
-		
         if(requestYear != null) {
         	if(requestYear.equals("2020year")) {
     			year = 2020;
@@ -123,8 +121,6 @@ public class MypageController {
             map.put("requestYear", requestYear);
             
         }
-        
-        log.info("목록 들어가기 직전 지금연도는!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! : " + requestYear);
 		
 		List<Orders> orders = myPageService.getOrderList(map);
 		
