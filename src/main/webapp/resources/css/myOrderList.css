@@ -626,13 +626,6 @@
 	float: left;
 }
 
-.fixed_delete_recent {
-	position: fixed;
-	right: 10px;
-	top: 10px;
-	z-index: 1000;
-}
-
 .over_img {
 	float: right;
 	margin: -2px -2px 0 0;
