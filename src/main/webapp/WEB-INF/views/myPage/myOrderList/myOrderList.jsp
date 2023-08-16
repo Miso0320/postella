@@ -336,46 +336,23 @@
 			</div>
 			<div class="recent_viewed_list">
 				<ul class="recent_viewed_page">
-					<li>
-						<a class="recent_viewed_item" href="detailView">
-							<img class="p_img" src="//thumbnail8.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/893966166889831-9a771868-6b23-4510-bd40-16832fe15e4e.jpg">
-							<span class="p_name">프롬비 사일런트 스톰 저소음 휴대용 미니 선풍기</span>
-							<span class="p_price">
-								<em class="sale_price">15,780</em>원
-							</span>
-						</a>
-						<a class="delete_recent" href="#"></a>
-					</li>
-					<li>
-						<a class="recent_viewed_item" href="detailView">
-							<img class="p_img" src="//thumbnail8.coupangcdn.com/thumbnails/remote/120x120ex/image/vendor_inventory/c47d/54f86cfc64f5c878a94edc6207977d475259e8b85e131f6c030934671797.jpg">
-							<span class="p_name">[천삼백케이] [아이스타일] [istyle]Korean Minhwa Postcard Set-정(Still)</span>
-							<span class="p_price">
-								<em class="sale_price">1,000</em>원
-							</span>
-						</a>
-						<a class="delete_recent" href="#"></a>
-					</li>
-					<li>
-						<a class="recent_viewed_item" href="detailView">
-							<img class="p_img" src="//thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/vendor_inventory/c17a/f2c7600d98b0f2cef4f7a804e2441d21e1bb3e4250391b55c9f8b1e94545.jpg">
-							<span class="p_name">일리 클라시코 미디움 플로우팩 캡슐커피, 6.7g</span>
-							<span class="p_price">
-								<em class="sale_price">64,500</em>원
-							</span>
-						</a>
-						<a class="delete_recent" href="#"></a>
-					</li>
-					<li>
-						<a class="recent_viewed_item" href="detailView">
-							<img class="p_img" src="//thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/vendor_inventory/03ee/c22c163e5ea89841a77ec4682282e5dbaa1a783aecad75bfc714b8ad12d0.jpg">
-							<span class="p_name">공룡 슬리퍼 Q-032 실내</span>
-							<span class="p_price">
-								<em class="sale_price">12,530</em>원
-							</span>
-						</a>
-						<a class="delete_recent" href="#"></a>
-					</li>
+					<c:forEach var="cart" items="${carts}" varStatus="status">
+						<%-- <c:if test="${subStatus.index > prevIndex && orderList.od_date == currentDate}"> --%>
+						<c:if test="${status.index < 4}">
+							<li>
+								<a class="recent_viewed_item" href="setDetailPage?prdNo=${cart.prd_no}">
+									<img class="p_img" src="data:${cart.img_type};base64, ${cart.encodedFile}">
+									<span class="p_name">${cart.prd_name}</span>
+									<span class="p_price">
+										<em class="sale_price">${cart.prd_price}</em>원
+									</span>
+									<input type="hidden" class="p_prd_no" value="${cart.prd_no}">
+								</a>
+								<%-- <a class="delete_recent" href="deleteCheckCart?prd_no=${cart.prd_no}"></a> --%>
+								<a class="delete_recent" onclick="deleteCart()"></a>
+							</li>
+						</c:if>
+					</c:forEach>
 				</ul>
 			</div>
 			

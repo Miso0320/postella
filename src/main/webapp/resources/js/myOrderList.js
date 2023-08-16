@@ -73,7 +73,7 @@ function dp_menu_hide() {
 	}
 }
 
-// 장바구니에 넣기
+// 장바구니에 담기
 function addCart(us_no, prd_no, crt_qty) {
 	console.log(us_no + " - " + prd_no + " - " + crt_qty);
 	
@@ -95,6 +95,25 @@ function addCart(us_no, prd_no, crt_qty) {
     
 }
 
+// 장바구니에서 삭제하기
+function deleteCart(us_no, prd_no) {
+	/*이거 다시 받아와~~*/
+	var prd_no = $(".p_prd_no").val();
+	
+	console.log("prd_no ------------!! : " + prd_no);
+	
+	
+    /*$.ajax({
+    	url: "deleteCartInOrderList",
+    	method: "post",
+    	data: { prd_no: prd_no, us_no: us_no },
+        success: function (data) {
+            console.log(data);
+        }
+    });*/
+    
+}
+
 // 장바구니 상품 정보 열기
 function recentItemView() {
 	var target = event.target;
@@ -109,7 +128,7 @@ function recentItemView() {
 	// p_name
 	$(target).next().next().css("display", "block");
 	// delete_recent
-	$(target).parent().next().addClass("over_el");
+	$(target).parent().next().addClass("over_el fixed_delete_recent");
 	$(target).parent().next().css("display", "block");
 }
 
@@ -128,7 +147,7 @@ function recentItemHide() {
 	// p_name
 	$(target).next().next().css("display", "none");
 	// delete_recent
-	$(target).parent().next().removeClass("over_el");
+	$(target).parent().next().removeClass("over_el fixed_delete_recent");
 	$(target).parent().next().css("display", "none");
 }
 
