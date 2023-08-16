@@ -32,7 +32,6 @@
 			<div class="cart-contents">
 				<div class="cart-part d-flex">
 					<span class="normal-cart d-flex justify-content-center">구매목록</span>
-					<a class="subscribe-cart d-flex justify-content-center">정기배송</a>
 				</div>
 				<div class="cart-part table" id="cart-chart">
 					<table id="myTable">
@@ -51,7 +50,7 @@
 						  <tr>
 						    <td colspan="5" class="cart-product-title">
 						    	<span style="font-size:18px; font-weight:bold;">배송 상품</span>
-						    	<span><span>무료배송</span></span>
+						    	<span><span>(50,000원 이상 구매 시 무료배송)</span></span>
 						    </td>
 						  </tr>
 						</thead>					

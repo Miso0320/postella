@@ -1,5 +1,4 @@
 $(init)
-
 function init() {
 	//"checkBoxSelectAll" 클래스를 가진 요소가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
 	$(".checkBoxSelectAll").click(checkAll);
@@ -20,9 +19,8 @@ function init() {
 		if (isLoggedIn()) {
 		}
 	});*/
-	
-	//crt_qty update
-	
+
+	//select값이 바뀔때마다 상품수량 업데이트 crt_qty update
 	$(document).on("change", ".prod-quantity-form", function() {
 	    var selectedValue = $(this).val();
 	    var prd_no = $(this).closest('.cart-product-contents').find('.product-checkBox').val();
@@ -30,37 +28,26 @@ function init() {
 	    console.log("selectedValue: " + selectedValue);
 	    
 	    $.ajax({
-	        url: "updateCart", // 업데이트 요청을 처리할 URL을 적절히 지정
+	        url: "updateCart", // 업데이트 요청을 처리할 URL 지정
 	        method: "POST",
 	        data: {
 	            prd_no: prd_no,
 	            selectedValue: selectedValue
 	        },
 	        success: function(response) {
-	            console.log("업데이트 성공:", response);
+	            console.log("업데이트 성공");
+	            var unitPrice = parseInt($(this).closest('.cart-product-contents').find('.prod-price').data('unit-price'));
+	            console.log("unitprice:"+unitPrice);
+	            var newTotalPrice = selectedValue * unitPrice;
+	            $(this).closest('.cart-product-contents').find('.cart-product-price').text(newTotalPrice);
+	            sum();
 	        },
 	        error: function(error) {
 	            console.log("에러 발생:", error);
 	        }
 	    });
 	});
-		/*var prd_no = $(".product-checkBox").val();
-        
-        // 서버로 선택된 값과 사용자 정보를 전달하여 업데이트 요청
-        $.ajax({
-            url: "updateCart",
-            method: "POST",
-            data: {
-                prd_no: prd_no,
-                selectedValue: selectedValue
-            },
-            success: function(response) {
-                console.log("업데이트 성공:", response);
-            },
-            error: function(error) {
-            	console.log("에러 발생:", error);
-            }
-        });*/
+	
 }
 
 //"checkBoxSelectAll" 클래스를 가진 요소가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
@@ -78,6 +65,7 @@ function checkAll() {
 //체크박스 갯수 세기, checkBox가 checked이면 chksChecked가 1씩 증가
 function checkCheck() {
 	var chks = document.getElementsByName("checkBox");
+	console.log("chks : " + chks);
     var chksChecked = 0;
     
     for(var i=0; i<chks.length; i++) {
@@ -178,7 +166,7 @@ function cart() {
 				    
 				  html += '<tr class="cart-product-contents">';
 				  html += '  <td>';
-				  html += '  	<input type="checkbox" name="checkBox" class="product-checkBox" value="'+item.prd_no+'" checked>';
+				  html += '  	<input type="checkbox" name="checkBox" onchange="checkCheck()" class="product-checkBox" value="'+item.prd_no+'" checked>';
 				  html += '  </td>';
 				  html += '  <td class="cart-item-img">';
 				  html += '  	<a href="setDetailPage?prdNo=' + item.prd_no + '">';
@@ -229,7 +217,8 @@ function cart() {
 				  html += '		<a href="deleteCart?prd_no=' + item.prd_no + '&us_no=' + item.us_no + '" class="btn btn-primary">삭제</a>';
 				  html += '  </td>';
 				  html += '  <td>';
-				  html += '  	<div class="cart-product-price" id="cart-product-price">' + item.prd_price + '</div>';
+				  /*html += '  	<div class="cart-product-price" id="cart-product-price">' + item.prd_price + '</div>';*/
+				  html += '  	<div class="cart-product-price" id="cart-product-price">' + (item.prd_price*crt_qty_from_data) + '</div>';
 				  html += '  </td>';
 				  html += '  <td>';
 				  html += '  	<div class="cart-product-ship-fee" id="cart-product-ship-fee">' + item.prd_ship_fee + '</div>';
@@ -254,6 +243,7 @@ function cart() {
 //상품가격 합계 계산, 적립금계산
 function sumItemPrice() {
 		let itemQty = parseInt($(event.target).val());
+		console.log("이벤트타겟:" + itemQty);
 		
 		let oneItemPrice = parseInt($(event.target).prev().prev().html());
 		
@@ -298,9 +288,7 @@ function bye() {
 		$('#thead').addClass("d-none");
 		$('#tbody').removeClass("d-none");
 		$('#tfoot').addClass("d-none");
-		$('#myTable').addClass("d-none");
-		$('.cart-part1').addClass("d-none");
-
+		$('#cart-chart').addClass("d-none");
 	}
 }
 
