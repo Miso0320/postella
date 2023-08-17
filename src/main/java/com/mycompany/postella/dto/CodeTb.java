@@ -2,6 +2,8 @@ package com.mycompany.postella.dto;
 
 import lombok.Data;
 
+
+// 테스트
 @Data
 public class CodeTb {
 	// 코드관련 목록
