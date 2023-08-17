@@ -118,12 +118,8 @@
 
 .edit-btn {
 	padding: 4px 8px;
-    border: 1px solid #999;
-    color: #333;
     border-radius: 2px;
-    box-shadow: 0 -2px 0 rgba(0,0,0,.1) inset;
     font-size: 11px;
-    background-color: white;
 }
 
 .customer-phone__tel-desc {
@@ -141,12 +137,8 @@
 
 .delivery-address__popup-list-button {
     padding: 4px 8px;
-    border: 1px solid #999;
-    color: #333;
     border-radius: 2px;
-    box-shadow: 0 -2px 0 rgba(0,0,0,.1) inset;
     font-size: 11px;
-    background-color: white;
 }
 
 .delivery-address {
@@ -210,12 +202,8 @@
 
 .delivery-request-message__popup-list-button {
 	padding: 4px 8px;
-    border: 1px solid #999;
-    color: #333;
     border-radius: 2px;
-    box-shadow: 0 -2px 0 rgba(0,0,0,.1) inset;
     font-size: 11px;
-    background-color: white;
     margin-left: 10px;
 }
 
@@ -226,6 +214,14 @@
     margin-bottom: 20px;
     padding: 13px 20px 5px;
     
+}
+
+#detailAddress {
+	border-top: 1px solid #ccc;
+}
+
+#recieveAddress {
+	border-top: 1px solid #ccc;
 }
 
 .nonWeekends-delivery-area__text {

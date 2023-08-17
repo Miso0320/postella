@@ -580,6 +580,20 @@ button[disabled] .identity__sprite--minus{
     display:block;
     padding:12px 0
 }
+#addressSet {
+	padding: 0 !important;
+}
+#postcode {
+	margin: 10px auto;
+}
+#recieveAddress {
+	margin: 10px auto;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+#detailAddress {
+	margin: 10px auto;
+}
 .icon-text-field__input-area:after{
     content:'';
     display:table;
@@ -599,8 +613,6 @@ button[disabled] .identity__sprite--minus{
     display:block;
     text-indent:12px;
     transition:background-color .15s ease;
-    margin:-12px 0;
-    padding:12px 0;
     background-color:#fff;
     width:100%;
     font-size:14px;
@@ -975,7 +987,11 @@ button[disabled] .identity__sprite--minus{
     display:inline-block
 }
 .icon-text-field__text.icon-text-field__text--button-label{
-    color:#0073e9;
+    color:#60b0ea
+}
+
+.custom-control custom-checkbox {
+	margin: 10px auto;
 }
 .icon-text-field__button--disabled .icon-text-field__text{
     color:#aaa
@@ -2407,7 +2423,7 @@ button[disabled] .identity__sprite--minus{
     vertical-align:middle;
     box-sizing:content-box;
     font-family:apple sd gothic neo,malgun gothic,nanumbarungothic,nanumgothic,dotum,sans-serif;
-    background-color:#0073e9;
+    background-color:#60b0ea;
     color:#fff;
     border:0;
     display:block;
@@ -3946,16 +3962,4 @@ button[disabled] .identity__sprite--minus{
 }
 .titled-text-field+.preference-sub-dawn__length-counter{
     border-left:0
-}
-
-#detailAddress {
-	border-top: 1px solid #ccc;
-}
-
-#requestBox {
-	height: 44px;
-}
-
-#requestIcon {
-	height: 44px;
 }

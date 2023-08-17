@@ -81,7 +81,7 @@
 				            <i class="icon-text-field__icon--map-pin"></i>
 				        </div>
 				        <div class="icon-text-field__input-container">
-				            <label for="recieveAddress" class="icon-text-field__input-area">
+				            <label for="recieveAddress" class="icon-text-field__input-area" id="addressSet">
 				            	<input type="text" class="icon-text-field__input _addressBookRecipientInput" id="postcode" onclick="kakaopost()" name="da_postcode" maxlength="40" placeholder="우편번호" value="">
 				                <input type="text" class="icon-text-field__input _addressBookRecipientInput" id="recieveAddress" onclick="kakaopost()" name="da_adr" maxlength="40" placeholder="받을 주소" value="">
 				            	<input type="text" class="icon-text-field__input _addressBookRecipientInput" id="detailAddress" name="da_detail_adr" maxlength="40" placeholder="상세 주소" value="">

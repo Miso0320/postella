@@ -70,7 +70,7 @@
 												<form>
 													<div>
 														<input type="text" class="customer-phone__input-tel " oninput="oninputPhone(this)" maxlength="14" value="${user.us_tel}" />
-														<button type="submit" class="edit-btn">수정</button>
+														<button type="submit" class="edit-btn btn btn-info">수정</button>
 														<span class="customer-phone__tel-desc">쿠폰/티켓정보는 구매한
 															분의 번호로 전송됩니다.</span>
 													</div>
@@ -109,7 +109,7 @@
 	     		<div data-component="deliveryAddress">    
 	     			<h2 class="delivery-address__caption-header">
 					        받는사람정보
-					    <button class="delivery-address__popup-list-button" type="button" onclick="window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
+					    <button class="delivery-address__popup-list-button btn btn-info" type="button" onclick="window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
 					</h2>
 				    <table class="delivery-address">
 				        <tbody>
@@ -136,7 +136,7 @@
 						        </th>
 						        <td class="delivery-address__td">
 						            <span class="delivery-request-spot" id="delivery-request-spot">${basicDa.da_req_type}</span>
-						            <button class="delivery-request-message__popup-list-button" type="button" onclick="deliveryRequestOpen()">변경</button>
+						            <button class="delivery-request-message__popup-list-button btn btn-info" type="button" onclick="deliveryRequestOpen()">변경</button>
 						        </td>
 						    </tr>
 				        </tbody>
