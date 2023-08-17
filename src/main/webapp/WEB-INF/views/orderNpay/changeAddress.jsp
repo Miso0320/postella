@@ -16,12 +16,15 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_lumen.css">
 		<script>
+			//선택 버튼 클릭 이벤트
 			function setReceiverInfo(button) {
+				//선택한 주소 받는 사람 정보에 넣기
 				addressCard = button.closest(".address-card");
 			    window.opener.document.getElementById("receiver-name").innerText = addressCard.querySelector(".adr-name").innerText;
 			    window.opener.document.getElementById("receiver-address").innerText = addressCard.querySelector(".adr-card-address").innerText; 
 			    window.opener.document.getElementById("receiver-tel").innerText = addressCard.querySelector(".adr-card-tel").innerText;
 			    window.opener.document.getElementById("delivery-request-spot").innerText = addressCard.querySelector(".adr-card-req").innerText;
+			    
 			    window.close();
 			}
 		</script>
@@ -200,7 +203,7 @@
 			</div>
 			<div class="content-body content-body--fixed">
 				<div class="content-body__corset ">
-					<c:forEach var="da" items="${daList}">
+					<c:forEach var="da" items="${daList}" varStatus="status">
 						<div class="address-card ${da.da_main == 'Y' ? 'address-card--picked' : ''}">
 							<div class="address-card__head">
 								<div class="adr-name">${da.da_name}</div>

@@ -25,6 +25,7 @@
 				delReqChildWindow = window.open('deliveryRequest', '_blank', 'width=518, height=666, left=200, top=200');
 				delReqChildWindow.dataFromParent = "orderNpay";
 			}
+			
 			function changeAddressOpen() {
 				changeAddressWindow = window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200');
 				changeAddressWindow.dataFromParent = "orderNpay";
@@ -33,6 +34,7 @@
 	</head>
 	
 	<body>
+		<!-- 주소 목록에서 선택된 주소 카드 정보를 저장 -->
 		<header class="cartHeader">
 	         <div>
 	            <a href="product_final2.jsp"><img src="${pageContext.request.contextPath}/resources/img/logo.png" class="cart-coupang-logo"></a>
