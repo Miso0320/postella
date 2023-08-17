@@ -96,23 +96,23 @@ function addCart(us_no, prd_no, crt_qty) {
 }
 
 // 장바구니에서 삭제하기
-function deleteCart(us_no, prd_no) {
-	/*이거 다시 받아와~~*/
+/*function deleteCart(us_no, prd_no) {
+	이거 다시 받아와~~
 	var prd_no = $(".p_prd_no").val();
 	
 	console.log("prd_no ------------!! : " + prd_no);
 	
 	
-    /*$.ajax({
+    $.ajax({
     	url: "deleteCartInOrderList",
     	method: "post",
     	data: { prd_no: prd_no, us_no: us_no },
         success: function (data) {
             console.log(data);
         }
-    });*/
+    });
     
-}
+}*/
 
 // 장바구니 상품 정보 열기
 function recentItemView() {

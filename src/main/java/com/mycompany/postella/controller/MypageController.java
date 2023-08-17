@@ -11,17 +11,20 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Orders;
 import com.mycompany.postella.dto.Pager;
+import com.mycompany.postella.dto.Users;
 import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.MyPageService;
@@ -42,12 +45,12 @@ public class MypageController {
 	
 	/**
 	 * 
-	 * @param us_no
-	 * 			유저식별번호
 	 * @param keyword
 	 * 			검색어
 	 * @param requestYear
 	 * 			연도별 필터
+	 * @param pageNo
+	 * 			현재 페이지 번호
 	 * @param model
 	 * 			Model
 	 * @return	myPage/myOrderList/myOrderList
@@ -56,15 +59,18 @@ public class MypageController {
 	/*@Login*/
 	@GetMapping("/myOrderList")
 	public String myOrderList(
-			@RequestParam(name = "od_detail_no", defaultValue="1", required = true)
-			int us_no,
 			@RequestParam(name = "keyword", required = false) 
 			String keyword,
 			@RequestParam(name = "requestYear", required = false)
 			String requestYear,
 			@RequestParam(name="pageNo", required=false)
 			String pageNo,
-			Model model ) throws Exception {
+			Model model, HttpSession session ) throws Exception {
+		
+		// 유저식별번호 가져오기
+		/*Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();*/
+		int us_no = 121;
 		
 		// 주문목록 전체 리스트 가져오기
 		Map<String, Object> map = new HashMap<>();
@@ -176,22 +182,36 @@ public class MypageController {
 	 * 
 	 * @param od_detail_no
 	 * 			주문식별번호
-	 * @return
+	 * @return redirect:/myOrderList
 	 */
 	@PostMapping("/deleteOrder")
 	public String deleteOrder(@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
 		myPageService.removeOrder(od_detail_no);
 		return "redirect:/myOrderList";
 	}
-	
-	@PostMapping("/deleteCartInOrderList")
-	public String deleteCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "us_no", required = true) int us_no) {
+	/**
+	 * 
+	 * @param prd_no
+	 * 			상품식별번호
+	 * @param us_no
+	 * 			유저식별번호
+	 * @return	redirect:/myOrderList
+	 */
+	@RequestMapping("/deleteCartInOrderList")
+	public String deleteCartInOrderList(
+			@RequestParam(name = "prd_no", required = true) int prd_no) {
+		
+		/*Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();*/
+		int us_no = 121;
+		
 		Map<String, Object> map = new HashMap<>();
 		map.put("prd_no", prd_no);
 		map.put("us_no", us_no);
+		
 		cartService.deleteToCart(map);
 		
-		return "redirect:/cartNormal";
+		return "redirect:/myOrderList";
 	}
 
 }

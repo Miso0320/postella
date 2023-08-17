@@ -349,7 +349,7 @@
 									<input type="hidden" class="p_prd_no" value="${cart.prd_no}">
 								</a>
 								<%-- <a class="delete_recent" href="deleteCheckCart?prd_no=${cart.prd_no}"></a> --%>
-								<a class="delete_recent" onclick="deleteCart()"></a>
+								<a class="delete_recent" href="deleteCartInOrderList?prd_no=${cart.prd_no}"></a>
 							</li>
 						</c:if>
 					</c:forEach>
