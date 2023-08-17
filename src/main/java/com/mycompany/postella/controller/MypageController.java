@@ -15,11 +15,14 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Orders;
 import com.mycompany.postella.dto.Pager;
+import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.MyPageService;
 
@@ -33,6 +36,9 @@ public class MypageController {
 	
 	@Resource
 	private ImageService imageService;
+	
+	@Resource
+	CartService cartService;
 	
 	/**
 	 * 
@@ -133,19 +139,32 @@ public class MypageController {
         // 주문목록 가져오기
 		List<Orders> orders = myPageService.getOrderList(map);
 		
-		// 상품 이미지 가져오기
-		Image images = null;
+		// 주문목록 이미지 가져오기
+		Image orderImages = null;
 		
 		for(int i = 0; i < orders.size(); i++) {
-			images = imageService.getImageByPrdNo(orders.get(i).getPrd_no());
-			orders.get(i).setImg_type(images.getImg_type());
-			orders.get(i).setEncodedFile(Base64.getEncoder().encodeToString(images.getImg_file()));
+			orderImages = imageService.getImageByPrdNo(orders.get(i).getPrd_no());
+			orders.get(i).setImg_type(orderImages.getImg_type());
+			orders.get(i).setEncodedFile(Base64.getEncoder().encodeToString(orderImages.getImg_file()));
+		}
+		
+		// 사이드바 장바구니 목록 가져오기
+		List<Cart> carts = cartService.getProductCart(us_no);
+		
+		// 장바구니 이미지 가져오기
+		Image cartImages = null;
+		
+		for(int i = 0; i < carts.size(); i++) {
+			cartImages = imageService.getImageByPrdNo(carts.get(i).getPrd_no());
+			carts.get(i).setImg_type(cartImages.getImg_type());
+			carts.get(i).setEncodedFile(Base64.getEncoder().encodeToString(cartImages.getImg_file()));
 		}
 		
 		model.addAttribute("orders", orders);
 		model.addAttribute("pager", pager);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("requestYear", requestYear);
+		model.addAttribute("carts", carts);
 		
 		return "myPage/myOrderList/myOrderList";
 	}
@@ -156,10 +175,20 @@ public class MypageController {
 	 * 			주문식별번호
 	 * @return
 	 */
-	@GetMapping("/deleteOrder")
+	@PostMapping("/deleteOrder")
 	public String deleteOrder(@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
 		myPageService.removeOrder(od_detail_no);
 		return "redirect:/myOrderList";
+	}
+	
+	@PostMapping("/deleteCartInOrderList")
+	public String deleteCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "us_no", required = true) int us_no) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("prd_no", prd_no);
+		map.put("us_no", us_no);
+		cartService.deleteToCart(map);
+		
+		return "redirect:/cartNormal";
 	}
 
 }
