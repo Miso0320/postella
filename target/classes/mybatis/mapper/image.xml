@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.ImageDao">
+
+	<insert id="insert" parameterType="Img">
+		insert into image(img_no,
+		us_no, prd_no, can_no, rev_no, img_file, img_use, img_oname, img_type,
+		pg_no)
+		values(img_no_seq.nextval, #{us_no, jdbcType=INTEGER}, #{prd_no,
+		jdbcType=INTEGER}, #{can_no, jdbcType=INTEGER}, #{rev_no,
+		jdbcType=INTEGER}, #{img_file}, #{img_use},
+		#{img_oname}, #{img_type},
+		#{pg_no})
+	</insert>
+
+	<select id="selectThums" parameterType="int" resultType="Img">
+		select
+		*
+		from image
+		where pg_no=#{pg_no} and img_use='THM'
+	</select>
+
+	<select id="selectAllByPgNo" parameterType="int" resultType="Img">
+		select *
+		from image
+		where pg_no=#{pg_no} and img_use='THM'
+		order by prd_no, img_no ASC
+	</select>
+
+	<select id="selectByPgNo2" parameterType="int" resultType="Img">
+		select *
+		from image
+		where pg_no=#{pg_no} and ROWNUM=1 and img_use='THM'
+		order by prd_no
+	</select>
+
+	<select id="selectByPrdNo" parameterType="int" resultType="Img">
+		select *
+		from (select *
+				from image
+				where prd_no=#{prd_no} and img_use='THM'
+				order by img_no ASC)
+		where ROWNUM = 1
+	</select>
+
+	<select id="selectAllByPrdNo" parameterType="int"
+		resultType="Img">
+		select *
+		from image
+		where prd_no=#{prd_no} and img_use='THM'
+		order by img_no ASC
+	</select>
+
+	<select id="selectdetailImg" parameterType="int"
+		resultType="Img">
+		select *
+		from image
+		where pg_no=#{pg_no} and img_use='DET'
+	</select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Img" type="com.mycompany.postella.dto.Image" />
+		<typeAlias alias="ProductGroup" type="com.mycompany.postella.dto.ProductGroup"/>
+        <typeAlias alias="Pager" type="com.mycompany.postella.dto.Pager"/>
+        <typeAlias alias="Users" type="com.mycompany.postella.dto.Users"/>
+        <typeAlias alias="Orders" type="com.mycompany.postella.dto.Orders"/>
+        <typeAlias alias="Price" type="com.mycompany.postella.dto.Price"/>
+        <typeAlias alias="Product" type="com.mycompany.postella.dto.Product"/>
+        <typeAlias alias="Agreement" type="com.mycompany.postella.dto.Agreement"/>
+        <typeAlias alias="Review" type="com.mycompany.postella.dto.Review"/>
+        <typeAlias alias="Wish" type="com.mycompany.postella.dto.Wish"/>
+        <typeAlias alias="Qna" type="com.mycompany.postella.dto.Qna"/>
+        <typeAlias alias="Cart" type="com.mycompany.postella.dto.Cart"/>
+        <typeAlias alias="CodeTb" type="com.mycompany.postella.dto.CodeTb"/>
+        <typeAlias alias="DeliverAddress" type="com.mycompany.postella.dto.DeliverAddress"/>
+        <typeAlias alias="OrderDetail" type="com.mycompany.postella.dto.OrderDetail"/>
+        <typeAlias alias="Payment" type="com.mycompany.postella.dto.Payment"/>
+	</typeAliases>
+</configuration>
