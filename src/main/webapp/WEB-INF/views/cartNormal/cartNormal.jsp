@@ -126,7 +126,7 @@
 				<div class="cart-part1" id="order-buttons">
 					<div class="order-buttons">
 		                <a id="continueShoopingBtn" class="goShopping logging" href="productGroup" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
-		                <a href="orderNpay" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false" style="margin:0px 10px">구매하기</a>
+		                <a href="orderFromCart" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false" style="margin:0px 10px">구매하기</a>
 		                <div class="item-disabled" style="display: none;"></div>
 		            </div>
 				</div>
