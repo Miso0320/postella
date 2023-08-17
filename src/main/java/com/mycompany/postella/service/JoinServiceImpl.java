@@ -14,9 +14,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class JoinServiceImpl implements JoinService {
+	
 	@Autowired
 	private UsersDao usersDao;
 	
+	// 회원가입
 	@Override
 	public JoinResult joinUsers(Users users) {
 		// 이메일 중복 여부 확인
@@ -40,7 +42,8 @@ public class JoinServiceImpl implements JoinService {
 		usersDao.insertUsers(users);
 		return JoinResult.SUCCESS;
 	}
-
+	
+	// 회원가입 시 약관동의 내용 저장
 	@Override
 	public void joinAgreement(Agreement agreement) {
 		usersDao.insertAgree(agreement);

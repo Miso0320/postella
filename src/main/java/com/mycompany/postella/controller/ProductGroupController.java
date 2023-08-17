@@ -34,6 +34,8 @@ public class ProductGroupController {
 	
 	/**
 	 * 
+	 * 상품목록 가져오기
+	 * 
 	 * @param prd_category
 	 * 			카테고리
 	 * @param kind

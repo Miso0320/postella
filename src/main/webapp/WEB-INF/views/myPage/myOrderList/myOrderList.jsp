@@ -337,7 +337,6 @@
 			<div class="recent_viewed_list">
 				<ul class="recent_viewed_page">
 					<c:forEach var="cart" items="${carts}" varStatus="status">
-						<%-- <c:if test="${subStatus.index > prevIndex && orderList.od_date == currentDate}"> --%>
 						<c:if test="${status.index < 4}">
 							<li>
 								<a class="recent_viewed_item" href="setDetailPage?prdNo=${cart.prd_no}">
@@ -348,7 +347,6 @@
 									</span>
 									<input type="hidden" class="p_prd_no" value="${cart.prd_no}">
 								</a>
-								<%-- <a class="delete_recent" href="deleteCheckCart?prd_no=${cart.prd_no}"></a> --%>
 								<a class="delete_recent" href="deleteCartInOrderList?prd_no=${cart.prd_no}"></a>
 							</li>
 						</c:if>
@@ -357,6 +355,7 @@
 			</div>
 			
 		</section>
+		
 		<!-- 사이드바(스크롤 내려간 경우에만 나타남) -->
 		<aside class="side_bar_grp">
 			<a class="sideBtn" id="side_top" onclick="window.scrollTo({top:0, left:0})"></a>

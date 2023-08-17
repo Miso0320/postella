@@ -42,10 +42,13 @@ public class UserController {
 	 * 
 	 * 회원가입
 	 * 
-	 * @param users 유저 가입 정보
-	 * @param agreement 약관동의 정보
+	 * @param users
+	 * 			유저 가입 정보
+	 * @param agreement
+	 * 			약관동의 정보
 	 * @param model
-	 * @return String
+	 * 			Model
+	 * @return redirect:/productGroup
 	 */
 	@PostMapping("/join")
 	public String join(

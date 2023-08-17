@@ -45,6 +45,8 @@ public class MypageController {
 	
 	/**
 	 * 
+	 * 마이페이지 주문목록 가져오기
+	 * 
 	 * @param keyword
 	 * 			검색어
 	 * @param requestYear
@@ -53,6 +55,8 @@ public class MypageController {
 	 * 			현재 페이지 번호
 	 * @param model
 	 * 			Model
+	 * @param session
+	 * 			HttpSession
 	 * @return	myPage/myOrderList/myOrderList
 	 * @throws Exception
 	 */
@@ -128,7 +132,6 @@ public class MypageController {
             map.put("startDate", startDateStr);
             map.put("endDate", endDateStr);
             map.put("requestYear", requestYear);
-            
         }
         
         // 페이징 객체 생성
@@ -180,21 +183,26 @@ public class MypageController {
 	
 	/**
 	 * 
+	 * 마이페이지 주문목록 삭제하기
+	 * 
 	 * @param od_detail_no
 	 * 			주문식별번호
 	 * @return redirect:/myOrderList
 	 */
 	@PostMapping("/deleteOrder")
-	public String deleteOrder(@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
+	public String deleteOrder(
+			@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
+		
 		myPageService.removeOrder(od_detail_no);
 		return "redirect:/myOrderList";
 	}
+	
 	/**
+	 * 
+	 * 사이드바 장바구니 항목 삭제
 	 * 
 	 * @param prd_no
 	 * 			상품식별번호
-	 * @param us_no
-	 * 			유저식별번호
 	 * @return	redirect:/myOrderList
 	 */
 	@RequestMapping("/deleteCartInOrderList")

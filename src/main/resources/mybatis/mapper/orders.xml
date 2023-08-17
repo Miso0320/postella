@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.OrdersDao">
 	
+	<!-- 주문자 이름 가져오기 -->
 	<select id="selectUsName" parameterType="int" resultType="String">
 		select users.us_name
 		from orders, users
@@ -9,6 +10,7 @@
 		and od_no = #{od_no}
 	</select>
 	
+	<!-- 주문목록 가져오기 -->
  	<select id="selectOrderList" parameterType="java.util.Map" resultType="Orders">
 		SELECT od_date, od_status, prd_name, od_detail_qty, od_detail_price, prd_no, od_no, od_detail_no
 		FROM (
@@ -108,12 +110,13 @@
 	    	)
 	</select>
 	
-	<!-- 주문삭제 -->
+	<!-- 주문내역 삭제 -->
 	<delete id="deleteOrder" parameterType="int">
 		delete from order_detail
 		where od_detail_no = #{od_detail_no}
 	</delete>
 	
+	<!-- 주문 내역 추가하기 -->
 	<insert id="insertOrder" parameterType="Orders">
 		insert into orders (od_no, us_no, cp_no, od_date, od_status, od_door_pwd, od_item_cnt, od_arrived_date)
 		VALUES (od_no_seq.nextval, #{us_no}, #{cp_no, jdbcType=INTEGER}, #{od_date}, #{od_status}, #{od_door_pwd, jdbcType=VARCHAR}, #{od_item_cnt}, #{od_arrived_date, jdbcType=DATE})

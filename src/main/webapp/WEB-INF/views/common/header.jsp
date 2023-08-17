@@ -51,7 +51,7 @@
 			      				</li>
 		      				</c:if>
 		      				<li class="header_dropdown_list">
-		      					<a href="#">고객센터</a>
+		      					<a href="adminIndex">판매자</a>
 		      				</li>
 		      			</ul>
 		      		</menu>
@@ -70,10 +70,10 @@
 			      				</div>
 			      				<div class="header_every_a_font">카테고리</div>
 			      				<ul class="header_enter">
-			      					<li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard1.png" alt="포토엽서">포토엽서</a></li>
-			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard2.png" alt="디자인패턴엽서">디자인패턴엽서</a></li>
-			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard3.png" alt="그림/일러스트엽서">그림/일러스트엽서</a></li>
-			                        <li><a href="productGroup"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard4.png" alt="캘리그라피엽서">캘리그라피엽서</a></li>
+			      					<li><a href="productGroup?prd_category=PHO"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard1.png" alt="포토엽서">포토엽서</a></li>
+			                        <li><a href="productGroup?prd_category=DES"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard2.png" alt="디자인패턴엽서">디자인패턴엽서</a></li>
+			                        <li><a href="productGroup?prd_category=CAL"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard3.png" alt="그림/일러스트엽서">그림/일러스트엽서</a></li>
+			                        <li><a href="productGroup?prd_category=ILU"><img class="header_left_category_icon" src="${pageContext.request.contextPath}/resources/img/header/postcard4.png" alt="캘리그라피엽서">캘리그라피엽서</a></li>
 			      				</ul>
 		      				</li>
 		      			</ul>
