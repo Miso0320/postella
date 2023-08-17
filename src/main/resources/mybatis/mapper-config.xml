@@ -19,5 +19,6 @@
         <typeAlias alias="CodeTb" type="com.mycompany.postella.dto.CodeTb"/>
         <typeAlias alias="DeliverAddress" type="com.mycompany.postella.dto.DeliverAddress"/>
         <typeAlias alias="OrderDetail" type="com.mycompany.postella.dto.OrderDetail"/>
+        <typeAlias alias="Payment" type="com.mycompany.postella.dto.Payment"/>
 	</typeAliases>
 </configuration>

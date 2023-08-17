@@ -18,6 +18,16 @@ function init() {
 	 cashRadio1 = document.getElementById("cashRadio1");
 	 cashRadio2 = document.getElementById("cashRadio2");
 	 
+	 //가격 천 단위로 , 붙이기
+	 priceElements = document.querySelectorAll('.op-price');
+
+     priceElements.forEach(function(element) {
+	      var priceText = element.textContent;
+	      var formattedPrice = numberWithCommas(priceText);
+	      element.textContent = formattedPrice;
+     });
+
+	 //결제 버튼 클릭 이벤트
 	 $("#paymentBtn").click(function() {
 	        $.ajax({
 	            type: "POST",
@@ -153,6 +163,12 @@ function checked() {
 	}
 }
 
+// 숫자에 ','를 추가하는 함수
+function numberWithCommas(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+//핸드폰 번호에 - 붙이는 함수
 function oninputPhone(target) {
     target.value = target.value
         .replace(/[^0-9]/g, '')

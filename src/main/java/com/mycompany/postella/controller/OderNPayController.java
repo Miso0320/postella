@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.DeliverAddress;
 import com.mycompany.postella.dto.OrderDetail;
 import com.mycompany.postella.dto.Orders;
@@ -76,15 +77,20 @@ public class OderNPayController {
 	}
 	
 	@RequestMapping("/orderFromCart")
-	public String orderFromCart(@RequestParam("products") List<Product> products, Model model, HttpSession session) {
+	public String orderFromCart(Model model, HttpSession session) {
 	    //사용자 식별 번호로 주문 정보 가져오기
 	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+	    List<Cart> orderCart = (List<Cart>) session.getAttribute("cartItems");
 	    
 	    //상품 리스트
-	    for(int i=0; i<products.size(); i++) {
+	    List<Product> products = new ArrayList<>(); 
+	    for(int i=0; i<orderCart.size(); i++) {
+	    	products.add(productService.getInfo(orderCart.get(i).getPrd_no()));
 	    	products.get(i).setPg_name(productGroupService.getTitle(products.get(i).getPg_no()));
+	    	products.get(i).setQuantity(orderCart.get(i).getCrt_qty());
 	    }
 	    setOrderInfo(user, products, model);
+	    
 	    session.setAttribute("productList", products);
 	    
 	    return "orderNpay/orderNpay"; 
@@ -120,6 +126,10 @@ public class OderNPayController {
   		//할인 쿠폰
   		int couponDc = 0;
   		model.addAttribute("couponDc",couponDc);
+  		
+  		//적립금
+  		int point = 0;
+  		model.addAttribute("point",point);
   		
   		//배송비
   		int shippingFee;
@@ -192,12 +202,16 @@ public class OderNPayController {
 	@PostMapping("/insertOrder")
 	@ResponseBody
     public ResponseEntity<String> insertOrder(HttpSession session) {
+		//세션에서 사용자 정보 가져오기
 		Users user = (Users) session.getAttribute("userLogin");
 	    int us_no = user.getUs_no();
 	    
+	    //세션에서 상품 리스트 정보 가져오기
 	    List<Product> prdList = (List<Product>) session.getAttribute("productList");
 	    List<OrderDetail> odList = new ArrayList<>();
 	    
+	    
+	    //OrderDetail 테이블의 값 설정
 	    for (Product product : prdList) {
 	        OrderDetail orderDetail = new OrderDetail();
 	        orderDetail.setPrd_no(product.getPrd_no());
@@ -206,6 +220,7 @@ public class OderNPayController {
 	        odList.add(orderDetail);
 	    }
 	    
+	    //Order 테이블의 값 설정
 	    Orders order = new Orders();
 	    order.setUs_no(us_no);
 	    Date currentTime = new Date();
@@ -213,6 +228,7 @@ public class OderNPayController {
 	    order.setOd_status("ODC");
 	    order.setOd_item_cnt(prdList.size());
 	    
+	    //DB에 INSERT하기
 	    ordersService.putOrderAndOrderDetail(order, odList);
 	    
 	    return ResponseEntity.ok("success");
