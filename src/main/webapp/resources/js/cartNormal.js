@@ -3,6 +3,8 @@ $(init)
 var totalOrderPrice;
 //배송비
 let totalShippingFee = 0;
+//input 수량값
+var qty;
 
 function init() {
 	//"checkBoxSelectAll" 클래스를 가진 요소가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
@@ -20,49 +22,98 @@ function init() {
 
 	//select값이 바뀔때마다 상품수량 업데이트 crt_qty update
 	$(document).on("change", ".prod-quantity-form", function() {
+	    var that = this;	
 	    //select값을 받음
-		var selectedValue = $(this).val();
-	    //selectedValue가 변경된 상품의 prd_no를 받음
-		var prd_no = $(this).closest('.cart-product-contents').find('.product-checkBox').val();
-	    //개별상품 가격 prodPrice를 받음
+		var selectedValue = $(this).val();    
+		//selectedValue가 변경된 상품의 prd_no를 받음
+		var prd_no = $(this).closest('.cart-product-contents').find('.product-checkBox').val();    
+		//개별상품 가격 prodPrice를 받음
 	    var unitPrice = parseInt($(this).closest('.cart-product-contents').find('#prodPrice').text());
-	    /*console.log("unitprice:"+unitPrice);
-	    console.log("prd_no: " + prd_no);
-	    console.log("selectedValue: " + selectedValue);*/
-	    
-	    $.ajax({
-	        url: "updateCart", // 업데이트 요청을 처리할 URL 지정
-	        method: "POST",
-	        data: {
-	            prd_no: prd_no,
-	            selectedValue: selectedValue
-	        },
-	        success: function(response) {
-	            console.log("업데이트 성공");
-	            //select값에 따라 가격변경
-	            var newTotalPrice = selectedValue * unitPrice;
-	            console.log("newTotalPrice : " + newTotalPrice);
-	            console.log("totalOrderPrice : " + totalOrderPrice);
-	            $(this).closest('.cart-product-contents').find('.cart-product-price').text(newTotalPrice);
-	            
-	            //select변경할떄마다 가격계산
-	            sum();
-	            
-	            //select변경되면 총 상품가격, 배송비, 총 주문금액 변경
-	            var totalPrice1 = parseInt($("#finalPrice1").text().replace(/[^0-9]/g, ""));
-				var totalPrice2 = parseInt($("#finalPrice2").text().replace(/[^0-9]/g, "")); 
-				totalOrderPrice = totalPrice1 + totalShippingFee;
-				  
-				//ko-KR적용
-				$("#finalPrice2").text(totalShippingFee.toLocaleString("ko-KR"));
-				$(".final-order-price").text(totalOrderPrice.toLocaleString("ko-KR"));
-				console.log("finalPrice1:", finalPrice1);
-				console.log("finalPrice2:", finalPrice2);
-	        },
-	        error: function(error) {
-	            console.log("에러 발생:", error);
-	        }
-	    });
+
+	    if (selectedValue <= 10) {
+	    	console.log("prd_no :" + prd_no);
+	    	console.log("selectedValue :" + selectedValue);
+		    $.ajax({
+		        url: "updateCart", // 업데이트 요청을 처리할 URL 지정
+		        method: "POST",
+		        data: {
+		            prd_no: prd_no,
+		            selectedValue: selectedValue
+		        },
+		        
+		        success: function(response) {
+		            console.log("업데이트 성공");
+		            //select값에 따라 가격변경
+		            console.log("selectedValue :" + selectedValue);
+		            var newTotalPrice = selectedValue * unitPrice;
+		            $(this).closest('.cart-product-contents').find('.cart-product-price').text(newTotalPrice);
+		            
+		            //select변경할떄마다 가격계산
+		            sum();
+		            
+		            //select변경되면 총 상품가격, 배송비, 총 주문금액 변경
+		            var totalPrice1 = parseInt($("#finalPrice1").text().replace(/[^0-9]/g, ""));
+					var totalPrice2 = parseInt($("#finalPrice2").text().replace(/[^0-9]/g, "")); 
+					totalOrderPrice = totalPrice1 + totalShippingFee;
+					  
+					console.log("newTotalPrice : " + newTotalPrice);
+					console.log("totalOrderPrice : " + totalOrderPrice);
+					//ko-KR적용
+					$("#finalPrice2").text(totalShippingFee.toLocaleString("ko-KR"));
+					$(".final-order-price").text(totalOrderPrice.toLocaleString("ko-KR"));
+					console.log("finalPrice1:", finalPrice1);
+					console.log("finalPrice2:", finalPrice2);
+		        },
+		        error: function(error) {
+		            console.log("에러 발생:", error);
+		        }
+		    });
+	    }
+	});
+	//input값이 바뀔때마다 상품수량 update
+	$(document).on("click", ".update-quantity-btn", function() {
+		var inputValue = $(this).prev("#qntInput").val();
+		var prd_no = $(this).closest('.cart-product-contents').find('.product-checkBox').val();
+		var unitPrice = parseInt($(this).closest('.cart-product-contents').find('#prodPrice').text());
+		
+		if(inputValue >= 11) {
+			$.ajax({
+				url: "updateCart",
+				method: "POST",				
+				data: {
+					prd_no: prd_no,
+					inputValue: inputValue
+				},
+				success: function(response) {
+					console.log("수량 업데이트 성공");
+					//input값에 따라 가격변경
+					console.log("inputValue : "+inputValue);
+		            var newTotalPrice = inputValue * unitPrice;
+		            console.log("unitPrice :" + unitPrice);
+		            console.log("newTotalPrice :" + newTotalPrice);
+		            $(this).closest('.cart-product-contents').find('.cart-product-price').text(newTotalPrice);
+		            
+		            //input변경할떄마다 가격계산
+		            sum();
+		            
+		            //input변경되면 총 상품가격, 배송비, 총 주문금액 변경
+		            var totalPrice1 = parseInt($("#finalPrice1").text().replace(/[^0-9]/g, ""));
+					var totalPrice2 = parseInt($("#finalPrice2").text().replace(/[^0-9]/g, "")); 
+					totalOrderPrice = totalPrice1 + totalShippingFee;
+					  
+					console.log("newTotalPrice : " + newTotalPrice);
+					console.log("totalOrderPrice : " + totalOrderPrice);
+					//ko-KR적용
+					$("#finalPrice2").text(totalShippingFee.toLocaleString("ko-KR"));
+					$(".final-order-price").text(totalOrderPrice.toLocaleString("ko-KR"));
+					console.log("finalPrice1:", finalPrice1);
+					console.log("finalPrice2:", finalPrice2);
+				},
+				error: function(error) {
+					console.log("에러 발생:", error);
+				}
+			});
+		}
 	});
 }
 
@@ -216,22 +267,53 @@ function cart() {
 				  html += '  		<div class="cart-product-option-price">';
 				  html += '  			<span id="prodPrice">' + item.prd_price +'</span>';
 				  html += '  			<span>원</span>';
-				  html += '					<select id="selectBtn" class="prod-quantity-form" onchange="javascript:sumItemPrice(); checkInput(this.value);" style="width:52px; height:24px;">';		  
+				  html += '					<select id="selectBtn" class="prod-quantity-form dropdown" onchange="javascript:sumItemPrice(); checkInput(this.value);" style="width:52px; height:24px;">';		  
 				  
-				  var crt_qty_from_data = item.crt_qty; // DB로부터 가져온 crt_qty 값
+				  /*var crt_qty_from_data = item.crt_qty; // DB로부터 가져온 crt_qty 값
 				  for (var i = 1; i <= 10; i++) {
 				      var isSelected = i === crt_qty_from_data ? 'selected' : '';
 				      html += '<option value="' + i + '" ' + isSelected + '>' + i + '</option>';
 				  }
-				  $("#selectBtn").html(html);		            
-		            		            
-		          html += '						<option value="11">10+</option>';
-				  html += '					</select>';
-				  html += '					<input type="text" id="qntInput" class="d-none" style="width:52px; height:24px;"/>';
-				  html += '					<button class="btn d-none">';
-				  html += '							수량변경';
-				  html += '					</button>';
-				  html += '					<span></span>';
+				  //$("#selectBtn").html(html);	
+				  if (crt_qty_from_data >= 11) {
+					    html += '<option value="10+">10+</option>';
+					    html += '</select>';
+					    html += '<input type="text" id="qntInput" style="width:52px; height:24px;" value="' + crt_qty_from_data + '">';
+					    html += '<button class="btn update-quantity-btn">';
+					    html += '수량변경';
+					    html += '</button>';
+					    html += '<span></span>';
+					} else {
+					    html += '<option value="10+">10+</option>';
+					    html += '</select>';
+					    html += '<input type="text" id="qntInput" class="d-none" style="width:52px; height:24px;"/>';
+					    html += '<button class="btn update-quantity-btn d-none">';
+					    html += '수량변경';
+					    html += '</button>';
+					    html += '<span></span>';
+					}*/
+				  var crt_qty_from_data = item.crt_qty; // DB로부터 가져온 crt_qty 값
+				  var selectedOptionValue = crt_qty_from_data >= 11 ? '10+' : crt_qty_from_data;
+
+				  for (var i = 1; i <= 10; i++) {
+				      var isSelected = i === selectedOptionValue ? 'selected' : '';
+				      html += '<option value="' + i + '" ' + isSelected + '>' + i + '</option>';
+				  }
+				  html += '<option value="10+" ' + (selectedOptionValue === '10+' ? 'selected' : '') + '>10+</option>';
+				  html += '</select>';
+
+				  if (crt_qty_from_data >= 11) {
+				      html += '<input type="text" id="qntInput" style="width:52px; height:24px;" value="' + crt_qty_from_data + '">';
+				      html += '<button class="btn update-quantity-btn">';
+				      html += '수량변경';
+				      html += '</button>';
+				  } else {
+				      html += '<input type="text" id="qntInput" class="d-none" style="width:52px; height:24px;"/>';
+				      html += '<button class="btn update-quantity-btn d-none">';
+				      html += '수량변경';
+				      html += '</button>';
+				  }
+				  html += '<span></span>';
 				  html += '  		</div>';
 				  html += '  	</div>';
 				  html += '  	<div class="badge-list">';
@@ -271,25 +353,13 @@ function cart() {
 			  sum(); 
 			  //처음 실행할때 가격보여주기
 			  totalPrice();
-			  
-/*			  $("#finalPrice2").text(totalShippingFee.toLocaleString("ko-KR"));
-			  $(".final-order-price").text(totalOrderPrice.toLocaleString("ko-KR"));
-			  
-			  console.log("totalOrderPrice:", totalOrderPrice);
-			  console.log("Total Shipping Fee:", totalShippingFee);*/
-			  //$(".product-checkbox").on("change", CheckboxChange);
-			}	// else	  
-		},	//success
+			}	// else	끝  
+		},	//success 끝
 		error: function(error) {
 			console.log(error.status);
-		}	// ERROR
-	});	// AJAX
+		}	// ERROR 끝
+	});	// AJAX 끝
 }
-
-//배송비계산
-/*function deliveryFee() {
-	let shipFee = 
-}*/
 
 //상품가격 합계 계산, 적립금계산
 function sumItemPrice() {
@@ -360,18 +430,21 @@ function bye() {
 	}
 }
 
-//상품갯수 10개이상 넘어가면 input으로 갯수 입력가능하게 하고 적립금, 가격, 총합계 다시 계산
+//상품갯수 10개 넘어가면 input으로 갯수 입력가능하게 하고 적립금, 가격, 총합계 다시 계산
 function checkInput(sel) {
-	 var qty = sel;
+	 qty = sel;
 	 var input = $(event.target).next();
-	 if (sel == "10") {
+	 if (sel == "10+") {
+		 console.log("bbbbbbbbbbbbbbbbbbbbbb");
 		 		input.removeClass("d-none");
+		 		console.log("aaaaaaaaaaaaaa");
 		 		input.next().removeClass("d-none");
 		 		input.next().click(function(){
 			    qty = input.val();
 			    
 			    let oneItemPrice = $(event.target).prev().prev().prev().prev().html();
 			    $(event.target).parent().parent().parent().next().next().children().html(qty * oneItemPrice);
+			    console.log("qty * oneItemPrice : "+qty * oneItemPrice);
 			    
 			    let cash = qty * oneItemPrice * 0.01;
 				$(event.target).parent().parent().next().children().children().children().next().html("최대 " + cash + "원 적립");
@@ -380,8 +453,10 @@ function checkInput(sel) {
 		  });
 		  
 	  } else if(sel < 10) {
-		  $('.prod-quantity-form').next().addClass("d-none");
-		  $('.prod-quantity-form').next().next().addClass("d-none");
+		  input.addClass("d-none");  // input 태그를 숨기기
+	        input.next().addClass("d-none");
+		  /*$('.prod-quantity-form').next().addClass("d-none");
+		  $('.prod-quantity-form').next().next().addClass("d-none");*/
 	  }	  
 }
 

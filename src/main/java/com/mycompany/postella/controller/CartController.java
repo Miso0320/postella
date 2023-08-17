@@ -97,13 +97,19 @@ public class CartController {
 	//Cart 상품수량 변경 update
 	@RequestMapping("/updateCart")
 	@Login
-	public String updateCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam("selectedValue") Integer selectedValue, HttpSession session) {
+	public String updateCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "selectedValue", required = false) Integer selectedValue, @RequestParam(name = "inputValue", required = false) Integer inputValue, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
-		
+		int userNo = users.getUs_no();
 		Cart cart = new Cart();
-	    cart.setUs_no(users.getUs_no());
-	    cart.setCrt_qty(selectedValue);
+		if (inputValue != null) {
+			cart.setCrt_qty(inputValue);
+	    } else {
+	    	cart.setCrt_qty(selectedValue);
+	    }
+	    //cart.setCrt_qty(qty);
+		//cart.setCrt_qty(selectedValue);
 	    cart.setPrd_no(prd_no);
+	    cart.setUs_no(userNo);
 	    log.info("cart : " + cart);
 		cartService.updateCart(cart);
 		
