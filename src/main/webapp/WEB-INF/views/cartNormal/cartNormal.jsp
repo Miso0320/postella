@@ -105,22 +105,21 @@
 				
 				<div class="cart-part1">
 					<div class="cart-total-price" data-total-price="0" data-discount-price="0">
-                <div class="cart-total-price__inner">
-                    <div class="price-area">
-                        	총 상품가격
-                        <em id="finalPrice1" class="final-product-price">0</em>원
-                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-plus.gif" class="math-icon">
-                       	 총 배송비
-                        <em id="finalPrice2" class="final-delivery-charge">0</em>원
-                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-equal.gif" class="math-icon">
-                        	총 주문금액
-                        <em class="final-order-price">
-                          0
-                        </em>
-                    </div>
-                </div>
-
-            </div>
+		                <div class="cart-total-price__inner">
+		                    <div class="price-area">
+		                        	총 상품가격
+		                        <em id="finalPrice1" class="final-product-price">0</em>원
+		                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-plus.gif" class="math-icon">
+		                       	 총 배송비
+		                        <em id="finalPrice2" class="final-delivery-charge">0</em>원
+		                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-equal.gif" class="math-icon">
+		                        	총 주문금액
+		                        <em class="final-order-price">
+		                          0
+		                        </em>
+		                    </div>
+		                </div>
+            		</div>
 				</div>
 				
 				<div class="cart-part1" id="order-buttons">

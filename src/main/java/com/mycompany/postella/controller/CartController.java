@@ -58,7 +58,7 @@ public class CartController {
 				}
 			}
 		}
-		session.setAttribute("cartItems", cartItems);		
+		session.setAttribute("cartItems", cartItems);
 		model.addAttribute("list", list);
 		
 		return list;
