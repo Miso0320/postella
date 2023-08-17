@@ -331,7 +331,7 @@
 		<section class="my_view">
 			<div class="my_view_cart">
 				<a>
-					<em class="cart_count">1</em>
+					<em class="cart_count">${totalCartCnt}</em>
 				</a>
 			</div>
 			<div class="recent_viewed_list">

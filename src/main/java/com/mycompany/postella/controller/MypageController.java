@@ -161,13 +161,13 @@ public class MypageController {
 		}
 		
 		int totalCartCnt = cartService.getTotalCartCnt(us_no);
-		log.info("totalCartCnt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! : " + totalCartCnt);
 		
 		model.addAttribute("orders", orders);
 		model.addAttribute("pager", pager);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("requestYear", requestYear);
 		model.addAttribute("carts", carts);
+		model.addAttribute("totalCartCnt", totalCartCnt);
 		
 		return "myPage/myOrderList/myOrderList";
 	}
