@@ -36,6 +36,7 @@ function init() {
 	        },
 	        success: function(response) {
 	            console.log("업데이트 성공");
+	            //select값에 따라 가격변경
 	            var unitPrice = parseInt($(this).closest('.cart-product-contents').find('.prod-price').data('unit-price'));
 	            console.log("unitprice:"+unitPrice);
 	            var newTotalPrice = selectedValue * unitPrice;
@@ -47,7 +48,6 @@ function init() {
 	        }
 	    });
 	});
-	
 }
 
 //"checkBoxSelectAll" 클래스를 가진 요소가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
@@ -148,9 +148,7 @@ function cart() {
 			}
 		
 		let deliveryDate = ("(" + dayText + ")" +month + "/" + date + "도착 보장");
-		
-	
-		
+				
 	$.ajax({
 		url: "cartNormal",
 		method: "POST",
@@ -162,7 +160,10 @@ function cart() {
 			
 			let html = "";
 			var crt_qty_from_data = 1;
+			var prevRowspan = 0;
+			let totalShippingFee = 0;
 			  data.forEach((item,index) => {
+				  console.log("상품 정보:", item);
 				    
 				  html += '<tr class="cart-product-contents">';
 				  html += '  <td>';
@@ -183,12 +184,11 @@ function cart() {
 				  html += '  		<span class="cart-product-option-info1-2">(밤 12시 전 주문 시)</span>';
 				  html += '  		</div>';
 				  html += '  		<div class="cart-product-option-price">';
-				  html += '  			<span id="prodPrice">' + item.prd_price + '</span>';
+				  html += '  			<span id="prodPrice">' + item.prd_price.toLocaleString("ko-KR") +'</span>';
 				  html += '  			<span>원</span>';
 				  html += '					<select id="selectBtn" class="prod-quantity-form" onchange="javascript:sumItemPrice(); checkInput(this.value);" style="width:52px; height:24px;">';		  
 				  
 				  var crt_qty_from_data = item.crt_qty; // DB로부터 가져온 crt_qty 값
-
 				  for (var i = 1; i <= 10; i++) {
 				      var isSelected = i === crt_qty_from_data ? 'selected' : '';
 				      html += '<option value="' + i + '" ' + isSelected + '>' + i + '</option>';
@@ -218,19 +218,28 @@ function cart() {
 				  html += '  </td>';
 				  html += '  <td>';
 				  /*html += '  	<div class="cart-product-price" id="cart-product-price">' + item.prd_price + '</div>';*/
-				  html += '  	<div class="cart-product-price" id="cart-product-price">' + (item.prd_price*crt_qty_from_data) + '</div>';
+				  html += '  	<div class="cart-product-price" id="cart-product-price">' + (item.prd_price*crt_qty_from_data).toLocaleString("ko-KR") + '</div>';
 				  html += '  </td>';
-				  html += '  <td>';
-				  html += '  	<div class="cart-product-ship-fee" id="cart-product-ship-fee">' + item.prd_ship_fee + '</div>';
+				  if(index==0){
+					  html += '  <td rowspan="50">';
+				  }
+				  if(index==0){
+					  html += '  	<div class="cart-product-ship-fee" id="cart-product-ship-fee">' + item.prd_ship_fee.toLocaleString("ko-KR") + '</div>';
+				  }
 				  html += '  </td>';
-				  html += '</tr>';		  
+				  html += '</tr>';	
+				  //배송비 값 받기
+				  totalShippingFee = parseFloat(item.prd_ship_fee);
 			  });
 			  $("#cart-product-contents").html(html);
 			  $(".checkBox").click(checkCount);
 			  $(".checkBox").click(checkCheck);
 			  $(".btn_delete").click(delete_table);
-			  $(".prod-quantity-form").click(sum);
-			  sum();
+			  $(".prod-quantity-form").click(function() {
+	                sum(totalShippingFee); 
+			  });
+			  sum(totalShippingFee); 
+			  console.log("Total Shipping Fee:", totalShippingFee.toLocaleString("ko-KR"));
 			  //$(".product-checkbox").on("change", CheckboxChange);
 			}	  
 		},
@@ -239,6 +248,11 @@ function cart() {
 		}
 	});
 }
+
+//배송비계산
+/*function deliveryFee() {
+	let shipFee = 
+}*/
 
 //상품가격 합계 계산, 적립금계산
 function sumItemPrice() {
@@ -254,17 +268,26 @@ function sumItemPrice() {
 }
 
 //select로 상품수량 입력시 계산
-function sum(){
+function sum(totalShippingFee){
 	var total =0;
 	$(".cart-product-price").each(function(index, item) {
-		total += parseInt($(item).html());
+		total += parseInt($(item).text().replace(",", ""));
 	});
 
 	var add = total.toLocaleString("ko-KR");
 	$(".cart-product-price").parent().parent().parent().next().children().children().children().children().html(add);
 	$(".orderPrice").html(add);
-	$("#finalPrice").html(add);
+	$(".final-product-price").html(add);
 	$(".final-order-price").html(add);
+	
+	var formattedAdd = add.toLocaleString("ko-KR");
+	var finalOrderPriceValue = total + totalShippingFee; // totalShippingFee를 더한 숫자값 계산
+    var finalOrderPriceFormatted = finalOrderPriceValue.toLocaleString("ko-KR"); // 포맷팅된 문자열로 변환
+
+    // .final-order-price 내용 설정
+    var finalOrderPriceElement = $(".final-order-price");
+    //finalOrderPriceElement.html(finalOrderPriceFormatted + "원 (" + totalShippingFee.toLocaleString("ko-KR") + "원 배송비 포함)");
+    finalOrderPriceElement.html(finalOrderPriceFormatted + "원");
 }
 
 //input으로 상품수량 입력시 계산
@@ -361,7 +384,6 @@ function deleteChecked2() {
 		$(a).remove();
 		$(".checkBoxSelectAll").prop("checked",false);
 	});
-
-// 남은 상품들 가격 다시 계산
+	// 남은 상품들 가격 다시 계산
 	sum();
 }

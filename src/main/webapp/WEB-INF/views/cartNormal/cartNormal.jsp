@@ -45,12 +45,12 @@
 						    <th class="th2" colspan="2">상품정보</th>
 						    <th class="th3"> </th>
 						    <th class="th4">상품금액</th> 
-						    <th class="th5">배송비</th>
+						    <th class="th5">배송비<span style="font-size:8px;">(중복X)</span></th>
 						  </tr>
 						  <tr>
 						    <td colspan="5" class="cart-product-title">
 						    	<span style="font-size:18px; font-weight:bold;">배송 상품</span>
-						    	<span><span>(50,000원 이상 구매 시 무료배송)</span></span>
+						    	<span style="color: green;">(50,000원 이상 구매 시 무료배송)</span>
 						    </td>
 						  </tr>
 						</thead>					
@@ -68,6 +68,9 @@
 					  <tfoot id="tfoot">
 						  <tr class="cart-price-total">
 						    <td colspan="6" style="background-color: white; border: 1px solid #f2f2f2;">
+						    	<span style="display:flex; justify-content:end; font-size:12px;">
+						    		(배송비 제외)
+						    	</span>
 						    	<span style="display:flex; justify-content:end;">
 						    		주문금액
 						    		<span class="orderPrice">0</span>
@@ -105,17 +108,14 @@
                 <div class="cart-total-price__inner">
                     <div class="price-area">
                         	총 상품가격
-                        <em id="finalPrice" class="final-product-price">0</em>원
+                        <em id="finalPrice1" class="final-product-price">0</em>원
                         <img src="${pageContext.request.contextPath}/resources/img/cart/cart-plus.gif" class="math-icon">
                        	 총 배송비
-                        <em id="finalPrice" class="final-delivery-charge">0</em>원
+                        <em id="finalPrice2" class="final-delivery-charge">0</em>원
                         <img src="${pageContext.request.contextPath}/resources/img/cart/cart-equal.gif" class="math-icon">
                         	총 주문금액
                         <em class="final-order-price">
                           0
-                        </em>
-                        <em>
-                        	원
                         </em>
                     </div>
                 </div>
