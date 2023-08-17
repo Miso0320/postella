@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartNormal.css">
 		<script src="${pageContext.request.contextPath}/resources/js/cartNormal.js"></script>
-		
+		<!-- 테스트 -->
 	</head>
 	<body style="background-color:#F2F2F2;">
 		<header class="cartHeader">
