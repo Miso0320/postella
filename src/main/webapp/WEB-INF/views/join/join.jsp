@@ -99,7 +99,7 @@
 									<img src="${pageContext.request.contextPath}/resources/img/join/member_phone.JPG">
 								</span>
 								<label for="us_tel">
-									<input type="text" placeholder="휴대폰 번호" id="phone" name="us_tel" value="${users.us_tel}">
+									<input type="text" placeholder="휴대폰 번호" id="phone" name="us_tel" oninput="oninputPhone(this)" value="${users.us_tel}">
 								</label>
 								<img class="blue_check" id="blue_check_phone" src="${pageContext.request.contextPath}/resources/img/join/blue_check.png">
 							</div>

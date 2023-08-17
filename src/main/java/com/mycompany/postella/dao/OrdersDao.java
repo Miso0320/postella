@@ -27,6 +27,6 @@ public interface OrdersDao {
 	// 주문 그룹 내역 수량 변경
 	public int updateOrder(Map<String, Object> map);	
 	
-	// 개별주문내역 삭제
+	// 주문 그룹 내역 삭제
 	public int deleteOrder(int od_no);
 }

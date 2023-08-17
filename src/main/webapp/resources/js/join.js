@@ -121,6 +121,13 @@ function checkPhone() {
 	}
 }
 
+//핸드폰 번호에 - 붙이는 함수
+function oninputPhone(target) {
+    target.value = target.value
+        .replace(/[^0-9]/g, '')
+        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+}
+
 //3개 이상 연속 문자/숫자
 function pwContinueThree() {
 	var cnt = 0;
