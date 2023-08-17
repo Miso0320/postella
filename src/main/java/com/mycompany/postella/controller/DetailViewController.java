@@ -104,7 +104,7 @@ public class DetailViewController {
 		int revCnt = reviewService.countReview(pg_no);
 		model.addAttribute("revCnt", revCnt);
 		
-		//상품명 불러오기
+		//상품명 불러오기!
 		String title = productGroupService.getTitle(pg_no);
 		model.addAttribute("title", title);
 		
