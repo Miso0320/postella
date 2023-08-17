@@ -160,6 +160,9 @@ public class MypageController {
 			carts.get(i).setEncodedFile(Base64.getEncoder().encodeToString(cartImages.getImg_file()));
 		}
 		
+		int totalCartCnt = cartService.getTotalCartCnt(us_no);
+		log.info("totalCartCnt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! : " + totalCartCnt);
+		
 		model.addAttribute("orders", orders);
 		model.addAttribute("pager", pager);
 		model.addAttribute("keyword", keyword);

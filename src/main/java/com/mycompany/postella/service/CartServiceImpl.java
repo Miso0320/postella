@@ -52,5 +52,11 @@ public class CartServiceImpl implements CartService{
 	public void deleteToCart(Map<String, Object> map) {
 		cartDao.deleteCart(map);
 	}
+
+	@Override
+	public int getTotalCartCnt(int us_no) {
+		int getCnt = cartDao.cartListCnt(us_no);
+		return getCnt;
+	}
 	
 }

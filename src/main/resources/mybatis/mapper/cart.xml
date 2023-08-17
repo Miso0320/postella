@@ -41,4 +41,15 @@
  		and us_no=#{us_no}
 	</delete>
 	
+	<!-- 카트목록 전체개수 -->
+	<select id="cartListCnt" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		    product p,
+		    cart    c
+		WHERE
+		        p.prd_no = c.prd_no
+		    AND us_no = #{us_no}
+	</select>
+	
 </mapper>
