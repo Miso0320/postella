@@ -14,6 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_lumen.css">
 <style>
 .content-head {
 	margin: 0;
@@ -36,13 +37,13 @@
 .address-card.address-card--picked {
 	z-index: 1;
 	padding: 15px;
-	border: 2px solid #0073e9;
+	border: 4px solid #0082b4;
 }
 
 .address-card {
 	z-index: 1;
 	padding: 15px;
-	border: 1px solid #ccc;
+	border: 1px solid #60b0ea;
 	margin-bottom: 10px;
 }
 
@@ -84,12 +85,12 @@
 	box-sizing: content-box;
 	font-family: apple sd gothic neo, malgun gothic, nanumbarungothic,
 		nanumgothic, dotum, sans-serif;
-	background-color: #fff;
-	color: #0073e9;
-	border: 1px solid #ccc;
-	box-shadow: none;
 	transition: box-shadow .25s ease;
 	min-width: 68px;
+	height: 20px;
+}
+.address-card__head {
+    display: flex;
 }
 
 .address-choose-btn {
@@ -103,14 +104,11 @@
 	box-sizing: content-box;
 	font-family: apple sd gothic neo, malgun gothic, nanumbarungothic,
 		nanumgothic, dotum, sans-serif;
-	background-color: #0073e9;
-	color: #fff;
-	border: 0;
-	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.38);
 	transition: box-shadow .25s ease;
 	min-width: 70px;
 	font-weight: bold;
 	margin-left: 10px;
+	height: 20px;
 }
 
 .addressbook__button--new {
@@ -122,10 +120,6 @@
 	box-sizing: content-box;
 	font-family: apple sd gothic neo, malgun gothic, nanumbarungothic,
 		nanumgothic, dotum, sans-serif;
-	background-color: #fff;
-	color: #0073e9;
-	border: 1px solid #ccc;
-	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 	transition: box-shadow .25s ease;
 	display: block;
 	text-align: center;
@@ -184,6 +178,7 @@
 	display: block;
 	font-weight: bold;
 	color: #111;
+	margin-right: 10px;
 }
 </style>
 </head>
@@ -195,10 +190,10 @@
 		<div class="content-body content-body--fixed">
 			<div class="content-body__corset ">
 				<c:forEach var="da" items="${daList}">
-					<div class="address-card">
+					<div class="address-card ${da.da_main == 'Y' ? 'address-card--picked' : ''}">
 						<div class="address-card__head">
 							<div class="address-card__title">${da.da_name}</div>
-							<c:if test="${da.da_main} == 'Y'">
+							<c:if test="${da.da_main == 'Y'}">
 								<div class="address-card__fresh-mvp2">
 									<span class="address-card__marker--default">기본배송지</span>
 								</div>
@@ -210,19 +205,18 @@
 							<div class="address-card__text address-card__text--delivery-preference">${da.da_req_type}</div>
 						</div>
 						<div class="address-card__foot">
-							<button class="address-edit-btn" type="submit" onclick="location.href='editAddress'">
+							<button class="address-edit-btn btn btn-outline-info" type="submit" onclick="location.href='editAddress'">
 								<span class="addressbook__text">수정</span>
 							</button>
-							<button class="address-choose-btn" type="submit">
+							<button class="address-choose-btn btn btn-info" type="submit">
 								<span class="addressbook__text">선택</span>
 							</button>
 						</div>
 					</div>
 				</c:forEach>
 				<div class="addressbook__button-fixer">
-					<button type="submit" class="addressbook__button--new _addressBookFormSubmit" onclick="location.href='addAddress'">
-						<i class="addressbook__icon--plus"></i> 
-						<span class="addressbook__text"> 배송지 추가 </span>
+					<button type="submit" class="btn btn-primary btn-lg btn-block addressbook__button--new _addressBookFormSubmit" onclick="location.href='addAddress'">
+						<span class="addressbook__text">╋ 배송지 추가 </span>
 					</button>
 				</div>
 			</div>

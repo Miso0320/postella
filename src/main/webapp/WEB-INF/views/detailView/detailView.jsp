@@ -503,6 +503,19 @@
 					</div>
 					</section>
 					<section class="review-list-section2" data-pg_no="${pg_no}"></section>
+					<!-- 검색 결과 없는 경우 -->
+					<c:if test="${revCnt == 0}">
+						<div class="product_not_found_container">
+							<div class="product_not_found_img_container">
+								<img class="product_not_found_img" src="${pageContext.request.contextPath}/resources/img/productGroup/not_found.png"">
+							</div>
+							<div>
+								<span class="product_not_found_text_1">
+									아직 리뷰가 작성되지 않았습니다.
+								</span>
+							</div>
+						</div>
+					</c:if>
 					<div class="revPageBtn"></div>
                </div>
                
@@ -530,6 +543,19 @@
 
                   <div class="prod-inquiry-qna">
                      <div class="prod-inquiry-items"></div>
+                    <!-- 문의가 없는 경우 -->
+					<c:if test="${totalQnas == 0}">
+						<div class="product_not_found_container">
+							<div class="product_not_found_img_container">
+								<img class="product_not_found_img" src="${pageContext.request.contextPath}/resources/img/productGroup/not_found.png"">
+							</div>
+							<div>
+								<span class="product_not_found_text_1">
+									작성된 문의가 없습니다.
+								</span>
+							</div>
+						</div>
+					</c:if>
                      <div class="qnaPageBtn"></div>
                   </div>
                   

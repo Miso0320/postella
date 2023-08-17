@@ -133,10 +133,6 @@ public class DetailViewController {
 		String StrDeliverDay = fomatter.format(deliverDay);
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
-		/*//리뷰 목록 가져오기
-		List<Review> reviews = getReviewFromDB(pg_no, 1);
-		model.addAttribute("reviews", reviews);
-		*/
 		//별점 별 리뷰수 가져오기
 		int[] reviewCntGroup = new int[5];
 		Map<String, Object> rGmap = new HashMap<>();
@@ -149,9 +145,9 @@ public class DetailViewController {
 		
 		model.addAttribute("starRevCnt", reviewCntGroup);
 		
-		/*//리뷰 목록 가져오기
-		List<Qna> qnas = getQnaFromDB(pg_no);
-		model.addAttribute("qnas", qnas);*/
+		//문의 수 가져오기
+		int totalQnas = qnaService.getTotalQnasCount(pg_no);
+  	    model.addAttribute("totalQnas", totalQnas);
 		
 		return "detailView/detailView";
 	}
@@ -225,10 +221,6 @@ public class DetailViewController {
 		String StrDeliverDay = fomatter.format(deliverDay);
 		model.addAttribute("deliverDay", StrDeliverDay);
 		
-		/*//리뷰 목록 가져오기
-		List<Review> reviews = getReviewFromDB(pg_no, 1);
-		model.addAttribute("reviews", reviews);*/
-		
 		//별점 별 리뷰수 가져오기
 		int[] reviewCntGroup = new int[5];
 		Map<String, Object> rGmap = new HashMap<>();
@@ -241,9 +233,9 @@ public class DetailViewController {
 		
 		model.addAttribute("starRevCnt", reviewCntGroup);
 		
-		/*//리뷰 목록 가져오기
-		List<Qna> qnas = getQnaFromDB(pg_no);
-		model.addAttribute("qnas", qnas);*/
+		//문의 수 가져오기
+		int totalQnas = qnaService.getTotalQnasCount(pg_no);
+  	    model.addAttribute("totalQnas", totalQnas);
 		
 		return "detailView/detailView";
 	}
@@ -433,7 +425,7 @@ public class DetailViewController {
     //상품문의 불러오기
   	@RequestMapping("/getQnaFromDB")
 	@ResponseBody
-	public Map<String, Object> getQnaFromDB(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
+	public Map<String, Object> getQnaFromDB(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page, Model model) {
   		int itemsPerPage = 5; // 페이지 당 아이템 수
 
   	    int totalQnas = qnaService.getTotalQnasCount(pg_no);
