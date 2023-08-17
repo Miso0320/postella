@@ -18,10 +18,15 @@ public interface OrdersDao {
 	// 주문목록 수 가져오기
 	public int orderListCnt(Map<String, Object> map);
 	
-	// 주문내역 삭제
-	public int deleteOrder(int od_detail_no);
+	// 개별주문내역 삭제
+	public int deleteOrderDetail(int od_detail_no);
 	
 	// 주문 내역 추가하기
 	public int insertOrder(Orders order);
-
+	
+	// 주문 그룹 내역 수량 변경
+	public int updateOrder(Map<String, Object> map);	
+	
+	// 개별주문내역 삭제
+	public int deleteOrder(int od_no);
 }

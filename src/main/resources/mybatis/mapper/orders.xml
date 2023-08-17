@@ -12,7 +12,7 @@
 	
 	<!-- 주문목록 가져오기 -->
  	<select id="selectOrderList" parameterType="java.util.Map" resultType="Orders">
-		SELECT od_date, od_status, prd_name, od_detail_qty, od_detail_price, prd_no, od_no, od_detail_no
+		SELECT od_date, od_status, prd_name, od_detail_qty, od_detail_price, prd_no, od_no, od_detail_no, od_item_cnt, us_no
 		FROM (
 			SELECT
 				ROWNUM AS rnum,
@@ -23,7 +23,9 @@
 			    od_detail_price,
 			    prd_no,
 			    od_no,
-			    od_detail_no
+			    od_detail_no,
+			    od_item_cnt,
+			    us_no
 			FROM
 			    (
 				SELECT
@@ -35,7 +37,9 @@
 				    od_detail_price,
 				    prd_no,
 				    ord.od_no as od_no,
-				    od_detail_no
+				    od_detail_no,
+				    od_item_cnt,
+				    ord.us_no
 				FROM
 				         orders ord
 				    JOIN (
@@ -110,16 +114,32 @@
 	    	)
 	</select>
 	
-	<!-- 주문내역 삭제 -->
-	<delete id="deleteOrder" parameterType="int">
+	<!-- 개별주문내역 삭제 -->
+	<delete id="deleteOrderDetail" parameterType="int">
 		delete from order_detail
 		where od_detail_no = #{od_detail_no}
 	</delete>
 	
-	<!-- 주문 내역 추가하기 -->
+	<!-- 주문내역 추가하기 -->
 	<insert id="insertOrder" parameterType="Orders">
 		insert into orders (od_no, us_no, cp_no, od_date, od_status, od_door_pwd, od_item_cnt, od_arrived_date)
 		VALUES (od_no_seq.nextval, #{us_no}, #{cp_no, jdbcType=INTEGER}, #{od_date}, #{od_status}, #{od_door_pwd, jdbcType=VARCHAR}, #{od_item_cnt}, #{od_arrived_date, jdbcType=DATE})
 	</insert>
+	
+	<!-- 주문그룹내역 수량 변경 -->
+	<update id="updateOrder" parameterType="java.util.Map">
+		UPDATE orders
+		SET
+		    od_item_cnt = #{od_item_cnt}
+		WHERE
+		        us_no = #{us_no}
+		    AND od_no = #{od_no}
+	</update>
+	
+	<!-- 주문그룹내역 삭제 -->
+	<delete id="deleteOrder" parameterType="int">
+		delete from orders
+		where od_no = #{od_no}
+	</delete>
 	
 </mapper>

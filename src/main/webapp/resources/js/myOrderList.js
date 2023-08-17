@@ -38,9 +38,12 @@ function init() {
 	$('#deleteCk').on('show.bs.modal', function (event) {
 	    var button = $(event.relatedTarget);
 	    var odDetailNo = button.data('od-detail-no');
+	    var odUsNo = button.data('od-us-no');
+	    var odNo = button.data('od-no');
+	    var odItemCnt = button.data('od-item-cnt');
 	    
 	    var deleteLink = $('#deleteCk').find('.modal-footer .btn-primary');
-	    deleteLink.attr('href', 'deleteOrder?od_detail_no=' + odDetailNo);
+	    deleteLink.attr('href', 'deleteOrder?od_detail_no=' + odDetailNo + '&us_no=' + odUsNo + '&od_no=' + odNo + '&od_item_cnt=' + odItemCnt);
 	});
 	
 	// 장바구니 상품 정보 열기
@@ -94,25 +97,6 @@ function addCart(us_no, prd_no, crt_qty) {
     });
     
 }
-
-// 장바구니에서 삭제하기
-/*function deleteCart(us_no, prd_no) {
-	이거 다시 받아와~~
-	var prd_no = $(".p_prd_no").val();
-	
-	console.log("prd_no ------------!! : " + prd_no);
-	
-	
-    $.ajax({
-    	url: "deleteCartInOrderList",
-    	method: "post",
-    	data: { prd_no: prd_no, us_no: us_no },
-        success: function (data) {
-            console.log(data);
-        }
-    });
-    
-}*/
 
 // 장바구니 상품 정보 열기
 function recentItemView() {

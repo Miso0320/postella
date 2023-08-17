@@ -159,7 +159,7 @@
 				                                    <a href="#" class="btn btn-primary btn_size modal_txt">배송조회</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size">교환, 반품 신청</a>
 				                                    <a href="#" class="btn btn-outline-primary btn_size">리뷰 작성하기</a>
-				                                    <a href="#" class="btn btn-outline-primary btn_size" data-toggle="modal" data-target="#deleteCk" data-od-detail-no="${orderList.od_detail_no}">주문내역 삭제</a>
+				                                    <a href="#" class="btn btn-outline-primary btn_size" data-toggle="modal" data-target="#deleteCk" data-od-detail-no="${orderList.od_detail_no}" data-od-us-no="${orderList.us_no}" data-od-no="${orderList.od_no}" data-od-item-cnt="${orderList.od_item_cnt}">주문내역 삭제</a>
 				                                	<!-- 모달 -->
 													<div class="modal" id="deleteCk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													  <div class="modal-dialog" role="document">
@@ -330,7 +330,7 @@
 		<!-- 장바구니 목록 -->
 		<section class="my_view">
 			<div class="my_view_cart">
-				<a>
+				<a href="cartNormal">
 					<em class="cart_count">${totalCartCnt}</em>
 				</a>
 			</div>
@@ -353,7 +353,6 @@
 					</c:forEach>
 				</ul>
 			</div>
-			
 		</section>
 		
 		<!-- 사이드바(스크롤 내려간 경우에만 나타남) -->

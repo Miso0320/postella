@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,7 +23,6 @@ import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Orders;
 import com.mycompany.postella.dto.Pager;
-import com.mycompany.postella.dto.Users;
 import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.MyPageService;
@@ -186,13 +184,24 @@ public class MypageController {
 	 * 마이페이지 주문목록 삭제하기
 	 * 
 	 * @param od_detail_no
+	 * 			개별주문식별번호
+	 * @param us_no
+	 * 			회원고유번호
+	 * @param od_no
 	 * 			주문식별번호
+	 * @param od_item_cnt
+	 * 			주문상품 종류의 개수
 	 * @return redirect:/myOrderList
 	 */
-	@PostMapping("/deleteOrder")
+	@RequestMapping("/deleteOrder")
 	public String deleteOrder(
-			@RequestParam(name = "od_detail_no", required = true) int od_detail_no) {
+			@RequestParam(name = "od_detail_no", required = true) int od_detail_no,
+			@RequestParam(name = "us_no", required = false) int us_no,
+			@RequestParam(name = "od_no", required = false) int od_no,
+			@RequestParam(name = "od_item_cnt", required = false) int od_item_cnt
+			) {
 		
+		myPageService.updateOrderDelete(us_no, od_no, od_item_cnt);
 		myPageService.removeOrder(od_detail_no);
 		return "redirect:/myOrderList";
 	}

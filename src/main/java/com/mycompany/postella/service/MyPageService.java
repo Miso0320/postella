@@ -14,4 +14,7 @@ public interface MyPageService {
 	
 	// 마이페이지 주문목록 개수 가져오기
 	public int getTotalOrderNum(Map<String, Object> map);
+	
+	// 마이페이지 주문목록 삭제 시 주문그룹 수량 변경
+	public void updateOrderDelete(int us_no, int od_no, int od_item_cnt);
 }
