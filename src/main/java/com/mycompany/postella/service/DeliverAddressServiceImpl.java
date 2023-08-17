@@ -32,4 +32,10 @@ public class DeliverAddressServiceImpl implements DeliverAddressService {
 		return da;
 	}
 	
+	@Override
+	public void changeMainAdr(int da_no) {
+		daDao.setMainAddressToN(da_no);
+		daDao.updateMainAddress(da_no);
+	}
+	
 }

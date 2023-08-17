@@ -25,8 +25,9 @@
 				delReqChildWindow = window.open('deliveryRequest', '_blank', 'width=518, height=666, left=200, top=200');
 				delReqChildWindow.dataFromParent = "orderNpay";
 			}
-			function addAddressClose() {
-				delReqChildWindow.close();
+			function changeAddressOpen() {
+				changeAddressWindow = window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200');
+				changeAddressWindow.dataFromParent = "orderNpay";
 			}
 		</script>
 	</head>
@@ -109,14 +110,14 @@
 	     		<div data-component="deliveryAddress">    
 	     			<h2 class="delivery-address__caption-header">
 					        받는사람정보
-					    <button class="delivery-address__popup-list-button btn btn-info" type="button" onclick="window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200')">배송지변경</button>
+					    <button class="delivery-address__popup-list-button btn btn-info" type="button" onclick="changeAddressOpen()">배송지변경</button>
 					</h2>
 				    <table class="delivery-address">
 				        <tbody>
 					        <tr>
 					            <th class="delivery-address__th">이름</th>
 					            <td class="delivery-address__td">
-					                <span class="delivery-address__name">${basicDa.da_name}</span>
+					                <span class="delivery-address__name" id="receiver-name">${basicDa.da_name}</span>
 					                <c:if test="${basicDa.da_main} == 'Y'">
 					                	<span class="delivery-address__type-label">기본배송지</span>
 					                </c:if>
@@ -124,11 +125,11 @@
 					        </tr>
 					        <tr>
 					            <th class="delivery-address__th">배송주소</th>
-					            <td class="delivery-address__td">${basicDa.da_adr} ${basicDa.da_detail_adr}</td>
+					            <td class="delivery-address__td" id="receiver-address">${basicDa.da_adr} ${basicDa.da_detail_adr}</td>
 					        </tr>
 					        <tr>
 					            <th class="delivery-address__th delivery-address__th--no-line">연락처</th>
-					            <td class="delivery-address__td delivery-address__td--no-line">${basicDa.da_tel}</td>
+					            <td class="delivery-address__td delivery-address__td--no-line" id="receiver-tel">${basicDa.da_tel}</td>
 					        </tr>
 					        <tr>
 						        <th class="delivery-address__th"  id="delivery-request">

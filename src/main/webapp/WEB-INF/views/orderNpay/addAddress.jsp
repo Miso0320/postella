@@ -49,6 +49,22 @@
 		        // 체크박스가 체크되면 "Y", 체크가 해제되면 "N"으로 설정
 		        checkbox.value = checkbox.checked ? 'Y' : 'N';
 		    }
+		    
+		    function chooseAddress(us_no) {
+				$.ajax({
+					type : "POST",
+					url : "updateAddressMain",
+					data : {
+						us_no : us_no,
+					},
+					success : function(response) {
+						console.log("기본 주소 변경 성공");
+					},
+					error : function(xhr, status, error) {
+						console.log("기본 주소 변경 실패");
+					}
+				});
+			}
 	    </script>
 	</head>
 	<body>

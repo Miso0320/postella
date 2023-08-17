@@ -10,8 +10,6 @@
 	            #{da_name}, #{da_tel}, #{da_postcode}, #{da_adr}, #{da_detail_adr}, #{da_main}, #{da_req_type})
 	</insert>
 	
-
- 
  	<select id="selectAddressList" parameterType="int" resultType="DeliverAddress">
  		select da_no, da_type, us_no,  sel_no, da_name, da_tel, da_postcode, da_adr, da_detail_adr, da_main, get_code_value('DA', da_req_type) as da_req_type 
 		from deliver_address
@@ -30,4 +28,17 @@
 		where groupvalue = 'DELIVER_ADDRESS_DA_REQ_TYPE'
 		and code = #{da_req_type}
  	</select>
+ 	
+ 	<update id="setMainAddressToN" parameterType="int">
+ 		update deliver_address SET da_main = 'N'
+		where us_no =
+		(select us_no
+		from deliver_address
+		where da_no = #{da_no})
+ 	</update>
+ 	
+ 	<update id="updateMainAddress" parameterType="int">
+ 		update deliver_address SET da_main = 'Y'
+		where da_no = #{da_no}
+ 	</update>
 </mapper>

@@ -14,4 +14,6 @@ public interface DeliverAddressDao {
 	public List<DeliverAddress> selectAddressList(int us_no); 
 	public DeliverAddress selectBasicAddress(int us_no); 
 	public String getKorRequest(String da_req_type);
+	public int setMainAddressToN(int da_no); 
+	public int updateMainAddress(int da_no); 
 }

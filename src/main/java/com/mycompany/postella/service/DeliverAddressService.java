@@ -9,4 +9,5 @@ public interface DeliverAddressService {
 	public List<DeliverAddress> getAddressList(int us_no);
 	public void putAddress(DeliverAddress da);
 	public DeliverAddress getBasicAddress(int us_no);
+	public void changeMainAdr(int da_no);
 }

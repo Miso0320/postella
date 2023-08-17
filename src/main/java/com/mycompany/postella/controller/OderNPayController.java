@@ -234,4 +234,14 @@ public class OderNPayController {
 	    return ResponseEntity.ok("success");
     }
 	
+	//기존에 있는 주소를 기본 배송지로 변경
+	@PostMapping("/updateAddressMain")
+	public ResponseEntity<String> updateAddressMain(@RequestParam("da_no") int da_no) {
+
+		daService.changeMainAdr(da_no);
+        
+        return ResponseEntity.ok("Success");
+	}
+
+	
 }
