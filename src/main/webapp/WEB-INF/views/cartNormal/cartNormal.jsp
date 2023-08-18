@@ -34,7 +34,7 @@
 					<span class="normal-cart d-flex justify-content-center">구매목록</span>
 				</div>
 				<div class="cart-part table" id="cart-chart">
-					<table id="myTable">
+					<table id="myTable" class="myTable">
 						<thead id="thead">
 						  <tr>
 						    <th class="th1">
