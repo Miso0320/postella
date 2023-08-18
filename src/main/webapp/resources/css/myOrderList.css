@@ -608,6 +608,39 @@
 	margin-bottom: 8px;
 }
 
+/* 페이징 */
+.recent_viewed_paging {
+	display: flex;
+	height: 16px;
+	margin: 0;
+	font-size: 11px;
+	color: #7b7b7b;
+	justify-content: space-between;
+}
+
+.recent_viewed_paging strong {
+	color: #0085da;
+}
+
+.paging_btn_grp {
+	float: right;
+}
+
+.paging_btn {
+	float: left;
+	width: 15px;
+	height: 16px;
+	background: url("//img1a.coupangcdn.com/image/coupang/common/bg_side_sprite.png") no-repeat;
+}
+
+.prev_btn {
+	background-position: 0 0;
+}
+
+.next_btn {
+	background-position: -16px 0;
+}
+
 /* 마우스 오버하는 경우  */
 .over {
 	position: absolute;

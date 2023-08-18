@@ -1,5 +1,8 @@
 $(init);
 
+// 사이드바 장바구니 현재 페이지
+cartPageNo = 1;
+
 $(document).ready(function() {
 	var container = $(".classification_date");
 	requestYear = container.data('request-year');
@@ -18,13 +21,6 @@ $(document).ready(function() {
 });
 
 function init() {
-	// 장바구니 담기 변수 선언
-	/*var container = $(".content_item_img");
-	var us_no = container.data('us-no');
-	var prd_no = container.data('prd-no');
-	var crt_qty = 1;
-	addCart(us_no, prd_no, crt_qty);*/
-	
 	// 사이드바 보이기, 숨기기
 	$(window).scroll(function() {
 		if($(this).scrollTop() > 250) {
@@ -46,10 +42,6 @@ function init() {
 	    deleteLink.attr('href', 'deleteOrder?od_detail_no=' + odDetailNo + '&us_no=' + odUsNo + '&od_no=' + odNo + '&od_item_cnt=' + odItemCnt);
 	});
 	
-	// 장바구니 상품 정보 열기
-	$(".p_img").mouseover(recentItemView);
-	$(".p_img").mouseout(recentItemHide);
-	
 	// 툴팁 활성화하기(수동으로 툴팁 제어)
 	$('.tooltip-btn').tooltip({
 		trigger: 'manual'
@@ -65,6 +57,9 @@ function init() {
 			$tooltip.tooltip('hide');
 		}, 1000);
 	});
+	
+	// 사이드바 장바구니 목록 보여주기
+	showCartInOrderList(cartPageNo);
 	
 }
 
@@ -92,19 +87,132 @@ function dp_menu_hide() {
 	}
 }
 
+// 장바구니 목록 html 삽입
+function showCartList(carts, cartPageNo, totalCartPage, totalCartCnt) {
+	// html로 삽입될 내용
+	var content = '';
+	content += '<div class="my_view_cart">';
+	content += '	<a href="cartNormal">';
+	content += '		<em class="cart_count">' + totalCartCnt +'</em>';
+	content += '	</a>';
+	content += '</div>';
+	content += '<div class="recent_viewed_list">';
+	content += '	<ul class="recent_viewed_page">';
+	
+	// 장바구니 목록
+	for(var i = 0; i < carts.length; i++) {
+		var item = carts[i];
+		content += '	<li>';
+		content += '		<a class="recent_viewed_item" href="setDetailPage?prdNo=' + item.prd_no + '">';
+		content += '			<img class="p_img" src="data:' + item.img_type + ';base64, ' + item.encodedFile + '">';
+		content += '			<span class="p_name">' + item.prd_name + '</span>';
+		content += '			<span class="p_price">';
+		content += '				<em class="sale_price">' + item.prd_price + '</em>원';
+		content += '			</span>';
+		content += '			<input type="hidden" class="p_prd_no" value="' + item.prd_no + '">';
+		content += '		</a>';
+		content += '		<a class="delete_recent" href="deleteCartInOrderList?prd_no=' + item.prd_no + '"></a>';
+		content += '	</li>';
+	}
+	
+	content += '</ul>';
+	
+	// 장바구니 버튼 생성
+	if(totalCartPage > 0) {
+		content += '	<p class="recent_viewed_paging">';
+		content += '		<span>';
+		content += '			<strong>' + cartPageNo + '</strong>/<em>' + totalCartPage + '</em>';
+		content += '		</span>';
+		content += '		<span class="paging_btn_grp">';
+		content += '			<a class="paging_btn prev_btn"></a>';
+		content += '			<a class="paging_btn next_btn"></a>';
+		content += '		</span>';
+		content += '	</p>';
+		content += '</div>';
+	}
+	
+	// html 내용 추가
+	$(".my_view").html(content);
+	
+	// 이전 메뉴 버튼 클릭
+	$(".prev_btn").click(function() {
+		if(1 < cartPageNo) {
+			cartPageNo -= 1;
+			showCartInOrderList(cartPageNo);
+		}
+	}); 
+	
+	// 다음 메뉴 버튼 클릭
+	$(".next_btn").click(function() {
+		if(totalCartPage > cartPageNo) {
+			cartPageNo += 1;
+			showCartInOrderList(cartPageNo);
+		}
+	}); 
+	
+	// 장바구니 상품 정보 열기
+	$(".p_img").mouseover(cartItemView);
+	$(".p_img").mouseout(cartItemHide);
+}
+
+
+//장바구니 목록 가져오기
+function showCartInOrderList(cartPageNo) {
+	
+	console.log("새로운 장바구니 목록을 가져와보아용^0^");
+    $.ajax({
+    	url: "showCartInOrderList",
+    	method: "get",
+    	data: { cartPageNo: cartPageNo },
+        success: function (data) {
+        	// 응답으로 전달된 장바구니 목록 데이터
+        	var carts = data.carts;
+        	// 전체 페이지 수
+        	var totalCartPage = data.totalCartPage;
+        	// 전체 상품 수
+        	var totalCartCnt = data.totalCartCnt;
+        	
+        	// 장바구니 목록 html 삽입
+        	showCartList(carts, cartPageNo, totalCartPage, totalCartCnt);
+        }
+    });
+}
+
 // 장바구니에 담기
 function addCart(prd_no) {
     $.ajax({
     	url: "addCartInOrderList",
     	method: "post",
-    	 data: { prd_no: prd_no },
+    	data: { prd_no: prd_no },
         success: function (data) {
+        	/*페이징 먼저 하고 오기!!*/
+        	
+        	
+		/*<c:forEach var="cart" items="${carts}" varStatus="status">
+			<c:if test="${status.index < 4}">
+				<li>
+					<a class="recent_viewed_item" href="setDetailPage?prdNo=${cart.prd_no}">
+						<img class="p_img" src="data:${cart.img_type};base64, ${cart.encodedFile}">
+						<span class="p_name">${cart.prd_name}</span>
+						<span class="p_price">
+							<em class="sale_price">${cart.prd_price}</em>원
+						</span>
+						<input type="hidden" class="p_prd_no" value="${cart.prd_no}">
+					</a>
+					<a class="delete_recent" href="deleteCartInOrderList?prd_no=${cart.prd_no}"></a>
+				</li>
+			</c:if>
+		</c:forEach>*/
+        	
+        	
+        	
+        	
         }
     });
 }
 
 // 장바구니 상품 정보 열기
-function recentItemView() {
+function cartItemView() {
 	var target = event.target;
 
 	// recent_viewed_item class
@@ -123,7 +231,7 @@ function recentItemView() {
 
 
 // 장바구니 상품 정보 닫기
-function recentItemHide() {
+function cartItemHide() {
 	var target = event.target;
 		
 	// recent_viewed_item class

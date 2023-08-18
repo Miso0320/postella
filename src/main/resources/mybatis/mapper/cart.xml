@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.CartDao">
-
+	
+	<!-- 상품 장바구니에 담기 -->
 	<insert id="insertPrdToCart" parameterType="Cart">
 		insert into cart(us_no, prd_no, crt_qty) VALUES (#{us_no},#{prd_no},#{crt_qty})
 	</insert>
 	
+	<!-- 장바구니에 담긴 상품 하나 검색 -->
 	<select id="selectCart" parameterType="java.util.Map" resultType="Cart">
 		select *
 		from cart
 		where us_no = #{us_no} and prd_no = #{prd_no}
 	</select>
 	
+	<!-- 장바구니 변경 -->
 	<update id="updateCart" parameterType="Cart">
 		update cart set crt_qty = #{crt_qty}
 		where us_no = #{us_no} and prd_no = #{prd_no}
 	</update>
 	
+	<!-- 장바구니 상품리스트 -->
 	<select id="selectCartByUsNo" parameterType="int" resultType="Cart">
 		select p.prd_name, p.prd_price, p.prd_ship_fee, c.us_no, c.prd_no, c.crt_qty
 		from product p, cart c
 		where p.prd_no = c.prd_no and us_no=#{us_no}
 	</select>
 	
+	<!-- 장바구니 상품이미지 -->
 	<select id="selectCartImg" resultType="Img">
 		SELECT img_file, img_type, prd_no
 		FROM (
@@ -35,13 +40,14 @@
 		WHERE rn = 1
 	</select>
 	
+	<!-- 장바구니 삭제 -->
 	<delete id="deleteCart" parameterType="java.util.Map">
 		DELETE from cart
  		where prd_no=#{prd_no}
  		and us_no=#{us_no}
 	</delete>
 	
-	<!-- 카트목록 전체개수 -->
+	<!-- 장바구니 목록 전체개수 -->
 	<select id="cartListCnt" parameterType="int" resultType="int">
 		SELECT COUNT(*)
 		FROM
@@ -50,6 +56,33 @@
 		WHERE
 		        p.prd_no = c.prd_no
 		    AND us_no = #{us_no}
+	</select>
+	
+	<!-- 장바구니 목록 페이징 -->
+	<select id="selectCartPaging" parameterType="java.util.Map" resultType="Cart">
+		SELECT prd_name, prd_price, prd_ship_fee, us_no, prd_no, crt_qty
+		FROM
+		    (
+		        SELECT
+		            ROWNUM AS rnum,
+		            p.prd_name,
+		            p.prd_price,
+		            p.prd_ship_fee,
+		            c.us_no,
+		            c.prd_no,
+		            c.crt_qty
+		        FROM
+		            product p,
+		            cart    c
+		        WHERE
+		                p.prd_no = c.prd_no
+		            AND us_no = #{us_no}
+		<![CDATA[
+		            AND ROWNUM <= #{endRowNo}
+		    )
+		WHERE
+		    rnum >= #{startRowNo}
+		]]>
 	</select>
 	
 </mapper>

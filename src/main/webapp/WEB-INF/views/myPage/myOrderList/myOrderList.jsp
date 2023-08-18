@@ -148,7 +148,8 @@
 				                                                <span>${orderList.od_detail_qty} 개</span>
 				                                            </div>
 				                                            <div>
-				                                                <button type="button" class="btn btn-secondary tooltip-btn cart_btn" data-toggle="tooltip" data-placement="left" title="장바구니에 상품이 담겼습니다." onclick="javascript:addCart(${orderList.prd_no})">장바구니 담기</button>
+				                                                <%-- <button type="button" class="btn btn-secondary tooltip-btn cart_btn" data-toggle="tooltip" data-placement="left" title="장바구니에 상품이 담겼습니다." onclick="javascript:addCart(${orderList.prd_no})">장바구니 담기</button> --%>
+				                                                <button type="button" class="btn btn-secondary tooltip-btn cart_btn" data-toggle="tooltip" data-placement="left" title="장바구니에 상품이 담겼습니다.">장바구니 담기</button>
 				                                            </div>
 				                                        </div>
 				                                    </div>
@@ -329,13 +330,13 @@
 	<article class="order_list_right" id="order_list_right">
 		<!-- 장바구니 목록 -->
 		<section class="my_view">
-			<div class="my_view_cart">
+			<%-- <div class="my_view_cart">
 				<a href="cartNormal">
 					<em class="cart_count">${totalCartCnt}</em>
 				</a>
 			</div>
 			<div class="recent_viewed_list">
-				<ul class="recent_viewed_page">
+ 				<ul class="recent_viewed_page">
 					<c:forEach var="cart" items="${carts}" varStatus="status">
 						<c:if test="${status.index < 4}">
 							<li>
@@ -352,7 +353,16 @@
 						</c:if>
 					</c:forEach>
 				</ul>
-			</div>
+				<p class="recent_viewed_paging">
+					<span>
+						<strong>1</strong>/<em>5</em>
+					</span>
+					<span class="paging_btn_grp">
+						<a class="paging_btn prev_btn"></a>
+						<a class="paging_btn next_btn"></a>
+					</span>
+				</p>
+			</div> --%>
 		</section>
 		
 		<!-- 사이드바(스크롤 내려간 경우에만 나타남) -->

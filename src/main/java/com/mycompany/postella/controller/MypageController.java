@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
@@ -133,11 +134,14 @@ public class MypageController {
         }
         
         // 페이징 객체 생성
+        // 페이지가 없는 경우 첫 번째 페이지 보여주기
         if(pageNo == null) {
         	pageNo = "1";
         }
         
+        // 매개변수로 사용하기 위해 타입 변경
         int intpageNo = Integer.parseInt(pageNo);
+        // 주문목록 페이지 전체개수 가져오기
         int totalOrderNum = myPageService.getTotalOrderNum(map);
         
         Pager pager = new Pager(6, 10, totalOrderNum, intpageNo);
@@ -155,8 +159,25 @@ public class MypageController {
 			orders.get(i).setEncodedFile(Base64.getEncoder().encodeToString(orderImages.getImg_file()));
 		}
 		
-		// 사이드바 장바구니 목록 가져오기
-		List<Cart> carts = cartService.getProductCart(us_no);
+		/*// 사이드바 장바구니 목록 가져오기
+		Map<String, Object> cartMap = new HashMap<>();
+		cartMap.put("us_no", us_no);
+		
+		// 페이징 객체 생성
+		// 페이지가 없는 경우 첫 번째 페이지 보여주기
+        if(cartPageNo == null) {
+        	cartPageNo = "1";
+        }
+        
+        // 매개변수로 사용하기 위해 타입 변경
+        int intCartPageNo = Integer.parseInt(cartPageNo);
+        // 장바구니 전체개수
+        int totalCartCnt = cartService.getTotalCartCnt(us_no);
+		
+        Pager cartPager = new Pager(4, 10, totalCartCnt, intCartPageNo);
+        cartMap.put("pager", pager);
+		
+		List<Cart> carts = cartService.getCartPaging(cartMap);
 		
 		// 장바구니 이미지 가져오기
 		Image cartImages = null;
@@ -165,16 +186,14 @@ public class MypageController {
 			cartImages = imageService.getImageByPrdNo(carts.get(i).getPrd_no());
 			carts.get(i).setImg_type(cartImages.getImg_type());
 			carts.get(i).setEncodedFile(Base64.getEncoder().encodeToString(cartImages.getImg_file()));
-		}
-		
-		int totalCartCnt = cartService.getTotalCartCnt(us_no);
+		}*/
 		
 		model.addAttribute("orders", orders);
 		model.addAttribute("pager", pager);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("requestYear", requestYear);
-		model.addAttribute("carts", carts);
-		model.addAttribute("totalCartCnt", totalCartCnt);
+		/*model.addAttribute("carts", carts);
+		model.addAttribute("totalCartCnt", totalCartCnt);*/
 		
 		return "myPage/myOrderList/myOrderList";
 	}
@@ -206,6 +225,68 @@ public class MypageController {
 		return "redirect:/myOrderList";
 	}
 	
+	
+	
+	
+	
+	/**
+	 * 
+	 * 장바구니 보여주기(AJAX)
+	 * 
+	 * @param cartPageNo
+	 * 			현재 페이지 번호
+	 * @return
+	 */
+	@RequestMapping("/showCartInOrderList")
+	@ResponseBody
+	public Map<String, Object> showCartInOrderList(
+			@RequestParam(name="cartPageNo", required=false)
+			int cartPageNo) {
+		
+		/*Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();*/
+		int us_no = 121;
+		
+		Map<String, Object> cartMap = new HashMap<>();
+		cartMap.put("us_no", us_no);
+		
+		// 한 페이지 당 나타낼 개수
+		int itemsPerPage = 4;
+		
+        // 장바구니 전체개수
+        int totalCartCnt = cartService.getTotalCartCnt(us_no);
+        
+        // 전체 페이지
+        int totalCartPage = (int) Math.ceil((double) totalCartCnt / itemsPerPage);
+        log.info("*******************************totalCartPage : " + totalCartPage);
+		
+        int startRowNo = (cartPageNo - 1) * itemsPerPage + 1;
+        int endRowNo = cartPageNo * itemsPerPage;
+        
+        cartMap.put("startRowNo", startRowNo);
+        cartMap.put("endRowNo", endRowNo);
+		
+        // 페이징된 장바구니 목록 가져오기
+		List<Cart> carts = cartService.getCartPaging(cartMap);
+		
+		// 장바구니 이미지 가져오기
+		Image cartImages = null;
+		
+		for(int i = 0; i < carts.size(); i++) {
+			cartImages = imageService.getImageByPrdNo(carts.get(i).getPrd_no());
+			carts.get(i).setImg_type(cartImages.getImg_type());
+			carts.get(i).setEncodedFile(Base64.getEncoder().encodeToString(cartImages.getImg_file()));
+		}
+		
+		Map<String, Object> lastCartMap = new HashMap<>();
+		lastCartMap.put("carts", carts);
+		lastCartMap.put("totalCartPage", totalCartPage);
+		lastCartMap.put("totalCartCnt", totalCartCnt);
+		
+		return lastCartMap;
+	}
+	
+	
 	/**
 	 * 
 	 * 사이드바 장바구니 항목 삭제
@@ -232,7 +313,8 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/addCartInOrderList")
-	public String addCartInOrderList(
+	@ResponseBody
+	public List<Cart> addCartInOrderList(
 			@RequestParam(name = "prd_no", required = true) int prd_no) {
 		
 		/*Users users = (Users) session.getAttribute("userLogin");
@@ -273,8 +355,11 @@ public class MypageController {
 			cartService.addToCart(cart);
 		}
 		
+		// 업데이트 된 장바구니 목록 가져오기
+		carts = cartService.getProductCart(us_no);
+		
 		// ajax로 값 넘기기 수정 필요!!!
-		return "redirect:/myOrderList";
+		return carts;
 	}
 
 }
