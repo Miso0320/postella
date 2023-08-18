@@ -106,8 +106,6 @@ public class CartController {
 	    } else {
 	    	cart.setCrt_qty(selectedValue);
 	    }
-	    //cart.setCrt_qty(qty);
-		//cart.setCrt_qty(selectedValue);
 	    cart.setPrd_no(prd_no);
 	    cart.setUs_no(userNo);
 	    log.info("cart : " + cart);

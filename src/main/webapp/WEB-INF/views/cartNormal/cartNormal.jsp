@@ -55,7 +55,7 @@
 						  </tr>
 						</thead>					
 						
-					  <tbody id="cart-product-contents" class="cart-product-contentes">	
+					  <tbody id="cart-product-contents" class="cart-product-contents">	
 							
 					  </tbody>
 					  

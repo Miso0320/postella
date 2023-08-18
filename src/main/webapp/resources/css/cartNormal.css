@@ -144,6 +144,8 @@
 
 .prod-quantity-form {
 	display: flex;
+	width:52px;
+	height:24px;
 }
 
 .orderPrice {
@@ -157,6 +159,7 @@
 	justify-content: center;
 	padding: 70px;
 	font-weight: bold;
+	font-size: large;
 }
 
 .math-icon {
@@ -200,9 +203,4 @@
 .promo-cash-benefit__text {
 	font-size: 12px;
 	font-style: normal;
-}
-
-#selectBtn {
-	width:52px;
-	height:24px;	
 }

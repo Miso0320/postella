@@ -20,5 +20,6 @@
 	<a href="detailView" class="btn btn-primary btn-sm m-2">상품 상세페이지</a>
 	<a href="productGroup" class="btn btn-warning btn-sm m-2">상품 목록</a>
 	<a href="adminIndex" class="btn btn-success btn-sm m-2">관리자페이지</a>
+	<a href="userChange" class="btn btn-success btn-sm m-2">회원정보수정</a>
 </body>
 </html>

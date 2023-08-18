@@ -17,7 +17,7 @@ function init() {
 	
 	//select값의 초기값을 selected되게 한다, 계산을 위해선 selected가 필요
 	$(function(){
-		$("#selectBtn").val("${param.crt_qty}").attr("selected","selected");
+		$(".prod-quantity-form").val("${param.crt_qty}").attr("selected","selected");
 	});
 
 	//select값이 바뀔때마다 상품수량 업데이트 crt_qty update
@@ -240,8 +240,7 @@ function cart() {
 			} else {			
 				tableCount(data.length);		
 				let html = "";
-				var crt_qty_from_data = 1;
-				var prevRowspan = 0;
+				var crt_qty_from_data = 1; // DB로부터 가져온 crt_qty 값을 담을 곳
 			  data.forEach((item,index) => {
 				  
 				  console.log("상품 정보:", item);
@@ -267,7 +266,7 @@ function cart() {
 				  html += '  		<div class="cart-product-option-price">';
 				  html += '  			<span id="prodPrice">' + item.prd_price +'</span>';
 				  html += '  			<span>원</span>';
-				  html += '					<select id="selectBtn" class="prod-quantity-form" onchange="javascript:sumItemPrice(); checkInput1(this.value);" style="width:52px; height:24px;">';		  
+				  html += '					<select class="prod-quantity-form" onchange="javascript:sumItemPrice(); checkInput1(this.value);" style="width:52px; height:24px;">';		  
 				  var crt_qty_from_data = item.crt_qty; // DB로부터 가져온 crt_qty 값
 				  var selectedOptionValue = crt_qty_from_data >= 11 ? '10+' : crt_qty_from_data;
 
@@ -445,13 +444,13 @@ function totalPrice() {
 //상품이 아무것도 없으면 상품없음문구 나옴
 function bye() {
 	console.log($(".cart-product-contents").length);
-	if($(".cart-product-contents").length == 0) {
-		
+	if($(".cart-product-contents").length == 0) {		
 		$('#thead').addClass("d-none");
 		$('#tbody').removeClass("d-none");
 		$('#tfoot').addClass("d-none");
 		$('#cart-chart').addClass("d-none");
 		$('#myTable').addClass("d-none");
+		$('.goPayment').addClass("d-none");
 	}
 }
 
