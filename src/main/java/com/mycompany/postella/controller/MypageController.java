@@ -230,5 +230,51 @@ public class MypageController {
 		
 		return "redirect:/myOrderList";
 	}
+	
+	@RequestMapping("/addCartInOrderList")
+	public String addCartInOrderList(
+			@RequestParam(name = "prd_no", required = true) int prd_no) {
+		
+		/*Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();*/
+		int us_no = 121;
+		
+		int crt_qty = 1;
+		
+		// 카트객체 생성
+		Cart cart = new Cart();
+		cart.setUs_no(us_no);
+		cart.setPrd_no(prd_no);
+		cart.setCrt_qty(crt_qty);
+		
+		// 비교를 위해 사용자의 장바구니 목록 가져오기
+		List<Cart> carts = cartService.getProductCart(us_no);
+		
+		// 사용자의 장바구니에 상품이 있는지 여부 확인
+		boolean existProduct = false;
+		
+		// 이미 담겨있는 상품의 경우 수량 +1
+		for(int i = 0; i < carts.size(); i++) {
+			if(carts.get(i).getPrd_no() == prd_no) {
+				// 장바구니에 상품이 있음을 저장
+				existProduct = true;
+				
+				// 장바구니에 수량을 +1
+				crt_qty = cart.getCrt_qty();
+				crt_qty++;
+				cart.setCrt_qty(crt_qty);
+				cartService.updateCart(cart);
+			} 
+		}
+		
+		// 사용자의 장바구니에 해당 상품이 없는 경우
+		if(!existProduct) {
+			// 장바구니에 상품 추가
+			cartService.addToCart(cart);
+		}
+		
+		// ajax로 값 넘기기 수정 필요!!!
+		return "redirect:/myOrderList";
+	}
 
 }

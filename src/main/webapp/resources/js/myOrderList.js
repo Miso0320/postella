@@ -50,6 +50,22 @@ function init() {
 	$(".p_img").mouseover(recentItemView);
 	$(".p_img").mouseout(recentItemHide);
 	
+	// 툴팁 활성화하기(수동으로 툴팁 제어)
+	$('.tooltip-btn').tooltip({
+		trigger: 'manual'
+	});
+
+	// 버튼 클릭 시 툴팁 표시
+	$('.tooltip-btn').click(function() {
+		var $tooltip = $(this);
+		$tooltip.tooltip('show');
+		
+		// 1초가 지나면 툴팁 숨기기
+		setTimeout(function() {
+			$tooltip.tooltip('hide');
+		}, 1000);
+	});
+	
 }
 
 // 드롭다운 메뉴 나타내기
@@ -77,25 +93,14 @@ function dp_menu_hide() {
 }
 
 // 장바구니에 담기
-function addCart(us_no, prd_no, crt_qty) {
-	console.log(us_no + " - " + prd_no + " - " + crt_qty);
-	
-	var cartData = {
-        us_no: us_no,
-        prd_no: prd_no,
-        crt_qty: crt_qty
-    };
-	
+function addCart(prd_no) {
     $.ajax({
-    	url: "addCart",
+    	url: "addCartInOrderList",
     	method: "post",
-    	contentType: 'application/json',
-    	data: JSON.stringify(cartData), 
+    	 data: { prd_no: prd_no },
         success: function (data) {
-            console.log(data);
         }
     });
-    
 }
 
 // 장바구니 상품 정보 열기

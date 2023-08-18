@@ -147,9 +147,9 @@
 				                                                <span>${orderList.od_detail_price}원</span>
 				                                                <span>${orderList.od_detail_qty} 개</span>
 				                                            </div>
-				                                            <!-- <div>
-				                                                <button class="cart_btn" onclick="javascript:addCart()">장바구니 담기</button>
-				                                            </div> -->
+				                                            <div>
+				                                                <button type="button" class="btn btn-secondary tooltip-btn cart_btn" data-toggle="tooltip" data-placement="left" title="장바구니에 상품이 담겼습니다." onclick="javascript:addCart(${orderList.prd_no})">장바구니 담기</button>
+				                                            </div>
 				                                        </div>
 				                                    </div>
 				                                </div>
