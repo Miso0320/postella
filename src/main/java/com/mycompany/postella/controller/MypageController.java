@@ -70,7 +70,7 @@ public class MypageController {
 			String pageNo,
 			Model model, HttpSession session ) throws Exception {
 		
-		// 유저식별번호 가져오기
+		// 세션에서 유저식별번호 가져오기
 		/*Users users = (Users) session.getAttribute("userLogin");
 		int us_no = users.getUs_no();*/
 		int us_no = 121;
@@ -159,41 +159,10 @@ public class MypageController {
 			orders.get(i).setEncodedFile(Base64.getEncoder().encodeToString(orderImages.getImg_file()));
 		}
 		
-		/*// 사이드바 장바구니 목록 가져오기
-		Map<String, Object> cartMap = new HashMap<>();
-		cartMap.put("us_no", us_no);
-		
-		// 페이징 객체 생성
-		// 페이지가 없는 경우 첫 번째 페이지 보여주기
-        if(cartPageNo == null) {
-        	cartPageNo = "1";
-        }
-        
-        // 매개변수로 사용하기 위해 타입 변경
-        int intCartPageNo = Integer.parseInt(cartPageNo);
-        // 장바구니 전체개수
-        int totalCartCnt = cartService.getTotalCartCnt(us_no);
-		
-        Pager cartPager = new Pager(4, 10, totalCartCnt, intCartPageNo);
-        cartMap.put("pager", pager);
-		
-		List<Cart> carts = cartService.getCartPaging(cartMap);
-		
-		// 장바구니 이미지 가져오기
-		Image cartImages = null;
-		
-		for(int i = 0; i < carts.size(); i++) {
-			cartImages = imageService.getImageByPrdNo(carts.get(i).getPrd_no());
-			carts.get(i).setImg_type(cartImages.getImg_type());
-			carts.get(i).setEncodedFile(Base64.getEncoder().encodeToString(cartImages.getImg_file()));
-		}*/
-		
 		model.addAttribute("orders", orders);
 		model.addAttribute("pager", pager);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("requestYear", requestYear);
-		/*model.addAttribute("carts", carts);
-		model.addAttribute("totalCartCnt", totalCartCnt);*/
 		
 		return "myPage/myOrderList/myOrderList";
 	}
@@ -226,16 +195,13 @@ public class MypageController {
 	}
 	
 	
-	
-	
-	
 	/**
 	 * 
 	 * 장바구니 보여주기(AJAX)
 	 * 
 	 * @param cartPageNo
 	 * 			현재 페이지 번호
-	 * @return
+	 * @return	Map<String, Object>
 	 */
 	@RequestMapping("/showCartInOrderList")
 	@ResponseBody
@@ -243,12 +209,18 @@ public class MypageController {
 			@RequestParam(name="cartPageNo", required=false)
 			int cartPageNo) {
 		
+		// 세션에서 유저식별번호 가져오기
 		/*Users users = (Users) session.getAttribute("userLogin");
 		int us_no = users.getUs_no();*/
 		int us_no = 121;
 		
 		Map<String, Object> cartMap = new HashMap<>();
 		cartMap.put("us_no", us_no);
+		
+		// 현재 페이지 번호를 못 받은 경우 1페이지로 설정
+		if(cartPageNo == 0) {
+			cartPageNo = 1;
+		}
 		
 		// 한 페이지 당 나타낼 개수
 		int itemsPerPage = 4;
@@ -258,7 +230,6 @@ public class MypageController {
         
         // 전체 페이지
         int totalCartPage = (int) Math.ceil((double) totalCartCnt / itemsPerPage);
-        log.info("*******************************totalCartPage : " + totalCartPage);
 		
         int startRowNo = (cartPageNo - 1) * itemsPerPage + 1;
         int endRowNo = cartPageNo * itemsPerPage;
@@ -289,16 +260,23 @@ public class MypageController {
 	
 	/**
 	 * 
-	 * 사이드바 장바구니 항목 삭제
+	 * 사이드바 장바구니 항목 삭제(AJAX)
 	 * 
 	 * @param prd_no
 	 * 			상품식별번호
-	 * @return	redirect:/myOrderList
+	 * @param cartPageNo
+	 * 			현재 페이지 번호
+	 * @return	Map<String, Object>
 	 */
 	@RequestMapping("/deleteCartInOrderList")
-	public String deleteCartInOrderList(
-			@RequestParam(name = "prd_no", required = true) int prd_no) {
+	@ResponseBody
+	public Map<String, Object> deleteCartInOrderList(
+			@RequestParam(name = "prd_no", required = true)
+			int prd_no,
+			@RequestParam(name="cartPageNo", required=false)
+			int cartPageNo) {
 		
+		// 세션에서 유저식별번호 가져오기
 		/*Users users = (Users) session.getAttribute("userLogin");
 		int us_no = users.getUs_no();*/
 		int us_no = 121;
@@ -307,9 +285,50 @@ public class MypageController {
 		map.put("prd_no", prd_no);
 		map.put("us_no", us_no);
 		
+		// 장바구니에서 항목 삭제
 		cartService.deleteToCart(map);
 		
-		return "redirect:/myOrderList";
+		Map<String, Object> cartMap = new HashMap<>();
+		cartMap.put("us_no", us_no);
+		
+		// 현재 페이지 번호를 못 받은 경우 1페이지로 설정
+		if(cartPageNo == 0) {
+			cartPageNo = 1;
+		}
+		
+		// 한 페이지 당 나타낼 개수
+		int itemsPerPage = 4;
+		
+        // 장바구니 전체개수
+        int totalCartCnt = cartService.getTotalCartCnt(us_no);
+        
+        // 전체 페이지
+        int totalCartPage = (int) Math.ceil((double) totalCartCnt / itemsPerPage);
+		
+        int startRowNo = (cartPageNo - 1) * itemsPerPage + 1;
+        int endRowNo = cartPageNo * itemsPerPage;
+        
+        cartMap.put("startRowNo", startRowNo);
+        cartMap.put("endRowNo", endRowNo);
+		
+        // 페이징된 장바구니 목록 가져오기
+		List<Cart> carts = cartService.getCartPaging(cartMap);
+		
+		// 장바구니 이미지 가져오기
+		Image cartImages = null;
+		
+		for(int i = 0; i < carts.size(); i++) {
+			cartImages = imageService.getImageByPrdNo(carts.get(i).getPrd_no());
+			carts.get(i).setImg_type(cartImages.getImg_type());
+			carts.get(i).setEncodedFile(Base64.getEncoder().encodeToString(cartImages.getImg_file()));
+		}
+		
+		Map<String, Object> lastCartMap = new HashMap<>();
+		lastCartMap.put("carts", carts);
+		lastCartMap.put("totalCartPage", totalCartPage);
+		lastCartMap.put("totalCartCnt", totalCartCnt);
+		
+		return lastCartMap;
 	}
 	
 	@RequestMapping("/addCartInOrderList")
@@ -317,6 +336,7 @@ public class MypageController {
 	public List<Cart> addCartInOrderList(
 			@RequestParam(name = "prd_no", required = true) int prd_no) {
 		
+		// 세션에서 유저식별번호 가져오기
 		/*Users users = (Users) session.getAttribute("userLogin");
 		int us_no = users.getUs_no();*/
 		int us_no = 121;

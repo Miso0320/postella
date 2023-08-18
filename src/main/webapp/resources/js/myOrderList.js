@@ -111,7 +111,7 @@ function showCartList(carts, cartPageNo, totalCartPage, totalCartCnt) {
 		content += '			</span>';
 		content += '			<input type="hidden" class="p_prd_no" value="' + item.prd_no + '">';
 		content += '		</a>';
-		content += '		<a class="delete_recent" href="deleteCartInOrderList?prd_no=' + item.prd_no + '"></a>';
+		content += '		<a class="delete_recent" data-prd-no="' + item.prd_no + '"></a>';
 		content += '	</li>';
 	}
 	
@@ -150,6 +150,12 @@ function showCartList(carts, cartPageNo, totalCartPage, totalCartCnt) {
 		}
 	}); 
 	
+	// 삭제 버튼 클릭
+	$(".delete_recent").click(function() {
+		var prdNo = this.getAttribute('data-prd-no');
+		deleteCartInOrderList(prdNo);
+	}); 
+	
 	// 장바구니 상품 정보 열기
 	$(".p_img").mouseover(cartItemView);
 	$(".p_img").mouseout(cartItemHide);
@@ -158,8 +164,6 @@ function showCartList(carts, cartPageNo, totalCartPage, totalCartCnt) {
 
 //장바구니 목록 가져오기
 function showCartInOrderList(cartPageNo) {
-	
-	console.log("새로운 장바구니 목록을 가져와보아용^0^");
     $.ajax({
     	url: "showCartInOrderList",
     	method: "get",
@@ -178,6 +182,27 @@ function showCartInOrderList(cartPageNo) {
     });
 }
 
+// 장바구니 항목 삭제하기
+function deleteCartInOrderList(prdNo) {
+	var cartPageNo = 1;
+	$.ajax({
+		url: "deleteCartInOrderList",
+		method: "get",
+		data: { prd_no: prdNo, cartPageNo: cartPageNo },
+		success: function (data) {
+			// 응답으로 전달된 장바구니 목록 데이터
+			var carts = data.carts;
+			// 전체 페이지 수
+			var totalCartPage = data.totalCartPage;
+			// 전체 상품 수
+			var totalCartCnt = data.totalCartCnt;
+			
+			// 장바구니 목록 html 삽입
+			showCartList(carts, 1, totalCartPage, totalCartCnt);
+		}
+	});
+}
+
 // 장바구니에 담기
 function addCart(prd_no) {
     $.ajax({
@@ -186,24 +211,6 @@ function addCart(prd_no) {
     	data: { prd_no: prd_no },
         success: function (data) {
         	/*페이징 먼저 하고 오기!!*/
-        	
-        	
-		/*<c:forEach var="cart" items="${carts}" varStatus="status">
-			<c:if test="${status.index < 4}">
-				<li>
-					<a class="recent_viewed_item" href="setDetailPage?prdNo=${cart.prd_no}">
-						<img class="p_img" src="data:${cart.img_type};base64, ${cart.encodedFile}">
-						<span class="p_name">${cart.prd_name}</span>
-						<span class="p_price">
-							<em class="sale_price">${cart.prd_price}</em>원
-						</span>
-						<input type="hidden" class="p_prd_no" value="${cart.prd_no}">
-					</a>
-					<a class="delete_recent" href="deleteCartInOrderList?prd_no=${cart.prd_no}"></a>
-				</li>
-			</c:if>
-		</c:forEach>*/
-        	
         	
         	
         	
