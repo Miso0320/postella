@@ -329,47 +329,13 @@
 	<!-- 우측 사이드 -->
 	<article class="order_list_right" id="order_list_right">
 		<!-- 장바구니 목록 -->
-		<section class="my_view">
-			<%-- <div class="my_view_cart">
-				<a href="cartNormal">
-					<em class="cart_count">${totalCartCnt}</em>
-				</a>
-			</div>
-			<div class="recent_viewed_list">
- 				<ul class="recent_viewed_page">
-					<c:forEach var="cart" items="${carts}" varStatus="status">
-						<c:if test="${status.index < 4}">
-							<li>
-								<a class="recent_viewed_item" href="setDetailPage?prdNo=${cart.prd_no}">
-									<img class="p_img" src="data:${cart.img_type};base64, ${cart.encodedFile}">
-									<span class="p_name">${cart.prd_name}</span>
-									<span class="p_price">
-										<em class="sale_price">${cart.prd_price}</em>원
-									</span>
-									<input type="hidden" class="p_prd_no" value="${cart.prd_no}">
-								</a>
-								<a class="delete_recent" href="deleteCartInOrderList?prd_no=${cart.prd_no}"></a>
-							</li>
-						</c:if>
-					</c:forEach>
-				</ul>
-				<p class="recent_viewed_paging">
-					<span>
-						<strong>1</strong>/<em>5</em>
-					</span>
-					<span class="paging_btn_grp">
-						<a class="paging_btn prev_btn"></a>
-						<a class="paging_btn next_btn"></a>
-					</span>
-				</p>
-			</div> --%>
-		</section>
+		<section class="my_view"></section>
 		
 		<!-- 사이드바(스크롤 내려간 경우에만 나타남) -->
 		<aside class="side_bar_grp">
-			<a class="sideBtn" id="side_top" onclick="window.scrollTo({top:0, left:0})"></a>
-			<a class="sideBtn" id="side_up"></a>
-			<a class="sideBtn" id="side_down"></a>
+			<a class="sideBtn" id="side_top" onclick="window.scrollTo({top:0, left:0, behavior: 'smooth'})"></a>
+			<a class="sideBtn" id="side_up" onclick="window.scrollBy({top: -500, left: 0, behavior: 'smooth'})"></a>
+			<a class="sideBtn" id="side_down" onclick="window.scrollBy({top: 500, left: 0, behavior: 'smooth'})"></a>
 		</aside>
 	</article>
 </section>		
