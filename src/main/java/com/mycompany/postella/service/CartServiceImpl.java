@@ -73,4 +73,9 @@ public class CartServiceImpl implements CartService{
 		return list;
 	}
 	
+	// 장바구니 담기하는 경우 변경 혹은 추가
+	@Override
+	public void addCart(Cart cart) {
+		int check = cartDao.updateOrInsertCart(cart);
+	}
 }

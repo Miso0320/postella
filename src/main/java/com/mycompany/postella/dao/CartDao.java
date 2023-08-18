@@ -20,4 +20,5 @@ public interface CartDao {
 	public int deleteCart(Map<String, Object> map);					// 장바구니 삭제
 	public int cartListCnt(int us_no);								// 장바구니 전체개수
 	public List<Cart> selectCartPaging(Map<String, Object> map);	// 장바구니 상품리스트 페이징
+	public int updateOrInsertCart(Cart cart);						// 장바구니 상품 추가 혹은 변경
 }

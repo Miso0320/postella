@@ -186,8 +186,7 @@ public class MypageController {
 			@RequestParam(name = "od_detail_no", required = true) int od_detail_no,
 			@RequestParam(name = "us_no", required = false) int us_no,
 			@RequestParam(name = "od_no", required = false) int od_no,
-			@RequestParam(name = "od_item_cnt", required = false) int od_item_cnt
-			) {
+			@RequestParam(name = "od_item_cnt", required = false) int od_item_cnt ) {
 		
 		myPageService.updateOrderDelete(us_no, od_no, od_item_cnt);
 		myPageService.removeOrder(od_detail_no);
@@ -207,7 +206,7 @@ public class MypageController {
 	@ResponseBody
 	public Map<String, Object> showCartInOrderList(
 			@RequestParam(name="cartPageNo", required=false)
-			int cartPageNo) {
+			int cartPageNo ) {
 		
 		// 세션에서 유저식별번호 가져오기
 		/*Users users = (Users) session.getAttribute("userLogin");
@@ -274,7 +273,7 @@ public class MypageController {
 			@RequestParam(name = "prd_no", required = true)
 			int prd_no,
 			@RequestParam(name="cartPageNo", required=false)
-			int cartPageNo) {
+			int cartPageNo ) {
 		
 		// 세션에서 유저식별번호 가져오기
 		/*Users users = (Users) session.getAttribute("userLogin");
@@ -331,55 +330,78 @@ public class MypageController {
 		return lastCartMap;
 	}
 	
+	/**
+	 * 
+	 * 장바구니 담기
+	 * 
+	 * @param prd_no
+	 * 			상품식별번호
+	 * @param cartPageNo
+	 * 			현재 페이지
+	 * @return	Map<String, Object>
+	 */
 	@RequestMapping("/addCartInOrderList")
 	@ResponseBody
-	public List<Cart> addCartInOrderList(
-			@RequestParam(name = "prd_no", required = true) int prd_no) {
+	public Map<String, Object> addCartInOrderList(
+			@RequestParam(name = "prd_no", required = true)
+			int prd_no,
+			@RequestParam(name="cartPageNo", required=false)
+			int cartPageNo ) {
 		
 		// 세션에서 유저식별번호 가져오기
 		/*Users users = (Users) session.getAttribute("userLogin");
 		int us_no = users.getUs_no();*/
 		int us_no = 121;
 		
-		int crt_qty = 1;
-		
 		// 카트객체 생성
 		Cart cart = new Cart();
 		cart.setUs_no(us_no);
 		cart.setPrd_no(prd_no);
-		cart.setCrt_qty(crt_qty);
 		
-		// 비교를 위해 사용자의 장바구니 목록 가져오기
-		List<Cart> carts = cartService.getProductCart(us_no);
+		// 사용자 장바구니에 상품 없으면 추가, 있으면 수량 +1
+		cartService.addCart(cart);
 		
-		// 사용자의 장바구니에 상품이 있는지 여부 확인
-		boolean existProduct = false;
+		Map<String, Object> cartMap = new HashMap<>();
+		cartMap.put("us_no", us_no);
 		
-		// 이미 담겨있는 상품의 경우 수량 +1
+		// 현재 페이지 번호를 못 받은 경우 1페이지로 설정
+		if(cartPageNo == 0) {
+			cartPageNo = 1;
+		}
+		
+		// 한 페이지 당 나타낼 개수
+		int itemsPerPage = 4;
+		
+        // 장바구니 전체개수
+        int totalCartCnt = cartService.getTotalCartCnt(us_no);
+        
+        // 전체 페이지
+        int totalCartPage = (int) Math.ceil((double) totalCartCnt / itemsPerPage);
+		
+        int startRowNo = (cartPageNo - 1) * itemsPerPage + 1;
+        int endRowNo = cartPageNo * itemsPerPage;
+        
+        cartMap.put("startRowNo", startRowNo);
+        cartMap.put("endRowNo", endRowNo);
+		
+        // 페이징된 장바구니 목록 가져오기
+		List<Cart> carts = cartService.getCartPaging(cartMap);
+		
+		// 장바구니 이미지 가져오기
+		Image cartImages = null;
+		
 		for(int i = 0; i < carts.size(); i++) {
-			if(carts.get(i).getPrd_no() == prd_no) {
-				// 장바구니에 상품이 있음을 저장
-				existProduct = true;
-				
-				// 장바구니에 수량을 +1
-				crt_qty = cart.getCrt_qty();
-				crt_qty++;
-				cart.setCrt_qty(crt_qty);
-				cartService.updateCart(cart);
-			} 
+			cartImages = imageService.getImageByPrdNo(carts.get(i).getPrd_no());
+			carts.get(i).setImg_type(cartImages.getImg_type());
+			carts.get(i).setEncodedFile(Base64.getEncoder().encodeToString(cartImages.getImg_file()));
 		}
 		
-		// 사용자의 장바구니에 해당 상품이 없는 경우
-		if(!existProduct) {
-			// 장바구니에 상품 추가
-			cartService.addToCart(cart);
-		}
+		Map<String, Object> lastCartMap = new HashMap<>();
+		lastCartMap.put("carts", carts);
+		lastCartMap.put("totalCartPage", totalCartPage);
+		lastCartMap.put("totalCartCnt", totalCartCnt);
 		
-		// 업데이트 된 장바구니 목록 가져오기
-		carts = cartService.getProductCart(us_no);
-		
-		// ajax로 값 넘기기 수정 필요!!!
-		return carts;
+		return lastCartMap;
 	}
 
 }

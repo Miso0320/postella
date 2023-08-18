@@ -204,16 +204,21 @@ function deleteCartInOrderList(prdNo) {
 }
 
 // 장바구니에 담기
-function addCart(prd_no) {
+function addCart(prdNo) {
     $.ajax({
     	url: "addCartInOrderList",
     	method: "post",
-    	data: { prd_no: prd_no },
+    	data: { prd_no: prdNo, cartPageNo: cartPageNo },
         success: function (data) {
-        	/*페이징 먼저 하고 오기!!*/
-        	
-        	
-        	
+			// 응답으로 전달된 장바구니 목록 데이터
+			var carts = data.carts;
+			// 전체 페이지 수
+			var totalCartPage = data.totalCartPage;
+			// 전체 상품 수
+			var totalCartCnt = data.totalCartCnt;
+			
+			// 장바구니 목록 html 삽입
+			showCartList(carts, 1, totalCartPage, totalCartCnt);
         }
     });
 }

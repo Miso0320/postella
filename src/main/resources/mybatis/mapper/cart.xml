@@ -85,4 +85,16 @@
 		]]>
 	</select>
 	
+	<update id="updateOrInsertCart" parameterType="Cart">
+		MERGE INTO cart
+		USING dual ON ( us_no = #{us_no} AND prd_no = #{prd_no} )
+		WHEN MATCHED THEN UPDATE
+		SET crt_qty = 1 + crt_qty
+		WHEN NOT MATCHED THEN
+		INSERT ( us_no, prd_no, crt_qty )
+		VALUES
+		    ( #{us_no}, #{prd_no}, 1 )
+	
+	</update>
+	
 </mapper>
