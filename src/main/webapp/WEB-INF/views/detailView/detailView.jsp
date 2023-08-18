@@ -125,10 +125,9 @@
 
                <div class="prod-vendor-container">
                   <div class="vendor-name">
-                     판매자: <a class="vendor-name-text" style="color: #346aff;" href="#">
+                    	판매자: 
+                     <a class="vendor-name-text" style="color: #346aff;" href="#">
                         <span>아기 고양이 </span>
-                        <img class="prod-seller-link-coach" alt="판매자"
-                        src="https://img1a.coupangcdn.com/image/dragonstone/sdp/new-coach-mark.png" style="height: 22px; margin-bottom: 5px">
                      </a>
                   </div>
                </div>
@@ -190,7 +189,7 @@
                   <div class="cart-buy-btn">
                      <button class="cart-btn" id="cartButton" data-toggle="modal" data-target="#moveToCart">장바구니 담기</button>
                      <!-- 모달 -->
-					<div class="modal modal_txt" id="moveToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal" id="moveToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -201,9 +200,9 @@
 					      <div class="modal-body">
 					        <p style="text-align: center;">상품이 장바구니에 담겼습니다.</p>
 					      </div>
-					      <div class="modal-footer" style="justify-content: center; display: flex;">
-					        <a class="btn btn-outline-primary" data-dismiss="modal" style="color: white; margin-right: 10px;">계속 쇼핑하기</a>
-					        <a href="cartNormal" class="btn btn-outline-success" style="color: white;">장바구니로 가기</a>
+					      <div class="modal-footer" style="justify-content: center; display: flex; border: none;">
+					        <a class="btn btn-outline-primary" data-dismiss="modal" style="margin-right: 10px;">계속 쇼핑하기</a>
+					        <a href="cartNormal" class="btn btn-outline-success">장바구니로 가기</a>
 					      </div>
 					    </div>
 					  </div>
@@ -265,7 +264,23 @@
                </div>
                <div class="prod-detail-aco show-preview" id="prod-detail-aco">
                   <div class="prod-detail-img">
-                     <img alt="상세정보" src="${pageContext.request.contextPath}/resources/img/detailView/prod_detail.jpg">
+                  <c:choose> 
+					<c:when test="${detailImg.encodedFile != null}"> 
+						<img alt="상세정보" src="data:${detailImg.img_type};base64, ${detailImg.encodedFile}">
+					</c:when> 
+					<c:otherwise> 
+						<div class="product_not_found_container">
+							<div class="product_not_found_img_container">
+								<img class="product_not_found_img" src="${pageContext.request.contextPath}/resources/img/productGroup/not_found.png">
+							</div>
+							<div>
+								<span class="product_not_found_text_1">
+									상품 상세이미지가 없습니다.
+								</span>
+							</div>
+						</div>
+					</c:otherwise> 
+				</c:choose>
                   </div>
                   
                </div>
@@ -507,7 +522,7 @@
 					<c:if test="${revCnt == 0}">
 						<div class="product_not_found_container">
 							<div class="product_not_found_img_container">
-								<img class="product_not_found_img" src="${pageContext.request.contextPath}/resources/img/productGroup/not_found.png"">
+								<img class="product_not_found_img" src="${pageContext.request.contextPath}/resources/img/productGroup/not_found.png">
 							</div>
 							<div>
 								<span class="product_not_found_text_1">

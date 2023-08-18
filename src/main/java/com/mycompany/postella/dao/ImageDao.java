@@ -14,4 +14,5 @@ public interface ImageDao {
 	public List<Image> selectAllByPrdNo(int prd_no);
 	public Image selectByPgNo2(int pg_no);
 	public Image selectByPrdNo(int prd_no);
+	public Image selectdetailImg(int pg_no);
 }

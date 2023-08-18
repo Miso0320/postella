@@ -51,8 +51,7 @@
 		order by img_no ASC
 	</select>
 
-	<select id="selectdetailImg" parameterType="int"
-		resultType="Img">
+	<select id="selectdetailImg" parameterType="int" resultType="Img">
 		select *
 		from image
 		where pg_no=#{pg_no} and img_use='DET'

@@ -19,4 +19,5 @@ public class Image {
 	private MultipartFile img_attach;
 	private int pg_no; //상품 대분류
 	private String encodedFile; //인코딩한 파일 저장
+	private boolean nullOrnot;
 }

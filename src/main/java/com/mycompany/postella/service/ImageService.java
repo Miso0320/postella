@@ -9,5 +9,6 @@ public interface ImageService {
 	public List<Image> getImagesBypgNo(int pg_no);
 	public List<Image> getImagesByprdNo(int prd_no);
 	public Image getImageByPgNo(int pg_no);
+	public Image getDetailImageByPgNo(int pg_no);
 	public Image getImageByPrdNo(int prd_no);
 }

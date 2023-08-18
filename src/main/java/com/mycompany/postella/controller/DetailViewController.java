@@ -73,9 +73,7 @@ public class DetailViewController {
 		for(int i=0; i < optionList.size(); i++) {
 			OptionPrd_no = optionList.get(i).getPrd_no();
 			optionImg = imageService.getImageByPrdNo(OptionPrd_no);
-			if(optionImg.getImg_file() != null) {
-				optionList.get(i).setEncodedFile(Base64.getEncoder().encodeToString(optionImg.getImg_file()));
-			}
+			optionList.get(i).setEncodedFile(optionImg.getEncodedFile());
 		}
 		Product selectedOption = optionList.get(0);
 	
@@ -85,16 +83,18 @@ public class DetailViewController {
 		//썸네일 리스트 불러오기
 		List<Image> imgList = imageService.getImagesByprdNo(selectedOption.getPrd_no());
 		
-		for(int i=0; i < imgList.size(); i++) {
-			if(imgList.get(i).getImg_file() != null) {
-				imgList.get(i).setEncodedFile(Base64.getEncoder().encodeToString(imgList.get(i).getImg_file()));
-			}
-		}
 		model.addAttribute("thmImgs", imgList);
 		
 		//썸네일 리스트 중 대표 썸네일 불러오기
 		Image tumnail = imgList.get(0);
 		model.addAttribute("thumnail", tumnail);
+		
+		//상세 이미지 불러오기
+		Image detailImg = imageService.getDetailImageByPgNo(pg_no);
+		
+		if(detailImg != null) {
+			model.addAttribute("detailImg", detailImg);
+		}
 		
 		//별점 평균 불러오기
 		int starAgv = productService.getStarAvg(pg_no);
@@ -173,16 +173,17 @@ public class DetailViewController {
 		
 		//썸네일 리스트 불러오기
 		List<Image> imgList = imageService.getImagesByprdNo(prd_no);
-		for(int i=0; i < imgList.size(); i++) {
-			if(imgList.get(i).getImg_file() != null) {
-				imgList.get(i).setEncodedFile(Base64.getEncoder().encodeToString(imgList.get(i).getImg_file()));
-			}
-		}
 		model.addAttribute("thmImgs", imgList);
 		
 		//썸네일 리스트 중 대표 썸네일 불러오기
 		Image tumnail = imgList.get(0);
 		model.addAttribute("thumnail", tumnail);
+		
+		//상세 이미지 불러오기
+		Image detailImg = imageService.getDetailImageByPgNo(pg_no);
+		if(detailImg != null) {
+			model.addAttribute("detailImg", detailImg);
+		}
 		
 		//상품 옵션 목록 가져오기
 		List<Product> optionList = productService.getOptions(pg_no);
@@ -192,14 +193,11 @@ public class DetailViewController {
 		for(int i=0; i < optionList.size(); i++) {
 			OptionPrd_no = optionList.get(i).getPrd_no();
 			optionImg = imageService.getImageByPrdNo(OptionPrd_no);
-			if(optionImg.getImg_file() != null) {
-				optionList.get(i).setEncodedFile(Base64.getEncoder().encodeToString(optionImg.getImg_file()));
-				optionList.get(i).setImg_type(optionImg.getImg_type());
-			}
+			optionList.get(i).setEncodedFile(optionImg.getEncodedFile());
 		}
 		model.addAttribute("options", optionList);
 		//인코딩
-		clikedOption.setEncodedFile(Base64.getEncoder().encodeToString(imgList.get(0).getImg_file()));
+		clikedOption.setEncodedFile(imgList.get(0).getEncodedFile());
 		model.addAttribute("selectedOption", clikedOption);
 		
 		//상품명 불러오기
