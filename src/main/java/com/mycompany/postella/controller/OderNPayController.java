@@ -163,7 +163,7 @@ public class OderNPayController {
 	
 	//배송지 추가
 	@PostMapping("/addAddress")
-	public String addAddressBook(@ModelAttribute("deliverAddress") DeliverAddress deliverAddress, HttpSession session) {
+	public String addAddressBook(DeliverAddress deliverAddress, HttpSession session) {
 		//구매자 정보
 	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
 	    int us_no = user.getUs_no();
@@ -172,8 +172,18 @@ public class OderNPayController {
 	    deliverAddress.setUs_no(us_no);
 	    deliverAddress.setDa_type("C");
 	    
-		daService.putAddress(deliverAddress);
-		
+	    log.info("deliverAddress :   " + deliverAddress.toString());
+	    try {
+	    	if(deliverAddress.getDa_main().equals("on")) {
+		    	deliverAddress.setDa_main("Y");
+		    	daService.putAddress(deliverAddress);
+		    	daService.changeMainAdr(deliverAddress.getDa_no());
+		    }
+	    } catch (Exception e) {
+	    	deliverAddress.setDa_main("N");
+	    	daService.putAddress(deliverAddress);
+		}
+	    
 		return "redirect:/changeAddress";
 	}
 	

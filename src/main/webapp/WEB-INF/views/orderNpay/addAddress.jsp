@@ -12,6 +12,15 @@
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addAddress.css">
 	    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
+			window.init(initSetthing);
+			
+			function initSetthing(){
+				//$('#customCheck1').val("N");
+				
+				//$('#customCheck1').click(unchekcedValue);
+			}
+		
+		
 		    function kakaopost() {
 		        new daum.Postcode({
 		            oncomplete: function(data) {
@@ -34,20 +43,17 @@
 		        }).open();
 		    }
 		    
+		    //배송 요청 페이지 열기
 		    function openDeliveryRequestPage() {
 		    	delReqChild = window.open('deliveryRequest', '_blank', 'width=518, height=666, left=200, top=200');
 		    	delReqChild.dataFromParent = "addAddress";
 		    }
 		    
+		    //핸드폰 번호에 - 붙이기
 		    function oninputPhone(target) {
 		        target.value = target.value
 		            .replace(/[^0-9]/g, '')
 		            .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
-		    }
-		    
-		    function toggleCheckboxValue(checkbox) {
-		        // 체크박스가 체크되면 "Y", 체크가 해제되면 "N"으로 설정
-		        checkbox.value = checkbox.checked ? 'Y' : 'N';
 		    }
 		    
 		    function chooseAddress(us_no) {
@@ -65,6 +71,29 @@
 					}
 				});
 			}
+		    
+		    function unchekcedValue() {
+		      var chkBox = document.querySelector("#customCheck1");
+	          if($('#customCheck1').is(":checked")) {
+	             /* var hiddenInput = document.createElement("input");
+	             hiddenInput.type = "hidden";
+	             hiddenInput.name = "da_main";
+	             hiddenInput.value = "N";
+	             $('#form').appendChild(hiddenInput); */
+	             
+	             
+	             $('#customCheck1').val("Y");
+	          } else {
+	             //chkBox.value = "Y";
+	             $('#customCheck1').val("N");
+	          }
+		    }
+		    
+		    $(document).ready(function(){
+		    	console.log("2222확인!!!!");
+		    	  var form = $("#customCheck1");
+		    	  form.submit(unchekcedValue);
+		    	});
 	    </script>
 	</head>
 	<body>
@@ -74,7 +103,7 @@
 		
 		
 		<div class="content-body__corset">
-		    <form action="addAddress" method="post" class="_addressBookSaveForm" accept-charset="UTF-8" modelAttribute="deliverAddress">
+		    <form id="addrForm" action="addAddress" method="post" class="_addressBookSaveForm" accept-charset="UTF-8" modelAttribute="deliverAddress">
 		    
 		    	<!-- 받는 사람 입력 -->
 			    <div class="icon-text-field__frame-box _addressBookRecipientRoot">
@@ -137,13 +166,12 @@
 			    </div>
 			    <!-- 기본 배송지로 선택 -->
 				<div class="custom-control custom-checkbox">
-			      <input type="hidden" name="da_main" value="N">
-				  <input type="checkbox" class="custom-control-input" id="customCheck1" name="da_main" value="Y" onchange="toggleCheckboxValue(this)">
-			      <label class="custom-control-label" for="customCheck1">기본 배송지로 설정</label>
-			    </div>
+				    <input type="checkbox" class="custom-control-input" id="customCheck1" name="da_main">
+				    <label class="custom-control-label" for="customCheck1">기본 배송지로 설정</label>
+				</div>
 				<!-- 저장 버튼 -->
 			    <div class="addressbook__button-fixer">
-			        <button type="submit" class="addressbook__button--save _addressBookFormSubmit" name="deliverAddress">
+			        <button type="submit" class="addressbook__button--save _addressBookFormSubmit" name="deliverAddress" onsubmit="unchekcedValue()">
 			            <span class="addressbook__text">저장</span>
 			        </button>
 			    </div>
