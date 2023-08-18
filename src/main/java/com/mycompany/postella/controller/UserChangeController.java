@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class UserChangeController {
-	@RequestMapping("/userChange")
+	@GetMapping("/userChange")
 	public String getUserInfo() {
 		return "userChange/userChange";
 	}

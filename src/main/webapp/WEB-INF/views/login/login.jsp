@@ -85,7 +85,7 @@
 				<div><small>회원가입 후 사용해 보세요.</small></div>
 				<div>
                 	<a href="join">
-                        	<img src="${pageContext.request.contextPath}/resources/img/join/joinImg.png" width="96px" height="96px"></img>
+                        	<img src="${pageContext.request.contextPath}/resources/img/join/welcome.gif" width="96px" height="96px"></img>
                 	</a>
 				</div>
 				<div style="font-size:12px">©Postella Corp. All rights reserved.</div>
