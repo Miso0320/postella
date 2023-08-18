@@ -42,7 +42,7 @@ public class QnaServiceImpl implements QnaService{
 	public void addQnaInfo(List<Qna> qnas) {
 		SimpleDateFormat rformat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		for(int i=0; i < qnas.size(); i++) {
-			qnas.get(i).setPrd_name(reviewService.getPrdName(qnas.get(i).getPrd_no()));
+			qnas.get(i).setPrd_name(qnaDao.selectPrdName(qnas.get(i).getPrd_no()));
 			qnas.get(i).setSel_name(qnaDao.selectSelName(qnas.get(i).getPg_no()));
 			qnas.get(i).setStringQdate(rformat.format(qnas.get(i).getQ_date()));
 			if(qnas.get(i).getA_date() != null) {

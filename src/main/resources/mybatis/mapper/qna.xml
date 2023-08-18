@@ -39,4 +39,11 @@
 	  ]]>
 	</select>
 	
+	<select id="selectPrdName" parameterType="int" resultType="String">
+		select UNIQUE prd_name
+		from QNA, product
+		where QNA.prd_no = product.prd_no
+		and QNA.prd_no = #{prd_no}
+	</select>
+	
 </mapper>

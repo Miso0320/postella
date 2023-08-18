@@ -13,4 +13,5 @@ public interface QnaDao {
 	public String selectSelName(int pg_no);
 	public int selectQnaCnt(int pg_no);
 	public List<Qna> selectQnasByPage(Map<String, Object> map);
+	public String selectPrdName(int pg_no);
 }

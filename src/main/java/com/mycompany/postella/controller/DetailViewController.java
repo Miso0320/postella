@@ -65,6 +65,7 @@ public class DetailViewController {
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model, HttpSession session) {
 		model.addAttribute("pg_no",pg_no);
+		
 		//상품 옵션 목록 가져오기
 		List<Product> optionList = productService.getOptions(pg_no);
 		Image optionImg; 
@@ -196,7 +197,7 @@ public class DetailViewController {
 			optionList.get(i).setEncodedFile(optionImg.getEncodedFile());
 		}
 		model.addAttribute("options", optionList);
-		//인코딩
+		
 		clikedOption.setEncodedFile(imgList.get(0).getEncodedFile());
 		model.addAttribute("selectedOption", clikedOption);
 		
