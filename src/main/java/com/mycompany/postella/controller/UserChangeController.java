@@ -26,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+//회원정보수정 페이지
 public class UserChangeController {
 	@GetMapping("/userChange")
 	public String getUserInfo() {

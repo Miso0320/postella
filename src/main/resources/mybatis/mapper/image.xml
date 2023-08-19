@@ -19,7 +19,7 @@
 		from image
 		where pg_no=#{pg_no} and img_use='THM'
 	</select>
-
+	<!-- 상품그룹번호로 썸네일 이미지 가져오기 -->
 	<select id="selectAllByPgNo" parameterType="int" resultType="Img">
 		select *
 		from image

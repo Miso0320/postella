@@ -3,6 +3,7 @@ package com.mycompany.postella.service;
 import com.mycompany.postella.dto.Users;
 
 public interface LoginService {
+	//로그인 결과
 	public enum LoginResult {
 		SUCCESS,
 		FAIL_UID,
@@ -10,5 +11,6 @@ public interface LoginService {
 		FAIL_UENABLED
 	}
 	public LoginResult loginUsers(Users users);
+	//유저정보 가져오기
 	public Users getUser(String us_email);
 }

@@ -38,6 +38,7 @@
 		)
 	</insert>
 	
+	<!-- 유저 정보 확인 -->
 	<select id="selectByUser" parameterType="String" resultType="Users">
 		select *
 		from users
