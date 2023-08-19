@@ -25,13 +25,13 @@
 					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage1.jpg">
 				</div>
 				<div class="carousel-item">
+					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage4.jpg">
+				</div>
+				<div class="carousel-item">
 					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage2.jpg">
 				</div>
 				<div class="carousel-item">
 					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage3.jpg">
-				</div>
-				<div class="carousel-item">
-					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage4.jpg">
 				</div>
 				<div class="carousel-item">
 					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage5.jpg">
@@ -47,18 +47,6 @@
 		</div>
 	</div>
 </div>
-	<%-- <div id="welcomeMainPage">
-		<div id="mainPageImageList">
-	        <div id="slide3">
-	            <ul>
-	                <li><a href="#"><img class="mainPageImage" src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage1.jpg" alt=""></a></li>
-	                <li><a href="#"><img class="mainPageImage" src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage3.jpg" alt=""></a></li>
-	                <li><a href="#"><img class="mainPageImage" src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage1.jpg" alt=""></a></li>
-	                <li><a href="#"><img class="mainPageImage" src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage3.jpg" alt=""></a></li>
-	            </ul>
-	        </div>
-    	</div>
-	</div> --%>
 	<div id="container">
 		<section class="productGroupSection">
 			<!-- 왼쪽 사이드 메뉴 -->

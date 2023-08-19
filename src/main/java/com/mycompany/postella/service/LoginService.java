@@ -10,6 +10,7 @@ public interface LoginService {
 		FAIL_UPASSWORD,
 		FAIL_UENABLED
 	}
+	//로그인 결과
 	public LoginResult loginUsers(Users users);
 	//유저정보 가져오기
 	public Users getUser(String us_email);

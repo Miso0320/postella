@@ -55,6 +55,7 @@ public class CartController {
 	@Login
 	//반환값을 직접 HTML본문으로 보내준다
 	@ResponseBody
+	
 	//user별 cart상품
 	public List<Cart> getCartProduct(Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
@@ -88,7 +89,7 @@ public class CartController {
 	 * @param us_no
 	 * 			회원고유번호
 	 * @return
-	 */
+	 */	
 	//Cart상품 단일삭제
 	@GetMapping("/deleteCart")
 	@Login

@@ -17,7 +17,6 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartNormal.css">
 		<script src="${pageContext.request.contextPath}/resources/js/cartNormal.js"></script>
-		<!-- 테스트 -->
 	</head>
 	<body style="background-color:#F2F2F2;">
 		<header class="cartHeader">
@@ -55,28 +54,28 @@
 						  </tr>
 						</thead>					
 						
-					  <tbody id="cart-product-contents" class="cart-product-contents">	
-							
-					  </tbody>
-					  
-					  <tbody>
-					  	<div id="tbody" class="d-none">
-					  		<p class="noItemWarning">장바구니에 담은 상품이 없습니다.</p>
-					  	</div>
-					  </tbody>
-					  
-					  <tfoot id="tfoot">
-						  <tr class="cart-price-total">
-						    <td colspan="6" style="background-color: white; border: 1px solid #f2f2f2;">
-						    	<span style="display:flex; justify-content:end; font-size:12px;">
-						    		(배송비 제외)
-						    	</span>
-						    	<span style="display:flex; justify-content:end;">
-						    		주문금액
-						    		<span class="orderPrice">0</span>
-						    		 원 
-						    	</span>
-						    </td>
+						<tbody id="cart-product-contents" class="cart-product-contents">	
+						
+						</tbody>
+						
+						<tbody>
+							<div id="tbody" class="d-none">
+								<p class="noItemWarning">장바구니에 담은 상품이 없습니다.</p>
+							</div>
+						</tbody>
+						
+						<tfoot id="tfoot">
+						 <tr class="cart-price-total">
+						   <td colspan="6" style="background-color: white; border: 1px solid #f2f2f2;">
+						   	<span style="display:flex; justify-content:end; font-size:12px;">
+						   		(배송비 제외)
+						   	</span>
+						   	<span style="display:flex; justify-content:end;">
+					    		주문금액
+					    		<span class="orderPrice">0</span>
+					    		 원 
+					    	</span>
+					    	</td>
 						  </tr>
 					  </tfoot>
 					</table>
@@ -89,45 +88,43 @@
 							<span class="cart-count-bottom">( <em id='result'>0</em> / <em id='result2'>0</em> )</span>
 							<span>
 								<button class="delete btn btn-secondary btn-sm" type="button" onclick="deleteChecked()">선택삭제</button>
-								<%-- <a href="deleteCart?prd_no=${item.prd_no}&us_no=${item.us_no}" class="btn btn-primary" onclick="deleteChecked()">선택삭제</a> --%>
 							</span>
 						</label>
 					</span>
 				</div>
-				<div class="cart-part1">
-					<div class="reward-point">
-	                    <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
-	                    <h3 class="payment-reward-cash-area__title" style="font-size:medium;">캐시적립 혜택</h3>
-	                  
-	                    <span class="payment-reward-cash-area__desc">카드 결제 시 1% 적립</span>
-                	</div>
+					<div class="cart-part1">
+						<div class="reward-point">
+		                 <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
+		                 <h3 class="payment-reward-cash-area__title" style="font-size:medium;">캐시적립 혜택</h3>
+		                 <span class="payment-reward-cash-area__desc">카드 결제 시 1% 적립</span>
+		            	</div>
 				</div>
-				
+						
 				<div class="cart-part1">
 					<div class="cart-total-price" data-total-price="0" data-discount-price="0">
-		                <div class="cart-total-price__inner">
-		                    <div class="price-area">
-		                        	총 상품가격
-		                        <em id="finalPrice1" class="final-product-price">0</em>원
-		                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-plus.gif" class="math-icon">
-		                       	 총 배송비
-		                        <em id="finalPrice2" class="final-delivery-charge">0</em>원
-		                        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-equal.gif" class="math-icon">
-		                        	총 주문금액
-		                        <em class="final-order-price">
-		                          0
-		                        </em>
-		                    </div>
-		                </div>
-            		</div>
+						<div class="cart-total-price__inner">
+						    <div class="price-area">
+								총 상품가격
+						        <em id="finalPrice1" class="final-product-price">0</em>원
+						        <img src="${pageContext.request.contextPath}/resources/img/cart/cart-plus.gif" class="math-icon">
+						    	 총 배송비
+							    <em id="finalPrice2" class="final-delivery-charge">0</em>원
+							    <img src="${pageContext.request.contextPath}/resources/img/cart/cart-equal.gif" class="math-icon">
+					        	총 주문금액
+						        <em class="final-order-price">
+						        0
+						        </em>
+						    </div>
+						</div>
+	        		</div>
 				</div>
-				
+						
 				<div class="cart-part1" id="order-buttons">
 					<div class="order-buttons">
-		                <a id="continueShoopingBtn" class="goShopping logging" href="productGroup" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
-		                <a href="orderFromCart" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false" style="margin:0px 10px">구매하기</a>
-		                <div class="item-disabled" style="display: none;"></div>
-		            </div>
+						<a id="continueShoopingBtn" class="goShopping logging" href="productGroup" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
+						<a href="orderFromCart" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false" style="margin:0px 10px">구매하기</a>
+						<div class="item-disabled" style="display: none;"></div>
+	            	</div>
 				</div>
 			</div>
 		</main>

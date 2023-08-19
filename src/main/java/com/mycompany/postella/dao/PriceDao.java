@@ -13,5 +13,6 @@ import com.mycompany.postella.dto.Price;
 
 @Mapper
 public interface PriceDao {	
-	public Price selectPriceByPgNo(int pg_no);//가격가져오기
+	//가격가져오기
+	public Price selectPriceByPgNo(int pg_no);
 }
