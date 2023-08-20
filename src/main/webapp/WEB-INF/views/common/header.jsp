@@ -16,7 +16,6 @@
 		<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_lumen.css">
-		<script type="text/javascript" src="js/jquery.js"></script>
 		
 		<!-- css -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
@@ -25,15 +24,16 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productGroup.css"/>
 
-    	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/snowfall.jquery.js"></script>
+    	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+		<!-- <script type="text/javascript" src="js/snowfall.jquery.js"></script> -->
+		<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
 	</head>
 	<body>
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 		    $(document).ready(function(){
 		        $(document).snowfall();
 		    });
-		</script>
+		</script> -->
 		<header>
 			<!-- 최상단 메뉴 -->
 	      	<article class="header_top_bar">

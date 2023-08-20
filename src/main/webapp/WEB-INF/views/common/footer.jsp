@@ -9,6 +9,7 @@
 					</label>
 					<div class="fdropdown-content">
 						<a href="adminIndex">판매자 페이지</a>
+						<a href="insertImg">이미지 페이지</a>
 					</div>
 				</div>
 			</div>
