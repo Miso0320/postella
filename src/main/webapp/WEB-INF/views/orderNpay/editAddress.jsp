@@ -57,9 +57,48 @@
 	          }
 		    }
 		 	
-		    $(document).ready(function(){
-		    	  var form = $("#customCheck1");
-		    	  form.submit(unchekcedValue);
+		    //제출 전에 모든 정보가 입력되었는지 확인
+		    $(document).ready(function () {
+		    	var form = $("#customCheck1");
+		    	form.submit(unchekcedValue);
+			    $("#addrForm").submit(function (event) {
+			        // 폼 제출을 초기에 막음
+			        event.preventDefault();
+			
+			        // 이전의 오류 메시지 지움
+			        $("#error-message").text("");
+			
+			        // 필수 입력 필드가 비어있는지 확인
+			        var recipient = $("#addressbookRecipient").val(); //받는 사람
+			        var postcode = $("#postcode").val(); //우편 번호
+			        var recieveAddress = $("#recieveAddress").val(); //주소
+			        var detailedAddress = $("#detailAddress").val(); //상세 주소
+			        var phoneNumber = $("#addressbookCellphone").val(); //핸드폰 번호
+			        var request = $("#addAddress-request").val(); //배송 요청사항
+			        var errorCheck = 0;
+			        
+			        if (recipient === ""){
+			        	$("#name-error").text("받는 사람을 입력하세요.");
+			        	errorCheck++;
+			        } 
+			        if (postcode === "" || recieveAddress === "" || detailedAddress === "") {
+			        	$("#address-error").text("주소를 입력하세요.");
+			        	errorCheck++;
+			        }
+			        if (phoneNumber === "") {
+			        	$("#tel-error").text("연락처를 입력하세요.");
+			        	errorCheck++;
+			        }
+			        if (request === "") {
+			            $("#request-error").text("배송 요청사항을 입력하세요.");
+			            errorCheck++;
+			        } 
+			        if (errorCheck == 0){
+			            // 모든 필수 입력란이 채워져 있으면 폼을 제출
+			            unchekcedValue();
+			            this.submit();
+			        }
+			    });
 			});
 	    </script>
 	</head>
@@ -85,6 +124,7 @@
 				        </div>
 				    </div>
 				</div>
+				<div id="name-error" style="color: red;"></div>
 				
 				<!-- 받을 주소 입력 -->
 				<div class="icon-text-field__frame-box _addressBookAddressErrorStatus">
@@ -101,6 +141,7 @@
 				        </div>
 				    </div>
 				</div>
+				<div id="address-error" style="color: red;"></div>
 				
 				<!-- 연락처 입력-->
 				<div class="icon-text-field icon-text-field--input-util _addressBookCellphoneAddonStatus">
@@ -117,6 +158,7 @@
 				        </div>
 				    </div>
 				</div>
+				<div id="tel-error" style="color: red;"></div>
 				
 				<!-- 배송 요청사항 입력 -->
 			    <div class="icon-text-field__frame-box _addressBookDeliveryPreferencesErrorStatus" id="requestBox">
@@ -131,6 +173,8 @@
 			            </div>
 			        </div>
 			    </div>
+			    <div id="request-error" style="color: red;"></div>
+			    
 			    <!-- 배송지 식별 번호 -->
 			    <input type="hidden" name="da_no" value="${address.da_no}">
 			    <!-- 기본 배송지로 선택 -->
@@ -140,7 +184,7 @@
 			    </div>
 				<!-- 저장 버튼 -->
 			    <div class="addressbook__button-fixer">
-			        <button type="submit" class="addressbook__button--save _addressBookFormSubmit" name="deliverAddress" onsubmit="unchekcedValue()">
+			        <button type="submit" class="addressbook__button--save _addressBookFormSubmit btn btn-info" name="deliverAddress" onclick="submitForm()">
 			            <span class="addressbook__text">저장</span>
 			        </button>
 			    </div>

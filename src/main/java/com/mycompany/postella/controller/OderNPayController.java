@@ -356,4 +356,17 @@ public class OderNPayController {
 	    return ResponseEntity.ok("success");
     }
 	
+	/**
+	 * 주소 삭제하기
+	 * 
+	 * @param da_no
+	 * 			배송지 식별 번호
+	 * @return redirect:/changeAddress
+	 */
+	@RequestMapping("/deleteAddress")
+    public String deleteAddress(int da_no) {
+        daService.removeAddress(da_no);
+        return "redirect:/changeAddress"; 
+    }
+	
 }

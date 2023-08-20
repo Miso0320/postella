@@ -398,10 +398,6 @@
 									</li>
 								</ul>
 							</div>
-							<div class="savePaymentOption">
-								<input class="savePaymentOption-checkbox" type="checkbox" id="savePaymentOption" checked="">
-								<label class="savePaymentOption-message" for="savePaymentOption">기본 결제 수단으로 사용</label>
-							</div>
 						</td>
 					</tr>
 				</tbody>

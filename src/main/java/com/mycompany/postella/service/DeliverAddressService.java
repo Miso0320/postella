@@ -24,4 +24,7 @@ public interface DeliverAddressService {
 	
 	//배송지 수정하기
 	public void editAddress(DeliverAddress da);
+	
+	//배송지 삭제하기
+	public void removeAddress(int da_no);
 }

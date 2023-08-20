@@ -31,4 +31,7 @@ public interface DeliverAddressDao {
 	
 	//배송지 가져오기
 	public DeliverAddress selectAddress(int da_no);
+	
+	//배송지 삭제하기
+	public int deleteAddress(int da_no);
 }

@@ -52,4 +52,10 @@
 		from deliver_address
 		where da_no = #{da_no}
  	</select>
+ 	
+ 	<!-- 주소 삭제하기 -->
+ 	<delete id="deleteAddress" parameterType="int">
+ 		delete from deliver_address
+ 		where da_no = #{da_no}
+ 	</delete>
 </mapper>

@@ -54,4 +54,10 @@ public class DeliverAddressServiceImpl implements DeliverAddressService {
 		daDao.updateAddress(da);
 	}
 	
+	//배송지 삭제하기
+	@Override
+	public void removeAddress(int da_no) {
+		daDao.deleteAddress(da_no);
+	}
+	
 }
