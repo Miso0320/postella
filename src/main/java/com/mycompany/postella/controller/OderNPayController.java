@@ -5,7 +5,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,6 +28,7 @@ import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.DeliverAddress;
 import com.mycompany.postella.dto.OrderDetail;
 import com.mycompany.postella.dto.Orders;
+import com.mycompany.postella.dto.Payment;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.Users;
 import com.mycompany.postella.dto.Wish;
@@ -305,24 +308,13 @@ public class OderNPayController {
 	 */
 	@PostMapping("/insertOrder")
 	@ResponseBody
-    public ResponseEntity<String> insertOrder(HttpSession session) {
+    public ResponseEntity<String> insertOrder(HttpSession session, @RequestParam String payType, @RequestParam int usedPoint) {
 		//세션에서 사용자 정보 가져오기
 		Users user = (Users) session.getAttribute("userLogin");
 	    int us_no = user.getUs_no();
 	    
 	    //세션에서 상품 리스트 정보 가져오기
 	    List<Product> prdList = (List<Product>) session.getAttribute("productList");
-	    List<OrderDetail> odList = new ArrayList<>();
-	    
-	    
-	    //OrderDetail 테이블의 값 설정
-	    for (Product product : prdList) {
-	        OrderDetail orderDetail = new OrderDetail();
-	        orderDetail.setPrd_no(product.getPrd_no());
-	        orderDetail.setOd_detail_qty(product.getQuantity());
-	        orderDetail.setOd_detail_price(product.getPrd_price());
-	        odList.add(orderDetail);
-	    }
 	    
 	    //Order 테이블의 값 설정
 	    Orders order = new Orders();
@@ -331,9 +323,35 @@ public class OderNPayController {
 	    order.setOd_date(currentTime);
 	    order.setOd_status("ODC");
 	    order.setOd_item_cnt(prdList.size());
+	    int od_no = ordersService.putOrder(order);
 	    
-	    //DB에 INSERT하기
-	    ordersService.putOrderAndOrderDetail(order, odList);
+	    //OrderDetail 테이블의 값 설정
+	    List<OrderDetail> odList = new ArrayList<>();
+	    for (Product product : prdList) {
+	        OrderDetail orderDetail = new OrderDetail();
+	        orderDetail.setPrd_no(product.getPrd_no());
+	        orderDetail.setOd_detail_qty(product.getQuantity());
+	        orderDetail.setOd_detail_price(product.getPrd_price());
+	        orderDetail.setOd_no(od_no);
+	        odList.add(orderDetail);
+	    }
+	    ordersService.putOrderDetail(odList);
+	    
+	   /* //Payment 테이블의 값 설정
+	    Payment payment = new Payment();
+	    payment.setPay_date(currentTime);
+	    payment.setPay_method(payType);
+	   
+	    ordersService.putPayment(payment);*/
+	    
+	    
+	    //포인트 잔액 업데이트하기
+	    Map<String, Object> mapForPoint = new HashMap<>();
+	    int newPoint = user.getUs_point() - usedPoint; 
+	    mapForPoint.put("us_no", us_no);
+	    mapForPoint.put("newPoint", newPoint);
+	    ordersService.changePoint(mapForPoint);
+	    
 	    
 	    return ResponseEntity.ok("success");
     }

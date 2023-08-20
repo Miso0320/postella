@@ -122,6 +122,9 @@
 	
 	<!-- 주문내역 추가하기 -->
 	<insert id="insertOrder" parameterType="Orders">
+		<selectKey keyProperty="od_no" resultType="int" order="AFTER">
+        	SELECT od_no_seq.nextval FROM dual
+    	</selectKey>
 		insert into orders (od_no, us_no, cp_no, od_date, od_status, od_door_pwd, od_item_cnt, od_arrived_date)
 		VALUES (od_no_seq.nextval, #{us_no}, #{cp_no, jdbcType=INTEGER}, #{od_date}, #{od_status}, #{od_door_pwd, jdbcType=VARCHAR}, #{od_item_cnt}, #{od_arrived_date, jdbcType=DATE})
 	</insert>

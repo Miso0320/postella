@@ -5,7 +5,7 @@
 	<!-- 결제 정보 추가하기 -->
 	<insert id="inserPayment" parameterType="Payment">
 		insert into Payment (od_no, po_no, pay_method, pay_date) 
-		VALUES (#{od_no}, #{po_no, jdbcType=INTEGER}, #{pay_method}, #{pay_date})
+		VALUES (#{od_no}, po_no_seq.nextval, #{pay_method}, #{pay_date})
 	</insert>
 
 </mapper>

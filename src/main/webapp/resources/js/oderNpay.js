@@ -29,9 +29,21 @@ function init() {
 
 	 //결제 버튼 클릭 이벤트
 	 $("#paymentBtn").click(function() {
+		 	
+		 	// 선택된 결제 방법의 라디오 버튼 값
+		    var selectedPayType = $("input[name='payType']:checked").val();
+		    var usedPoint = parseInt(document.getElementById("pointInput").value, 10);
+		    
+		    // 서버로 전송할 데이터를 객체로 구성
+		    var requestData = {
+		        payType: selectedPayType,
+		        usedPoint: usedPoint
+		    };
+		 
 	        $.ajax({
 	            type: "POST",
 	            url: "insertOrder", 
+	            data: requestData,
 	            success: function(response) {
 	                console.log("주문 성공");
 	            },
