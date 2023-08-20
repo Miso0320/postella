@@ -12,6 +12,7 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	private PaymentDao payDao;
 	
+	//결제 내역 추가하기
 	@Override
 	public void addPayment(Payment pay) {
 		payDao.inserPayment(pay);

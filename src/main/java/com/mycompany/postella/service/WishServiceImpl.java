@@ -12,11 +12,13 @@ public class WishServiceImpl implements WishService{
 	@Autowired
 	private WishDao wishDao;
 	
+	//찜 목록에 추가하기
 	@Override
 	public void addWish(Wish wish) {
 		wishDao.insertWish(wish);
 	}
 	
+	//찜 목록에서 삭제하기
 	@Override
 	public void removeWish(Wish wish) {
 		wishDao.deleteWish(wish);

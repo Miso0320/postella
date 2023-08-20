@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.QnaDao">
-
+	
+	<!--같은 상품 그룹을 가진 상품 문의들 가져오기  -->
 	<select id="selectByPgNo" parameterType="int" resultType="Qna">
 		select * 
 		from QNA 
 		where pg_no = #{pg_no}
 	</select>
 	
+	<!-- 판매자 이름 가져오기 -->
 	<select id="selectSelName" parameterType="int" resultType="String">
 		select unique seller.sel_name
 		from QNA,seller
@@ -17,12 +19,14 @@
 								and qna.pg_no =#{pg_no})
 	</select>
 	
+	<!--상품 문의 개수 가져오기  -->
 	<select id="selectQnaCnt" parameterType="int" resultType="int">
 		SELECT count(*)
 		FROM QNA
 		WHERE pg_no = ${pg_no}
 	</select>
 	
+	<!-- 페이지 별 문의 가져오기 -->
 	<select id="selectQnasByPage" parameterType="map" resultType="Qna">
 	<![CDATA[
 	  SELECT *
@@ -39,6 +43,7 @@
 	  ]]>
 	</select>
 	
+	<!--상품 옵션 이름 가져오기  -->
 	<select id="selectPrdName" parameterType="int" resultType="String">
 		select UNIQUE prd_name
 		from QNA, product

@@ -12,15 +12,6 @@
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addAddress.css">
 	    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
-			window.init(initSetthing);
-			
-			function initSetthing(){
-				//$('#customCheck1').val("N");
-				
-				//$('#customCheck1').click(unchekcedValue);
-			}
-		
-		
 		    function kakaopost() {
 		        new daum.Postcode({
 		            oncomplete: function(data) {
@@ -56,44 +47,20 @@
 		            .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
 		    }
 		    
-		    function chooseAddress(us_no) {
-				$.ajax({
-					type : "POST",
-					url : "updateAddressMain",
-					data : {
-						us_no : us_no,
-					},
-					success : function(response) {
-						console.log("기본 주소 변경 성공");
-					},
-					error : function(xhr, status, error) {
-						console.log("기본 주소 변경 실패");
-					}
-				});
-			}
-		    
+		    //기본 배송지 체크
 		    function unchekcedValue() {
 		      var chkBox = document.querySelector("#customCheck1");
 	          if($('#customCheck1').is(":checked")) {
-	             /* var hiddenInput = document.createElement("input");
-	             hiddenInput.type = "hidden";
-	             hiddenInput.name = "da_main";
-	             hiddenInput.value = "N";
-	             $('#form').appendChild(hiddenInput); */
-	             
-	             
 	             $('#customCheck1').val("Y");
 	          } else {
-	             //chkBox.value = "Y";
 	             $('#customCheck1').val("N");
 	          }
 		    }
 		    
 		    $(document).ready(function(){
-		    	console.log("2222확인!!!!");
-		    	  var form = $("#customCheck1");
-		    	  form.submit(unchekcedValue);
-		    	});
+	    	  var form = $("#customCheck1");
+	    	  form.submit(unchekcedValue);
+		   	});
 	    </script>
 	</head>
 	<body>

@@ -219,7 +219,7 @@
 								<div class="adr-card-req">${da.da_req_type}</div>
 							</div>
 							<div class="address-card__foot">
-								<button class="address-edit-btn btn btn-outline-info" type="submit" onclick="location.href='editAddress'">
+								<button class="address-edit-btn btn btn-outline-info" type="submit" onclick="location.href='editAddress?da_no=${da.da_no}'">
 									<span class="addressbook__text">수정</span>
 								</button>
 								<button class="address-choose-btn btn btn-info" type="button" onclick="setReceiverInfo(this)">

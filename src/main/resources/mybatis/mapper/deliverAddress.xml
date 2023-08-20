@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.DeliverAddressDao">
-
+	
+	<!-- 주소 추가하기 -->
 	<insert id="insertAddress" parameterType="DeliverAddress">
 	    INSERT INTO deliver_address (da_no, da_type, us_no, sel_no, da_name, da_tel, da_postcode, da_adr, da_detail_adr, da_main, da_req_type)
 	    VALUES (da_no_seq.nextval, #{da_type}, #{us_no, jdbcType=INTEGER},
@@ -10,18 +11,21 @@
 	            #{da_name}, #{da_tel}, #{da_postcode}, #{da_adr}, #{da_detail_adr}, #{da_main}, #{da_req_type})
 	</insert>
 	
+	<!-- 주소 목록 가져오기 -->
  	<select id="selectAddressList" parameterType="int" resultType="DeliverAddress">
  		select da_no, da_type, us_no,  sel_no, da_name, da_tel, da_postcode, da_adr, da_detail_adr, da_main, get_code_value('DA', da_req_type) as da_req_type 
 		from deliver_address
 		where us_no = #{us_no}
  	</select>
  	
+ 	<!-- 기본 주소 가져오기 -->
  	<select id="selectBasicAddress" parameterType="int" resultType="DeliverAddress">
  		select da_no, da_type, us_no,  sel_no, da_name, da_tel, da_postcode, da_adr, da_detail_adr, da_main, get_code_value('DA', da_req_type) as da_req_type 
 		from deliver_address
 		where us_no = #{us_no} and da_main = 'Y'
  	</select>
  	
+ 	<!-- 요청사항 한글로 가져오기 -->
  	<select id="getKorRequest" parameterType="String" resultType="String">
  		select codeval
 		from code
@@ -29,16 +33,23 @@
 		and code = #{da_req_type}
  	</select>
  	
+ 	<!-- 기본 배송지 삭제하기 -->
  	<update id="setMainAddressToN" parameterType="int">
  		update deliver_address SET da_main = 'N'
-		where us_no =
-		(select us_no
-		from deliver_address
-		where da_no = #{da_no})
+		where us_no = #{us_no}
  	</update>
  	
- 	<update id="updateMainAddress" parameterType="int">
- 		update deliver_address SET da_main = 'Y'
+ 	<!-- 기본 배송지로 변경하기 -->
+ 	<update id="updateAddress" parameterType="DeliverAddress">
+ 		update deliver_address
+ 		SET da_name = #{da_name}, da_tel = #{da_tel}, da_postcode = #{da_postcode}, da_adr = #{da_adr}, da_detail_adr = #{da_detail_adr}, da_main = #{da_main}, da_req_type = #{da_req_type}
 		where da_no = #{da_no}
  	</update>
+ 	
+ 	<!-- 주소 가져오기 -->
+ 	<select id="selectAddress" parameterType="int" resultType="DeliverAddress">
+ 		select da_no, da_type, us_no,  sel_no, da_name, da_tel, da_postcode, da_adr, da_detail_adr, da_main, get_code_value('DA', da_req_type) as da_req_type 
+		from deliver_address
+		where da_no = #{da_no}
+ 	</select>
 </mapper>

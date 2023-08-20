@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.ReviewDao">
-
+	
+	<!-- 같은 상품 그룹 번호를 가진 리뷰 가져오기 -->
 	<select id="selectAllByPgNo" parameterType="int" resultType="Review">
 		select review.*
 		from review, product
 		where review.prd_no = product.prd_no
 		and product.pg_no = #{pg_no}
 	</select>
-
+	
+	<!-- 상품명 가져오기 -->
 	<select id="selectPrdName" parameterType="int" resultType="String">
 		select UNIQUE prd_name
 		from review, product
@@ -16,6 +18,7 @@
 		and review.prd_no = #{prd_no}
 	</select>
 	
+	<!-- 검색어로 리뷰 가져오기 -->
 	<select id="selectByKeyword" parameterType="java.util.Map" resultType="Review">
 		  SELECT *
 		  FROM (
@@ -34,6 +37,7 @@
 		  WHERE <![CDATA[ RNUM >= #{startRow} ]]>
 	</select>
 	
+	<!-- 별점 순으로 리뷰 가져오기 -->
 	<select id="orderByRate" parameterType="int" resultType="Review">
         <![CDATA[
 	        SELECT *
@@ -52,6 +56,7 @@
 		  ]]>
 	</select>
 	
+	<!-- 날짜순으로 리뷰 가져오기 -->
 	<select id="orderByDate" parameterType="int" resultType="Review">
          <![CDATA[
 	        SELECT *
@@ -70,6 +75,7 @@
 		  ]]>
 	</select>
 	
+	<!--별점 별로 리뷰 가져오기  -->
 	<select id="groupByRate" parameterType="java.util.Map" resultType="Review">
 		<![CDATA[
 	        SELECT *
@@ -89,6 +95,7 @@
 		  ]]>
 	</select>
 	
+	<!-- 리뷰 개수 가져오기 -->
 	<select id="selectReviewCnt" parameterType="int" resultType="int">
 		SELECT count(*)
 		FROM review, product
@@ -96,6 +103,7 @@
         and product.pg_no = ${pg_no}
 	</select>
 	
+	<!-- 별점 별 리뷰 개수 가져오기 -->
 	<select id="selectReviewCntWithRate" parameterType="java.util.Map" resultType="int">
 		SELECT count(*)
 		FROM review, product
@@ -104,6 +112,7 @@
         and review.rev_star_rate = ${rate}
 	</select>
 	
+	<!-- 페이지 당 리뷰 가져오기 -->
 	<select id="selectReviewsByPage" parameterType="map" resultType="Review">
 	<![CDATA[
 	  SELECT *

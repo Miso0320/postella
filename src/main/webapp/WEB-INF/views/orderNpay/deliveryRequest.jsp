@@ -21,7 +21,7 @@
 				 window.opener.document.getElementById("addAddress-request").value = $("input[name='select']:checked").val();
 				 window.close();
 			 } else if(parentPage.includes('editAddress')) {
-				 window.opener.document.getElementById("editRequest").value = $("input[name='select']:checked").val();
+				 window.opener.document.getElementById("addAddress-request").value = $("input[name='select']:checked").val();
 				 window.close();
 			 }
 			 

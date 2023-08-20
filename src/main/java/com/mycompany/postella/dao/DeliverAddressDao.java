@@ -10,10 +10,25 @@ import com.mycompany.postella.dto.DeliverAddress;
 
 @Mapper
 public interface DeliverAddressDao {
+	
+	//배송지 추가하기
 	public int insertAddress(DeliverAddress da);
-	public List<DeliverAddress> selectAddressList(int us_no); 
+	
+	//배송지 목록 가져오기
+	public List<DeliverAddress> selectAddressList(int us_no);
+	
+	//기본 배송지 가져오기
 	public DeliverAddress selectBasicAddress(int us_no); 
+	
+	//배송 요청사항 한글로 가져오기
 	public String getKorRequest(String da_req_type);
+	
+	//기본 배송지 삭제하기
 	public int setMainAddressToN(int da_no); 
-	public int updateMainAddress(int da_no); 
+	
+	//배송지 변경하기
+	public int updateAddress(DeliverAddress da); 
+	
+	//배송지 가져오기
+	public DeliverAddress selectAddress(int da_no);
 }

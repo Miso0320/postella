@@ -20,12 +20,14 @@ public class OrdersServiceImpl implements OrdersService{
 	@Autowired
 	private OrderDetailDao odDao;
 	
+	//사용자 이름 가져오기
 	@Override
 	public String getUserName(int od_no) {
 		String uname = ordersDao.selectUsName(od_no);
 		return uname;
 	}
 	
+	//주문과 주문 상세 내역 추가하기
 	@Override
 	public void putOrderAndOrderDetail(Orders order, List<OrderDetail> orderDetails) {
 		ordersDao.insertOrder(order);
