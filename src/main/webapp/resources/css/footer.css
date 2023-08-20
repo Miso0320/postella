@@ -85,7 +85,7 @@ footer {
 	position: absolute;
 	overflow: hidden;
 	list-style: none;
-	margin: 0;
+	margin: 3px;
 	padding: 10px 0;
 	background: #fff;
 	box-shadow: 0 1px 7px rgba(0, 0, 0, 0.26);

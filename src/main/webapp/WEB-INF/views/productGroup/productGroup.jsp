@@ -8,45 +8,6 @@
 
 <!-- 전체 상품목록 페이지 -->
 <c:if test="${searchResult}">
-<!-- 대문 사진 -->
-<div id="welcomeMainPage">
-	<div id="mainPageImageList">
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<ul class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-				<li data-target="#myCarousel" data-slide-to="3"></li>
-				<li data-target="#myCarousel" data-slide-to="4"></li>
-			</ul>
-			
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage1.jpg">
-				</div>
-				<div class="carousel-item">
-					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage4.jpg">
-				</div>
-				<div class="carousel-item">
-					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage2.jpg">
-				</div>
-				<div class="carousel-item">
-					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage3.jpg">
-				</div>
-				<div class="carousel-item">
-					<img src="${pageContext.request.contextPath}/resources/img/productGroup/mainPage5.jpg">
-				</div>
-			</div>
-			<!-- Left and right controls -->
-			<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-			  <span class="carousel-control-prev-icon"></span>
-			</a>
-			<a class="carousel-control-next" href="#myCarousel" data-slide="next">
-			  <span class="carousel-control-next-icon"></span>
-			</a>
-		</div>
-	</div>
-</div>
 	<div id="container">
 		<section class="productGroupSection">
 			<!-- 왼쪽 사이드 메뉴 -->
