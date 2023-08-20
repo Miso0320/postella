@@ -17,7 +17,6 @@
 		<!-- 자바스크립트&부트스트랩 -->
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	    <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.easing.min.js"></script> --%>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 	    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
 	</head>

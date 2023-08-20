@@ -60,7 +60,7 @@
 			      				</li>
 		      				</c:if>
 		      				<li class="header_dropdown_list">
-		      					<a href="adminIndex">판매자</a>
+		      					<a href="adminLoginForm">판매자페이지</a>
 		      				</li>
 		      			</ul>
 		      		</menu>
