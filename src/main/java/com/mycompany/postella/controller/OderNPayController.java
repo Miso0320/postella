@@ -282,16 +282,13 @@ public class OderNPayController {
 		//구매자 정보
 	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
 	    int us_no = user.getUs_no();
-	    String mainValue;
-	    
+	   
 	    //기본 배송지로 수정 할 경우
-	    if(deliverAddress.getDa_main().equals("Y")) {
-    		log.info("기본 업데이트!!!!");
+	    if(deliverAddress.getDa_main().equals("on")) {
 	    	deliverAddress.setDa_main("Y");
 	    	daService.cleanMainAdr(us_no);
 	    	daService.editAddress(deliverAddress);
 	    } else {
-	    	log.info("기본 아님!!");
 	    	deliverAddress.setDa_main("N");
 	    	daService.editAddress(deliverAddress);
 	    }

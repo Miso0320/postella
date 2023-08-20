@@ -30,6 +30,35 @@
 				changeAddressWindow = window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200');
 				changeAddressWindow.dataFromParent = "orderNpay";
 			}
+			
+			//적립금 사용시 결제금액 계산
+		    function inputPoint() {
+		        var inputField = document.getElementById("pointInput"); // 입력된 포인트
+		        var usPoint = parseInt("${user.us_point}", 10); // 변환된 사용자 포인트 값
+		        var totalPrice = parseInt("${totalPrice}", 10); // 상품 총 가격
+		        var shippingFee = parseInt("${shippingFee}", 10); // 배송비
+		        
+		        var inputValue = parseInt(inputField.value, 10);
+		    	
+		        // 입력 값이 없거나 0보다 작으면 0으로 설정
+		        if (isNaN(inputValue) || inputValue <= 0) {
+		            inputValue = 0;
+		            inputField.value = 0;
+		        }
+		        // 입력 값이 사용자 포인트보다 큰 경우 경고 메시지를 표시
+		        if (inputValue > usPoint) {
+		            alert("보유하신 포인트를 초과해서 사용할 수 없습니다.");
+		            inputField.value = usPoint; // 값을 다시 사용자 포인트 값으로 설정
+		        }
+
+		        // 계산하여 출력할 총 결제 금액을 계산
+		        var totalPayPrice = totalPrice + shippingFee - inputValue;
+		        
+		        // 총 결제 금액을 페이지에 업데이트
+		        var totalPayPriceSpan = document.getElementById("totalPayPrice");
+		        totalPayPriceSpan.textContent = totalPayPrice.toLocaleString();
+		    }
+			
 		</script>
 	</head>
 	
@@ -189,15 +218,7 @@
 								</div>
 							</td>
 						</tr>
-						<tr>
-							<th class="wrap-title" scope="row">할인쿠폰</th>
-							<td>
-								<div class="price" id="disc-coupon"><strong><span class="op-price" id="coupon-amount">${couponDc}</span><span>원</span></strong></div>
-								<div class="selected-coupon">
-									<span class="message">적용 가능한 할인쿠폰이 없습니다.</span>
-								</div>
-							</td>
-						</tr>
+						
 						<tr>
 							<th class="wrap-title" scope="row">배송비</th>
 							<td class="delivery-total-price">
@@ -207,16 +228,16 @@
 						<tr class="payCoupangCash">
 							<th class="wrap-title" scope="row">적립금</th>
 							<td>
-								<div class="price"><strong><span class="op-price">${point}</span><span>원</span></strong></div>
+								<div class="price"><strong><input id="pointInput" class="op-price" onchange="inputPoint()" value="0"/><span>원</span></strong></div>
 								<div class="selected-coupon">
-									<span class="usable">보유 : <strong><span class="op-price">${point}</span><span>원</span></span>
+									<span class="usable">보유 : <strong><span class="op-price">${user.us_point}</span><span>원</span></span>
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<th class="wrap-title">총결제금액</th>
 							<td>
-								<div class="payPrice"><strong><span class="op-price">${totalPrice + shippingFee - couponDc - point}</span><span>원</span></strong></div>
+								<div class="payPrice"><strong><span class="op-price" id="totalPayPrice">${totalPrice + shippingFee}</span><span>원</span></strong></div>
 							</td>
 						</tr>
 						<tr>

@@ -135,7 +135,6 @@
 			    <input type="hidden" name="da_no" value="${address.da_no}">
 			    <!-- 기본 배송지로 선택 -->
 				<div class="custom-control custom-checkbox">
-			      <input type="hidden" name="da_main" value="N">
 				  <input type="checkbox" class="custom-control-input" id="customCheck1" name="da_main">
 			      <label class="custom-control-label" for="customCheck1">기본 배송지로 설정</label>
 			    </div>

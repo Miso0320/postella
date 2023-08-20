@@ -48,7 +48,7 @@
  	
  	<!-- 주소 가져오기 -->
  	<select id="selectAddress" parameterType="int" resultType="DeliverAddress">
- 		select da_no, da_type, us_no,  sel_no, da_name, da_tel, da_postcode, da_adr, da_detail_adr, da_main, get_code_value('DA', da_req_type) as da_req_type 
+ 		select *
 		from deliver_address
 		where da_no = #{da_no}
  	</select>
