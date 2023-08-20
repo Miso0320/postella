@@ -9,6 +9,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>배송지 추가</title>
 	    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap_lumen.css">
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addAddress.css">
 	    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
@@ -184,7 +185,7 @@
 				
 				<!-- 저장 버튼 -->
 			    <div class="addressbook__button-fixer">
-			        <button type="submit" class="addressbook__button--save _addressBookFormSubmit" name="deliverAddress" onclick="submitForm()">
+			        <button type="submit" class="addressbook__button--save _addressBookFormSubmit btn btn-info btn-lg btn-block" name="deliverAddress" onclick="submitForm()">
 			            <span class="addressbook__text">저장</span>
 			        </button>
 			    </div>
