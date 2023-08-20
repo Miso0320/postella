@@ -28,11 +28,17 @@
   		<param-value>classpath:spring/dispatcher/*.xml</param-value>
   	</init-param>
   	
+  	<!-- 404처리를 @ControllerAdvice에서 처리하도록 설정 -->
+  	<init-param>
+  		<param-name>throwExceptionIfNoHandlerFound</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  	
   	<!-- 웹 애플리케이션이 시작할 때 서블릿 객체 생성 -->
   	<load-on-startup>1</load-on-startup>
   	
   	<!-- 멀티파트 파싱을 위한 설정 -->
-  <multipart-config>
+  	<multipart-config>
   		<location>C:/Temp</location>
   		<max-file-size>20971520</max-file-size>
   		<max-request-size>104857600</max-request-size>

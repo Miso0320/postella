@@ -24,6 +24,8 @@ import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Orders;
 import com.mycompany.postella.dto.Pager;
+import com.mycompany.postella.dto.Users;
+import com.mycompany.postella.interceptor.Login;
 import com.mycompany.postella.service.CartService;
 import com.mycompany.postella.service.ImageService;
 import com.mycompany.postella.service.MyPageService;
@@ -59,7 +61,7 @@ public class MypageController {
 	 * @return	myPage/myOrderList/myOrderList
 	 * @throws Exception
 	 */
-	/*@Login*/
+	@Login
 	@GetMapping("/myOrderList")
 	public String myOrderList(
 			@RequestParam(name = "keyword", required = false) 
@@ -71,9 +73,8 @@ public class MypageController {
 			Model model, HttpSession session ) throws Exception {
 		
 		// 세션에서 유저식별번호 가져오기
-		/*Users users = (Users) session.getAttribute("userLogin");
-		int us_no = users.getUs_no();*/
-		int us_no = 121;
+		Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();
 		
 		// 주문목록 전체 리스트 가져오기
 		Map<String, Object> map = new HashMap<>();
@@ -200,18 +201,20 @@ public class MypageController {
 	 * 
 	 * @param cartPageNo
 	 * 			현재 페이지 번호
+	 * @param session
+	 * 			HttpSession
 	 * @return	Map<String, Object>
 	 */
 	@RequestMapping("/showCartInOrderList")
 	@ResponseBody
 	public Map<String, Object> showCartInOrderList(
 			@RequestParam(name="cartPageNo", required=false)
-			int cartPageNo ) {
+			int cartPageNo,
+			HttpSession session ) {
 		
 		// 세션에서 유저식별번호 가져오기
-		/*Users users = (Users) session.getAttribute("userLogin");
-		int us_no = users.getUs_no();*/
-		int us_no = 121;
+		Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();
 		
 		Map<String, Object> cartMap = new HashMap<>();
 		cartMap.put("us_no", us_no);
@@ -265,6 +268,8 @@ public class MypageController {
 	 * 			상품식별번호
 	 * @param cartPageNo
 	 * 			현재 페이지 번호
+	 * @param session
+	 * 			HttpSession
 	 * @return	Map<String, Object>
 	 */
 	@RequestMapping("/deleteCartInOrderList")
@@ -273,12 +278,12 @@ public class MypageController {
 			@RequestParam(name = "prd_no", required = true)
 			int prd_no,
 			@RequestParam(name="cartPageNo", required=false)
-			int cartPageNo ) {
+			int cartPageNo,
+			HttpSession session ) {
 		
 		// 세션에서 유저식별번호 가져오기
-		/*Users users = (Users) session.getAttribute("userLogin");
-		int us_no = users.getUs_no();*/
-		int us_no = 121;
+		Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("prd_no", prd_no);
@@ -338,6 +343,8 @@ public class MypageController {
 	 * 			상품식별번호
 	 * @param cartPageNo
 	 * 			현재 페이지
+	 * @param session
+	 * 			HttpSession
 	 * @return	Map<String, Object>
 	 */
 	@RequestMapping("/addCartInOrderList")
@@ -346,12 +353,12 @@ public class MypageController {
 			@RequestParam(name = "prd_no", required = true)
 			int prd_no,
 			@RequestParam(name="cartPageNo", required=false)
-			int cartPageNo ) {
+			int cartPageNo,
+			HttpSession session ) {
 		
 		// 세션에서 유저식별번호 가져오기
-		/*Users users = (Users) session.getAttribute("userLogin");
-		int us_no = users.getUs_no();*/
-		int us_no = 121;
+		Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();
 		
 		// 카트객체 생성
 		Cart cart = new Cart();
