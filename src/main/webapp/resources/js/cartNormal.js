@@ -111,11 +111,16 @@ function checkedProductsInfo() {
     var checkedQty = [];   		//상품 갯수
     $(".product-checkBox:checked").each(function() {
     	
-    	var inputValue1 = $(this).data("prd-no");
+    	var inputValue1 = $(this).data("pprd-no");
     	checkedPrdNo.push(inputValue1);
     	
     	var inputValue2 = $(this).data("crt-qty");
     	checkedQty.push(inputValue2);
+    	
+    	console.log("prd-no 값:" + inputValue1);
+    	console.log("checkedPrdNo : " + checkedPrdNo);
+    	console.log("crt-qty 값:" + inputValue2);
+    	console.log("checkedQty : " + checkedQty);
     });
     //상품을 체크 안 했을시
     if (checkedPrdNo.length === 0) {
@@ -252,9 +257,7 @@ function cart() {
 				  let pgNoo = item.pg_no;
 				  html += '<tr class="cart-product-contents">';
 				  html += '  <td>';
-				  html += '  	<input type="checkbox" name="checkBox" onchange="checkCheck()" class="product-checkBox" data-prd-no="'+item.prd_no+'" data-crt-qty="'+item.crt_qty+'" checked>';
-				  console.log("prdno" + item.prd_no);
-/*				  html += '  	<input type="checkbox" name="checkBox" onchange="checkCheck()" class="product-checkBox" value="'+item+'" checked>';*/
+				  html += '  	<input type="checkbox" name="checkBox" onchange="checkCheck()" class="product-checkBox" value="' + item.prd_no + '" data-pprd-no="' + item.prd_no + '" data-crt-qty="'+item.crt_qty+'" checked>';
 				  html += '  </td>';
 				  html += '  <td class="cart-item-img">';
 				  html += '  	<a href="setDetailPage?prdNo=' + item.prd_no + '">';
