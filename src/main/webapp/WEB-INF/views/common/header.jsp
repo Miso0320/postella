@@ -91,7 +91,7 @@
       				<!-- 로고 -->
       				<div class="header_title header_every_a_font">
       					<h1>
-	      					<a href="productGroup"><img class="header_logo" src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고"></a>
+	      					<a href="${pageContext.request.contextPath}"><img class="header_logo" src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고"></a>
 	      				</h1>
       				</div>
       				

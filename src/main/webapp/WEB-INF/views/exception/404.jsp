@@ -41,7 +41,7 @@
 	                    <div class="text-center" style="margin: 150px;">
 	                        <div class="error mx-auto" data-text="404">404</div>
 	                        <p class="lead text-gray-800 mb-5">페이지를 찾을 수 없습니다.</p>
-	                        <a href="productGroup">&larr; 메인화면으로 돌아가기</a>
+	                        <a href="${pageContext.request.contextPath}">&larr; 메인화면으로 돌아가기</a>
 	                    </div>
 	                </div>
 	            </div>

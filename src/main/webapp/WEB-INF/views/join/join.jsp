@@ -22,7 +22,7 @@
 		<div class="every_array">
 			<!-- header -->
 			<header class="join_header">
-				<a href="productGroup"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="200px"></a>
+				<a href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="200px"></a>
 			</header>
 			
 			<form id="join" name="join" action="join" method="post" >

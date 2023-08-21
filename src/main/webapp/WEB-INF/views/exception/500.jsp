@@ -41,7 +41,7 @@
 	                    <div class="text-center" style="margin: 150px;">
 	                        <div class="error mx-auto" data-text="500">500</div>
 	                        <p class="lead text-gray-800 mb-5">서버가 정상적으로 동작하지 않습니다. 다시 시도해주세요.</p>
-	                        <a href="productGroup">&larr; 메인화면으로 돌아가기</a>
+	                        <a href="${pageContext.request.contextPath}">&larr; 메인화면으로 돌아가기</a>
 	                    </div>
 	                </div>
 	            </div>

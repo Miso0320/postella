@@ -25,6 +25,11 @@ import com.mycompany.postella.service.ProductGroupService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 @Slf4j
 @Controller
 public class HomeController {

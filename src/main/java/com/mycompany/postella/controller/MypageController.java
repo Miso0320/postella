@@ -32,6 +32,11 @@ import com.mycompany.postella.service.MyPageService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 @Slf4j
 @Controller
 public class MypageController {
@@ -68,7 +73,7 @@ public class MypageController {
 			String keyword,
 			@RequestParam(name = "requestYear", required = false)
 			String requestYear,
-			@RequestParam(name="pageNo", required=false)
+			@RequestParam(name="pageNo", required = false)
 			String pageNo,
 			Model model, HttpSession session ) throws Exception {
 		
