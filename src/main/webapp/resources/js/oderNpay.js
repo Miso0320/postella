@@ -2,7 +2,7 @@ $(init);
 
 function init() {
 	isValidation = false;
-	
+	errorCheck = 0; //오류 체크
 	//수정버튼 클릭시 휴대폰 번호 검사
 	 submitBtn  = document.querySelector(".edit-btn");
 	 submitBtn.addEventListener('click', checkPhone);
@@ -27,32 +27,10 @@ function init() {
 	      element.textContent = formattedPrice;
      });
 
-	 //결제 버튼 클릭 이벤트
-	 $("#paymentBtn").click(function() {
-		 	
-		 	// 선택된 결제 방법의 라디오 버튼 값
-		    var selectedPayType = $("input[name='payType']:checked").val();
-		    var usedPoint = parseInt(document.getElementById("pointInput").value, 10);
-		    
-		    // 서버로 전송할 데이터를 객체로 구성
-		    var requestData = {
-		        payType: selectedPayType,
-		        usedPoint: usedPoint
-		    };
-		 
-	        $.ajax({
-	            type: "POST",
-	            url: "insertOrder", 
-	            data: requestData,
-	            success: function(response) {
-	                console.log("주문 성공");
-	            },
-	            error: function(xhr, status, error) {
-	                console.error("주문 실패", error);
-	            }
-	        });
-	 });
-}
+     $("#paymentBtn").click(function() {
+    	 orderSubmit();
+     });
+     
 
 //휴대폰 번호 검사
 function checkPhone() {
@@ -185,4 +163,75 @@ function oninputPhone(target) {
     target.value = target.value
         .replace(/[^0-9]/g, '')
         .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+}
+
+//제출 전에 모든 정보가 입력되었는지 확인
+function orderSubmit() {
+        // 폼 제출을 초기에 막음
+        event.preventDefault();
+
+        // 이전의 오류 메시지 지움
+        $("#error-message").text("");
+
+        // 필수 입력 필드가 비어있는지 확인
+        var selectedPayType = $("input[name='payType']:checked").val();
+        var recipient = $("#receiver-name").text(); //이름
+        var recieveAddress = $("#receiver-address").text(); //배송주소
+        var phoneNumber = $("#receiver-tel").text(); //핸드폰 번호
+        var request = $("#delivery-request-spot").text(); //배송 요청사항
+        var selectedBank = $("#label_rocketBank_bankList").val(); //은행
+        var selectedCard = $("#rocketCard-select").val(); //카드
+        var selectedMobile = $("#cellphoneTelecom").val(); //통신사
+        var selectedVirtualBank = $("#depositBank").val(); //무통장 은행
+        var errorCheck = true; // 초기화
+
+        //받는 사람 정보 입력 확인
+        if (recipient == ""|| recieveAddress == ""|| phoneNumber == ""|| request == "") {
+            $("#address-error").text("받는 사람 정보를 입력하세요.");
+            errorCheck = false;
+        } 
+        
+        if (selectedPayType == "ACT" && selectedBank == "선택") {
+        	$("#pay-method-error").text("모든 결제 정보를 입력하세요");
+        	errorCheck = false;
+         } else if(selectedPayType == "CRD" && selectedCard == "선택") {
+        	$("#pay-method-error").text("모든 결제 정보를 입력하세요");
+        	errorCheck = false;
+        } else if(selectedPayType == "PHO" && selectedMobile == "선택") {
+        	$("#pay-method-error").text("모든 결제 정보를 입력하세요");
+        	errorCheck = false;
+        } else if(selectedPayType == "DWP" && selectedVirtualBank == "선택") {
+        	$("#pay-method-error").text("모든 결제 정보를 입력하세요");
+        	errorCheck = false;
+        } 
+        
+        if(errorCheck === true) {
+        	alert("주문이 완료되었습니다.");
+        	// 모든 필수 입력란이 채워져 있으면 폼을 제출
+        	// 선택된 결제 방법의 라디오 버튼 값
+		    var selectedPayType = $("input[name='payType']:checked").val();
+		    var usedPoint = parseInt(document.getElementById("pointInput").value, 10);
+		    
+		    // 서버로 전송할 데이터를 객체로 구성
+		    var requestData = {
+		        payType: selectedPayType,
+		        usedPoint: usedPoint
+		    };
+		 
+	        $.ajax({
+	            type: "POST",
+	            url: "insertOrder", 
+	            data: requestData,
+	            success: function(response) {
+	                console.log("주문 성공");
+	                location.href = "myOrderList";
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("주문 실패", error);
+	            }
+	        });
+        } else {
+        	alert("모든 정보를 입력하세요");
+        }
+}
 }

@@ -21,7 +21,7 @@
 
 #body div {
 	font-size: 12px;
-    color: #333;
+    color: #1c4571;
     font-family: "돋움",Dotum,sans-serif;
 }
 #body em {
@@ -99,7 +99,7 @@
     padding: 7px 10px 7px 15px;
     font-weight: 700;
     text-align: right;
-    background: #f4f4f4;
+    background: #dcf5ff;
 }
 
 .customer__col--2 {
@@ -163,7 +163,7 @@
     border-bottom: 1px solid #e4e4e4;
     padding: 10px 10px 7px 15px;
     width: 130px;
-    background-color: #f4f4f4;
+    background-color: #dcf5ff;
     text-align: right;
 }
 
@@ -247,12 +247,12 @@
 .bundle-info__expected-delivery-date-box {
 	padding: 10px 15px 10px 20px !important;
     line-height: 26px!important;
-    background-color: #eee;
+    background-color: #dcf5ff;
 }
 
 .bundle-info__expected-delivery-info {
     line-height: 26px;
-    color: #60b0ea;
+    color: #1c4571;
     font-size: 16px!important;
 }
 
@@ -281,15 +281,15 @@
 }
 
 .bundle-info__vendor-item>p {
-    font-size: 16px;
-    color: #111;
+    font-size: 14px;
+    color: #1c4571;
 }
 
 .bundle-info__item-description {
     padding: 0;
     border: 0;
     color: #888 !important;
-    font-size: 18px !important;
+    font-size: 14px !important;
     flex-grow: 1;
 }
 
@@ -328,7 +328,7 @@
     vertical-align: top;
     text-align: right;
     border-right: 1px solid #e4e4e4;
-    background: #f4f4f4;
+    background: #dcf5ff;
     padding: 10px 15px 10px 0;
     width: 144px;
     border-bottom: 1px solid #e4e4e4;
@@ -500,7 +500,7 @@
     margin-top: -10px;
     padding: 10px 10px 0px 10px;
     border: 2px solid #c5c7cd;
-    background-color: #f4f6fa;
+    background-color: #f0fbff;
     display: none;
 }
 
@@ -635,7 +635,7 @@
 .pricePerOption {
 	flex-grow: 1;
     text-align: center;
-    font-size: 18px !important;
+    font-size: 16px !important;
     color: #60b0ea !important;
     font-weight: bold !important;
 }

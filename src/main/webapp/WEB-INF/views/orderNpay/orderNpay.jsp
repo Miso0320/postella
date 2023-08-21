@@ -166,7 +166,7 @@
 				</table>
 			</div>
 		</div>
-
+		<div id="address-error" style="color: red;"></div>
 		<div class="oder-delivery">
 			<div class="bundle-info__retail">
 				<div data-bundle-info__simple-warning-message-box__wrapper=""></div>
@@ -197,7 +197,11 @@
 		</div>
 
 		<div class="oder-pay-info">
-			<h2 class="checkout__h2">결제정보</h2>
+			<div style="display: flex; flex-direction: inherit;">
+				<h2 class="checkout__h2">결제정보</h2>
+				<span id="pay-method-error" style="color: red; margin-left: 10px"></span>
+			</div>
+			
 			<table class="pay-price">
 				<tbody>
 					<tr class="payOrder-wrap">
@@ -244,25 +248,30 @@
 						<td>
 							<div class="select-pay">
 								<ul id="payTypeList" class="type-selector-list">
-									<li id="rocketPayBox" class="type-selector-li selected-pay-type"><input class="type-selector-radio" type="radio" name="payType"
-											id="payType8" value="ACT" checked="checked"
-										> <label class="type-selector-label type-selector-label--bank" for="payType8" style="font-weight: bold;"> <span
-											class="type-selector-label__text"
-										>계좌이체</span>
-									</label></li>
-									<li id="rocketPayCardBox" class="type-selector-li"><input class="type-selector-radio" type="radio" name="payType" id="payType10"
-											value="CRD"
-										> <label class="type-selector-label type-selector-label--card" for="payType10" style="font-weight: normal;"> <span
-											class="type-selector-label__text"
-										>신용/체크카드</span>
-									</label></li>
-									<li id="phonePayBox" class="type-selector-li"><input class="type-selector-radio" type="radio" name="payType" id="payType6" value="PHO">
-										<label class="type-selector-label" for="payType6" style="font-weight: normal;"> <span class="type-selector-label__text">휴대폰</span>
-									</label></li>
-									<li id="virtualAccountPayBox" class="type-selector-li"><input class="type-selector-radio" type="radio" name="payType" id="payType7"
-											value="DWP"
-										> <label class="type-selector-label" for="payType7" style="font-weight: normal;"> <span class="type-selector-label__text">무통장입금(가상계좌)</span>
-									</label></li>
+									<li id="rocketPayBox" class="type-selector-li selected-pay-type">
+										<input class="type-selector-radio" type="radio" name="payType" id="payType8" value="ACT" checked="checked"> 
+										<label class="type-selector-label type-selector-label--bank" for="payType8" style="font-weight: bold;"> 
+										<span class="type-selector-label__text">계좌이체</span>
+										</label>
+									</li>
+									<li id="rocketPayCardBox" class="type-selector-li">
+										<input class="type-selector-radio" type="radio" name="payType" id="payType10" value="CRD"> 
+										<label class="type-selector-label type-selector-label--card" for="payType10" style="font-weight: normal;"> 
+										<span class="type-selector-label__text">신용/체크카드</span>
+										</label>
+									</li>
+									<li id="phonePayBox" class="type-selector-li">
+										<input class="type-selector-radio" type="radio" name="payType" id="payType6" value="PHO"> 
+										<label class="type-selector-label" for="payType6" style="font-weight: normal;"> 
+										<span class="type-selector-label__text">휴대폰</span>
+										</label>
+									</li>
+									<li id="virtualAccountPayBox" class="type-selector-li">
+										<input class="type-selector-radio" type="radio" name="payType" id="payType7" value="DWP"> 
+										<label class="type-selector-label" for="payType7" style="font-weight: normal;"> 
+										<span class="type-selector-label__text">무통장입금(가상계좌)</span>
+										</label>
+									</li>
 								</ul>
 							</div>
 							<div class="pay-type-content" id="bank" style="display: block;">
@@ -300,10 +309,11 @@
 							</div>
 							<div class="pay-type-content" id="card">
 								<ul class="pay-type-sections">
-									<li class="pay-type-section"><label for="rocketCard-select" class="line-title">카드선택</label>
+									<li class="pay-type-section">
+										<label for="rocketCard-select" class="line-title">카드선택</label>
 										<div class="line-data">
 											<select name="rocketCardCode" id="rocketCard-select" class="rocketpay-card__cardList" onchange="changeCard()">
-												<option value="선택">선택</option>
+												<option value="선택" selected="selected">선택</option>
 												<option value="KB">KB국민카드</option>
 												<option value="LOTTE">롯데카드</option>
 												<option value="SHINHAN">신한카드</option>
@@ -323,7 +333,7 @@
 									<li class="pay-type-section last-section"><label for="rocketCard-select" class="line-title">할부기간</label>
 										<div class="line-data">
 											<select name="quota" id="rocketCard-quota-select" class="rocketpay-card__quotaList">
-												<option value="00">일시불</option>
+												<option value="00" selected="selected">일시불</option>
 												<option value="02">2개월 (무이자)</option>
 												<option value="03">3개월 (무이자)</option>
 												<option value="04">4개월 (무이자)</option>
@@ -357,7 +367,7 @@
 									<li class="pay-type-section"><label for="cellphoneTelecom" class="payment-cellphone__line-title">통신사 종류</label>
 										<div class="payment-cellphone__line-data">
 											<select name="cellphoneTelecom" id="cellphoneTelecom" class="payment-cellphone__select" onchange="changeMobile()">
-												<option value="선택" selected="">선택</option>
+												<option value="선택" selected="selected">선택</option>
 												<option value="SKT">SKT</option>
 												<option value="KT">KT</option>
 												<option value="CJH">헬로모바일</option>
@@ -372,7 +382,7 @@
 									<li class="deposit-bank-wrap pay-type-section"><label for="depositBank" class="line-title">입금은행</label>
 										<div class="line-data">
 											<select id="depositBank" class="" name="depositBank" onchange="changebank2()">
-												<option value="선택" selected="">선택</option>
+												<option value="선택" selected="selected">선택</option>
 												<option value="NH">농협은행</option>
 												<option value="KB">국민은행</option>
 												<option value="SHINHAN">신한은행</option>
@@ -403,15 +413,15 @@
 				</tbody>
 			</table>
 		</div>
-
+		
 		<div class="confirm-agreements-message">위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공(해외직구의 경우 국외제공) 및 결제에 동의합니다.</div>
 		<div class="oder-pay">
 			<div class="agreeBtn" id="btn_all">
-				<button class="btn btn-info" type="button" id="paymentBtn" data-toggle="modal" data-target="#moveToOrderList">결제하기</button>
+				<button class="btn btn-info" type="button" id="paymentBtn">결제하기</button>
 			</div>
 		</div>
 
-		<!-- 모달 -->
+		<!-- <!-- 모달 -->
 		<div class="modal" id="moveToOrderList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -423,11 +433,11 @@
 						<p style="text-align: center;">결제가 완료되었습니다.</p>
 					</div>
 					<div class="modal-footer" style="justify-content: center; display: flex; border: none;">
-						<a href="myOrderList" class="btn btn-outline-primary" data-dismiss="modal" style="margin-right: 10px;">주문 목록 보러가기</a> 
+						<a href="myOrderList" class="btn btn-outline-primary" style="margin-right: 10px;">주문 목록 보러가기</a> 
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	</body>
