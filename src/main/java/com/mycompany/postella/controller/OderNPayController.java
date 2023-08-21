@@ -99,17 +99,23 @@ public class OderNPayController {
 	 * @return orderNpay/orderNpay
 	 */
 	@RequestMapping("/orderFromCart")
-	public String orderFromCart(Model model, HttpSession session) {
+	public String orderFromCart(@RequestParam(name="prd-no") String prd_no, @RequestParam(name="crt-qty") String quantity, Model model, HttpSession session) {
 	    //사용자 식별 번호로 주문 정보 가져오기
 	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
 	    List<Cart> orderCart = (List<Cart>) session.getAttribute("cartItems");
 	    
+	    //prd_no 잘라서 저장하기
+	    String[]  prdArray = prd_no.split(",");
+	    
+	    //quantity 잘라서 저장하기
+	    String[]  quantityArray = quantity.split(",");
+	    
 	    //상품 리스트
 	    List<Product> products = new ArrayList<>(); 
-	    for(int i=0; i<orderCart.size(); i++) {
-	    	products.add(productService.getInfo(orderCart.get(i).getPrd_no()));
+	    for(int i=0; i<prdArray.length; i++) {
+	    	products.add(productService.getInfo(Integer.parseInt(prdArray[i])));
 	    	products.get(i).setPg_name(productGroupService.getTitle(products.get(i).getPg_no()));
-	    	products.get(i).setQuantity(orderCart.get(i).getCrt_qty());
+	    	products.get(i).setQuantity(Integer.parseInt(quantityArray[i]));
 	    }
 	    setOrderInfo(user, products, model);
 	    
