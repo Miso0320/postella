@@ -337,12 +337,13 @@ public class OderNPayController {
 	    }
 	    ordersService.putOrderDetail(odList);
 	    
-	   /* //Payment 테이블의 값 설정
+	    //Payment 테이블의 값 설정
 	    Payment payment = new Payment();
+	    payment.setOd_no(od_no);
 	    payment.setPay_date(currentTime);
 	    payment.setPay_method(payType);
 	   
-	    ordersService.putPayment(payment);*/
+	    ordersService.putPayment(payment);
 	    
 	    
 	    //포인트 잔액 업데이트하기
