@@ -20,7 +20,6 @@ function init() {
    
    //찜 목록에 이미 있는지, 없는지 검사
    wishValue = $(".prod-favorite").data("wish");
-   console.log("wish: "+wishValue);
    liked = wishValue;
    if (liked == 0) {
        likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -218px -209px';
@@ -243,14 +242,29 @@ function init() {
    //상품정보 더보기 
    moreBtn = document.getElementById("seemore-btn");
    moreBtn.addEventListener('click', seeMore);
-   classList = document.querySelector('.prod-detail-img').classList; // 더보기 프레임의 클래스 정보 얻기
-   contentHeight = document.querySelector('.prod-detail-img > img').offsetHeight; //컨텐츠 높이 얻기
    
+   try{
+	   classList = document.querySelector('.prod-detail-img').classList; // 더보기 프레임의 클래스 정보 얻기
+	   ontentHeight = document.querySelector('.prod-detail-img > img').offsetHeight; //컨텐츠 높이 얻기
+
+	   //컨텐츠 로딩 완료 후 높이 기준으로 클래스 재처리
+	   window.addEventListener('load', function(){
+	       let contentHeight = document.querySelector('.prod-detail-aco > .prod-detail-img').offsetHeight; //컨텐츠 높이 얻기
+	       if(contentHeight <= 1000){
+	           document.querySelector('.detailinfo').classList.remove('show-preview'); // 초기값보다 작으면 전체 컨텐츠 표시
+	       }
+	   });
+
+   } catch(err) {
+	   classList = " ";
+	   contentHeight = 0;
+   } 
+  
    //처음 리뷰 보여주기
-   loadInitialReview()
+   loadInitialReview();
    
    //처음 상품문의 보여주기
-   loadInitialQna(qnaCurrentPage)
+   loadInitialQna();
 }
 
 
@@ -312,39 +326,6 @@ function star_menu() {
    }
 }
 
-
-//상품정보 더보기
-function seeMore(e){
-   
-   // 상품 정보 프레임의 클래스 정보 얻기
-   let classList = document.querySelector('.prod-detail-aco').classList;
-   //컨텐츠 높이 얻기
-   let contentHeight = document.querySelector('.prod-detail-aco > .prod-detail-img').offsetHeight; 
-   //버튼 텍스트
-   let btnText = document.getElementById("seemore-text");
-   //버튼 화살표
-   let btnArrow = document.getElementById("seemore-arrow");
-   // 전체보기로
-    if(classList.contains('show-preview')){
-        classList.remove('show-preview');
-        btnText.innerHTML = "상품정보 접기 ";
-        btnArrow.style.backgroundPosition = '-405px -205px';
-    } else {
-       classList.add('show-preview')
-       btnText.innerHTML = "상품정보 더보기 ";
-       btnArrow.style.backgroundPosition = '-405px -217px';
-    }
-    
-}
-
-//컨텐츠 로딩 완료 후 높이 기준으로 클래스 재처리
-window.addEventListener('load', function(){
-    let contentHeight = document.querySelector('.prod-detail-aco > .prod-detail-img').offsetHeight; //컨텐츠 높이 얻기
-    if(contentHeight <= 1000){
-        document.querySelector('.detailinfo').classList.remove('show-preview'); // 초기값보다 작으면 전체 컨텐츠 표시
-    }
-});
-
 //추천 상품 슬라이드
 function slidePrev(event) {
    event.preventDefault();
@@ -365,15 +346,19 @@ function slideNext(event) {
 }
 
 //상품문의 처음 불러오기
-function loadInitialQna(qnaCurrentPage) {
+function loadInitialQna() {
+	loadQna("getQnaFromDB", { pg_no: pg_no, page: qnaCurrentPage}); 
+}
+
+//상품문의 보여주기
+function loadQna(url, params) {
     $.ajax({
         type: "GET",
-        url: "getQnaFromDB",
-        data: { pg_no: pg_no, page: qnaCurrentPage },
+        url: url,
+        data: params, 
         success: function(data) {
-            var qnas = data.qnas;
+        	var qnas = data.qnas;
             var totalPages = data.totalPages;
-
             updateQnaList(qnas);
             qnaPageButtons(qnaCurrentPage, totalPages, "getQnaFromDB");
         }
@@ -384,7 +369,7 @@ function loadInitialQna(qnaCurrentPage) {
 function updateQnaList(qnas) {
     var inquiries = "";
     
-    for (var i = 0; i < qnas.length; i++) {
+    for (var i = 0; i < qnas.length; i++) { 
         var item = qnas[i];
         inquiries += "<div class='prod-inquiry-item'> " +
             "<div class='prod-inquiry-qpname-set'>" +
@@ -441,8 +426,7 @@ function qnaPageButtons(qnaCurrentPage, qnaTotalPages, url) {
 	            
 	            // 현재 클릭한 버튼에 'active' 클래스 추가
 	            $(this).addClass("active");
-	            console.log("!!qnaCurrentPage:"+qnaCurrentPage);
-				loadInitialQna(qnaCurrentPage);
+	            loadQna("getQnaFromDB", { pg_no: pg_no, page: qnaCurrentPage });
 			}
 		});
 		
@@ -450,7 +434,7 @@ function qnaPageButtons(qnaCurrentPage, qnaTotalPages, url) {
 		$("#qna-prev-page").click(function() {
 			if (1 < qnaCurrentPage) {
 				qnaCurrentPage -= 1;
-				loadInitialQna(qnaCurrentPage);
+				loadQna("getQnaFromDB", { pg_no: pg_no, page: qnaCurrentPage });
 			}
 		});
 		
@@ -458,7 +442,7 @@ function qnaPageButtons(qnaCurrentPage, qnaTotalPages, url) {
 		$("#qna-next-page").click(function() {
 			if (qnaTotalPages > qnaCurrentPage) {
 				qnaCurrentPage += 1;
-				loadInitialQna(qnaCurrentPage);
+				loadQna("getQnaFromDB", { pg_no: pg_no, page: qnaCurrentPage });
 			}
 		});
 	}
@@ -645,4 +629,24 @@ function isLoggedIn() {
         return false;
     }
     return true;
+}
+
+//상품정보 더보기
+function seeMore(e){
+   
+   //버튼 텍스트
+   let btnText = document.getElementById("seemore-text");
+   //버튼 화살표
+   let btnArrow = document.getElementById("seemore-arrow");
+   // 전체보기로
+    if(classList.contains('show-preview')){
+        classList.remove('show-preview');
+        btnText.innerHTML = "상품정보 접기 ";
+        btnArrow.style.backgroundPosition = '-405px -205px';
+    } else {
+       classList.add('show-preview')
+       btnText.innerHTML = "상품정보 더보기 ";
+       btnArrow.style.backgroundPosition = '-405px -217px';
+    }
+    
 }

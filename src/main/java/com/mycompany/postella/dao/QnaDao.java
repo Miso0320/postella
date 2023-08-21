@@ -24,4 +24,7 @@ public interface QnaDao {
 	
 	//상품 옵션 이름 가져오기
 	public String selectPrdName(int pg_no);
+	
+	//상품 문의 등록하기
+	public int insertQna(Qna qna);
 }

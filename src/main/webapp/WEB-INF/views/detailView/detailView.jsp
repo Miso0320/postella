@@ -538,7 +538,7 @@
                   <div class="prod-inquiry-header">
                      <h4 class="prod-inquiry-list-title">상품문의</h4>
 
-                     <a class="prod-inquiry-list-write-btn" href="window.open('writeQna', '_blank', 'width=640, height=465, left=200, top=200')">문의하기</a>
+                     <a class="prod-inquiry-list-write-btn" onclick="window.open('writeQna?pg_no=${pg_no}', '_blank', 'width=640, height=400, left=200, top=200')">문의하기</a>
                   </div>
 
                   <div class="prod-inquiry-list-notice">

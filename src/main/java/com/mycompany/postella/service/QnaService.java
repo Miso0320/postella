@@ -15,4 +15,7 @@ public interface QnaService {
 	
 	//페이지별 상품 문의 가져오기
 	public List<Qna> getQnasPaged(Map<String, Object> map);
+	
+	//문의 등록하기
+	public void putQna(Qna qna);
 }

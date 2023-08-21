@@ -42,6 +42,12 @@ public class QnaServiceImpl implements QnaService{
 		return qna;
 	}
 	
+	@Override
+	public void putQna(Qna qna) {
+		qna.setSel_name(qnaDao.selectSelName(qna.getPg_no()));
+		qnaDao.insertQna(qna);
+	}
+	
 	//상품 문의에 필요한 정보 추가하기
 	public void addQnaInfo(List<Qna> qnas) {
 		SimpleDateFormat rformat = new SimpleDateFormat("yyyy/MM/dd HH:mm");

@@ -7,6 +7,7 @@
 		select * 
 		from QNA 
 		where pg_no = #{pg_no}
+		order by q_date DESC
 	</select>
 	
 	<!-- 판매자 이름 가져오기 -->
@@ -50,5 +51,11 @@
 		where QNA.prd_no = product.prd_no
 		and QNA.prd_no = #{prd_no}
 	</select>
+	
+	<!-- 상품문의 등록하기 -->
+	<insert id="insertQna" parameterType="Qna">
+		insert into qna (qna_no, us_no, prd_no, qna_kind, qna_type, q_content, q_date, pg_no)
+		VALUES (qna_no_seq.nextval, #{us_no}, #{prd_no}, #{qna_kind}, #{qna_type, jdbcType=VARCHAR}, #{q_content}, sysdate, #{pg_no})
+	</insert>
 	
 </mapper>

@@ -562,20 +562,53 @@ public class DetailViewController {
   	    Map<String, Object> result = new HashMap<>();
   	    result.put("qnas", qnas);
   	    result.put("totalPages", totalPages);
-
+  	    
   	    return result;
   		
 	}
   	
   	/**
   	 * 문의 작성하기
+  	 * 
+  	 * @param pg_no
+  	 * 			상품 그룹 식별 번호
   	 * @param model
-  	 * @return
+  	 * @return detailView/qna
   	 */
   	@GetMapping("/writeQna")
-    public String addAddress(Model model) {
-        
+  	@Login
+    public String writeQnaForm(int pg_no, Model model) {
+  	//상품 옵션 목록 가져오기
+	List<Product> optionList = productService.getOptions(pg_no);
+	for(int i=0; i<optionList.size(); i++) {
+		optionList.get(i).setPg_no(pg_no);
+	}
+	model.addAttribute("options", optionList);
+	
         return "detailView/qna"; 
     }
 	
+  	@PostMapping("/writeQna")
+  	@Login
+  	public ResponseEntity<String> writeQna(@RequestParam("prdNo") int prdNo, @RequestParam("content") String content, HttpSession session) {
+  		
+  		// 로그인한 유저 정보 가져오기
+  		Users user = (Users) session.getAttribute("userLogin"); 
+		int us_no = user.getUs_no();
+  		
+		//상품 정보 가져오기
+  		Product prd = productService.getInfo(prdNo);
+  		
+  		//qna 추가 정보 넣어주기
+  		Qna qna = new Qna();
+  		qna.setPrd_no(prdNo);
+  		qna.setPrd_name(prd.getPrd_name());
+  		qna.setQna_kind("PQA");
+  		qna.setPg_no(prd.getPg_no());
+  		qna.setUs_no(us_no);
+  		qna.setQ_content(content);
+  		qnaService.putQna(qna);
+  		
+  		return new ResponseEntity<>("문의 작성 성공", HttpStatus.OK);
+  	}
 }
