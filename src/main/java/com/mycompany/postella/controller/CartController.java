@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,10 +31,6 @@ public class CartController {
 	
 	@Autowired CartService cartService;
 	
-	/**
-	 * 로그인 상태 확인 후 return
-	 * @return cartNormal/cartNormal
-	 */
 	@GetMapping("/cartNormal")
 	@Login
 	public String joinForm() {
@@ -57,16 +54,18 @@ public class CartController {
 	@ResponseBody
 	
 	//user별 cart상품
-	public List<Cart> getCartProduct(Integer us_no, Model model, HttpSession session) {
+	public List<Cart> getCartProduct(@RequestParam(name="prd_no", required = false) List<Cart> prdNos, Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
 		us_no = users.getUs_no();
+		log.info("prdprdrpdrpd : " + prdNos);
 		
 		//카트list의 정보 가져오기
 		List<Cart> list = cartService.getProductCart(us_no);
 		List<Image> image = cartService.getImageCart();
+		List<Cart> pgNameList = cartService.getPgName(us_no);
 		List<Cart> cartItems = list;
 		
-		//카트list에 이미지 가져오기
+		//카트list에 이미지 넣기
 		for(Cart cart : list) {
 			for(Image img : image) {
 				if(cart.getPrd_no() == img.getPrd_no()) {
@@ -76,6 +75,13 @@ public class CartController {
 				}
 			}
 		}
+		//카트list에 상품 대분류 이름 넣기
+		for (int i = 0; i < pgNameList.size(); i++) {
+		    Cart cart = list.get(i);
+		    Cart pgNameCart = pgNameList.get(i);
+		    cart.setPg_name(pgNameCart.getPg_name());
+		}
+		
 		session.setAttribute("cartItems", cartItems);
 		model.addAttribute("list", list);
 		
@@ -162,4 +168,35 @@ public class CartController {
 		
 		return "redirect:/cartNormal";
 	}
+	
+	@PostMapping("/cartNormal2")
+	@Login
+	//반환값을 직접 HTML본문으로 보내준다
+	@ResponseBody
+	//테스트
+	public List<Cart> getCartProduct2(@RequestBody List<Cart> prdNos, Model model, HttpSession session) {
+		Users users = (Users) session.getAttribute("userLogin");
+		int us_no = users.getUs_no();
+		
+		//카트list의 정보 가져오기
+		List<Cart> list = cartService.getProductCart(us_no);
+		List<Image> image = cartService.getImageCart();
+		List<Cart> cartItems = list;
+		
+		//카트list에 이미지 가져오기
+		for(Cart cart : list) {
+			for(Image img : image) {
+				if(cart.getPrd_no() == img.getPrd_no()) {
+					String encodedImg = Base64.getEncoder().encodeToString(img.getImg_file());
+					cart.setEncodedFile(encodedImg);
+					cart.setImg_type(img.getImg_type());
+				}
+			}
+		}
+		session.setAttribute("cartItems", cartItems);
+		model.addAttribute("list", list);
+		
+		return list;
+	}
+	
 }

@@ -31,6 +31,6 @@ function init() {
 	/*$('.carousel').carousel({
 		  interval: 50
 	})*/
-    $(".carousel-control-prev").carousel({interval: 1000, pause: "hover"});
+    /*$(".carousel-control-prev").carousel({interval: 1000, pause: "hover"});*/
 
 }

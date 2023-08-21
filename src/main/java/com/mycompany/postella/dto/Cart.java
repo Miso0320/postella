@@ -12,4 +12,5 @@ public class Cart {
 	private String prd_name;	//상품 이름
 	private String img_type;	//img 타입
 	private String encodedFile;	//encoded된 이미지파일
+	private String pg_name;		//상품 대분류 이름
 }

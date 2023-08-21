@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.UsersChangeDao">
+	
+	<!-- 유저 정보 확인 -->
+	<select id="selectByUser" parameterType="String" resultType="Users">
+		select us_email, us_name, us_password, us_nickname
+		from users
+		where us_email=#{us_email, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePassword" parameterType="String">
+		update users set us_password = #{us_password}
+		where us_email = #{us_email}
+	</update>
+	
+	<!-- 닉네임 변경 -->
+	<update id="updateNickname" parameterType="String">
+		update users set us_nickname = #{us_nickname}
+		where us_email = #{us_email}
+	</update>
+	
+</mapper>

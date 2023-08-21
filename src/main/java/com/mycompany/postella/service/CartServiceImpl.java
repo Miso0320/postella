@@ -78,4 +78,11 @@ public class CartServiceImpl implements CartService{
 	public void addCart(Cart cart) {
 		int check = cartDao.updateOrInsertCart(cart);
 	}
+	
+	//장바구니에 담긴 상품 이름 대분류
+	@Override
+	public List<Cart> getPgName(int us_no) {
+		List<Cart> pgNameList = cartDao.selectPgName(us_no);
+		return pgNameList;
+	}
 }

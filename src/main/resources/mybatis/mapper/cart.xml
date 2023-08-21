@@ -6,6 +6,22 @@
 	<insert id="insertPrdToCart" parameterType="Cart">
 		insert into cart(us_no, prd_no, crt_qty) VALUES (#{us_no},#{prd_no},#{crt_qty})
 	</insert>
+	<!-- 상품 대분류 이름 받기 -->
+	<select id="selectPgName" parameterType="int" resultType="Cart">
+		SELECT pg.pg_name
+		FROM product_Group pg
+		JOIN product p ON pg.pg_no = p.pg_no
+		JOIN cart c ON p.prd_no = c.prd_no
+		where us_no=#{us_no}
+		order by p.prd_no
+	</select>
+	
+	<!-- product제목 -->
+	<select id="selectTitleByPgNo" parameterType="int" resultType="String">
+		SELECT p.pg_name
+		from product_group p, cart c
+		where p.pg_no = c.p
+	</select>
 	
 	<!-- 장바구니에 담긴 상품 하나 검색 -->
 	<select id="selectCart" parameterType="java.util.Map" resultType="Cart">
@@ -25,6 +41,7 @@
 		select p.prd_name, p.prd_price, p.prd_ship_fee, c.us_no, c.prd_no, c.crt_qty
 		from product p, cart c
 		where p.prd_no = c.prd_no and us_no=#{us_no}
+		order by p.prd_no
 	</select>
 	
 	<!-- 장바구니 상품이미지 -->

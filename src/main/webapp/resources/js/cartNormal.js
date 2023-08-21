@@ -105,6 +105,40 @@ function init() {
 	});
 }
 
+//장바구니에 체크된 상품들을 구매/결제 페이지로 전달
+function checkedProductsInfo() {
+    var checkedPrdName = []; 	//상품 대분류 이름
+    var checkedPgName = [];  	//상품 개별 이름
+    var checkedQty = [];   		//상품 갯수
+    var checkedPrdPrice = [];	//상품 가격
+    $(".product-checkBox:checked").each(function() {
+    	var inputValue1 = $(this).data("prd-name");
+    	checkedPrdName.push(inputValue1);
+    	
+    	var inputValue2 = $(this).data("pg-name");
+    	checkedPgName.push(inputValue2);
+    	
+    	var inputValue3 = $(this).data("crt-qty");
+    	checkedQty.push(inputValue3);
+    	
+    	var inputValue4 = $(this).data("prd-price");
+    	checkedPrdPrice.push(inputValue4);
+    });
+    
+    //상품을 체크 안 했을시
+    if (checkedPrdName.length === 0) {
+        alert("상품을 선택해주세요.");
+        return;
+    }
+    
+    //결제 페이지로 데이터를 넘김, 배열을 쉼표로 구분된 문자열로 변환
+    location.href="orderFromCart?"
+        	+ "prd-name=" + (checkedPrdName.join(","))
+        	+ "&pg-name=" + (checkedPgName.join(","))
+        	+ "&crt-qty=" + (checkedQty.join(","))
+        	+ "&prd-price=" + (checkedPrdPrice.join(","));
+}
+
 //"checkBoxSelectAll" 클래스를 가진 체크박스가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
 function checkAll() {
 	   if($(event.target).is(':checked')) {   				 //전체선택 박스가 checked되면
@@ -225,10 +259,12 @@ function cart() {
 				let html = "";
 				var crt_qty_from_data = 1; // DB로부터 가져온 crt_qty 값을 담을 곳
 			  data.forEach((item,index) => {
-				  
+				  let pgName = item.pg_name;
 				  html += '<tr class="cart-product-contents">';
 				  html += '  <td>';
-				  html += '  	<input type="checkbox" name="checkBox" onchange="checkCheck()" class="product-checkBox" value="'+item.prd_no+'" checked>';
+				  html += '  	<input type="checkbox" name="checkBox" onchange="checkCheck()" class="product-checkBox" data-prd-name="'+item.prd_name+'" data-pg-name="'+item.pg_name+'" data-prd-price="'+item.prd_price+'" data-crt-qty="'+item.crt_qty+'" checked>';
+				  console.log("prdname" + item.prd_name);
+/*				  html += '  	<input type="checkbox" name="checkBox" onchange="checkCheck()" class="product-checkBox" value="'+item+'" checked>';*/
 				  html += '  </td>';
 				  html += '  <td class="cart-item-img">';
 				  html += '  	<a href="setDetailPage?prdNo=' + item.prd_no + '">';
@@ -310,7 +346,8 @@ function cart() {
 			}	// else	끝  
 		},	//success 끝
 		error: function(error) {
-			console.log(error.status);
+			console.log("에러났다:"+error.name);
+			console.log("에러났다:"+error.stack);
 		}	// ERROR 끝
 	});	// AJAX 끝
 }

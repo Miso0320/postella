@@ -25,4 +25,6 @@ public interface CartService {
 	public List<Cart> getCartPaging(Map<String, Object> map);
 	// 장바구니 담기하는 경우 변경 혹은 추가
 	public void addCart(Cart cart);
+	//장바구니 상품이름 리스트
+	public List<Cart> getPgName(int us_no);
 }
