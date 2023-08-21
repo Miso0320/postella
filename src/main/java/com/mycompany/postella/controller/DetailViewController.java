@@ -76,6 +76,9 @@ public class DetailViewController {
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model, HttpSession session) {
 		model.addAttribute("pg_no",pg_no);
 		
+		Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+	    int us_no = user.getUs_no();
+		
 		//상품 옵션 목록 가져오기
 		List<Product> optionList = productService.getOptions(pg_no);
 		Image optionImg; 
@@ -106,6 +109,10 @@ public class DetailViewController {
 		if(detailImg != null) {
 			model.addAttribute("detailImg", detailImg);
 		}
+		
+		//찜 목록에 있는지 확인
+		int inWish = wishService.checkWish(pg_no, us_no);
+		model.addAttribute("wish", inWish);
 		
 		//별점 평균 불러오기
 		int starAgv = productService.getStarAvg(pg_no);

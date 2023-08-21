@@ -1,5 +1,8 @@
 package com.mycompany.postella.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +25,16 @@ public class WishServiceImpl implements WishService{
 	@Override
 	public void removeWish(Wish wish) {
 		wishDao.deleteWish(wish);
+	}
+	
+	
+	//찜 목록에 들어 있는지 검사
+	@Override
+	public int checkWish(int pg_no, int us_no) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("pg_no", pg_no);
+		map.put("us_no", us_no);
+		int result = wishDao.selectWish(map);
+		return result;
 	}
 }

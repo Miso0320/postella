@@ -16,9 +16,24 @@ function init() {
 	
 	// 찜버튼 이벤트
    likeBtn = document.getElementById("prod-favorite-btn");
-   liked = 0;
    likeBtn.addEventListener('click', toggleLike);
    
+   //찜 목록에 이미 있는지, 없는지 검사
+   wishValue = $(".prod-favorite").data("wish");
+   console.log("wish: "+wishValue);
+   liked = wishValue;
+   if (liked == 0) {
+       likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -218px -209px';
+    } else if (liked == 1) {
+    	likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -262px -209px';
+    }
+  
+   
+   // 찜버튼 툴팁 활성화하기(수동으로 툴팁 제어)
+	$('.tooltip-btn').tooltip({
+		trigger: 'manual'
+	});
+
    //공유 버튼 이벤트
    shared = 0;
    shareBtn = document.getElementById("prod-share-btn");
@@ -253,7 +268,7 @@ function shareWindow() {
 
 //클릭시 찜버튼 색 변경
 function toggleLike() {
-	
+	var $tooltip = $(this);
 	// 로그인 상태 체크
     if (isLoggedIn()) {
     	//버튼 비활성화 시
@@ -261,6 +276,14 @@ function toggleLike() {
           likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -262px -209px';
           liked = 1;
           insertWish(pg_no);
+          
+          likeBtn.title = "찜 목록에 담겼습니다.";
+		  $tooltip.tooltip('show');
+		  
+		  // 1초가 지나면 툴팁 숨기기
+		  setTimeout(function() {
+			$tooltip.tooltip('hide');
+		  }, 1000);
        } else if (liked == 1) {
           likeBtn.style.background = 'url("//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png") no-repeat -218px -209px';
           liked = 0;

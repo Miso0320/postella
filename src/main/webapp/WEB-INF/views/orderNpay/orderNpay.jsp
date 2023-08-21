@@ -61,7 +61,9 @@
 		<!-- 주소 목록에서 선택된 주소 카드 정보를 저장 -->
 		<header class="cartHeader">
 	         <div>
-	            <a href="productGroup"><img src="${pageContext.request.contextPath}/resources/img/logo.png" class="cart-coupang-logo"></a>
+	            <a href="${pageContext.request.contextPath}">
+	            <img src="${pageContext.request.contextPath}/resources/img/logo.png" class="cart-coupang-logo">
+	            </a>
 	         </div>
 	     </header>
 

@@ -14,4 +14,11 @@
  		where pg_no=#{pg_no}
  		and us_no=#{us_no}
  	</delete>
+ 	
+ 	<!-- 찜 목록에 있는지 검사 -->
+ 	<select id="selectWish" parameterType="java.util.Map" resultType="int">
+ 		select count(*)
+		from wish
+		where pg_no = #{pg_no} and us_no = #{us_no}
+ 	</select>
 </mapper>

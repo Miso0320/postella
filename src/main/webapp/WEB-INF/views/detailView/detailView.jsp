@@ -55,8 +55,8 @@
                      </div>
                   </div>
                   <div class="like-share-btn">
-                     <div class="prod-favorite">
-                        <button class="prod-favorite-btn" id="prod-favorite-btn"></button>
+                     <div class="prod-favorite" data-wish="${wish}">
+                        <button class="prod-favorite-btn tooltip-btn" id="prod-favorite-btn" data-toggle="tooltip" data-placement="top" title="찜 목록에 추가되었습니다."></button>
                      </div>
 
                      <div class="prod-share">
