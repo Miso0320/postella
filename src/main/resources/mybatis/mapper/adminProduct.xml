@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.AdminProductDao">
+	
+	<!-- 상품목록 -->
+	<select id="selectByPage" parameterType="java.util.Map" resultType="Product">
+		SELECT pg_no, prd_name, prd_no, prd_org_price, prd_price, prd_category, prd_date, brand, status, message, prd_ship_fee
+			FROM
+			    (
+			        SELECT ROWNUM AS rnum, pg_no, prd_name, prd_no, prd_org_price, prd_price, prd_category, prd_date, brand, status, message, prd_ship_fee
+			        FROM
+			            (
+			                SELECT pg.pg_no, p.prd_name, p.prd_no, p.prd_org_price, p.prd_price, p.prd_date, p.prd_ship_fee,
+			                    ROW_NUMBER() OVER(PARTITION BY pg.pg_no ORDER BY pg.pg_no ) AS row_num,
+			                    get_code_value('PR', p.prd_category) as prd_category,
+			                    (SELECT fil_brand FROM filter f WHERE f.prd_no = p.prd_no) AS brand,
+			                    (SELECT fil_status FROM filter f WHERE f.prd_no = p.prd_no) AS status,
+			                    (SELECT fil_msg FROM filter f WHERE f.prd_no = p.prd_no) AS message
+			                FROM product p
+			                    LEFT JOIN product_group pg ON p.pg_no = pg.pg_no
+			               <if test='keyword != null and keyword != ""'>
+			                	<where>
+			                		REGEXP_REPLACE(LOWER(REPLACE(pg_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
+			                	</where>
+			               </if>			                    
+			               <if test='kind != null and kind != ""'>
+						       <choose>
+						        	<!-- 낮은 가격순 -->
+						        	<when test='kind == "1"'>
+						        		ORDER BY prd_price, pg_no
+						        	</when>
+						        	<!-- 높은 가격순 -->
+						        	<when test='kind == "2"'>
+						        		ORDER BY prd_price desc, pg_no
+						        	</when>
+						        	<!-- 최신순 -->
+						        	<when test='kind == "3"'>
+						        		ORDER BY prd_date desc, pg_no
+						        	</when>
+							        <otherwise>
+							        	ORDER BY prd_date desc
+							        </otherwise>
+						        </choose>
+					        </if>
+					        <if test='kind == null and kind == ""'>
+					        	ORDER BY pg_no
+					        </if>
+			            ) a
+			        WHERE
+			                a.row_num = 1
+		<![CDATA[
+			            AND ROWNUM <= ${pager.endRowNo}
+			    )
+			WHERE
+			    rnum >= ${pager.startRowNo}
+      	]]>
+	</select>
+	
+	<!-- 상품전체 개수 -->
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		SELECT count(*)
+			FROM
+			    (
+			        SELECT ROWNUM AS rnum, pg_no, pg_name, prd_no, prd_org_price, prd_price, prd_category, prd_date, brand, status, message
+			        FROM
+			            (
+			                SELECT pg.pg_no, pg.pg_name, p.prd_no, p.prd_org_price, p.prd_price, p.prd_category, p.prd_date,
+			                    ROW_NUMBER() OVER(PARTITION BY pg.pg_no ORDER BY pg.pg_no ) AS row_num,
+			                    (SELECT fil_brand FROM filter f WHERE f.prd_no = p.prd_no) AS brand,
+			                    (SELECT fil_status FROM filter f WHERE f.prd_no = p.prd_no) AS status,
+			                    (SELECT fil_msg FROM filter f WHERE f.prd_no = p.prd_no) AS message
+			                FROM product p
+			                    LEFT JOIN product_group pg ON p.pg_no = pg.pg_no
+			               <if test='keyword != null and keyword != ""'>
+			                	<where>
+			                		REGEXP_REPLACE(LOWER(REPLACE(pg_name,' ','')), '[[:punct:]]', '') LIKE '%'||REGEXP_REPLACE(LOWER(REPLACE(#{keyword},' ','')), '[[:punct:]]', '')||'%'
+			                	</where>
+			               </if>
+			            ) a
+			        WHERE
+			                a.row_num = 1
+			            <if test='prd_category != null and prd_category != ""'>
+			            	AND prd_category = #{prd_category, jdbcType=VARCHAR}
+			            </if>
+			            <if test='brand != null and brand != ""'>
+			            	AND brand IN ( #{brand, jdbcType=VARCHAR} )
+			            </if>
+			            <if test='status != null and status != ""'>
+			            	AND status IN ( #{status, jdbcType=VARCHAR} )
+			            </if>
+			            <if test='message != null and message != ""'>
+			            	AND message IN ( #{message, jdbcType=VARCHAR} )
+			            </if>
+			    )
+	</select>
+	
+</mapper>

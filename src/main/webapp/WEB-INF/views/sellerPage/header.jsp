@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -57,7 +59,7 @@
 	                </a>
 	                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
-	                        <a class="collapse-item" href="productList">상품 조회</a>
+	                        <a class="collapse-item" href="adminProductList">상품 조회</a>
 	                        <a class="collapse-item" href="#">상품 등록</a>
 	                    </div>
 	                </div>
@@ -71,7 +73,7 @@
 	                </a>
 	                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
-	                        <a class="collapse-item" href="#">공지사항 관리</a>
+	                        <a class="collapse-item" href="noticeList">공지사항 관리</a>
 	                        <a class="collapse-item" href="#">FAQ 관리</a>
 	                        <a class="collapse-item" href="#">리뷰관리</a>
 	                        <a class="collapse-item" href="#">문의관리</a>
@@ -85,15 +87,8 @@
 	            <div id="content">
 	                <!-- Topbar -->
 	                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	
-	                    <!-- Sidebar Toggle (Topbar) -->
-	                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-	                        <i class="fa fa-bars"></i>
-	                    </button>
-	
 	                    <!-- 탑바 -->
 	                    <ul class="navbar-nav ml-auto">
-	                        <div class="topbar-divider d-none d-sm-block"></div>
 	                        <!-- 사용자 프로필 메뉴 -->
 	                        <li class="nav-item dropdown no-arrow">
 	                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"

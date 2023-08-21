@@ -4,60 +4,48 @@
 <!-- 전체 페이지 -->
 <div class="container-fluid">
     <!-- 상품목록 타이틀 -->
-    <h1 class="h3 mb-2 text-gray-800">상품 조회</h1>
-    <p class="mb-4">등록한 상품을 조회할 수 있습니다.</p>
+    <h1 class="h3 mb-2 text-gray-800">공지사항 관리</h1>
+    <p class="mb-4">공지사항을 작성, 수정 및 삭제 할 수 있습니다.</p>
 
     <!-- 상품목록  -->
         <div class="card shadow mb-4">
         	<!-- 타이틀 및 정렬순 -->
             <div class="card-header py-3" style="display: flex; justify-content: space-between;">
                 <h6 class="m-0 font-weight-bold text-primary">전체</h6>
-                <div>
-                	<a href="adminProductList?kind=3">최근등록순</a> |
-                	<a href="adminProductList?kind=1">낮은 가격순</a> |
-                	<a href="adminProductList?kind=2">높은 가격순</a>
+                <div class="dropdown no-arrow mb-4">
+                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        게시판 종류
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="noticeList?bo_kind=1">자주묻는질문</a>
+                        <a class="dropdown-item" href="noticeList?bo_kind=2">공지사항</a>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
 	                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-	                	<!-- 검색창 -->
-	                	<div class="row">
-	                		<div class="col-sm-12 col-md-6">
-		                		<form action="adminProductList" method="get">
-		                			<div id="dataTable_filter" class="dataTables_filter">
-		                				<label>
-		                					Search:
-		                					<input type="search" name="keyword" class="form-control form-control-sm" placeholder aria-controls="dataTable" value="${param.keyword}">
-		                					<input type="hidden" name="pageNo" value="1">
-		                					<input type="hidden" name="kind" value="${param.kind}">
-		                				</label>
-		                			</div>
-		                		</form>
-	                		</div>
-	                	</div>
-	                	
 	                	<!-- 상품목록데이터 -->
 	                	<div class="row">
 	                		<div class="col-sm-12">
 			                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 			                        <thead>
 			                            <tr>
-			                                <th>상품명</th>
-			                                <th>카테고리</th>
-			                                <th>상품판매가</th>
-			                                <th>배송비</th>
-			                                <th>상품등록일</th>
+			                                <th>게시글 번호</th>
+			                                <th>게시판 종류</th>
+			                                <th>게시물 제목</th>
+			                                <th>작성일</th>
 			                            </tr>
 			                        </thead>
 			                        <tbody>
-			                            <c:forEach var="productGroup" items="${productGroups}">
+			                            <c:forEach var="BoardGroups" items="${BoardGroups}">
 				                        	<tr>
-				                                <td>${productGroup.prd_name}</td>
-				                                <td>${productGroup.prd_category}</td>
-				                                <td>${productGroup.prd_price}</td>
-				                                <td>${productGroup.prd_ship_fee}</td>
-				                                <td><fmt:formatDate value="${productGroup.prd_date}" pattern="yyyy.MM.dd"/></td>
+				                                <td>${BoardGroups.bo_no}</td>
+				                                <td>${BoardGroups.bo_kind}</td>
+				                                <td>${BoardGroups.bo_title}</td>
+				                                <td><fmt:formatDate value="${BoardGroups.bo_date}" pattern="yyyy.MM.dd"/></td>
 				                            </tr>
 			                        	</c:forEach>
 			                        </tbody>

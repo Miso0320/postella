@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.postella.dao.AdminBoardDao">
+	
+	<!-- 게시판 목록 -->
+	<select id="selectByPage" parameterType="java.util.Map" resultType="Board">
+		SELECT bo_no, bo_kind, bo_type, bo_title, bo_content, bo_date
+			FROM
+				(
+					SELECT ROWNUM AS rnum, bo_no, bo_kind, bo_type, bo_title, bo_content, bo_date
+					FROM
+					    board
+		<![CDATA[
+					WHERE ROWNUM <= ${pager.endRowNo}
+		]]>
+						<if test='bo_kind != null and bo_kind != ""'>
+							<choose>
+								<when test='bo_kind == "1"'>
+									AND bo_kind = 'N'
+								</when>
+								<when test='bo_kind == "2"'>
+									AND bo_kind = 'F'
+								</when>
+							</choose>
+						</if>
+					ORDER BY
+					    bo_no DESC
+					)
+		<![CDATA[
+			WHERE rnum >= ${pager.startRowNo}
+	    ]]>
+	</select>
+	
+	<!-- 게시판 전체 개수 -->
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		SELECT count(*)
+		FROM
+		    board
+		<where>
+			<if test='bo_kind != null and bo_kind != ""'>
+				<choose>
+					<when test='bo_kind == "1"'>
+						bo_kind = 'N'
+					</when>
+					<when test='bo_kind == "2"'>
+						bo_kind = 'F'
+					</when>
+				</choose>
+			</if>
+		</where>
+		ORDER BY
+		    bo_no DESC
+	</select>
+	
+</mapper>
