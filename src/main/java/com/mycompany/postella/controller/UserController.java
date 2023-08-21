@@ -91,10 +91,16 @@ public class UserController {
       String error = "";
       if(result == LoginResult.FAIL_UID) {
     	  error = "MID가 없습니다.";
+    	  String errorEmail2 = "이메일이 올바르지 않습니다.";
+			model.addAttribute("errorEmail2", errorEmail2);
+			return "login/login";
       } else if(result == LoginResult.FAIL_UENABLED) {
     	  error = "MID가 비활성화 되어 있습니다";
       } else if(result == LoginResult.FAIL_UPASSWORD) {
     	  error = "MPASSWORD가 틀립니다";
+    	  String errorPassword = "비밀번호가 올바르지 않습니다.";
+			model.addAttribute("errorPassword", errorPassword);
+			return "login/login";
       } else {
     	  Users dbUsers = loginService.getUser(users.getUs_email());
     	  session.setAttribute("userLogin", dbUsers);

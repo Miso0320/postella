@@ -36,27 +36,35 @@
 						</div>
 						<span id="emailErr1" class="errorMsg text-danger d-none small">이메일은 필수 입력 사항입니다.</span>
 						<span id="emailErr2" class="errorMsg text-danger d-none small">이메일 형식이 맞지 않습니다.</span>
+						<c:if test="${errorEmail2 != null}">
+								<span class="errorMsgDb2" style="color:red;"> ${errorEmail2}</span>
+						</c:if>
 						</div>
 						<div class="form-group pwd">
 							<div class="input_pwd d-flex">
 								<label for="pwd"></label>
 							<div style="width:100%">
 								<input type="password" name="us_password" class="form-control" value="${users.us_password}" id="pwd" name="pwd">
-								<input type="checkbox" onclick="showPwd()">비밀번호 표시
-								<script>
-								function showPwd() {
-								  var x = document.getElementById("pwd");
-								  if (x.type === "password") {
-								    x.type = "text";
-								  } else {
-								    x.type = "password";
-								  }
-								}
-								</script>
 							</div>
 							</div>
 						   <span id="pwdErr1" class="errorMsg text-danger d-none small">패스워드는 필수 입력 사항입니다.</span>
 						   <span id="pwdErr2" class="errorMsg text-danger d-none small">패스워드는 8자 이상 입력해야 합니다.</span>
+						   <c:if test="${errorPassword != null}">
+							   <span class="errorMsgDb2" style="color:red;"> ${errorPassword}</span>
+						   </c:if>
+						</div>
+						<div>
+							<input type="checkbox" onclick="showPwd()" id="showPassword" style= "margin-bottom:20px;"><label for="showPassword">비밀번호 표시</label>
+							<script>
+							function showPwd() {
+							  var x = document.getElementById("pwd");
+							  if (x.type === "password") {
+							    x.type = "text";
+							  } else {
+							    x.type = "password";
+							  }
+							}
+							</script>
 						</div>
 						<div class="buttons">		
 						 <input type="submit" class="btn btn-primary" style="width:100%" value="로그인">
