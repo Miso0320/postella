@@ -14,10 +14,7 @@
 		<script>
 		 function setRequestText(){
 			 parentPage = window.opener.location.href;
-			 if(parentPage.includes('orderNpay')){
-				 window.opener.document.getElementById("delivery-request-spot").value = $("input[name='select']:checked").val();
-				 window.close();
-			 } else if(parentPage.includes('addAddress')) {
+			 if(parentPage.includes('addAddress')) {
 				 window.opener.document.getElementById("addAddress-request").value = $("input[name='select']:checked").val();
 				 window.close();
 			 } else if(parentPage.includes('editAddress')) {

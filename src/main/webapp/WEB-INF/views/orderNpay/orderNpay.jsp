@@ -21,11 +21,6 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/oderNpay.css">
 		<script src="${pageContext.request.contextPath}/resources/js/oderNpay.js"></script>
 		<script>
-			function deliveryRequestOpen() {
-				delReqChildWindow = window.open('deliveryRequest', '_blank', 'width=518, height=666, left=200, top=200');
-				delReqChildWindow.dataFromParent = "orderNpay";
-			}
-			
 			function changeAddressOpen() {
 				changeAddressWindow = window.open('changeAddress', '_blank', 'width=518, height=666, left=200, top=200');
 				changeAddressWindow.dataFromParent = "orderNpay";
@@ -159,7 +154,6 @@
 							<th class="delivery-address__th" id="delivery-request"><span>배송 요청사항</span></th>
 							<td class="delivery-address__td">
 								<span class="delivery-request-spot" id="delivery-request-spot">${basicDa.da_req_type}</span>
-								<button class="delivery-request-message__popup-list-button btn btn-info" type="button" onclick="deliveryRequestOpen()">변경</button>
 							</td>
 						</tr>
 					</tbody>
@@ -173,9 +167,9 @@
 				<div class="bundle-info__pdd-group-title">배송 총 ${totalCnt}건</div>
 				<div class="bundle-info__pdd-group-box">
 					<div class="bundle-info__expected-delivery-date-box">
-						<span class="bundle-info__expected-delivery-info"> <strong class="deliverDayNum">${deliverDay}</strong> <span
-							class="bundle-info__guaranty"
-						>도착 보장</span>
+						<span class="bundle-info__expected-delivery-info"> 
+							<strong class="deliverDayNum">${deliverDay}</strong> 
+							<span class="bundle-info__guaranty">도착 보장</span>
 						</span>
 					</div>
 					<div class="bundle-info__item-list ">
