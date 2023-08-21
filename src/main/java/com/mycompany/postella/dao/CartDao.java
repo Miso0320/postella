@@ -22,4 +22,5 @@ public interface CartDao {
 	public List<Cart> selectCartPaging(Map<String, Object> map);	// 장바구니 상품리스트 페이징
 	public int updateOrInsertCart(Cart cart);						// 장바구니 상품 추가 혹은 변경
 	public List<Cart> selectPgName(int us_no);						// 장바구니 상품 대분류 이름
+	public List<Integer> selectQtyAndPrdNo(int us_no);
 }

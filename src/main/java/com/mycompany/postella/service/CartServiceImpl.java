@@ -85,4 +85,10 @@ public class CartServiceImpl implements CartService{
 		List<Cart> pgNameList = cartDao.selectPgName(us_no);
 		return pgNameList;
 	}
+
+	@Override
+	public List<Integer> getPrdNoAndQty(int us_no) {
+		List<Integer> prdNoAndQtyList = cartDao.selectQtyAndPrdNo(us_no);
+		return prdNoAndQtyList;
+	}
 }

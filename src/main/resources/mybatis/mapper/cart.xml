@@ -6,6 +6,14 @@
 	<insert id="insertPrdToCart" parameterType="Cart">
 		insert into cart(us_no, prd_no, crt_qty) VALUES (#{us_no},#{prd_no},#{crt_qty})
 	</insert>
+	
+	<select id="selectQtyAndPrdNo" parameterType="int" resultType="Integer">
+		SELECT c.crt_qty, c.prd_no
+		FROM cart c
+		JOIN users u ON c.us_no = u.us_no
+		where u.us_no= #{us_no}
+	</select>
+	
 	<!-- 상품 대분류 이름 받기 -->
 	<select id="selectPgName" parameterType="int" resultType="Cart">
 		SELECT pg.pg_name

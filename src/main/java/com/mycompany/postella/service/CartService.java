@@ -27,4 +27,6 @@ public interface CartService {
 	public void addCart(Cart cart);
 	//장바구니 상품이름 리스트
 	public List<Cart> getPgName(int us_no);
+	//장바구니 상품고유번호, 수량 리스트
+	public List<Integer> getPrdNoAndQty(int us_no);
 }

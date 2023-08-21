@@ -57,7 +57,6 @@ public class CartController {
 	public List<Cart> getCartProduct(@RequestParam(name="prd_no", required = false) List<Cart> prdNos, Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
 		us_no = users.getUs_no();
-		log.info("prdprdrpdrpd : " + prdNos);
 		
 		//카트list의 정보 가져오기
 		List<Cart> list = cartService.getProductCart(us_no);
@@ -84,7 +83,7 @@ public class CartController {
 		
 		session.setAttribute("cartItems", cartItems);
 		model.addAttribute("list", list);
-		
+
 		return list;
 	}
 	
