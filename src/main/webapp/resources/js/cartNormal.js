@@ -104,6 +104,37 @@ function init() {
 		}
 	});
 }
+function checkedProductsInfo() {
+    var checkedProducts = []; // 선택된 상품의 prd_no 값을 저장할 배열
+    // 체크된 체크박스들을 반복하며 prd_no 값을 추출해서 배열에 저장
+    $(".product-checkBox:checked").each(function() {
+        let inputValue = $(this).val();
+        checkedProducts.push(inputValue);
+    });
+
+    if (checkedProducts.length === 0) {
+        alert("상품을 선택해주세요.");
+        return;
+    }
+    console.log("ㅁㅁㅁㅁㅁㅁㅁㅁㅁ : " + checkedProducts);
+
+    // AJAX를 통한 서버 요청
+    $.ajax({
+        type: "POST",
+        url: "cartNormal", // 컨트롤러의 URL
+        data: { prd_no: checkedProducts}, // 서버에 전송할 데이터
+        success: function(response) {
+            // 서버 응답을 처리하는 부분
+            console.log("서버 응답:", response);
+            
+        },
+        error: function(xhr, status, error) {
+            // 에러 처리
+            console.error("에러 발생:", error);
+        }
+    });
+}
+
 
 //"checkBoxSelectAll" 클래스를 가진 체크박스가 클릭되었을 때 checkAll 함수를 호출하여 체크 박스 전체 선택 동작을 수행하도록 설정
 function checkAll() {
@@ -424,7 +455,7 @@ function bye() {
 //체크박스가 체크된 prd_no가져오기
 function deleteChecked() {
     var checkedProducts = []; // 선택된 상품의 prd_no 값을 저장할 배열
-
+    
     // 체크된 체크박스들을 반복하며 prd_no 값을 추출해서 배열에 저장
     $(".product-checkBox:checked").each(function() {
     	let inputValue = $(this).val();
