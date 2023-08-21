@@ -30,6 +30,8 @@ function init() {
 		//개별상품 가격 prodPrice를 받음
 	    var unitPrice = parseInt($(this).closest('.cart-product-contents').find('#prodPrice').text());
 	    
+	    $(this).parent().parent().parent().prev().prev().children(".product-checkBox").data("crt-qty", selectedValue);
+	    
 	    //상품수량 10개이하
 	    if (selectedValue <= 10) {
 		    $.ajax({
@@ -71,6 +73,8 @@ function init() {
 		var prd_no = $(this).closest('.cart-product-contents').find('.product-checkBox').val();
 		var unitPrice = parseInt($(this).closest('.cart-product-contents').find('#prodPrice').text());
 		
+		$(this).parent().parent().parent().prev().prev().children(".product-checkBox").data("crt-qty", inputValue);
+		
 		if(inputValue >= 11) {
 			$.ajax({
 				url: "updateCart",
@@ -96,6 +100,8 @@ function init() {
 					//ko-KR적용
 					$("#finalPrice2").text(totalShippingFee.toLocaleString("ko-KR"));
 					$(".final-order-price").text(totalOrderPrice.toLocaleString("ko-KR"));
+					
+
 				},
 				error: function(error) {
 					console.log("에러 발생:", error);
@@ -117,10 +123,6 @@ function checkedProductsInfo() {
     	var inputValue2 = $(this).data("crt-qty");
     	checkedQty.push(inputValue2);
     	
-    	console.log("prd-no 값:" + inputValue1);
-    	console.log("checkedPrdNo : " + checkedPrdNo);
-    	console.log("crt-qty 값:" + inputValue2);
-    	console.log("checkedQty : " + checkedQty);
     });
     //상품을 체크 안 했을시
     if (checkedPrdNo.length === 0) {
@@ -394,8 +396,6 @@ function checkInput1(sel) {
 	} else if(sel < 10) {
 		input.addClass("d-none");  // input 태그를 숨기기
 		input.next().addClass("d-none");
-		$('.prod-quantity-form').next().addClass("d-none");
-		$('.prod-quantity-form').next().next().addClass("d-none");
 	}	  
 }
 
