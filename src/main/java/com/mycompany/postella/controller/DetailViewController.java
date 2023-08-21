@@ -179,11 +179,18 @@ public class DetailViewController {
 	 * @return detailView/detailView
 	 */
 	@GetMapping("/setDetailPage")
-	public String setDetailPage(@RequestParam(defaultValue="2") int prdNo, Model model) {
+	public String setDetailPage(@RequestParam(defaultValue="2") int prdNo, Model model, HttpSession session) {
+		Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+	    int us_no = user.getUs_no();
+		
 		Product clikedOption  = productService.getInfo(prdNo);
 		int pg_no = clikedOption.getPg_no();
 		int prd_no = clikedOption.getPrd_no();
 		model.addAttribute("pg_no",pg_no);
+		
+		//찜 목록에 있는지 확인
+		int inWish = wishService.checkWish(pg_no, us_no);
+		model.addAttribute("wish", inWish);
 		
 		//가격들 세팅
 		model.addAttribute("TopPrdPrice", clikedOption.getPrd_org_price());
