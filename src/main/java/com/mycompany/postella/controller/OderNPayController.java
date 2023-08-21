@@ -5,7 +5,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,6 +28,7 @@ import com.mycompany.postella.dto.Cart;
 import com.mycompany.postella.dto.DeliverAddress;
 import com.mycompany.postella.dto.OrderDetail;
 import com.mycompany.postella.dto.Orders;
+import com.mycompany.postella.dto.Payment;
 import com.mycompany.postella.dto.Product;
 import com.mycompany.postella.dto.Users;
 import com.mycompany.postella.dto.Wish;
@@ -53,6 +56,18 @@ public class OderNPayController {
 	@Autowired
 	OrdersService ordersService;
 	
+	/**
+	 * 바로 구매 시 주문/결제 페이지 불러오기
+	 * 
+	 * @param quantity
+	 * 			수량
+	 * @param prdNo
+	 * 			상품 옵션 식별 번호
+	 * @param model
+	 * @param session
+	 * 			HttpSession
+	 * @return	orderNpay/orderNpay
+	 */
 	@RequestMapping("/orderFromDetailView")
 	public String orderFromDetailView(@RequestParam(name="quantity", required=false) String quantity, @RequestParam(name="prdNo", required=false) String prdNo, Model model, HttpSession session) {
 		
@@ -76,6 +91,13 @@ public class OderNPayController {
 	    return "orderNpay/orderNpay"; 
 	}
 	
+	/**
+	 * 장바구니에서 구매 시 주문/결제 페이지 불러오기
+	 * @param model
+	 * @param session
+	 * 			HttpSession
+	 * @return orderNpay/orderNpay
+	 */
 	@RequestMapping("/orderFromCart")
 	public String orderFromCart(Model model, HttpSession session) {
 	    //사용자 식별 번호로 주문 정보 가져오기
@@ -96,6 +118,15 @@ public class OderNPayController {
 	    return "orderNpay/orderNpay"; 
 	}
 	
+	/**
+	 * 구매자 정보 불러오기
+	 * 
+	 * @param user
+	 * 			사용자 객체
+	 * @param products
+	 * 			주문 할 상품 리스트
+	 * @param model
+	 */
 	public void setOrderInfo(Users user, List<Product> products, Model model) {
 		//구매자 정보
 		model.addAttribute("user",user);
@@ -147,6 +178,14 @@ public class OderNPayController {
   		
 	}
 	
+	/**
+	 * 주소 변경하기 페이지 보여주기
+	 * 
+	 * @param session
+	 * 			HttpSession
+	 * @param model
+	 * @return orderNpay/changeAddress
+	 */
 	@GetMapping("/changeAddress")
 	public String changeAddress(HttpSession session, Model model) {
 		
@@ -161,25 +200,34 @@ public class OderNPayController {
 		return "orderNpay/changeAddress"; 
 	}
 	
-	//배송지 추가
+	/**
+	 * 배송지 추가 처리
+	 * 
+	 * @param deliverAddress
+	 * 				배송지 식별 번호
+	 * @param session
+	 * 			HttpSession
+	 * @return redirect:/changeAddress
+	 */
 	@PostMapping("/addAddress")
 	public String addAddressBook(DeliverAddress deliverAddress, HttpSession session) {
 		//구매자 정보
 	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
 	    int us_no = user.getUs_no();
 	    
-	    //insert를 위해 추가적인 속성 넣어주기!
+	    //insert를 위해 추가적인 속성 넣어주기
 	    deliverAddress.setUs_no(us_no);
 	    deliverAddress.setDa_type("C");
 	    
-	    log.info("deliverAddress :   " + deliverAddress.toString());
 	    try {
+	    	//기본 배송지로 추가 할 경우
 	    	if(deliverAddress.getDa_main().equals("on")) {
 		    	deliverAddress.setDa_main("Y");
+		    	daService.cleanMainAdr(us_no);
 		    	daService.putAddress(deliverAddress);
-		    	daService.changeMainAdr(deliverAddress.getDa_no());
 		    }
 	    } catch (Exception e) {
+	    	//기본 배송지로 추가 하지 않을 경우
 	    	deliverAddress.setDa_main("N");
 	    	daService.putAddress(deliverAddress);
 		}
@@ -187,48 +235,86 @@ public class OderNPayController {
 		return "redirect:/changeAddress";
 	}
 	
-	//배송지 추가 페이지
+	/**
+	 * 배송지 추가 페이지 보여주기
+	 * 
+	 * @param model
+	 * @return orderNpay/addAddress
+	 */
 	@GetMapping("/addAddress")
     public String addAddress(Model model) {
         
         return "orderNpay/addAddress"; 
     }
 	
-	//배송 요청 선택 페이지
+	/**
+	 * 배송 요청 선택 페이지
+	 * 
+	 * @param model
+	 * @return orderNpay/deliveryRequest
+	 */
 	@GetMapping("/deliveryRequest")
     public String addressRequest(Model model) {
         
         return "orderNpay/deliveryRequest"; 
     }
 	
-	//배송지 수정 페이지
+	/**
+	 * 배송지 수정 페이지
+	 * 
+	 * @param model
+	 * @return orderNpay/editAddress
+	 */
 	@GetMapping("/editAddress")
-    public String editAddress(Model model) {
-        
+    public String editAddress(int da_no, Model model) {
+        DeliverAddress da = daService.getAddress(da_no);
+        model.addAttribute("address", da);
         return "orderNpay/editAddress"; 
     }
 	
-	//결제하기 버튼 (Orders, Order_Detail 추가)
+	/**
+	 * 
+	 * @param deliverAddress
+	 * 			배송지 객체
+	 * @param session
+	 * 			HttpSession
+	 * @return redirect:/changeAddress
+	 */
+	@PostMapping("/editAddress")
+	public String saveEditedAddress(DeliverAddress deliverAddress, HttpSession session) {
+		//구매자 정보
+	    Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
+	    int us_no = user.getUs_no();
+	   
+	    //기본 배송지로 수정 할 경우
+	    if(deliverAddress.getDa_main().equals("on")) {
+	    	deliverAddress.setDa_main("Y");
+	    	daService.cleanMainAdr(us_no);
+	    	daService.editAddress(deliverAddress);
+	    } else {
+	    	deliverAddress.setDa_main("N");
+	    	daService.editAddress(deliverAddress);
+	    }
+	    
+        return "redirect:/changeAddress"; 
+    }
+	
+	/**
+	 * 결제 정보 DB에 저장하기
+	 * 
+	 * @param session
+	 * 			HttpSession
+	 * @return ResponseEntity<String>
+	 */
 	@PostMapping("/insertOrder")
 	@ResponseBody
-    public ResponseEntity<String> insertOrder(HttpSession session) {
+    public ResponseEntity<String> insertOrder(HttpSession session, @RequestParam String payType, @RequestParam int usedPoint) {
 		//세션에서 사용자 정보 가져오기
 		Users user = (Users) session.getAttribute("userLogin");
 	    int us_no = user.getUs_no();
 	    
 	    //세션에서 상품 리스트 정보 가져오기
 	    List<Product> prdList = (List<Product>) session.getAttribute("productList");
-	    List<OrderDetail> odList = new ArrayList<>();
-	    
-	    
-	    //OrderDetail 테이블의 값 설정
-	    for (Product product : prdList) {
-	        OrderDetail orderDetail = new OrderDetail();
-	        orderDetail.setPrd_no(product.getPrd_no());
-	        orderDetail.setOd_detail_qty(product.getQuantity());
-	        orderDetail.setOd_detail_price(product.getPrd_price());
-	        odList.add(orderDetail);
-	    }
 	    
 	    //Order 테이블의 값 설정
 	    Orders order = new Orders();
@@ -237,21 +323,51 @@ public class OderNPayController {
 	    order.setOd_date(currentTime);
 	    order.setOd_status("ODC");
 	    order.setOd_item_cnt(prdList.size());
+	    int od_no = ordersService.putOrder(order);
 	    
-	    //DB에 INSERT하기
-	    ordersService.putOrderAndOrderDetail(order, odList);
+	    //OrderDetail 테이블의 값 설정
+	    List<OrderDetail> odList = new ArrayList<>();
+	    for (Product product : prdList) {
+	        OrderDetail orderDetail = new OrderDetail();
+	        orderDetail.setPrd_no(product.getPrd_no());
+	        orderDetail.setOd_detail_qty(product.getQuantity());
+	        orderDetail.setOd_detail_price(product.getPrd_price());
+	        orderDetail.setOd_no(od_no);
+	        odList.add(orderDetail);
+	    }
+	    ordersService.putOrderDetail(odList);
+	    
+	    //Payment 테이블의 값 설정
+	    Payment payment = new Payment();
+	    payment.setOd_no(od_no);
+	    payment.setPay_date(currentTime);
+	    payment.setPay_method(payType);
+	   
+	    ordersService.putPayment(payment);
+	    
+	    
+	    //포인트 잔액 업데이트하기
+	    Map<String, Object> mapForPoint = new HashMap<>();
+	    int newPoint = user.getUs_point() - usedPoint; 
+	    mapForPoint.put("us_no", us_no);
+	    mapForPoint.put("newPoint", newPoint);
+	    ordersService.changePoint(mapForPoint);
+	    
 	    
 	    return ResponseEntity.ok("success");
     }
 	
-	//기존에 있는 주소를 기본 배송지로 변경
-	@PostMapping("/updateAddressMain")
-	public ResponseEntity<String> updateAddressMain(@RequestParam("da_no") int da_no) {
-
-		daService.changeMainAdr(da_no);
-        
-        return ResponseEntity.ok("Success");
-	}
-
+	/**
+	 * 주소 삭제하기
+	 * 
+	 * @param da_no
+	 * 			배송지 식별 번호
+	 * @return redirect:/changeAddress
+	 */
+	@RequestMapping("/deleteAddress")
+    public String deleteAddress(int da_no) {
+        daService.removeAddress(da_no);
+        return "redirect:/changeAddress"; 
+    }
 	
 }

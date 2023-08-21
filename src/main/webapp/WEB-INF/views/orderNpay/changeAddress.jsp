@@ -194,6 +194,20 @@
 			color: #111;
 			margin-right: 10px;
 		}
+		
+		#delete-btn {
+		    display: inline-block;
+		    overflow: hidden;
+		    margin: 0;
+		    padding: 0;
+		    -webkit-border-radius: 2px;
+		    vertical-align: middle;
+		    box-sizing: content-box;
+		    font-family: apple sd gothic neo, malgun gothic, nanumbarungothic, nanumgothic, dotum, sans-serif;
+		    transition: box-shadow .25s ease;
+		    min-width: 68px;
+		    height: 20px;
+		 }
 		</style>
 	</head>
 	<body>
@@ -219,9 +233,12 @@
 								<div class="adr-card-req">${da.da_req_type}</div>
 							</div>
 							<div class="address-card__foot">
-								<button class="address-edit-btn btn btn-outline-info" type="submit" onclick="location.href='editAddress'">
+								<button class="address-edit-btn btn btn-outline-info" type="submit" onclick="location.href='editAddress?da_no=${da.da_no}'">
 									<span class="addressbook__text">수정</span>
 								</button>
+								 <button type="submit" class="addressbook__button--save _addressBookFormSubmit btn btn-outline-danger"  id="delete-btn" name="deliverAddress" onclick="location.href='deleteAddress?da_no=${da.da_no}'">
+						            <span class="addressbook__text">삭제</span>
+						        </button>
 								<button class="address-choose-btn btn btn-info" type="button" onclick="setReceiverInfo(this)">
 									<span class="addressbook__text">선택</span>
 								</button>

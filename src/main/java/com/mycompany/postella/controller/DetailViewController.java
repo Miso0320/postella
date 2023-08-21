@@ -61,7 +61,17 @@ public class DetailViewController {
 	
 	@Autowired
 	private QnaService qnaService;
-	
+	/**
+	 * 
+	 * 상품 상세 페이지 가져오기
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 번호
+	 * @param model
+	 * @param session
+	 * 			HttpSession
+	 * @return detailView/detailView
+	 */
 	@RequestMapping("/detailView")
 	public String content(@RequestParam(defaultValue="1") int pg_no, Model model, HttpSession session) {
 		model.addAttribute("pg_no",pg_no);
@@ -153,6 +163,14 @@ public class DetailViewController {
 		return "detailView/detailView";
 	}
 	
+	/**
+	 * 상품 옵션 상세 페이지 보여주기
+	 * 
+	 * @param prdNo
+	 * 			상품(옵션) 식별 번호
+	 * @param model
+	 * @return detailView/detailView
+	 */
 	@GetMapping("/setDetailPage")
 	public String setDetailPage(@RequestParam(defaultValue="2") int prdNo, Model model) {
 		Product clikedOption  = productService.getInfo(prdNo);
@@ -239,7 +257,15 @@ public class DetailViewController {
 		return "detailView/detailView";
 	}
 	
-	//리뷰 불러오기
+	/**
+	 * 리뷰 불러오기(AJAX)
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 식별 번호
+	 * @param page
+	 * 			페이지 번호
+	 * @return Map<String, Object>
+	 */
 	@RequestMapping("/getReviewFromDB")
     @ResponseBody
     public Map<String, Object> getReviewFromDB(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
@@ -262,7 +288,15 @@ public class DetailViewController {
 	    return result;
     }
 	
-	//리뷰 별점순으로 가져오기
+	/**
+	 * 리뷰 별점순으로 가져오기(AJAX)
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 식별 번호
+	 * @param page
+	 * 			페이지 번호
+	 * @return Map<String, Object>
+	 */
 	@RequestMapping("/orderByStar")
     @ResponseBody
     public Map<String, Object> orderByStar(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
@@ -287,7 +321,15 @@ public class DetailViewController {
 	    return result;
     }
 	
-	//리뷰 최신순으로 가져오기
+	/**
+	 * 리뷰 최신순으로 가져오기(AJAX)
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 식별 번호
+	 * @param page
+	 * 			페이지 번호
+	 * @return Map<String, Object>
+	 */
 	@RequestMapping("/orderByDate")
     @ResponseBody
     public Map<String, Object> orderByDate(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page) {
@@ -311,7 +353,17 @@ public class DetailViewController {
 	    return result;
     }
 	
-	//리뷰 검색하기
+	/**
+	 * 리뷰 검색하기(AJAX)
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 식별 번호
+	 * @param keyword
+	 * 			검색어
+	 * @param page
+	 * 			페이지 번호
+	 * @return Map<String, Object>
+	 */
 	@RequestMapping("/searchReview")
     @ResponseBody
     public Map<String, Object> searchReview(@RequestParam("pg_no") int pg_no, @RequestParam("keyword") String keyword, @RequestParam("page") int page) {
@@ -336,7 +388,17 @@ public class DetailViewController {
 	    return result;
     }
 	
-	//리뷰 별점별로 보기
+	/**
+	 * 리뷰 별점별로 보기(AJAX)
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 식별 번호
+	 * @param starAmount
+	 * 			별점
+	 * @param page
+	 * 			페이지 번호
+	 * @return Map<String, Object>
+	 */
 	@RequestMapping("/groupByStar")
 	@ResponseBody
 	public Map<String, Object> groupByStar(@RequestParam("pg_no") int pg_no, @RequestParam("starAmount") int starAmount, @RequestParam("page") int page) {
@@ -365,7 +427,17 @@ public class DetailViewController {
 	    return result;
 	}
 	
-	//장바구니 담기
+	/**
+	 * 장바구니 담기
+	 * 
+	 * @param quantity
+	 * 			수량
+	 * @param prdNo
+	 * 			상품 옵션 식별 번호
+	 * @param session
+	 * 			HttpSession
+	 * @return ResponseEntity<String>
+	 */
 	@PostMapping("/detailView/cartAdd")
 	@Login
 	@ResponseBody
@@ -396,6 +468,15 @@ public class DetailViewController {
         return ResponseEntity.ok("success");
     }
 	
+	/**
+	 * 찜 목록에 추가하기
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 식별 번호
+	 * @param session
+	 * 			HttpSession
+	 * @return ResponseEntity<String>
+	 */
 	@PostMapping("/insertWish")
 	@Login
     public ResponseEntity<String> insertWish(@RequestParam("pg_no") int pg_no, HttpSession session) {
@@ -408,7 +489,16 @@ public class DetailViewController {
         wishService.addWish(wish);
         return new ResponseEntity<>("찜 목록 추가 성공", HttpStatus.OK);
     }
-
+	
+	/**
+	 * 찜 목록에서 삭제하기
+	 * 
+	 * @param pg_no
+	 * 			상품 그룹 식별 번호
+	 * @param session
+	 * 			HttpSession
+	 * @return ResponseEntity<String>
+	 */
     @PostMapping("/deleteWish")
     @Login
     public ResponseEntity<String> deleteWish(@RequestParam("pg_no") int pg_no, HttpSession session) {
@@ -421,7 +511,16 @@ public class DetailViewController {
         return new ResponseEntity<>("찜 목록 삭제 성공", HttpStatus.OK);
     }
     
-    //상품문의 불러오기
+    /**
+     * 상품문의 불러오기
+     * 
+     * @param pg_no
+     * 			상품 그룹 식별 번호
+     * @param page
+     * 			페이지 번호
+     * @param model
+     * @return Map<String, Object>
+     */
   	@RequestMapping("/getQnaFromDB")
 	@ResponseBody
 	public Map<String, Object> getQnaFromDB(@RequestParam("pg_no") int pg_no, @RequestParam("page") int page, Model model) {

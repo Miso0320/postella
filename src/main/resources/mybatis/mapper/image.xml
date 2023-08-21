@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.ImageDao">
-
+	
+	<!-- 이미지 추가하기 -->
 	<insert id="insert" parameterType="Img">
 		insert into image(img_no,
 		us_no, prd_no, can_no, rev_no, img_file, img_use, img_oname, img_type,
@@ -13,27 +14,23 @@
 		#{pg_no})
 	</insert>
 
-	<select id="selectThums" parameterType="int" resultType="Img">
-		select
-		*
-		from image
-		where pg_no=#{pg_no} and img_use='THM'
-	</select>
-	<!-- 상품그룹번호로 썸네일 이미지 가져오기 -->
+	<!-- 같은 상품 그룹 식별 번호를 가진 이미지들 가져오기 -->
 	<select id="selectAllByPgNo" parameterType="int" resultType="Img">
 		select *
 		from image
 		where pg_no=#{pg_no} and img_use='THM'
 		order by prd_no, img_no ASC
 	</select>
-
+	
+	<!-- 같은 상품 그룹 식별 번호를 가진 이미지 중 대표 이미지 가져오기 -->
 	<select id="selectByPgNo2" parameterType="int" resultType="Img">
 		select *
 		from image
 		where pg_no=#{pg_no} and ROWNUM=1 and img_use='THM'
 		order by prd_no
 	</select>
-
+	
+	<!-- 같은 상품 번호를 가진 이미지 중 대표 이미지 가져오기 -->
 	<select id="selectByPrdNo" parameterType="int" resultType="Img">
 		select *
 		from (select *
@@ -42,15 +39,16 @@
 				order by img_no ASC)
 		where ROWNUM = 1
 	</select>
-
-	<select id="selectAllByPrdNo" parameterType="int"
-		resultType="Img">
+	
+	<!--같은 상품 번호를 가진 이미지들 가져오기  -->
+	<select id="selectAllByPrdNo" parameterType="int" resultType="Img">
 		select *
 		from image
 		where prd_no=#{prd_no} and img_use='THM'
 		order by img_no ASC
 	</select>
-
+	
+	<!-- 상품 상세 이미지 가져오기 -->
 	<select id="selectdetailImg" parameterType="int" resultType="Img">
 		select *
 		from image

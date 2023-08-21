@@ -22,7 +22,11 @@ import com.mycompany.postella.service.ProductGroupService;
 
 import lombok.extern.slf4j.Slf4j;
 
-//테스트
+/**
+ * 
+ * @author 김미소, 박재홍
+ *
+ */
 @Slf4j
 @Controller
 public class ProductGroupController {

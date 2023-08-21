@@ -2,12 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.ProductDao">
 	
+	<!-- 상품 식별 번호로 상품 정보 가져오기 -->
 	<select id="selectByPrdNo" parameterType="int" resultType="Product">
 		SELECT *
 		from product
 		where prd_no = ${prd_no}
 	</select>
 	
+	<!-- 같은 상품 그룹에 있는 상품들 가져오기 -->
 	<select id="selectAllByPgNo" parameterType="int" resultType="Product">
 		SELECT *
 		from product
@@ -15,6 +17,7 @@
 		order by prd_no ASC
 	</select>
 	
+	<!--별점 평균 가져오기  -->
 	<select id="selectStarAvg" parameterType="int" resultType="int">
 		SELECT
 		AVG(prd_star_avg)

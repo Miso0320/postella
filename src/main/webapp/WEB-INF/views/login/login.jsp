@@ -22,7 +22,7 @@
 		<div class="main-login" style="margin: 0 auto; max-width: 460px; padding: 0 5px;"> 
 			<div class="d-flex justify-content-center login-h m-3">
 				<h1>
-					<a href="productGroup"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="200px" height="50px"></img></a>
+					<a href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="200px" height="50px"></img></a>
 				</h1>
 			</div>
 			<div class="card m-3" style="border:none;">

@@ -19,6 +19,7 @@ public class QnaServiceImpl implements QnaService{
 	@Autowired
 	private ReviewService reviewService;
 	
+	//상품 문의 가져오기
 	@Override
 	public List<Qna> getQnasBypgNo(int pg_no) {
 		List<Qna> qna = qnaDao.selectByPgNo(pg_no);
@@ -26,12 +27,14 @@ public class QnaServiceImpl implements QnaService{
 		return qna;
 	}
 	
+	//상품 문의 개수 가져오기
 	@Override
 	public int getTotalQnasCount(int pg_no) {
 		int cnt = qnaDao.selectQnaCnt(pg_no);
 		return cnt;
 	}
 	
+	//페이지별 상품 문의 가져오기
 	@Override
 	public List<Qna> getQnasPaged(Map<String, Object> map) {
 		List<Qna> qna = qnaDao.selectQnasByPage(map);
@@ -39,6 +42,7 @@ public class QnaServiceImpl implements QnaService{
 		return qna;
 	}
 	
+	//상품 문의에 필요한 정보 추가하기
 	public void addQnaInfo(List<Qna> qnas) {
 		SimpleDateFormat rformat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		for(int i=0; i < qnas.size(); i++) {

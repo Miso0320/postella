@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.postella.dao.WishDao">
-
+	
+	<!-- 찜 목록에 추가하기 -->
 	<insert id="insertWish" parameterType="Wish">
 		insert into wish (pg_no, us_no) 
 		VALUES (#{pg_no},#{us_no})
 	</insert>
 
- 
+ 	<!-- 찜 목록에서 삭제하기 -->
  	<delete id="deleteWish" parameterType="Wish">
  		DELETE from wish 
  		where pg_no=#{pg_no}

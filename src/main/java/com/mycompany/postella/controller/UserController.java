@@ -19,6 +19,11 @@ import com.mycompany.postella.service.LoginService.LoginResult;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 김미소, 박재홍
+ *
+ */
 @Slf4j
 @Controller
 public class UserController {

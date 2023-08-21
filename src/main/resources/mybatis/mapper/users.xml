@@ -45,4 +45,9 @@
 		where us_email=#{us_email, jdbcType=VARCHAR}
 	</select>
 	
+	<update id="updatePoint" parameterType="java.util.Map">
+		update users set us_point = #{newPoint}
+		where us_no = #{us_no}
+	</update>
+	
 </mapper>

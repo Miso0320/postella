@@ -1,5 +1,7 @@
 package com.mycompany.postella.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Agreement;
@@ -13,4 +15,5 @@ public interface UsersDao {
 	public Users selectTel(String us_tel);
 	public int insertAgree(Agreement agreement);
 	public Users selectByUser(String us_email);
+	public int updatePoint(Map<String, Object> map);
 }
