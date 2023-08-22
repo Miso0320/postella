@@ -243,7 +243,7 @@ function cart() {
 				dayText = "토";
 			}
 		
-		let deliveryDate = ("(" + dayText + ")" +month + "/" + date + "도착 보장");
+		let deliveryDate = ("(" + dayText + ")" +month + "/" + date + "도착 예정");
 				
 	$.ajax({
 		url: "cartNormal",
@@ -462,38 +462,4 @@ function deleteChecked() {
     });
     
     location.href="deleteCheckCart?prd_no="+encodeURIComponent(checkedProducts.join(","));
-}
-
-//체크된 상품 삭제
-function deleteChecked2() {
-	
-	if(($("input[name=checkBox]:checked")).length === 0) {
-		alert("삭제할 상품을 선택해주세요.");
-	} else {
-		if (confirm("선택한 상품을 삭제하시겠습니까?") == true){ 
-			var checkedProducts = []; // 선택된 상품의 prd_no 값을 저장할 배열
-
-		    // 체크된 체크박스들을 반복하며 prd_no 값을 추출해서 배열에 저장
-		    $(".product-checkBox:checked").each(function() {
-		    	let inputValue = $(this).val();
-		    	checkedProducts.push(inputValue);
-		    });
-		    
-		    location.href="deleteProducts?prd_no="+encodeURIComponent(checkedProducts.join(","));
-			
-			   //true는 확인버튼을 눌렀을 때 코드 작성
-			   console.log("완료되었습니다.");
-			 }else{
-			   // false는 취소버튼을 눌렀을 때, 취소됨
-			   return;
-			 }
-	}
-	
-	$("input[name=checkBox]:checked").each(function(c,cVal){
-		let a = cVal.parentElement.parentElement;
-		$(a).remove();
-		$(".checkBoxSelectAll").prop("checked",false);
-	});
-	// 남은 상품들 가격 다시 계산
-	sum();
 }

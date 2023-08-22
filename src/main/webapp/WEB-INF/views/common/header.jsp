@@ -23,17 +23,9 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/myOrderList.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productGroup.css"/>
-
-    	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-		<!-- <script type="text/javascript" src="js/snowfall.jquery.js"></script> -->
-		<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/userChange.css"/>
 	</head>
 	<body>
-		<!-- <script type="text/javascript">
-		    $(document).ready(function(){
-		        $(document).snowfall();
-		    });
-		</script> -->
 		<header>
 			<!-- 최상단 메뉴 -->
 	      	<article class="header_top_bar">
@@ -50,6 +42,7 @@
 									     <c:if test="${userLogin != null}">
 									     	<a href="${pageContext.request.contextPath}/logout">로그아웃</a> 
 									     	[환영합니다  ${userLogin.us_name}님!]
+									     	<a href="${pageContext.request.contextPath}/userChange">회원정보 수정</a> 
 					                     </c:if>	                     
 					               </div>
 		      					</div>

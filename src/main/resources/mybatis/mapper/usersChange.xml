@@ -7,18 +7,5 @@
 		select us_email, us_name, us_password, us_nickname
 		from users
 		where us_email=#{us_email, jdbcType=VARCHAR}
-	</select>
-	
-	<!-- 비밀번호 변경 -->
-	<update id="updatePassword" parameterType="String">
-		update users set us_password = #{us_password}
-		where us_email = #{us_email}
-	</update>
-	
-	<!-- 닉네임 변경 -->
-	<update id="updateNickname" parameterType="String">
-		update users set us_nickname = #{us_nickname}
-		where us_email = #{us_email}
-	</update>
-	
+	</select>	
 </mapper>

@@ -13,18 +13,11 @@ public class UsersChangeServiceImple implements UsersChangeService {
 	
 	@Autowired
 	private UsersChangeDao usersChangeDao;
+	
+	//유저 이메일 가져오기
 	@Override
 	public Users getUsersInfo(String us_email) {
 		Users users = usersChangeDao.selectByUser(us_email);
 		return users;
-	}
-	@Override
-	public void updatePassword(Users users) {
-		Users pw = usersChangeDao.updatePassword(users);
-	}
-	@Override
-	public Users updateNickname(String us_email) {
-		Users Nickname = usersChangeDao.updateNickname(us_email);
-		return Nickname;
 	}
 }

@@ -106,9 +106,16 @@
 									</td>
 								</tr>
 								<tr>
+									<th>전화번호</th>
+									<td>
+										<input type="tel" class="icon-text-field__input _addressBookCellphoneInput" id="addressbookCellphone" name="da_tel" placeholder="--제외하고 입력해주세요" value="" oninput="oninputPhone(this)">
+										<button class="delivery-address__popup-list-button btn btn-info" type="button" onclick="oninputPhone(this)">전화번호 변경</button>
+									</td>
+								</tr>
+								<tr>
 									<th>배송지</th>
 									<td>
-										<button class="delivery-address__popup-list-button btn btn-info" type="button" onclick="changeAddressOpen()">배송지변경</button>
+										<button class="delivery-address__popup-list-button btn btn-info" type="button" onclick="changeAddressOpen()">배송지 변경</button>
 									</td>
 								</tr>
 							</tbody>

@@ -7,10 +7,7 @@ import com.mycompany.postella.dto.Users;
 
 @Mapper
 public interface UsersChangeDao {
-	public Users selectByNo(int us_no);
-	public Users selectEmail(String us_email);
-	public Users selectTel(String us_tel);
+	
+	//변경할 유저 정보
 	public Users selectByUser(String us_email);
-	public Users updatePassword(Users users);
-	public Users updateNickname(String us_email);
 }

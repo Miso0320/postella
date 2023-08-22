@@ -79,12 +79,30 @@ public class UserController {
 		}
 	}
 	
-	// 로그인
+	/**
+	 * 
+	 * 로그인 폼
+	 * 
+	 * @return String
+	 */
 	@GetMapping("/login")
 	public String loginForm() {
 		return "login/login";
 	}
 	
+	/**
+	 * 
+	 * 유저 가입 정보를 통해 로그인 성공,실패
+	 * @param users
+	 * 			유저 가입 정보
+	 * @param model
+	 * 			Model
+	 * @param session
+	 * @return
+	 * 로그인 성공 : redirect:/productGroup
+	 * 로그인 실패 : login/login
+	 * 로그아웃 : redirect:/productGroup
+	 */
    @PostMapping("/login")
    public String login(Users users, Model model, HttpSession session) {
 	LoginResult result = loginService.loginUsers(users);
@@ -104,7 +122,7 @@ public class UserController {
       } else {
     	  Users dbUsers = loginService.getUser(users.getUs_email());
     	  session.setAttribute("userLogin", dbUsers);
-    	  return "redirect:/productGroup";
+    	  return "redirect:/";
       }
       
       model.addAttribute("error", error);
@@ -114,7 +132,7 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("userLogin");
-		return "redirect:/productGroup";
+		return "redirect:/";
 		
 	}
 	

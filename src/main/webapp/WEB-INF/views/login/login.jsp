@@ -32,7 +32,7 @@
 						<div class="form-group userIdentity">
 							<div class="input_email d-flex">
 								<label for="email"></label>
-								<input type="email" name="us_email" class="form-control" value="${users.us_email}">
+								<input type="email" name="us_email" class="form-control" placeholder="아이디" value="${users.us_email}">
 						</div>
 						<span id="emailErr1" class="errorMsg text-danger d-none small">이메일은 필수 입력 사항입니다.</span>
 						<span id="emailErr2" class="errorMsg text-danger d-none small">이메일 형식이 맞지 않습니다.</span>
@@ -44,7 +44,7 @@
 							<div class="input_pwd d-flex">
 								<label for="pwd"></label>
 							<div style="width:100%">
-								<input type="password" name="us_password" class="form-control" value="${users.us_password}" id="pwd" name="pwd">
+								<input type="password" name="us_password" class="form-control" placeholder="비밀번호" value="${users.us_password}" id="pwd" name="pwd">
 							</div>
 							</div>
 						   <span id="pwdErr1" class="errorMsg text-danger d-none small">패스워드는 필수 입력 사항입니다.</span>
@@ -79,6 +79,7 @@
 	<footer class="text-center">
 		<div><small>첫 방문이신가요?</small></div>
 		<div><small>회원가입 후 사용해 보세요.</small></div>
+		<div>▽Click!▽</div>
 		<div>
               	<a href="join">
                       	<img src="${pageContext.request.contextPath}/resources/img/join/welcome.gif" width="96px" height="96px"></img>

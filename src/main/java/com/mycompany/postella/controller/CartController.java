@@ -25,12 +25,16 @@ import com.mycompany.postella.service.CartService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 박재홍
+ *
+ */
 @Slf4j
 @Controller
 public class CartController {
 	
 	@Autowired CartService cartService;
-	
 	@GetMapping("/cartNormal")
 	@Login
 	public String joinForm() {
@@ -50,7 +54,6 @@ public class CartController {
 	 */
 	@PostMapping("/cartNormal")
 	@Login
-	//반환값을 직접 HTML본문으로 보내준다
 	@ResponseBody
 	
 	//user별 cart상품
@@ -116,7 +119,7 @@ public class CartController {
 	 * @return
 	 */
 	//Cart상품 선택삭제(다수의 상품)
-	@RequestMapping("/deleteCheckCart")
+	@GetMapping("/deleteCheckCart")
 	@Login
 	public String deleteCheckCart( @RequestParam(name = "prd_no", required = true) List<Integer> prd_no,  HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
@@ -146,7 +149,7 @@ public class CartController {
 	 * @return
 	 */
 	//Cart 상품수량 변경 update
-	@RequestMapping("/updateCart")
+	@PostMapping("/updateCart")
 	@Login
 	public String updateCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "selectedValue", required = false) Integer selectedValue, @RequestParam(name = "inputValue", required = false) Integer inputValue, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
@@ -166,36 +169,5 @@ public class CartController {
 		cartService.updateCart(cart);
 		
 		return "redirect:/cartNormal";
-	}
-	
-	@PostMapping("/cartNormal2")
-	@Login
-	//반환값을 직접 HTML본문으로 보내준다
-	@ResponseBody
-	//테스트
-	public List<Cart> getCartProduct2(@RequestBody List<Cart> prdNos, Model model, HttpSession session) {
-		Users users = (Users) session.getAttribute("userLogin");
-		int us_no = users.getUs_no();
-		
-		//카트list의 정보 가져오기
-		List<Cart> list = cartService.getProductCart(us_no);
-		List<Image> image = cartService.getImageCart();
-		List<Cart> cartItems = list;
-		
-		//카트list에 이미지 가져오기
-		for(Cart cart : list) {
-			for(Image img : image) {
-				if(cart.getPrd_no() == img.getPrd_no()) {
-					String encodedImg = Base64.getEncoder().encodeToString(img.getImg_file());
-					cart.setEncodedFile(encodedImg);
-					cart.setImg_type(img.getImg_type());
-				}
-			}
-		}
-		session.setAttribute("cartItems", cartItems);
-		model.addAttribute("list", list);
-		
-		return list;
-	}
-	
+	}	
 }

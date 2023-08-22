@@ -25,13 +25,18 @@ import com.mycompany.postella.service.UsersChangeService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 박재홍
+ * us_email, us_name
+ *
+ */
 @Slf4j
 @Controller
 //회원정보수정 페이지
 public class UserChangeController {
 	
 	@Autowired UsersChangeService usersChangeService;
-	
 	@GetMapping("/userChange")
 	@Login
 	//현재 로그인된 이메일 정보 
@@ -41,21 +46,5 @@ public class UserChangeController {
 		
 		model.addAttribute("users", users);
 		return "userChange/userChange";
-	}
-	
-	@PostMapping("/updatePassword")
-	@Login
-	public String updatePassword(@RequestParam(name = "inputValue", required = false) String inputValue, String us_password, HttpSession session) {
-		Users users = (Users) session.getAttribute("userLogin");
-		users.setUs_password(us_password);
-		users.setUs_nickname(inputValue);
-		usersChangeService.updatePassword(users);
-		usersChangeService.updateNickname(inputValue);
-		
-		return "redirect:/productGroup";
-	}
-	@PostMapping("/updateNickname")
-	public String updateNickName() {	
-		return "redirect:/userChange";
 	}
 }

@@ -14,6 +14,7 @@ public interface UsersDao {
 	public Users selectEmail(String us_email);
 	public Users selectTel(String us_tel);
 	public int insertAgree(Agreement agreement);
+	// 유저 정보 확인
 	public Users selectByUser(String us_email);
 	public int updatePoint(Map<String, Object> map);
 }

@@ -21,7 +21,7 @@
 	<body style="background-color:#F2F2F2;">
 		<header class="cartHeader">
 			<div>
-				<a href="productGroup"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="200px" height="50px"></img></a>
+				<a href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="200px" height="50px"></img></a>
 			</div>
 		</header>
 		<main class="main-cart" style="background-color:white;">
