@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 public class EveryExceptionHandler {
 	
-	@ExceptionHandler
+/*	@ExceptionHandler
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public String handleOhterException(Exception e) {
 		return "exception/500";
@@ -24,5 +24,5 @@ public class EveryExceptionHandler {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handle404() {
 		return "exception/404";
-	}
+	}*/
 }

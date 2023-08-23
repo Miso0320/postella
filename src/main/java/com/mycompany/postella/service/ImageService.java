@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.mycompany.postella.dto.Image;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 public interface ImageService {
 	
 	//이미지 추가하기

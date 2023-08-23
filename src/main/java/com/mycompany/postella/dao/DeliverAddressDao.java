@@ -7,7 +7,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.DeliverAddress;
 
-
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Mapper
 public interface DeliverAddressDao {
 	

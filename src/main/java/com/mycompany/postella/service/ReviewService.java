@@ -5,6 +5,11 @@ import java.util.Map;
 
 import com.mycompany.postella.dto.Review;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 public interface ReviewService {
 	
 	//리뷰들 가져오기

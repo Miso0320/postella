@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Orders;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Mapper
 public interface OrdersDao {
 	// 주문자 이름 가져오기

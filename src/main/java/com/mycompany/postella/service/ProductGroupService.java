@@ -7,6 +7,11 @@ import com.mycompany.postella.dto.CodeTb;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 public interface ProductGroupService {
 	// dao에서 selectTitleByPgNo로 제목가져와서 title에 넣기
 	public String getTitle(int pg_no);

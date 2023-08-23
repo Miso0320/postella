@@ -4,7 +4,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Payment;
 
-
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Mapper
 public interface PaymentDao {
 	

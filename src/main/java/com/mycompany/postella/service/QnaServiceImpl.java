@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 import com.mycompany.postella.dao.QnaDao;
 import com.mycompany.postella.dto.Qna;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Service
 public class QnaServiceImpl implements QnaService{
 	

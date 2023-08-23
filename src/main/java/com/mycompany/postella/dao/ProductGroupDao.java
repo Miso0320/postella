@@ -9,6 +9,11 @@ import com.mycompany.postella.dto.CodeTb;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Mapper
 public interface ProductGroupDao {
 	// 제목 하나 가져오기

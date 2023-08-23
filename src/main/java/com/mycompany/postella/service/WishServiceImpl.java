@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import com.mycompany.postella.dao.WishDao;
 import com.mycompany.postella.dto.Wish;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Service
 public class WishServiceImpl implements WishService{
 	

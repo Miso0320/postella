@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Review;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Mapper
 public interface ReviewDao {
 	

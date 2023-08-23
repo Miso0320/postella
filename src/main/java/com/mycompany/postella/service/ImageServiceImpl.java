@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import com.mycompany.postella.dao.ImageDao;
 import com.mycompany.postella.dto.Image;
 
-
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Service
 public class ImageServiceImpl implements ImageService{
 	

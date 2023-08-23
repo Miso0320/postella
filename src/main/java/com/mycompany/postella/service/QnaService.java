@@ -5,6 +5,11 @@ import java.util.Map;
 
 import com.mycompany.postella.dto.Qna;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 public interface QnaService {
 	
 	//상품 문의 가져오기

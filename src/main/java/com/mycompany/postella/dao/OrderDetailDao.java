@@ -4,6 +4,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.OrderDetail;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Mapper
 public interface OrderDetailDao {
 	

@@ -2,6 +2,11 @@ package com.mycompany.postella.service;
 
 import com.mycompany.postella.dto.Wish;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 public interface WishService {
 	
 	//찜 목록에 추가하기

@@ -6,7 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Image;
 
-
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Mapper
 public interface ImageDao {
 	

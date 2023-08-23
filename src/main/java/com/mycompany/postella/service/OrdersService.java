@@ -7,6 +7,11 @@ import com.mycompany.postella.dto.OrderDetail;
 import com.mycompany.postella.dto.Orders;
 import com.mycompany.postella.dto.Payment;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 public interface OrdersService {
 	
 	//사용자 이름 가져오기

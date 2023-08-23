@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import com.mycompany.postella.dao.DeliverAddressDao;
 import com.mycompany.postella.dto.DeliverAddress;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Service
 public class DeliverAddressServiceImpl implements DeliverAddressService {
 	

@@ -5,6 +5,11 @@ import java.util.Map;
 
 import com.mycompany.postella.dto.DeliverAddress;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 public interface DeliverAddressService {
 	
 	// 배송지 목록 가져오기

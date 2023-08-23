@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 import com.mycompany.postella.dao.PaymentDao;
 import com.mycompany.postella.dto.Payment;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Service
 public class PaymentServiceImpl implements PaymentService {
 	

@@ -38,6 +38,11 @@ import com.mycompany.postella.service.productService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Slf4j
 @Controller
 public class DetailViewController {
@@ -568,7 +573,7 @@ public class DetailViewController {
 	}
   	
   	/**
-  	 * 문의 작성하기
+  	 * 문의 작성 페이지 보여주기
   	 * 
   	 * @param pg_no
   	 * 			상품 그룹 식별 번호
@@ -588,6 +593,17 @@ public class DetailViewController {
         return "detailView/qna"; 
     }
 	
+  	/**
+  	 * 상품 문의 등록하기
+  	 * 
+  	 * @param prdNo
+  	 * 			상품 식별 번호
+  	 * @param content
+  	 * 			문의 내용
+  	 * @param session
+  	 * 			HttpSession
+  	 * @return ResponseEntity<>
+  	 */
   	@PostMapping("/writeQna")
   	@Login
   	public ResponseEntity<String> writeQna(@RequestParam("prdNo") int prdNo, @RequestParam("content") String content, HttpSession session) {

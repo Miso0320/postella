@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 import com.mycompany.postella.dao.ReviewDao;
 import com.mycompany.postella.dto.Review;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Service
 public class ReviewServiceImpl implements ReviewService{
 	

@@ -17,6 +17,11 @@ import com.mycompany.postella.dto.Payment;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Slf4j
 @Service
 public class OrdersServiceImpl implements OrdersService {

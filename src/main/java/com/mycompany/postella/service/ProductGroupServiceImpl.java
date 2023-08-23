@@ -13,6 +13,11 @@ import com.mycompany.postella.dto.CodeTb;
 import com.mycompany.postella.dto.Image;
 import com.mycompany.postella.dto.Product;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Service
 public class ProductGroupServiceImpl implements ProductGroupService{
 	@Autowired

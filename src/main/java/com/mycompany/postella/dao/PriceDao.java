@@ -11,6 +11,11 @@ import com.mycompany.postella.dto.ProductGroup;
 import com.mycompany.postella.dto.Pager;
 import com.mycompany.postella.dto.Price;
 
+/**
+ * 
+ * @author 박재홍
+ *
+ */
 @Mapper
 public interface PriceDao {	
 	//가격가져오기

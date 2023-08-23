@@ -40,6 +40,11 @@ import com.mycompany.postella.service.productService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 이송미
+ *
+ */
 @Slf4j
 @Controller
 public class OderNPayController {
@@ -248,7 +253,7 @@ public class OderNPayController {
 	 * @return orderNpay/addAddress
 	 */
 	@GetMapping("/addAddress")
-    public String addAddress(Model model) {
+    public String addAddress() {
         
         return "orderNpay/addAddress"; 
     }
@@ -260,13 +265,13 @@ public class OderNPayController {
 	 * @return orderNpay/deliveryRequest
 	 */
 	@GetMapping("/deliveryRequest")
-    public String addressRequest(Model model) {
+    public String addressRequest() {
         
         return "orderNpay/deliveryRequest"; 
     }
 	
 	/**
-	 * 배송지 수정 페이지
+	 * 배송지 수정 페이지 보여주기
 	 * 
 	 * @param model
 	 * @return orderNpay/editAddress
@@ -279,6 +284,7 @@ public class OderNPayController {
     }
 	
 	/**
+	 * 배송지 수정하기
 	 * 
 	 * @param deliverAddress
 	 * 			배송지 객체
