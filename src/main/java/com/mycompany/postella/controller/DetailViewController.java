@@ -130,7 +130,7 @@ public class DetailViewController {
 		int revCnt = reviewService.countReview(pg_no);
 		model.addAttribute("revCnt", revCnt);
 		
-		//상품명 불러오기!
+		//상품명 불러오기
 		String title = productGroupService.getTitle(pg_no);
 		model.addAttribute("title", title);
 		
@@ -190,6 +190,7 @@ public class DetailViewController {
 	public String setDetailPage(@RequestParam(defaultValue="2") int prdNo, Model model, HttpSession session) {
 		Users user = (Users) session.getAttribute("userLogin"); // 로그인한 유저 정보 가져오기
 		
+		//옵션 정보 가져오기
 		Product clikedOption  = productService.getInfo(prdNo);
 		int pg_no = clikedOption.getPg_no();
 		int prd_no = clikedOption.getPrd_no();

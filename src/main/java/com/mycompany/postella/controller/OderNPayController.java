@@ -165,10 +165,6 @@ public class OderNPayController {
   		model.addAttribute("totalPrice",totalPrice);
   		model.addAttribute("totalCnt",totalCnt);
   		
-  		//할인 쿠폰
-  		int couponDc = 0;
-  		model.addAttribute("couponDc",couponDc);
-  		
   		//적립금
   		int point = 0;
   		model.addAttribute("point",point);

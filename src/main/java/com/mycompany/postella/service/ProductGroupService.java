@@ -13,7 +13,8 @@ import com.mycompany.postella.dto.Product;
  *
  */
 public interface ProductGroupService {
-	// dao에서 selectTitleByPgNo로 제목가져와서 title에 넣기
+	
+	//대표 상품명 불러오기
 	public String getTitle(int pg_no);
 	
 	// dao에서 selectByPage로 product 리스트를 가져와서 list에 넣기
