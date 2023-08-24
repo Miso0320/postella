@@ -11,6 +11,11 @@ import com.mycompany.postella.dto.Users;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 박재홍
+ *
+ */
 @Slf4j
 public class LoginCheckInterceptor implements HandlerInterceptor {
    

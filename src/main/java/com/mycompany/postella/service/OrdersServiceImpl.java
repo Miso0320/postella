@@ -45,7 +45,7 @@ public class OrdersServiceImpl implements OrdersService {
 		return uname;
 	}
 	
-	//주문 추가하기
+	// 주문 추가하기
 	@Override
 	public int putOrder(Orders order) {
 		ordersDao.insertOrder(order);
@@ -54,7 +54,7 @@ public class OrdersServiceImpl implements OrdersService {
 		return od_no;
 	}
 	
-	//주문 상세 추가하기
+	// 주문 상세 추가하기
 	@Override
 	public void putOrderDetail(List<OrderDetail> odList) {
 		for (OrderDetail orderDetail : odList) {
@@ -62,7 +62,7 @@ public class OrdersServiceImpl implements OrdersService {
 		}
 	}
 	
-	//결제 추가하기
+	// 결제 추가하기
 	@Override
 	public void putPayment(Payment payment) {
 		paymentDao.inserPayment(payment);

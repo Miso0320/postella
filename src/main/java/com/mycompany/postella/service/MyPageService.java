@@ -5,7 +5,13 @@ import java.util.Map;
 
 import com.mycompany.postella.dto.Orders;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 public interface MyPageService {
+	
 	// 마이페이지 주문목록 가져오기
 	public List<Orders> getOrderList(Map<String, Object> map);
 	

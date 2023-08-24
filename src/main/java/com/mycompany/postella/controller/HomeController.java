@@ -27,40 +27,25 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
- * @author 김미소
+ * @author 박재홍
  *
  */
 @Slf4j
 @Controller
 public class HomeController {
+	
 	@Autowired
 	private ProductGroupService productGroupService;
 	
 	@Autowired
 	private ImageService imageService;
-	
-	public HomeController() {
-		log.info("실행");
-	}
-	
+
 	/**
 	 * 
 	 * 메인페이지
 	 * 
-	 * @param prd_category
-	 * 			카테고리
-	 * @param kind
-	 * 			정렬방법
 	 * @param pageNo
 	 * 			현재 페이지 번호
-	 * @param brand
-	 * 			브랜드 필터
-	 * @param status
-	 * 			상품상태 필터
-	 * @param message
-	 * 			엽서 메시지 필터
-	 * @param keyword
-	 * 			검색어
 	 * @param model
 	 * 			Model
 	 * @param session
@@ -140,11 +125,13 @@ public class HomeController {
 		return "index";
 	}
 	
+	// 이미지 삽입 임시 페이지
 	@GetMapping("/insertImg")
 	public String insertImgForm() {
 		return "insertImgForm";
 	}
 	
+	// 이미지 삽입 임시 페이지
 	@PostMapping("/insertImg")
 	public String insertImg(Image img, HttpSession session) throws Exception{
 		MultipartFile mf = img.getImg_attach();

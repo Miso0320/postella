@@ -27,14 +27,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class UserController {
+	
 	@Resource
 	private JoinService joinService;
 	
-	@Resource LoginService loginService;
+	@Resource
+	LoginService loginService;
 	
 	/**
 	 * 
-	 * 회원가입 폼
+	 * 회원가입 폼 불러오기
 	 * 
 	 * @return String
 	 */
@@ -93,15 +95,17 @@ public class UserController {
 	/**
 	 * 
 	 * 유저 가입 정보를 통해 로그인 성공,실패
+	 * 
 	 * @param users
 	 * 			유저 가입 정보
 	 * @param model
 	 * 			Model
 	 * @param session
+	 * 			HttpSession
 	 * @return
-	 * 로그인 성공 : redirect:/productGroup
-	 * 로그인 실패 : login/login
-	 * 로그아웃 : redirect:/productGroup
+	 * 			로그인 성공 : redirect:/productGroup
+	 * 			로그인 실패 : login/login
+	 * 			로그아웃 : redirect:/productGroup
 	 */
    @PostMapping("/login")
    public String login(Users users, Model model, HttpSession session) {
@@ -129,11 +133,18 @@ public class UserController {
       return "login/login";
    }
 	
+   /**
+    * 
+    * 로그아웃
+    * 
+    * @param session
+    * 			HttpSession
+    * @return	redirect:/
+    */
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("userLogin");
 		return "redirect:/";
 		
 	}
-	
 }

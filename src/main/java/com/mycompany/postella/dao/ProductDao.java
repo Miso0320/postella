@@ -6,7 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.postella.dto.Product;
 
-
+/**
+ * 
+ * @author 박재홍
+ *
+ */
 @Mapper
 public interface ProductDao {
 	

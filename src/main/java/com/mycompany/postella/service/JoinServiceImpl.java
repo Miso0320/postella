@@ -11,6 +11,11 @@ import com.mycompany.postella.dto.Users;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 @Slf4j
 @Service
 public class JoinServiceImpl implements JoinService {

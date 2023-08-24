@@ -28,7 +28,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 
  * @author 박재홍
- * us_email, us_name
  *
  */
 @Slf4j
@@ -36,7 +35,19 @@ import lombok.extern.slf4j.Slf4j;
 //회원정보수정 페이지
 public class UserChangeController {
 	
-	@Autowired UsersChangeService usersChangeService;
+	@Autowired
+	UsersChangeService usersChangeService;
+	
+	/**
+	 * 
+	 * 회원 정보 수정
+	 * 
+	 * @param model
+	 * 			Model
+	 * @param session
+	 * 			HttpSession
+	 * @return	userChange/userChange
+	 */
 	@GetMapping("/userChange")
 	@Login
 	//현재 로그인된 이메일 정보 

@@ -15,7 +15,7 @@ import com.mycompany.postella.dto.Product;
 
 /**
  * 
- * @author 이송미
+ * @author 김미소, 이송미, 박재홍
  *
  */
 @Service

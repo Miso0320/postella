@@ -8,6 +8,11 @@ import com.mycompany.postella.dao.UsersChangeDao;
 import com.mycompany.postella.dto.Price;
 import com.mycompany.postella.dto.Users;
 
+/**
+ * 
+ * @author 박재홍
+ *
+ */
 @Service
 public class UsersChangeServiceImple implements UsersChangeService {
 	

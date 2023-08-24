@@ -34,7 +34,15 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class CartController {
 	
-	@Autowired CartService cartService;
+	@Autowired
+	CartService cartService;
+	
+	/**
+	 * 
+	 * 장바구니 목록 페이지 불러오기
+	 * 
+	 * @return cartNormal/cartNormal
+	 */
 	@GetMapping("/cartNormal")
 	@Login
 	public String joinForm() {
@@ -43,20 +51,21 @@ public class CartController {
 	
 	/**
 	 * 
+	 * 장바구니 목록 가져오기
+	 * 
+	 * @param prdNos
+	 * 			상품고유번호
 	 * @param us_no
 	 * 			회원고유번호
 	 * @param model
 	 * 			list(장바구니에 담긴 상품목록)를 뷰로 전달
 	 * @param session
-	 * 			cartItems를 세션에 저장,
-	 * 			다른 요청이나 페이지에서 세션을 통해 장바구니 정보를 가져와 사용
+	 * 			cartItems를 세션에 저장, 다른 요청이나 페이지에서 세션을 통해 장바구니 정보를 가져와 사용
 	 * @return list
 	 */
 	@PostMapping("/cartNormal")
 	@Login
 	@ResponseBody
-	
-	//user별 cart상품
 	public List<Cart> getCartProduct(@RequestParam(name="prd_no", required = false) List<Cart> prdNos, Integer us_no, Model model, HttpSession session) {
 		Users users = (Users) session.getAttribute("userLogin");
 		us_no = users.getUs_no();
@@ -92,13 +101,14 @@ public class CartController {
 	
 	/**
 	 * 
+	 * 장바구니 상품 개별 삭제
+	 * 
 	 * @param prd_no
 	 * 			상품고유번호
 	 * @param us_no
 	 * 			회원고유번호
-	 * @return
+	 * @return	redirect:/cartNormal
 	 */	
-	//Cart상품 단일삭제
 	@GetMapping("/deleteCart")
 	@Login
 	public String deleteCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "us_no", required = true) int us_no) {
@@ -113,12 +123,14 @@ public class CartController {
 	
 	/**
 	 * 
+	 * 장바구니 체크항목 삭제
+	 * 
 	 * @param prd_no
 	 * 			상품고유번호
 	 * @param session
-	 * @return
+	 * 			HttpSession
+	 * @return	redirect:/cartNormal
 	 */
-	//Cart상품 선택삭제(다수의 상품)
 	@GetMapping("/deleteCheckCart")
 	@Login
 	public String deleteCheckCart( @RequestParam(name = "prd_no", required = true) List<Integer> prd_no,  HttpSession session) {
@@ -138,17 +150,18 @@ public class CartController {
 	
 	/**
 	 * 
+	 * 장바구니 상품수량 변경
+	 * 
 	 * @param prd_no
 	 * 			상품고유번호
 	 * @param selectedValue
 	 * 			<select>로 선택한 상품수량
 	 * @param inputValue
-	 * 			<input>으로 선택한 상품수량
-	 * 			11개이상 구매원하면 input태그에 직접 수량입력하는 방식
+	 * 			<input>으로 선택한 상품수량, 11개이상 구매원하면 input태그에 직접 수량입력하는 방식
 	 * @param session
-	 * @return
+	 * 			HttpSession
+	 * @return	redirect:/cartNormal
 	 */
-	//Cart 상품수량 변경 update
 	@PostMapping("/updateCart")
 	@Login
 	public String updateCart(@RequestParam(name = "prd_no", required = true) int prd_no, @RequestParam(name = "selectedValue", required = false) Integer selectedValue, @RequestParam(name = "inputValue", required = false) Integer inputValue, HttpSession session) {

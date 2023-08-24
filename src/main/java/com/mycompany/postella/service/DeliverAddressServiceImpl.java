@@ -27,39 +27,39 @@ public class DeliverAddressServiceImpl implements DeliverAddressService {
 		return list;
 	}
 	
-	//배송지 추가하기
+	// 배송지 추가하기
 	@Override
 	public void putAddress(DeliverAddress da) {
 		daDao.insertAddress(da);
 	}
 	
-	//기본 배송지 가져오기
+	// 기본 배송지 가져오기
 	@Override
 	public DeliverAddress getBasicAddress(int us_no) {
 		DeliverAddress da = daDao.selectBasicAddress(us_no);
 		return da;
 	}
 	
-	//기본 배송지 제거하기
+	// 기본 배송지 제거하기
 	@Override
 	public void cleanMainAdr(int us_no) {
 		daDao.setMainAddressToN(us_no);
 	}
 	
-	//배송지 가져오기
+	// 배송지 가져오기
 	@Override
 	public DeliverAddress getAddress(int da_no) {
 		DeliverAddress da = daDao.selectAddress(da_no);
 		return da;
 	}
 	
-	//배송지 수정하기
+	// 배송지 수정하기
 	@Override
 	public void editAddress(DeliverAddress da) {
 		daDao.updateAddress(da);
 	}
 	
-	//배송지 삭제하기
+	// 배송지 삭제하기
 	@Override
 	public void removeAddress(int da_no) {
 		daDao.deleteAddress(da_no);

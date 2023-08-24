@@ -1,12 +1,19 @@
 package com.mycompany.postella.service;
 
 import java.util.List;
+
 import java.util.Map;
 
 import com.mycompany.postella.dto.Board;
 import com.mycompany.postella.dto.Product;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 public interface AdminService {
+	
 	// 전체 상품 리스트 페이징하기
 	public List<Product> getList(Map<String, Object> map);
 

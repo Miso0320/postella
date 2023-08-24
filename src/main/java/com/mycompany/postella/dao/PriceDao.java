@@ -18,6 +18,7 @@ import com.mycompany.postella.dto.Price;
  */
 @Mapper
 public interface PriceDao {	
+	
 	//가격가져오기
 	public Price selectPriceByPgNo(int pg_no);
 }

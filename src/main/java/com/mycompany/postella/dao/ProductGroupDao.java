@@ -11,11 +11,12 @@ import com.mycompany.postella.dto.Product;
 
 /**
  * 
- * @author 이송미
+ * @author 김미소, 이송미, 박재홍
  *
  */
 @Mapper
 public interface ProductGroupDao {
+	
 	// 제목 하나 가져오기
 	public String selectTitleByPgNo(int pg_no);
 

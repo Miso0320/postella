@@ -21,21 +21,22 @@ public interface CartDao {
 	public int insertPrdToCart(Cart cart);
 	
 	// 장바구니에 담긴 상품 하나 검색
-	public Cart selectCart(Map<String, Object> map);		
+	public Cart selectCart(Map<String, Object> map);	
 	
 	// 장바구니 변경
-	public int updateCart(Cart cart);								
+	public int updateCart(Cart cart);			
 	
 	// 장바구니 상품리스트
-	public List<Cart> selectCartByUsNo(int us_no);						
+	public List<Cart> selectCartByUsNo(int us_no);		
+	
 	// 장바구니 상품이미지
-	public List<Image> selectCartImg();							
+	public List<Image> selectCartImg();		
 	
 	// 장바구니 삭제
-	public int deleteCart(Map<String, Object> map);					
+	public int deleteCart(Map<String, Object> map);		
 	
 	// 장바구니 전체개수
-	public int cartListCnt(int us_no);								
+	public int cartListCnt(int us_no);		
 	
 	// 장바구니 상품리스트 페이징
 	public List<Cart> selectCartPaging(Map<String, Object> map);

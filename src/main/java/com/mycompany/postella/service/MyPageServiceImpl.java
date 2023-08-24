@@ -12,6 +12,11 @@ import com.mycompany.postella.dto.Orders;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 @Slf4j
 @Service
 public class MyPageServiceImpl implements MyPageService{
@@ -38,7 +43,8 @@ public class MyPageServiceImpl implements MyPageService{
 		int totalOrderNum = ordersDao.orderListCnt(map);
 		return totalOrderNum;
 	}
-
+	
+	// 마이페이지 주문목록 삭제 시 주문그룹 수량 변경
 	@Override
 	public void updateOrderDelete(int us_no, int od_no, int od_item_cnt) {
 		Map<String, Object> map = new HashMap<>();

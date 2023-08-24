@@ -3,6 +3,11 @@ package com.mycompany.postella.service;
 import com.mycompany.postella.dto.Agreement;
 import com.mycompany.postella.dto.Users;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 public interface JoinService {
 	// 회원가입 결과 ENUM
 	public enum JoinResult {

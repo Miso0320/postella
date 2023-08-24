@@ -9,7 +9,7 @@ import com.mycompany.postella.dto.Orders;
 
 /**
  * 
- * @author 이송미
+ * @author 김미소, 이송미
  *
  */
 @Mapper

@@ -30,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class ProductGroupController {
+	
 	@Autowired
 	private ProductGroupService productGroupService;
 	

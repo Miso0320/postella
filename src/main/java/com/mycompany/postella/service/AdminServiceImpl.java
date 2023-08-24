@@ -11,8 +11,14 @@ import com.mycompany.postella.dao.AdminProductDao;
 import com.mycompany.postella.dto.Board;
 import com.mycompany.postella.dto.Product;
 
+/**
+ * 
+ * @author 김미소
+ *
+ */
 @Service
 public class AdminServiceImpl implements AdminService {
+	
 	@Autowired
 	private AdminProductDao adminProductDao;
 
@@ -46,5 +52,4 @@ public class AdminServiceImpl implements AdminService {
 		int totalProductGroupNum = adminBoardDao.count(map);
 		return totalProductGroupNum;
 	}
-
 }

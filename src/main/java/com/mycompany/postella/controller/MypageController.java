@@ -40,6 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class MypageController {
+	
 	@Resource
 	private MyPageService myPageService;
 	
@@ -189,10 +190,14 @@ public class MypageController {
 	 */
 	@RequestMapping("/deleteOrder")
 	public String deleteOrder(
-			@RequestParam(name = "od_detail_no", required = true) int od_detail_no,
-			@RequestParam(name = "us_no", required = false) int us_no,
-			@RequestParam(name = "od_no", required = false) int od_no,
-			@RequestParam(name = "od_item_cnt", required = false) int od_item_cnt ) {
+			@RequestParam(name = "od_detail_no", required = true)
+			int od_detail_no,
+			@RequestParam(name = "us_no", required = false)
+			int us_no,
+			@RequestParam(name = "od_no", required = false)
+			int od_no,
+			@RequestParam(name = "od_item_cnt", required = false)
+			int od_item_cnt ) {
 		
 		myPageService.updateOrderDelete(us_no, od_no, od_item_cnt);
 		myPageService.removeOrder(od_detail_no);
@@ -415,5 +420,4 @@ public class MypageController {
 		
 		return lastCartMap;
 	}
-
 }

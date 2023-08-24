@@ -62,6 +62,7 @@ public class OderNPayController {
 	OrdersService ordersService;
 	
 	/**
+	 * 
 	 * 바로 구매 시 주문/결제 페이지 불러오기
 	 * 
 	 * @param quantity
@@ -69,6 +70,7 @@ public class OderNPayController {
 	 * @param prdNo
 	 * 			상품 옵션 식별 번호
 	 * @param model
+	 * 			Model
 	 * @param session
 	 * 			HttpSession
 	 * @return	orderNpay/orderNpay
@@ -97,8 +99,11 @@ public class OderNPayController {
 	}
 	
 	/**
+	 * 
 	 * 장바구니에서 구매 시 주문/결제 페이지 불러오기
+	 * 
 	 * @param model
+	 * 			Model
 	 * @param session
 	 * 			HttpSession
 	 * @return orderNpay/orderNpay
@@ -130,6 +135,7 @@ public class OderNPayController {
 	}
 	
 	/**
+	 * 
 	 * 구매자 정보 불러오기
 	 * 
 	 * @param user
@@ -137,6 +143,7 @@ public class OderNPayController {
 	 * @param products
 	 * 			주문 할 상품 리스트
 	 * @param model
+	 * 			Model
 	 */
 	public void setOrderInfo(Users user, List<Product> products, Model model) {
 		//구매자 정보
@@ -186,11 +193,13 @@ public class OderNPayController {
 	}
 	
 	/**
+	 * 
 	 * 주소 변경하기 페이지 보여주기
 	 * 
 	 * @param session
 	 * 			HttpSession
 	 * @param model
+	 * 			Model
 	 * @return orderNpay/changeAddress
 	 */
 	@GetMapping("/changeAddress")
@@ -208,6 +217,7 @@ public class OderNPayController {
 	}
 	
 	/**
+	 * 
 	 * 배송지 추가 처리
 	 * 
 	 * @param deliverAddress
@@ -243,9 +253,11 @@ public class OderNPayController {
 	}
 	
 	/**
+	 * 
 	 * 배송지 추가 페이지 보여주기
 	 * 
 	 * @param model
+	 * 			Model
 	 * @return orderNpay/addAddress
 	 */
 	@GetMapping("/addAddress")
@@ -255,9 +267,11 @@ public class OderNPayController {
     }
 	
 	/**
+	 * 
 	 * 배송 요청 선택 페이지
 	 * 
 	 * @param model
+	 * 			Model
 	 * @return orderNpay/deliveryRequest
 	 */
 	@GetMapping("/deliveryRequest")
@@ -267,9 +281,11 @@ public class OderNPayController {
     }
 	
 	/**
+	 * 
 	 * 배송지 수정 페이지 보여주기
 	 * 
 	 * @param model
+	 * 			Model
 	 * @return orderNpay/editAddress
 	 */
 	@GetMapping("/editAddress")
@@ -280,6 +296,7 @@ public class OderNPayController {
     }
 	
 	/**
+	 * 
 	 * 배송지 수정하기
 	 * 
 	 * @param deliverAddress
@@ -308,6 +325,7 @@ public class OderNPayController {
     }
 	
 	/**
+	 * 
 	 * 결제 정보 DB에 저장하기
 	 * 
 	 * @param session
@@ -366,6 +384,7 @@ public class OderNPayController {
     }
 	
 	/**
+	 * 
 	 * 주소 삭제하기
 	 * 
 	 * @param da_no

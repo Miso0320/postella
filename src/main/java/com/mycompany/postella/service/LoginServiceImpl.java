@@ -11,13 +11,18 @@ import com.mycompany.postella.dto.Users;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author 박재홍
+ *
+ */
 @Service
 @Slf4j
 public class LoginServiceImpl implements LoginService{
 	@Resource
 	private UsersDao usersDao;
 	
-	//로그인결과
+	// 로그인결과
 	@Override
 	public LoginResult loginUsers(Users users) {
 		Users dbUsers = usersDao.selectByUser(users.getUs_email());
@@ -25,7 +30,7 @@ public class LoginServiceImpl implements LoginService{
 			return LoginResult.FAIL_UID;
 		}		
 		
-		//암호화된 비밀번호와 입력한 비밀번호 비교결과
+		// 암호화된 비밀번호와 입력한 비밀번호 비교결과
 		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 		if(passwordEncoder.matches(users.getUs_password(), dbUsers.getUs_password())) {
 			//휴면유저 여부 Y/N
@@ -44,7 +49,7 @@ public class LoginServiceImpl implements LoginService{
 		}
 	}
 		
-	//유저 이메일을 기준으로 users객체로 반환
+	// 유저 이메일을 기준으로 users객체로 반환
 	@Override
 	public Users getUser(String us_email) {
 		Users users = usersDao.selectByUser(us_email);

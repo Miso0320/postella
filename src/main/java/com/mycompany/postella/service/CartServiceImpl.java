@@ -12,7 +12,11 @@ import com.mycompany.postella.dto.Image;
 
 import lombok.extern.slf4j.Slf4j;
 
-
+/**
+ * 
+ * @author 박재홍
+ *
+ */
 @Slf4j
 @Service
 public class CartServiceImpl implements CartService{
@@ -79,13 +83,14 @@ public class CartServiceImpl implements CartService{
 		int check = cartDao.updateOrInsertCart(cart);
 	}
 	
-	//장바구니에 담긴 상품 이름 대분류
+	// 장바구니에 담긴 상품 이름 대분류
 	@Override
 	public List<Cart> getPgName(int us_no) {
 		List<Cart> pgNameList = cartDao.selectPgName(us_no);
 		return pgNameList;
 	}
-
+	
+	// 장바구니 상품고유번호, 수량 리스트
 	@Override
 	public List<Integer> getPrdNoAndQty(int us_no) {
 		List<Integer> prdNoAndQtyList = cartDao.selectQtyAndPrdNo(us_no);

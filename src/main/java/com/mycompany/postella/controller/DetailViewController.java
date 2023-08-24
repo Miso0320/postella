@@ -46,6 +46,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class DetailViewController {
+	
 	@Autowired
 	private ImageService imageService;
 	
@@ -66,6 +67,7 @@ public class DetailViewController {
 	
 	@Autowired
 	private QnaService qnaService;
+	
 	/**
 	 * 
 	 * 상품 상세 페이지 가져오기
@@ -73,6 +75,7 @@ public class DetailViewController {
 	 * @param pg_no
 	 * 			상품 그룹 번호
 	 * @param model
+	 * 			Model
 	 * @param session
 	 * 			HttpSession
 	 * @return detailView/detailView
@@ -179,11 +182,13 @@ public class DetailViewController {
 	}
 	
 	/**
+	 * 
 	 * 상품 옵션 상세 페이지 보여주기
 	 * 
 	 * @param prdNo
 	 * 			상품(옵션) 식별 번호
 	 * @param model
+	 * 			Model
 	 * @return detailView/detailView
 	 */
 	@GetMapping("/setDetailPage")
@@ -285,6 +290,7 @@ public class DetailViewController {
 	}
 	
 	/**
+	 * 
 	 * 리뷰 불러오기(AJAX)
 	 * 
 	 * @param pg_no
@@ -316,6 +322,7 @@ public class DetailViewController {
     }
 	
 	/**
+	 * 
 	 * 리뷰 별점순으로 가져오기(AJAX)
 	 * 
 	 * @param pg_no
@@ -349,6 +356,7 @@ public class DetailViewController {
     }
 	
 	/**
+	 * 
 	 * 리뷰 최신순으로 가져오기(AJAX)
 	 * 
 	 * @param pg_no
@@ -381,6 +389,7 @@ public class DetailViewController {
     }
 	
 	/**
+	 * 
 	 * 리뷰 검색하기(AJAX)
 	 * 
 	 * @param pg_no
@@ -416,6 +425,7 @@ public class DetailViewController {
     }
 	
 	/**
+	 * 
 	 * 리뷰 별점별로 보기(AJAX)
 	 * 
 	 * @param pg_no
@@ -455,6 +465,7 @@ public class DetailViewController {
 	}
 	
 	/**
+	 * 
 	 * 장바구니 담기
 	 * 
 	 * @param quantity
@@ -496,6 +507,7 @@ public class DetailViewController {
     }
 	
 	/**
+	 * 
 	 * 찜 목록에 추가하기
 	 * 
 	 * @param pg_no
@@ -518,6 +530,7 @@ public class DetailViewController {
     }
 	
 	/**
+	 * 
 	 * 찜 목록에서 삭제하기
 	 * 
 	 * @param pg_no
@@ -539,6 +552,7 @@ public class DetailViewController {
     }
     
     /**
+     * 
      * 상품문의 불러오기
      * 
      * @param pg_no
@@ -546,6 +560,7 @@ public class DetailViewController {
      * @param page
      * 			페이지 번호
      * @param model
+     * 			Model
      * @return Map<String, Object>
      */
   	@RequestMapping("/getQnaFromDB")
@@ -574,11 +589,13 @@ public class DetailViewController {
 	}
   	
   	/**
+  	 * 
   	 * 문의 작성 페이지 보여주기
   	 * 
   	 * @param pg_no
   	 * 			상품 그룹 식별 번호
   	 * @param model
+  	 * 			Model
   	 * @return detailView/qna
   	 */
   	@GetMapping("/writeQna")
@@ -595,6 +612,7 @@ public class DetailViewController {
     }
 	
   	/**
+  	 * 
   	 * 상품 문의 등록하기
   	 * 
   	 * @param prdNo
