@@ -82,7 +82,7 @@
 				</div>
 				<div class="cart-part1">
 					<span>
-						<label>
+						<label style="padding-left:10px;">
 							<input title="모든 상품을 결제상품으로 설정" type="checkbox" name="checkBoxSelectAll" class="checkBoxSelectAll" checked>
 							<span>전체선택</span>
 							<span class="cart-count-bottom">( <em id='result'>0</em> / <em id='result2'>0</em> )</span>
@@ -113,7 +113,7 @@
 					        	총 주문금액
 						        <em class="final-order-price">
 						        0
-						        </em>
+						        </em>원
 						    </div>
 						</div>
 	        		</div>
