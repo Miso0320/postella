@@ -8,6 +8,7 @@
 		from review, product
 		where review.prd_no = product.prd_no
 		and product.pg_no = #{pg_no}
+		order by review.rev_date DESC
 	</select>
 	
 	<!-- 상품명 가져오기 -->
@@ -123,6 +124,7 @@
             from review, product
             where review.prd_no = product.prd_no
             and product.pg_no = #{pg_no}
+            order by review.rev_date DESC
 	    ) t
 	    WHERE ROWNUM <= #{endRow}
 	  )

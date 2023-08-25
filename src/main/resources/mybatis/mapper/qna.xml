@@ -37,6 +37,7 @@
             select * 
 			from QNA 
 			where pg_no = #{pg_no}
+			order by q_date DESC
 	    ) t
 	    WHERE ROWNUM <= #{endRow}
 	  )
