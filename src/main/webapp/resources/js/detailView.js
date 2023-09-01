@@ -96,59 +96,6 @@ function init() {
 	   }
 	});
    
-   /*// 썸네일 확대
-     var innerFrameVisible = false;
-     
-     $(".thumbnail_img").mouseover(function(event) {
-       innerFrameVisible = true;
-       updateInnerFramePosition(event.pageX, event.pageY);
-       showZoomedImage();
-     });
-     
-     $(".thumbnail_img").mouseleave(function() {
-       innerFrameVisible = false;
-       hideInnerFrame();
-       hideZoomedImage();
-     });
-     
-     $(".thumbnail_img").mousemove(function(event) {
-       if (innerFrameVisible) {
-         updateInnerFramePosition(event.pageX, event.pageY);
-       }
-     });
-     
-     function updateInnerFramePosition(mouseX, mouseY) {
-       var $thumbnailImg = $(".thumbnail_img");
-       var thumbnailLeft = $thumbnailImg.offset().left;
-       var thumbnailTop = $thumbnailImg.offset().top;
-       
-       var innerFrameLeft = mouseX - thumbnailLeft;
-       var innerFrameTop = mouseY - thumbnailTop;
-       
-       $(".inner-frame").css({
-         "display": "block",
-         "left": innerFrameLeft,
-         "top": innerFrameTop
-       });
-     }
-     
-     function hideInnerFrame() {
-       $(".inner-frame").css("display", "none");
-     }
-     
-     function showZoomedImage() {
-       $(".zoomed-div").css("display", "block");
-     }
-     
-     function hideZoomedImage() {
-       $(".zoomed-div").css("display", "none");
-     }
-     
-     $(".thumbnail_img").mousemove(function(event) {
-       var thumbnailRight = $(this).offset().left + $(this).width();
-       var thumbnailTop = $(this).offset().top;
-     });*/
-
 
    // 썸네일 변경
    $(".thum-list-img").mouseover(function() {
@@ -242,23 +189,8 @@ function init() {
    //상품정보 더보기 
    moreBtn = document.getElementById("seemore-btn");
    moreBtn.addEventListener('click', seeMore);
-   
-   try{
-	   classList = document.querySelector('.prod-detail-img').classList; // 더보기 프레임의 클래스 정보 얻기
-	   ontentHeight = document.querySelector('.prod-detail-img > img').offsetHeight; //컨텐츠 높이 얻기
-
-	   //컨텐츠 로딩 완료 후 높이 기준으로 클래스 재처리
-	   window.addEventListener('load', function(){
-	       let contentHeight = document.querySelector('.prod-detail-aco > .prod-detail-img').offsetHeight; //컨텐츠 높이 얻기
-	       if(contentHeight <= 1000){
-	           document.querySelector('.detailinfo').classList.remove('show-preview'); // 초기값보다 작으면 전체 컨텐츠 표시
-	       }
-	   });
-
-   } catch(err) {
-	   classList = " ";
-	   contentHeight = 0;
-   } 
+   classList = document.querySelector('.prod-detail-img').classList; // 더보기 프레임의 클래스 정보 얻기
+   contentHeight = document.querySelector('.prod-detail-img > img').offsetHeight; //컨텐츠 높이 얻기
   
    //처음 리뷰 보여주기
    loadInitialReview();
@@ -634,6 +566,10 @@ function isLoggedIn() {
 //상품정보 더보기
 function seeMore(e){
    
+   // 상품 정보 프레임의 클래스 정보 얻기
+   let classList = document.querySelector('.prod-detail-aco').classList;
+   //컨텐츠 높이 얻기
+   let contentHeight = document.querySelector('.prod-detail-aco > .prod-detail-img').offsetHeight; 
    //버튼 텍스트
    let btnText = document.getElementById("seemore-text");
    //버튼 화살표
@@ -650,3 +586,11 @@ function seeMore(e){
     }
     
 }
+
+//컨텐츠 로딩 완료 후 높이 기준으로 클래스 재처리
+window.addEventListener('load', function(){
+    let contentHeight = document.querySelector('.prod-detail-aco > .prod-detail-img').offsetHeight; //컨텐츠 높이 얻기
+    if(contentHeight <= 1000){
+        document.querySelector('.detailinfo').classList.remove('show-preview'); // 초기값보다 작으면 전체 컨텐츠 표시
+    }
+});
