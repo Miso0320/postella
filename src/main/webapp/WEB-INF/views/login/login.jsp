@@ -79,7 +79,7 @@
 	<footer class="text-center">
 		<div><small>첫 방문이신가요?</small></div>
 		<div><small>회원가입 후 사용해 보세요.</small></div>
-		<div>▽Click!▽</div>
+		<div><a href="join"><strong>▽회원가입하기▽</strong></a></div>
 		<div>
               	<a href="join">
                       	<img src="${pageContext.request.contextPath}/resources/img/join/welcome.gif" width="96px" height="96px"></img>

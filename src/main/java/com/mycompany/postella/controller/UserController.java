@@ -27,16 +27,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class UserController {
-	
 	@Resource
 	private JoinService joinService;
 	
-	@Resource
-	LoginService loginService;
+	@Resource LoginService loginService;
 	
 	/**
 	 * 
-	 * 회원가입 폼 불러오기
+	 * 회원가입 폼
 	 * 
 	 * @return String
 	 */
@@ -95,17 +93,15 @@ public class UserController {
 	/**
 	 * 
 	 * 유저 가입 정보를 통해 로그인 성공,실패
-	 * 
 	 * @param users
 	 * 			유저 가입 정보
 	 * @param model
 	 * 			Model
 	 * @param session
-	 * 			HttpSession
 	 * @return
-	 * 			로그인 성공 : redirect:/productGroup
-	 * 			로그인 실패 : login/login
-	 * 			로그아웃 : redirect:/productGroup
+	 * 로그인 성공 : redirect:/productGroup
+	 * 로그인 실패 : login/login
+	 * 로그아웃 : redirect:/productGroup
 	 */
    @PostMapping("/login")
    public String login(Users users, Model model, HttpSession session) {
@@ -113,11 +109,12 @@ public class UserController {
       String error = "";
       if(result == LoginResult.FAIL_UID) {
     	  error = "MID가 없습니다.";
-    	  String errorEmail2 = "이메일이 올바르지 않습니다.";
+    	  String errorEmail2 = "아이디가 존재하지 않습니다.";
 			model.addAttribute("errorEmail2", errorEmail2);
 			return "login/login";
       } else if(result == LoginResult.FAIL_UENABLED) {
     	  error = "MID가 비활성화 되어 있습니다";
+    	  return "login/login";
       } else if(result == LoginResult.FAIL_UPASSWORD) {
     	  error = "MPASSWORD가 틀립니다";
     	  String errorPassword = "비밀번호가 올바르지 않습니다.";
@@ -128,23 +125,12 @@ public class UserController {
     	  session.setAttribute("userLogin", dbUsers);
     	  return "redirect:/";
       }
-      
-      model.addAttribute("error", error);
-      return "login/login";
    }
 	
-   /**
-    * 
-    * 로그아웃
-    * 
-    * @param session
-    * 			HttpSession
-    * @return	redirect:/
-    */
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("userLogin");
-		return "redirect:/";
-		
+		return "redirect:/";	
 	}
+	
 }

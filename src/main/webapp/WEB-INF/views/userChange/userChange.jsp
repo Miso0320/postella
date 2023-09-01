@@ -4,6 +4,14 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script src="${pageContext.request.contextPath}/resources/js/userChange.js"></script>
+<script>
+function oninputPhone(target) {
+    target.value = target.value
+        .replace(/[^0-9]/g, '')
+        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+}
+</script>
+
 
 <section class="order_list_container">
 	<!-- 전체 내용 -->
@@ -96,9 +104,27 @@
 										        <tr>
 										            <td></td>
 										            <td>
-										                <button type="button" class="usermodify-password-submit btn btn-info">비밀번호 변경</button>
+										                <button type="button" data-toggle="modal" data-target="#deleteCk" class="usermodify-password-submit btn btn-info">비밀번호 변경</button>
 										            </td>
 										        </tr>
+										        <div class="modal" id="deleteCk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+													  <div class="modal-dialog" role="document">
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title">비밀번호 변경</h5>
+													        <a class="close" data-dismiss="modal" aria-label="Close">
+													          <span aria-hidden="true">&times;</span>
+													        </a>
+													      </div>
+													      <div class="modal-body">
+													        <p class="modal_body_txt">성공적으로 변경되었습니다.</p>
+													      </div>
+													      <div class="modal-footer">
+													        <a href="userChange" class="btn btn-outline-success">확인</a>
+													      </div>
+													    </div>
+													  </div>
+												</div>
 										    </tbody>
 									    </table>
 									    
@@ -109,7 +135,25 @@
 									<th>전화번호</th>
 									<td>
 										<input type="tel" class="icon-text-field__input _addressBookCellphoneInput" id="addressbookCellphone" name="da_tel" placeholder="--제외하고 입력해주세요" value="" oninput="oninputPhone(this)">
-										<button class="delivery-address__popup-list-button btn btn-info" type="button" onclick="oninputPhone(this)">전화번호 변경</button>
+										<button class="delivery-address__popup-list-button btn btn-info" data-toggle="modal" data-target="#deleteCk" type="button" onclick="oninputPhone(this)">전화번호 변경</button>
+										<div class="modal" id="deleteCk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+													  <div class="modal-dialog" role="document">
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title">전화번호 변경</h5>
+													        <a class="close" data-dismiss="modal" aria-label="Close">
+													          <span aria-hidden="true">&times;</span>
+													        </a>
+													      </div>
+													      <div class="modal-body">
+													        <p class="modal_body_txt">성공적으로 변경되었습니다.</p>
+													      </div>
+													      <div class="modal-footer">
+													        <a href="userChange" class="btn btn-outline-success">확인</a>
+													      </div>
+													    </div>
+													  </div>
+												</div>
 									</td>
 								</tr>
 								<tr>
@@ -122,7 +166,7 @@
 						</table>	
 					</div>				
 					<div class="cancel-button">
-				        <a href="productGroup" class="btn btn-secondary btn-sm m-2">나가기</a>
+				        <a href="${pageContext.request.contextPath}" class="btn btn-secondary btn-sm m-2">나가기</a>
 				    </div>
 				</div>
 			</div>

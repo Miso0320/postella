@@ -42,7 +42,7 @@
 				      <li class="nav-item dropdown">
 				        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MY 정보</a>
 				        <div class="dropdown-menu">
-				          <a class="dropdown-item" href="#">개인정보수정</a>
+				          <a class="dropdown-item" href="${pageContext.request.contextPath}/userChange">개인정보수정</a>
 				          <a class="dropdown-item" href="#">배송지관리</a>
 				          <div class="dropdown-divider"></div>
 				          <a class="dropdown-item" href="#">문의하기</a>
